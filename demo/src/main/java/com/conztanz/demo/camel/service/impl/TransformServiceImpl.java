@@ -1,11 +1,11 @@
-package com.conztanz.service.camel.demo.impl;
+package com.conztanz.demo.camel.service.impl;
 
 import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.conztanz.service.camel.demo.TransformService;
+import com.conztanz.demo.camel.service.TransformService;
 
 public class TransformServiceImpl implements TransformService {
 

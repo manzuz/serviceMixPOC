@@ -4,14 +4,15 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.conztanz</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>demo-bundle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<bundle.symbolicName>demo.camel</bundle.symbolicName>
-		<bundle.namespace>com.conztanz.demo.camel.service</bundle.namespace>
+		<bundle.symbolicName>demo.camel-bundle</bundle.symbolicName>
+		<bundle.namespace>com.conztanz.demo.camel</bundle.namespace>
 		<commonslogging.version>1.2</commonslogging.version>
 	</properties>
+
 
 	<name>${bundle.symbolicName} [${bundle.namespace}]</name>
 
@@ -30,6 +31,7 @@
 					<include>plugin.xml</include>
 					<include>plugin.properties</include>
 					<include>icons/**</include>
+					<include>META-INF/*</include>
 				</includes>
 			</resource>
 		</resources>
@@ -53,14 +55,7 @@
 					<instructions>
 						<Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
 						<Bundle-Version>${project.version}</Bundle-Version>
-						<!-- | assume public classes are in the top package, and private classes 
-							are under ".impl" -->
-						<!-- <Export-Package>!${bundle.namespace}.internal.*,${bundle.namespace}.*;version="${project.version}"</Export-Package> -->
-						<Export-Package>${bundle.namespace};version="${project.version}"</Export-Package>
-						<!-- <Private-Package>${bundle.namespace}.internal.*</Private-Package> -->
-						<Private-Package>${bundle.namespace}.impl.*</Private-Package>
-						<!-- | each module can override these defaults in their osgi.bnd file -->
-						<_include>-osgi.bnd</_include>
+						<Import-Package>${bundle.namespace}.service;version="${project.version}"</Import-Package>
 						<Include-Resource>src/main/resources</Include-Resource>
 					</instructions>
 				</configuration>
@@ -69,7 +64,6 @@
 	</build>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi_R4_core</artifactId>
@@ -84,15 +78,10 @@
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
-
-
 		<dependency>
-			<groupId>commons-logging</groupId>
-			<artifactId>commons-logging</artifactId>
-			<version>${commonslogging.version}</version>
-			<scope>provided</scope>
+			<groupId>com.conztanz</groupId>
+			<artifactId>demo</artifactId>
+			<version>${project.version}</version>
 		</dependency>
-
 	</dependencies>
-
 </project>

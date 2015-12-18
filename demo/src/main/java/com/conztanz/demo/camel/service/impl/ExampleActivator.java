@@ -1,4 +1,4 @@
-package com.conztanz.service.camel.demo.impl;
+package com.conztanz.demo.camel.service.impl;
 
 import java.util.Dictionary;
 import java.util.Properties;
@@ -6,7 +6,7 @@ import java.util.Properties;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
-import com.conztanz.service.camel.demo.ExampleService;
+import com.conztanz.demo.camel.service.ExampleService;
 
 /**
  * Extension of the default OSGi bundle activator

@@ -1,4 +1,4 @@
-package com.conztanz.service.camel.demo;
+package com.conztanz.demo.camel.service;
 
 /**
  * Public API representing an example OSGi service

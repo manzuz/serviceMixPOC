@@ -1,10 +1,10 @@
-package com.conztanz.service.camel.demo.impl;
+package com.conztanz.demo.camel.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.conztanz.service.camel.demo.ExampleService;
+import com.conztanz.demo.camel.service.ExampleService;
 
 /**
  * Internal implementation of our example OSGi service

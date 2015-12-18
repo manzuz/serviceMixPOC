@@ -9,7 +9,7 @@
  
     <osgi:service ref="transformService">
         <osgi:interfaces>
-            <value>com.conztanz.service.camel.demo.TransformService</value>
+            <value>com.conztanz.demo.camel.service.TransformService</value>
         </osgi:interfaces>
     </osgi:service>
  
