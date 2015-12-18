@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.conztanz</groupId>
+	<artifactId>demo-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<commonslogging.version>1.2</commonslogging.version>
+		<bundle.namespace.root>com.conztanz.demo.camel</bundle.namespace.root>
+	</properties>
+
+	<modules>
+		<module>../demo</module>
+		<module>../demo-bundle</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+
+<!-- 			<dependency> -->
+<!-- 				<groupId>commons-logging</groupId> -->
+<!-- 				<artifactId>commons-logging</artifactId> -->
+<!-- 				<version>${commonslogging.version}</version> -->
+				<!-- <scope>provided</scope> -->
+<!-- 			</dependency> -->
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi_R4_core</artifactId>
+				<version>1.0</version>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi_R4_compendium</artifactId>
+				<version>1.0</version>
+				<scope>provided</scope>
+				<optional>true</optional>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+</project>

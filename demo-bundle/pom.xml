@@ -3,20 +3,22 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.conztanz</groupId>
-	<artifactId>demo-bundle</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>com.conztanz</groupId>
+		<artifactId>demo-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../demo-parent</relativePath>
+	</parent>
 
+	<artifactId>demo-bundle</artifactId>
+	<packaging>bundle</packaging>
+	
 	<properties>
-		<bundle.symbolicName>demo.camel-bundle</bundle.symbolicName>
-		<bundle.namespace>com.conztanz.demo.camel</bundle.namespace>
-		<commonslogging.version>1.2</commonslogging.version>
+		<bundle.symbolicName>${project.artifactId}</bundle.symbolicName>
+		<bundle.namespace>${bundle.namespace.root}</bundle.namespace>
 	</properties>
 
-
 	<name>${bundle.symbolicName} [${bundle.namespace}]</name>
-
-	<packaging>bundle</packaging>
 
 	<build>
 		<resources>
@@ -56,6 +58,8 @@
 						<Bundle-SymbolicName>${bundle.symbolicName}</Bundle-SymbolicName>
 						<Bundle-Version>${project.version}</Bundle-Version>
 						<Import-Package>${bundle.namespace}.service;version="${project.version}"</Import-Package>
+<!-- 						<Embed-Transitive>true</Embed-Transitive> -->
+<!-- 						<Embed-Dependency>*;scope=compile|runtime;inline=true</Embed-Dependency> -->
 						<Include-Resource>src/main/resources</Include-Resource>
 					</instructions>
 				</configuration>
@@ -67,14 +71,12 @@
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi_R4_core</artifactId>
-			<version>1.0</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi_R4_compendium</artifactId>
-			<version>1.0</version>
 			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>

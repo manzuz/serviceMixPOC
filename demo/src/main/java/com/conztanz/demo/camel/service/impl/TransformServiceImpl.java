@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.milyn.Smooks;
+import org.milyn.SmooksFactory;
 
 import com.conztanz.demo.camel.service.TransformService;
 
@@ -14,11 +16,17 @@ public class TransformServiceImpl implements TransformService {
 	private String prefix = "MyTransform";
 
 	public Object transform(Object body) {
-		String answer = prefix + " set body:  " + new Date();
+
+//		 final SmooksFactory smooksFactory = (SmooksFactory)
+//		 camelContext.getRegistry().lookup(SmooksFactory.class.getName());
+//		 final Smooks smooks = smooksFactory.createInstance("my-smooks-config.xml");
+
+		String answer = prefix + " set body: " + new Date();
 		if (verbose) {
 			System.out.println(">> call >> " + answer);
 		}
 		LOG.info(">> call >>" + answer);
+
 		return answer;
 	}
 
