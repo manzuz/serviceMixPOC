@@ -16,7 +16,8 @@
 	<properties>
 		<pom.organization.name>Conztanz</pom.organization.name>
 		<bundle.symbolicName>${project.artifactId}</bundle.symbolicName>
-		<bundle.namespace>${bundle.namespace.root}.service</bundle.namespace>
+<!-- 		<bundle.namespace>${bundle.namespace.root}.service</bundle.namespace> -->
+		<bundle.namespace>${bundle.namespace.root}</bundle.namespace>
 		<milyn-smooks.version>1.5.2</milyn-smooks.version>
 	</properties>
 
@@ -67,10 +68,11 @@
 						<!-- | assume public classes are in the top package, and private classes 
 							are under ".impl" -->
 						<Export-Package>${bundle.namespace};version="${project.version}"</Export-Package>
-						<Private-Package>${bundle.namespace}.impl.*</Private-Package>
+<!-- 						<Private-Package>${bundle.namespace}.camel.service.impl</Private-Package> -->
+						<Private-Package>${bundle.namespace}</Private-Package>
 
 						<!-- <DynamicImport-Package>*</DynamicImport-Package> -->
-						<!-- <Import-Package>*; resolution:=optional</Import-Package> -->
+						<Import-Package>*; resolution:=optional</Import-Package>
 						<!-- <Import-Package>*</Import-Package> -->
 
 						<!-- | each module can override these defaults in their osgi.bnd file -->
@@ -81,10 +83,10 @@
 						<_include>-osgi.bnd</_include>
 						<Include-Resource>src/main/resources</Include-Resource>
 
-						<Export-Service>${bundle.namespace}.TransformService</Export-Service>
+						<Export-Service>${bundle.namespace}.camel.service.TransformService</Export-Service>
 
-<!-- 						<Embed-Dependency>*;scope=compile|runtime</Embed-Dependency> -->
-						
+						<!-- <Embed-Dependency>*;scope=compile|runtime</Embed-Dependency> -->
+
 					</instructions>
 					<!-- <archive> -->
 					<!-- <manifest> -->
@@ -107,6 +109,20 @@
 			<artifactId>osgi_R4_compendium</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-cxf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.examples</groupId>
+            <artifactId>camel-cxf-rest-service</artifactId>
+            <version>6.1.0</version>
+        </dependency>
 
 		<!-- Smooks -->
 		<dependency>
