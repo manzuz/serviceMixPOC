@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<parent>
+		<groupId>com.conztanz</groupId>
+		<artifactId>demo-parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../demo-parent</relativePath>
+	</parent>
+
+	<artifactId>demo-sbr-stub-14_1</artifactId>
+	<packaging>jar</packaging>
+
+
+	<properties>
+		<transform.package.jibx>com.conztanz.transform.sbr.v14_1</transform.package.jibx>
+	</properties>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>createJibxDir</id>
+<!-- 						<phase>process-resources</phase> -->
+						<phase>validate</phase>
+
+						<configuration>
+							<tasks>
+								<delete dir="${transform.path.jibx}" />
+								<mkdir dir="${transform.path.jibx}" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Description>${project.description}</Bundle-Description>
+						<Export-Package>com.conztanz.transform.sbr.v14_1</Export-Package>
+						<Import-Package>*;resolution:=optional</Import-Package>
+						<!-- <Private-Package>org.apache.servicemix.examples.camel.rest</Private-Package> -->
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+</project>
