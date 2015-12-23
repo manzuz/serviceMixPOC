@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features>
 
-	<feature name="demo-kar" version="0.0.1-SNAPSHOT">
+	<feature name="demo-kar" version="0.0.1-SNAPSHOT"  xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
 
 		<bundle>mvn:com.conztanz/demo-commons/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-stub-14_1/0.0.1-SNAPSHOT</bundle>
