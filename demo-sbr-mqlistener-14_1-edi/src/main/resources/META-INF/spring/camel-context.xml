@@ -18,7 +18,8 @@
 		id="camel-server">
 		<route>
 			<from uri="jms:queue:SBR_14_1_EDI.TO.CC" />
-			<to uri="bean:SBR_14_1_EDI_SERVICE?method=onMessage" />
+<!-- 			<to uri="bean:SBR_14_1_EDI_SERVICE?method=onMessage" /> -->
+			<to uri="bean:SBR_14_1_EDI_SERVICE" />
 		</route>
 	</camelContext>
 

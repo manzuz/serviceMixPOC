@@ -1,7 +1,6 @@
 package com.conztanz.connect.mq.sbr.service.impl;
 
-import org.apache.activemq.pool.XaPooledConnectionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.camel.Handler;
 import org.springframework.stereotype.Service;
 
 import com.conztanz.connect.mq.sbr.service.IConnectMessageListener_SBR;
@@ -10,6 +9,7 @@ import com.conztanz.connect.mq.sbr.service.IConnectMessageListener_SBR;
 public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessageListener_SBR {
 
 	@Override
+	@Handler
 	public String onMessage(String message) {
 		// TODO Auto-generated method stub
 
