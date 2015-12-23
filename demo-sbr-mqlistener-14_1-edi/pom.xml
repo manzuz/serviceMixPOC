@@ -9,7 +9,7 @@
 	</parent>
 
 
-	<artifactId>demo-sbr-mqlistener-14_1</artifactId>
+	<artifactId>demo-sbr-mqlistener-14_1-edi</artifactId>
 	<packaging>bundle</packaging>
 
 	<dependencies>

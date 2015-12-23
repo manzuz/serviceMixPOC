@@ -2,12 +2,14 @@ package com.conztanz.connect.mq.sbr.service.impl;
 
 import org.apache.camel.builder.RouteBuilder;
 
+// UNUSED - utilisation de config xml
 public class SBR_Route_v14_1_EDI extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
 
-		from("jms:queue:SBR_14_1").to("bean:SBR_14_1_EDI_SERVICE?method=onMessage");
+		System.out.println("SBR_Route_v14_1_EDI=>configure()");
+		from("jms:queue:SBR_14_1_EDI.TO.CC").to("bean:SBR_14_1_EDI_SERVICE?method=onMessage");
 
 		// Version raccourcie:
 		// from("jms:queue:SBR_14_1").to("SBR_14_1_EDI_SERVICE");

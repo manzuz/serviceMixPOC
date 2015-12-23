@@ -7,13 +7,43 @@
          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
          http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
 
-	<!-- let Spring do its IoC stuff in this package -->
+	<!-- Spring scan to discover services -->
 	<context:component-scan base-package="com.conztanz.connect.mq.sbr.service" />
+	
+	<!-- Camel context -->
+	<camelContext xmlns="http://camel.apache.org/schema/spring" id="camel-server">
+		<route>
+			<from uri="jms:queue:SBR_14_1_EDI.TO.CC" />
+			<to uri="bean:SBR_14_1_EDI_SERVICE?method=onMessage" />
+		</route>
+	</camelContext>
+
+	<!-- <camel:camelContext id="camel-client"> -->
+	<!-- <camel:template id="camelTemplate" /> -->
+	<!-- </camel:camelContext> -->
 
 
-	<!-- lets configure the Camel ActiveMQ to use the embedded ActiveMQ broker 
-		declared above -->
 	<bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
-		<property name="brokerURL" value="vm://myBroker" />
+		<property name="configuration" ref="jmsConfig" />
 	</bean>
+	<bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+		<property name="connectionFactory" ref="pooledConnectionFactory" />
+		<property name="concurrentConsumers" value="10" />
+		<property name="transacted" value="true" />
+<!-- 		<property name="transactionManager" ref="transactionManager" /> -->
+	</bean>
+	
+	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!-- <property name="brokerURL" value="vm://myBroker" /> -->
+		<property name="brokerURL" value="tcp://185.8.51.217:61616" />
+	</bean>
+
+	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory"
+		init-method="start" destroy-method="stop">
+		<property name="maxConnections" value="8" />
+		<property name="connectionFactory" ref="amqConnectionFactory" />
+	</bean>
+
+<!-- 	<bean id="transactionManager" class=""> -->
+<!-- 	</bean> -->
 </beans>

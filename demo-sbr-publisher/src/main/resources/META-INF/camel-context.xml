@@ -9,12 +9,44 @@
 
 	<camel:camelContext id="camel-client">
 		<camel:template id="camelTemplate" />
+
+		<!-- <camel:route> -->
+		<!-- <camel:from uri="jms:queue:SBR_14_1_EDI.TO.CC" /> -->
+		<!-- <camel:to uri="jms:queue:manu_test" /> -->
+		<!-- </camel:route> -->
+
 	</camel:camelContext>
 
 	<!-- Camel JMSProducer to be able to send messages to a remote Active MQ 
 		server -->
+
+
+	<!-- <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent"> -->
+	<!-- <property name="brokerURL" value="tcp://185.8.51.217:8161" /> -->
+	<!-- </bean> -->
+
+	<!-- <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent"> -->
+	<!-- <property name="brokerURL" value="tcp://localhost:${tcp.port}" /> -->
+	<!-- </bean> -->
+
 	<bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
-		<property name="brokerURL" value="tcp://localhost:${tcp.port}" />
+		<property name="configuration" ref="jmsConfig" />
+		<!-- <property name="brokerURL" value="vm://myBroker" /> -->
 	</bean>
+	<bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+		<property name="connectionFactory" ref="amqConnectionFactory" />
+		<property name="concurrentConsumers" value="10" />
+	</bean>
+	<!-- <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory" 
+		depends-on="myBroker"> -->
+	<bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!-- <property name="brokerURL" value="vm://local?create=false" /> -->
+		<property name="brokerURL" value="tcp://185.8.51.217:61616" />
+			
+<!-- 		<property name="userName" value="admin" /> -->
+<!-- 		<property name="password" value="admin123" /> -->
+			
+	</bean>
+
 
 </beans>
