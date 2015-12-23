@@ -1,5 +1,6 @@
 package com.conztanz.connect.mq.sbr.service.impl;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -7,7 +8,9 @@ import java.util.Map.Entry;
 import org.apache.camel.Exchange;
 import org.apache.camel.Handler;
 import org.apache.camel.Message;
+import org.milyn.Smooks;
 import org.springframework.stereotype.Service;
+import org.xml.sax.SAXException;
 
 import com.conztanz.connect.mq.sbr.service.IConnectMessageListener_SBR;
 import com.conztanz.connect.sbr.edifact.helper.SBRTagEdifactHelper;
@@ -56,6 +59,20 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 		System.out.println("OK : EDI message is clean.");
 
 		// conversion en xml via smooks
+		
+//		CamelContext camelContext = exchange.getContext();
+//		final SmooksFactory smooksFactory = (SmooksFactory) camelContext.getRegistry().lookup(SmooksFactory.class.getName());
+//		final Smooks smooks = smooksFactory.createInstance();
+		
+		try {
+			Smooks smooks = new Smooks("smooks/smooks-config.xml");
+			
+			
+		} catch (IOException | SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// conversion java via jibx (objet de type BINDING dans conztanz one -
 		// AbstractTravelMediator)
 		// => extraction TRAVEL à partir de BINDING

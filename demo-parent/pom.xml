@@ -33,11 +33,11 @@
 		<xbean-spring.version>3.18</xbean-spring.version>
 		<features-maven-plugin.version>2.2.8</features-maven-plugin.version>
 
+		<smooks.version>1.5.2</smooks.version>
+
 	</properties>
 
 	<modules>
-		<!-- <module>../demo-parent</module> -->
-		<module>../demo-commons</module>
 		<!-- <module>../demo-sbr-stub-14_1</module> -->
 		<module>../demo-sbr-transform-14_1-edi-xml</module>
 		<module>../demo-sbr-mqlistener-14_1-edi</module>
@@ -114,11 +114,11 @@
 					</configuration>
 				</plugin>
 
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.apache.karaf.tooling</groupId> -->
-<!-- 					<artifactId>features-maven-plugin</artifactId> -->
-<!-- 					<version>${features-maven-plugin.version}</version> -->
-<!-- 				</plugin> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.karaf.tooling</groupId> -->
+				<!-- <artifactId>features-maven-plugin</artifactId> -->
+				<!-- <version>${features-maven-plugin.version}</version> -->
+				<!-- </plugin> -->
 
 			</plugins>
 		</pluginManagement>
@@ -127,7 +127,11 @@
 	<dependencyManagement>
 		<dependencies>
 
-
+			<dependency>
+				<groupId>org.milyn</groupId>
+				<artifactId>milyn-smooks-all</artifactId>
+				<version>${smooks.version}</version>
+			</dependency>
 
 
 			<dependency>
