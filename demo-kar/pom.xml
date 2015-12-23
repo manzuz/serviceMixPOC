@@ -52,6 +52,7 @@
 			<plugin>
 				<groupId>org.apache.karaf.tooling</groupId>
 				<artifactId>features-maven-plugin</artifactId>
+				<version>${features-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>create-kar</id>
