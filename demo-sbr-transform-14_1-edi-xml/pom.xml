@@ -9,7 +9,7 @@
 		<relativePath>../demo-parent</relativePath>
 	</parent>
 
-	<artifactId>demo-transform-sbr-v14_1</artifactId>
+	<artifactId>demo-sbr-transform-14_1</artifactId>
 	
 	<packaging>bundle</packaging>
 

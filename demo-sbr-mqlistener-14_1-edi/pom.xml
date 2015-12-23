@@ -2,44 +2,28 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-
 	<parent>
 		<groupId>com.conztanz</groupId>
 		<artifactId>demo-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-<!-- 		<relativePath>../demo-parent</relativePath> -->
 	</parent>
 
-	<artifactId>demo-sbr-stub-14_1</artifactId>
+
+	<artifactId>demo-sbr-mqlistener-14_1</artifactId>
 	<packaging>bundle</packaging>
 
-	<properties>
-		<transform.package.jibx>com.conztanz.transform.sbr.v14_1</transform.package.jibx>
-	</properties>
+	<dependencies>
+
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>demo-commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+	</dependencies>
 
 	<build>
 		<plugins>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>createJibxDir</id>
-						<phase>validate</phase>
-
-						<configuration>
-							<tasks>
-								<delete dir="${transform.path.jibx}" />
-								<mkdir dir="${transform.path.jibx}" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 
 			<plugin>
 				<groupId>org.apache.felix</groupId>
@@ -48,13 +32,14 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
-						<Export-Package>com.conztanz.transform.sbr.v14_1</Export-Package>
+						<Export-Package>com.conztanz.connect.mq.sbr.service</Export-Package>
 						<Import-Package>*;resolution:=optional</Import-Package>
-						<!-- <Private-Package>org.apache.servicemix.examples.camel.rest</Private-Package> -->
+						<Private-Package>com.conztanz.connect.mq.sbr.service.impl</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
 		</plugins>
 
 	</build>
+
 </project>

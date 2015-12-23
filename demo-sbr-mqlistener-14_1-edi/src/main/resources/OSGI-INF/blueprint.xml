@@ -1,0 +1,38 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:camel="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+	xmlns:broker="http://activemq.apache.org/schema/core">
+
+	<camel:camelContext id="camel-server">
+		<camel:package>com.conztanz.connect.mq.sbr.service</camel:package>
+
+		<camel:jmxAgent id="agent" createConnector="true" />
+
+		<!-- <route> -->
+		<!-- <from uri="jms:queue:start" /> -->
+		<!-- <to uri="mock:result" /> -->
+		<!-- </route> -->
+	</camel:camelContext>
+
+	<!-- This bean will import use the OSGi service from the context above -->
+	<!-- <bean id="jms" class="org.apache.camel.component.jms.JmsComponent"> -->
+	<!-- <property name="connectionFactory" ref="jmsConnectionPool" /> -->
+	<!-- If you have a transaction manager configured <property name="transacted" 
+		value="true" /> <property name="transactionManager" ref="transactionManager" 
+		/> -->
+	<!-- </bean> -->
+
+	<!-- lets configure the ActiveMQ JMS broker server -->
+	<broker:broker useJmx="true" persistent="false"
+		brokerName="myBroker">
+		<broker:transportConnectors>
+			<!-- expose a VM transport for in-JVM transport between AMQ and Camel 
+				on the server side -->
+			<broker:transportConnector name="vm"
+				uri="vm://myBroker" />
+			<!-- expose a TCP transport for clients to use -->
+			<broker:transportConnector name="tcp"
+				uri="tcp://localhost:${tcp.port}" />
+		</broker:transportConnectors>
+	</broker:broker>
+</blueprint>
