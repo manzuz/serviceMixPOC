@@ -13,44 +13,43 @@
 	<artifactId>demo-fab</artifactId>
 	<packaging>bundle</packaging>
 
-	<name>Camel Blueprint Route</name>
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-blueprint</artifactId>
-		</dependency>
 
-		<!-- logging -->
+
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
+			<groupId>com.conztanz</groupId>
+			<artifactId>demo-commons</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<!-- Testing -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-test-blueprint</artifactId>
-			<version>2.16.1</version>
-			<scope>test</scope>
+			<!-- <scope>test</scope> -->
 		</dependency>
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.felix</groupId> -->
+		<!-- <artifactId>org.osgi.core</artifactId> -->
+		<!-- <version>1.4.0</version> -->
+		<!-- <scope>test</scope> -->
+		<!-- </dependency> -->
+
+
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.felix</groupId> -->
+		<!-- <artifactId>org.apache.felix.framework</artifactId> -->
+		<!-- <version>5.4.0</version> -->
+		<!-- </dependency> -->
+
 	</dependencies>
 
 	<build>
@@ -60,38 +59,30 @@
 
 
 
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<archive> -->
-<!-- 						<index>true</index> -->
-<!-- 						<manifestEntries> -->
-<!-- 							<FAB-Version-Range-Digits>0</FAB-Version-Range-Digits> -->
-<!-- 							<FAB-Provided-Dependency> -->
-<!-- 								org.apache.camel:* -->
-<!-- 								org.apache.cxf:* -->
-<!-- 								org.apache.activemq:* -->
-<!-- 							</FAB-Provided-Dependency> -->
-<!-- 						</manifestEntries> -->
-<!-- 					</archive> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
-
-
-
-
-
-
-
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<!-- <version>2.6</version> -->
+				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
-					<encoding>UTF-8</encoding>
+					<archive>
+						<index>true</index>
+						<manifestEntries>
+							<FAB-Version-Range-Digits>0</FAB-Version-Range-Digits>
+							<FAB-Provided-Dependency>
+								org.apache.camel:*
+								org.apache.cxf:*
+								org.apache.activemq:*
+							</FAB-Provided-Dependency>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
+
+
+
+
+
+
+
 
 			<!-- to generate the MANIFEST-FILE of the bundle -->
 			<plugin>
@@ -112,7 +103,9 @@
 					<instructions>
 						<Bundle-SymbolicName>demo-fab</Bundle-SymbolicName>
 						<Private-Package>com.conztanz.sbr.*</Private-Package>
-						<Import-Package>*</Import-Package>
+						<!-- <Import-Package>*</Import-Package> -->
+						<!-- <Import-Package>*,org.apache.camel.osgi</Import-Package> -->
+						<!-- <Embed-Dependency>*;artifactId=org.apache.felix.framework;inline=true</Embed-Dependency> -->
 					</instructions>
 				</configuration>
 			</plugin>
@@ -128,5 +121,6 @@
 
 		</plugins>
 	</build>
+
 
 </project>

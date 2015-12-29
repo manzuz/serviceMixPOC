@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<!-- <parent> -->
+	<!-- <groupId>com.conztanz</groupId> -->
+	<!-- <artifactId>demo-parent</artifactId> -->
+	<!-- <version>0.0.1-SNAPSHOT</version> -->
+	<!-- </parent> -->
+
+	<groupId>com.conztanz</groupId>
+	<artifactId>demo-deployer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>../demo-parent</module>
+		<module>../demo-commons</module>
+		<module>../demo-sbr-stub-14_1</module>
+		<module>../demo-sbr-transform-14_1-edi-xml</module>
+		<module>../demo-sbr-cleaner</module>
+		<module>../demo-sbr-mqlistener-14_1-edi</module>
+		<module>../demo-sbr-publisher</module>
+		<module>../demo-kar</module>
+		<module>../demo-fab</module>
+	</modules>
+
+
+</project>

@@ -12,7 +12,7 @@
 		<!-- <routeBuilder ref="SBR_Route_v14_1_EDI" /> -->
 		<route>
 			<from uri="jms:queue:SBR_14_1_EDI.TO.CC" />
-			<transacted/>
+<!-- 			<transacted/> -->
 			<to uri="bean:SBR_14_1_EDI_SERVICE" />
 		</route>
 	</camelContext>

@@ -7,16 +7,11 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<bean id="SBR_14_1_EDI_SERVICE"
-		class="com.conztanz.connect.mq.sbr.service.impl.ConnectMessageListener_SBR14_1_EDIService">
-		<property name="cleaner" ref="ediMessageCleaner" />
+	<bean id="smooksService" class="com.conztanz.connect.transform.sbr.impl.SBR_14_1_Transformer">
+		
 	</bean>
 
-	<reference id="ediMessageCleaner"
-		interface="com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner" />
-
-	<reference id="smooksService"
-		interface="com.conztanz.connect.transform.sbr.ISBR_14_1_Transformer" />
-
+<!-- 	<reference id="ediMessageCleaner" -->
+<!-- 		interface="com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner" /> -->
 
 </blueprint>

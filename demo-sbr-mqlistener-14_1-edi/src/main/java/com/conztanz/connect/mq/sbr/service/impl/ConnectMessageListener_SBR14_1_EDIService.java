@@ -6,9 +6,9 @@ import java.util.Map.Entry;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Handler;
-import org.apache.camel.Message;
 
 import com.conztanz.connect.mq.sbr.service.IConnectMessageListener_SBR;
+import com.conztanz.connect.transform.sbr.ISBR_14_1_Transformer;
 import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
 
 //@Service(value = "SBR_14_1_EDI_SERVICE")
@@ -16,14 +16,7 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 	// Injecté par blueprint
 	private ISBREdifactMessageCleaner cleaner;
-
-	public ISBREdifactMessageCleaner getCleaner() {
-		return cleaner;
-	}
-
-	public void setCleaner(ISBREdifactMessageCleaner cleaner) {
-		this.cleaner = cleaner;
-	}
+	private ISBR_14_1_Transformer smooksTransformer;
 
 	@Override
 	@Handler
@@ -44,25 +37,15 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 			}
 		}
 
-		Message in = exchange.getIn();
+		// Message in = exchange.getIn();
 
 		// start transaction?
 
-		/*
-		 * System.out.println("Cleaning EDI message..."); // clean message
-		 * in.setBody(SBRTagEdifactHelper.cleanMessage(body));
-		 * System.out.println("OK : EDI message is clean.");
-		 */
-
-		System.out.println("Cleaning EDI message via OSGI service...");
-
-		String cleanMessage = cleaner.cleanMessage(body, exchange);
-		System.out.println(cleanMessage);
-		in.setBody(cleanMessage);
-
-		System.out.println("OK : EDI message is clean.");
+		// cleanBinaryMessage(body, exchange);
 
 		// conversion en xml via smooks
+
+		String xml = smooksTransformer.transform(body, exchange.getContext());
 
 		// CamelContext camelContext = exchange.getContext();
 		// final SmooksFactory smooksFactory = (SmooksFactory)
@@ -88,6 +71,22 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 		return body;
 	}
 
+	/**
+	 * 
+	 * @param body
+	 * @param exchange
+	 * @throws Exception
+	 */
+	private void cleanBinaryMessage(String body, Exchange exchange) throws Exception {
+
+		System.out.println("Cleaning EDI message via OSGI service...");
+		String cleanMessage = cleaner.cleanMessage(body, exchange);
+		System.out.println(cleanMessage);
+		exchange.getIn().setBody(cleanMessage);
+		System.out.println("OK : EDI message is clean.");
+
+	}
+
 	// @Override
 	// public void onMessage(Message message) {
 	// // TODO Auto-generated method stub
@@ -107,5 +106,21 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 	// // appel (travel) AS ?
 	//
 	// }
+
+	public ISBR_14_1_Transformer getSmooksTransformer() {
+		return smooksTransformer;
+	}
+
+	public void setSmooksTransformer(ISBR_14_1_Transformer smooksTransformer) {
+		this.smooksTransformer = smooksTransformer;
+	}
+
+	public ISBREdifactMessageCleaner getCleaner() {
+		return cleaner;
+	}
+
+	public void setCleaner(ISBREdifactMessageCleaner cleaner) {
+		this.cleaner = cleaner;
+	}
 
 }

@@ -56,6 +56,34 @@
 			<artifactId>milyn-smooks-all</artifactId>
 		</dependency>
 
+
+
+
+
+
+
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+		</dependency>
+
+
+
+
+
+
+
+
+
 	</dependencies>
 
 	<build>
@@ -68,7 +96,6 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Export-Package>com.conztanz.*</Export-Package>
-<!-- 						<Import-Package>*;resolution:=optional</Import-Package> -->
 					</instructions>
 				</configuration>
 			</plugin>

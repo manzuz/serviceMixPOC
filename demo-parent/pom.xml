@@ -17,6 +17,7 @@
 
 	<properties>
 
+		<esbDeployableProject>false</esbDeployableProject>
 
 		<!-- <maven.auto-clean.skip>true</maven.auto-clean.skip> -->
 
@@ -32,20 +33,22 @@
 		<camel.version>2.16.1</camel.version>
 		<activemq-camel.version>5.6.0</activemq-camel.version>
 		<xbean-spring.version>3.18</xbean-spring.version>
-		<features-maven-plugin.version>2.2.8</features-maven-plugin.version>
+		<!-- <features-maven-plugin.version>2.2.8</features-maven-plugin.version> -->
+		<features-maven-plugin.version>2.3.0</features-maven-plugin.version>
 
 		<smooks.version>1.5.2</smooks.version>
+		<osgi.container.deploy.path>/jboss-fuse-6.2.1.redhat-084/deploy</osgi.container.deploy.path>
 
 	</properties>
 
-	<modules>
-		<!-- <module>../demo-sbr-stub-14_1</module> -->
-		<module>../demo-sbr-transform-14_1-edi-xml</module>
-		<module>../demo-sbr-cleaner</module>
-		<module>../demo-sbr-mqlistener-14_1-edi</module>
-		<module>../demo-sbr-publisher</module>
-		<module>../demo-kar</module>
-	</modules>
+	<!-- <modules> -->
+	<!-- <module>../demo-sbr-stub-14_1</module> -->
+	<!-- <module>../demo-sbr-transform-14_1-edi-xml</module> -->
+	<!-- <module>../demo-sbr-cleaner</module> -->
+	<!-- <module>../demo-sbr-mqlistener-14_1-edi</module> -->
+	<!-- <module>../demo-sbr-publisher</module> -->
+	<!-- <module>../demo-kar</module> -->
+	<!-- </modules> -->
 
 
 	<build>
@@ -53,12 +56,14 @@
 		<pluginManagement>
 
 
-
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>${maven-resources-plugin.version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.cxf</groupId>
@@ -124,20 +129,6 @@
 										<ignore></ignore>
 									</action>
 								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>org.apache.felix</groupId>
@@ -159,6 +150,7 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
+
 				<!-- <plugin> -->
 				<!-- <groupId>org.apache.karaf.tooling</groupId> -->
 				<!-- <artifactId>features-maven-plugin</artifactId> -->
@@ -260,10 +252,55 @@
 				<optional>true</optional>
 			</dependency>
 
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-test-blueprint</artifactId>
+				<version>${camel.version}</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
 	<profiles>
-	</profiles>
 
+		<profile>
+			<id>deployOnESB</id>
+
+			<activation>
+				<file>
+					<exists>${basedir}/hotDeploy</exists>
+				</file>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>hotDeploy</id>
+								<phase>install</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>${project.groupId}</groupId>
+											<artifactId>${project.artifactId}</artifactId>
+											<version>${project.version}</version>
+											<!-- <type>fab</type> -->
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${osgi.container.deploy.path}</outputDirectory>
+									<stripVersion>false</stripVersion>
+									<overWriteIfNewer>true</overWriteIfNewer>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
