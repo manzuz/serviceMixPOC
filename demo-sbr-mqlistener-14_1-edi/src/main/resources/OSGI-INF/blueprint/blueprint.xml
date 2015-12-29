@@ -1,0 +1,24 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:blueprint="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/blueprint"
+	xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+	<camelContext id="sbr14_1_edi_connector"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<!-- <routeBuilder ref="SBR_Route_v14_1_EDI" /> -->
+		<route>
+			<from uri="jms:queue:SBR_14_1_EDI.TO.CC" />
+			<transacted/>
+			<to uri="bean:SBR_14_1_EDI_SERVICE" />
+		</route>
+	</camelContext>
+
+	<!-- <bean id="SBR_Route_v14_1_EDI" -->
+	<!-- class="com.conztanz.connect.mq.sbr.service.impl.SBR_Route_v14_1_EDI" 
+		/> -->
+
+</blueprint>

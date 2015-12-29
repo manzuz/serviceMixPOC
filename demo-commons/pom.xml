@@ -68,7 +68,7 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Export-Package>com.conztanz.*</Export-Package>
-						<Import-Package>*;resolution:=optional</Import-Package>
+<!-- 						<Import-Package>*;resolution:=optional</Import-Package> -->
 					</instructions>
 				</configuration>
 			</plugin>

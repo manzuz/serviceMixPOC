@@ -5,6 +5,7 @@
 
 		<bundle>mvn:com.conztanz/demo-commons/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-stub-14_1/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-transform-14_1-edi-xml/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-mqlistener-14_1-edi/0.0.1-SNAPSHOT</bundle>
 		

@@ -1,6 +1,5 @@
 package com.conztanz.connect.mq.sbr.service.impl;
 
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -8,19 +7,27 @@ import java.util.Map.Entry;
 import org.apache.camel.Exchange;
 import org.apache.camel.Handler;
 import org.apache.camel.Message;
-import org.milyn.Smooks;
-import org.springframework.stereotype.Service;
-import org.xml.sax.SAXException;
 
 import com.conztanz.connect.mq.sbr.service.IConnectMessageListener_SBR;
-import com.conztanz.connect.sbr.edifact.helper.SBRTagEdifactHelper;
+import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
 
-@Service(value = "SBR_14_1_EDI_SERVICE")
+//@Service(value = "SBR_14_1_EDI_SERVICE")
 public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessageListener_SBR {
+
+	// Injecté par blueprint
+	private ISBREdifactMessageCleaner cleaner;
+
+	public ISBREdifactMessageCleaner getCleaner() {
+		return cleaner;
+	}
+
+	public void setCleaner(ISBREdifactMessageCleaner cleaner) {
+		this.cleaner = cleaner;
+	}
 
 	@Override
 	@Handler
-	public String onMessage(String body, Exchange exchange) {
+	public String onMessage(String body, Exchange exchange) throws Exception {
 
 		System.out.println("=> ConnectMessageListener_SBR14_1_EDIService.onMessage()");
 
@@ -39,40 +46,37 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 		Message in = exchange.getIn();
 
-		// Map<String, Object> headers = in.getHeaders();
-		// if (headers != null) {
-		// System.out.println("******************");
-		// System.out.println("Headers:");
-		// Iterator<Entry<String, Object>> it = props.entrySet().iterator();
-		// while (it.hasNext()) {
-		// Entry<String, Object> entry = it.next();
-		// System.out.println("\t" + entry.getKey() + ":" + entry.getValue());
-		// }
-		// }
-
 		// start transaction?
 
-		System.out.println("Cleaning EDI message...");
-		// clean message
-		in.setBody(SBRTagEdifactHelper.cleanMessage(body));
+		/*
+		 * System.out.println("Cleaning EDI message..."); // clean message
+		 * in.setBody(SBRTagEdifactHelper.cleanMessage(body));
+		 * System.out.println("OK : EDI message is clean.");
+		 */
+
+		System.out.println("Cleaning EDI message via OSGI service...");
+
+		String cleanMessage = cleaner.cleanMessage(body, exchange);
+		System.out.println(cleanMessage);
+		in.setBody(cleanMessage);
 
 		System.out.println("OK : EDI message is clean.");
 
 		// conversion en xml via smooks
-		
-//		CamelContext camelContext = exchange.getContext();
-//		final SmooksFactory smooksFactory = (SmooksFactory) camelContext.getRegistry().lookup(SmooksFactory.class.getName());
-//		final Smooks smooks = smooksFactory.createInstance();
-		
-		try {
-			Smooks smooks = new Smooks("smooks/smooks-config.xml");
-			
-			
-		} catch (IOException | SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
+		// CamelContext camelContext = exchange.getContext();
+		// final SmooksFactory smooksFactory = (SmooksFactory)
+		// camelContext.getRegistry().lookup(SmooksFactory.class.getName());
+		// final Smooks smooks = smooksFactory.createInstance();
+
+		/*
+		 * try { Smooks smooks = new Smooks("smooks/smooks-config.xml");
+		 * 
+		 * 
+		 * } catch (IOException | SAXException e) { // TODO Auto-generated catch
+		 * block e.printStackTrace(); }
+		 * 
+		 */
 		// conversion java via jibx (objet de type BINDING dans conztanz one -
 		// AbstractTravelMediator)
 		// => extraction TRAVEL à partir de BINDING

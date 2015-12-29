@@ -1,42 +1,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>com.conztanz</groupId>
 		<artifactId>demo-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-
-
-	<artifactId>demo-sbr-mqlistener-14_1-edi</artifactId>
+	
+	<artifactId>demo-sbr-cleaner</artifactId>
 	<packaging>bundle</packaging>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>demo-commons</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>demo-sbr-transform-14_1-edi-xml</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>demo-sbr-cleaner</artifactId>
-			<version>${project.version}</version>
-<!-- 			<scope>provided</scope> -->
-		</dependency>
-
+		
 	</dependencies>
-
+	
 	<build>
-		<plugins>
+			<plugins>
 
 			<plugin>
 				<groupId>org.apache.felix</groupId>
@@ -45,14 +29,14 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
-						<Export-Package>com.conztanz.connect.mq.sbr.service</Export-Package>
+						<Export-Package>com.conztanz.sbr.edifact.cleaner</Export-Package>
 						<Import-Package>*;resolution:=optional</Import-Package>
-						<Private-Package>com.conztanz.connect.mq.sbr.service.impl</Private-Package>
+						<Private-Package>com.conztanz.sbr.edifact.cleaner.impl</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
 		</plugins>
 
 	</build>
-
+	
 </project>
