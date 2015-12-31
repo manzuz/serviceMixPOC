@@ -4,7 +4,7 @@
 	<bean id="cleaner"
 		class="com.conztanz.sbr.edifact.cleaner.impl.SBREdifactMessageCleaner" />
 
-	<!-- Exposition su service OSGI "SBR_EDI_CLEANER" -->
+	<!-- Exposition du service OSGI "SBR_EDI_CLEANER" -->
 	<service ref="cleaner"
 		interface="com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner"
 		id="SBR_EDI_CLEANER" />

@@ -37,7 +37,8 @@
 		<features-maven-plugin.version>2.3.0</features-maven-plugin.version>
 
 		<smooks.version>1.5.2</smooks.version>
-		<osgi.container.deploy.path>/jboss-fuse-6.2.1.redhat-084/deploy</osgi.container.deploy.path>
+		<!-- <osgi.container.deploy.path>/jboss-fuse-6.2.1.redhat-084/deploy</osgi.container.deploy.path> -->
+		<osgi.container.deploy.path>/apache-servicemix-6.1.0/deploy</osgi.container.deploy.path>
 
 	</properties>
 
@@ -175,11 +176,40 @@
 	<dependencyManagement>
 		<dependencies>
 
+
+
+
+			<dependency>
+				<groupId>com.conztanz</groupId>
+				<artifactId>demo-commons</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.conztanz</groupId>
+				<artifactId>demo-sbr-stub-14_1</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+
+
+
+
+
+
 			<dependency>
 				<groupId>org.milyn</groupId>
 				<artifactId>milyn-smooks-all</artifactId>
 				<version>${smooks.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.milyn</groupId>
+				<artifactId>milyn-smooks-edi</artifactId>
+				<version>${smooks.version}</version>
+			</dependency>
+
+
+
 
 
 			<dependency>
@@ -289,7 +319,7 @@
 											<groupId>${project.groupId}</groupId>
 											<artifactId>${project.artifactId}</artifactId>
 											<version>${project.version}</version>
-											<!-- <type>fab</type> -->
+											<type>kar</type>
 										</artifactItem>
 									</artifactItems>
 									<outputDirectory>${osgi.container.deploy.path}</outputDirectory>

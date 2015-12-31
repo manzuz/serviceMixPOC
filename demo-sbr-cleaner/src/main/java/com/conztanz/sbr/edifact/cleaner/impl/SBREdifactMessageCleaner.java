@@ -9,11 +9,12 @@ public class SBREdifactMessageCleaner implements ISBREdifactMessageCleaner {
 
 	@Override
 	// @Handler
-	public String cleanMessage(String body, Exchange exchange) throws Exception {
+	public String cleanMessage(Exchange exchange) throws Exception {
 
-		System.out.println("=> SBREdifactMessageCleaner.cleanMessage()");
+		// System.out.println("=> SBREdifactMessageCleaner.cleanMessage()");
+		String body = exchange.getIn().getBody().toString();
 		String cleanedMessageBody = SBRTagEdifactHelper.cleanMessage(body);
-		System.out.println("<= SBREdifactMessageCleaner.cleanMessage()");
+		// System.out.println("<= SBREdifactMessageCleaner.cleanMessage()");
 		return cleanedMessageBody;
 	}
 }

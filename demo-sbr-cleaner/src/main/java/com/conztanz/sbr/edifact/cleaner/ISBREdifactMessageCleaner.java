@@ -4,6 +4,6 @@ import org.apache.camel.Exchange;
 
 public interface ISBREdifactMessageCleaner {
 
-	String cleanMessage(String body, Exchange exchange) throws Exception;
+	String cleanMessage(Exchange exchange) throws Exception;
 
 }

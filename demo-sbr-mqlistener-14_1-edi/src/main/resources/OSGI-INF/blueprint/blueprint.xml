@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
 	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
 	xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
@@ -11,14 +12,13 @@
 		xmlns="http://camel.apache.org/schema/blueprint">
 		<!-- <routeBuilder ref="SBR_Route_v14_1_EDI" /> -->
 		<route>
-			<from uri="jms:queue:SBR_14_1_EDI.TO.CC" />
-<!-- 			<transacted/> -->
+			<from uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" />
+			<!-- <transacted/> -->
 			<to uri="bean:SBR_14_1_EDI_SERVICE" />
+
+<!-- 			<to uri="jms:queue:fuseTestEdiToXml" /> -->
+
 		</route>
 	</camelContext>
-
-	<!-- <bean id="SBR_Route_v14_1_EDI" -->
-	<!-- class="com.conztanz.connect.mq.sbr.service.impl.SBR_Route_v14_1_EDI" 
-		/> -->
 
 </blueprint>

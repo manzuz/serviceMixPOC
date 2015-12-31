@@ -7,11 +7,26 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<bean id="smooksService" class="com.conztanz.connect.transform.sbr.impl.SBR_14_1_Transformer">
-		
-	</bean>
 
-<!-- 	<reference id="ediMessageCleaner" -->
-<!-- 		interface="com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner" /> -->
+
+	<bean id="smooksService"
+		class="com.conztanz.connect.transform.sbr.impl.SBR_14_1_Transformer" />
+
+
+	<!-- Exposition du service OSGI "SBR_14_1_Transformer" -->
+	<service ref="smooksService"
+		interface="com.conztanz.connect.transform.sbr.ISBR_14_1_Transformer"
+		id="SBR_TRANSFORM" />
+
+
+<!-- 	<camelContext id="sbr14_1_edi_xml_transformer" -->
+<!-- 		xmlns="http://camel.apache.org/schema/blueprint"> -->
+<!-- 		<route> -->
+<!-- 			<from uri="jms:queue:fuseTestEdiToXml" /> -->
+<!-- 			<to uri="bean:smooksService" /> -->
+<!-- 			<to uri="jms:queue:fuseTestXMLResult" /> -->
+<!-- 		</route> -->
+<!-- 	</camelContext> -->
+
 
 </blueprint>

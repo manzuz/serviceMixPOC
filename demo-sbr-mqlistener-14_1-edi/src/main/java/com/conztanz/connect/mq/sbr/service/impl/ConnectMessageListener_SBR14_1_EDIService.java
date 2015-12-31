@@ -41,11 +41,17 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 		// start transaction?
 
-		// cleanBinaryMessage(body, exchange);
+//		System.out.println("Cleaning EDI message via OSGI service...");
+//		String cleanMessage = cleaner.cleanMessage(exchange);
+//		exchange.getIn().setBody(cleanMessage);
+//		System.out.println("OK : EDI message is clean.");
 
 		// conversion en xml via smooks
 
+		body = exchange.getIn().getBody().toString();
+		System.out.println("Transforming EDI message to XML via OSGI service...");
 		String xml = smooksTransformer.transform(body, exchange.getContext());
+		System.out.println("xml:" + xml);
 
 		// CamelContext camelContext = exchange.getContext();
 		// final SmooksFactory smooksFactory = (SmooksFactory)
@@ -69,22 +75,6 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 		// appel (travel) AS ?
 
 		return body;
-	}
-
-	/**
-	 * 
-	 * @param body
-	 * @param exchange
-	 * @throws Exception
-	 */
-	private void cleanBinaryMessage(String body, Exchange exchange) throws Exception {
-
-		System.out.println("Cleaning EDI message via OSGI service...");
-		String cleanMessage = cleaner.cleanMessage(body, exchange);
-		System.out.println(cleanMessage);
-		exchange.getIn().setBody(cleanMessage);
-		System.out.println("OK : EDI message is clean.");
-
 	}
 
 	// @Override

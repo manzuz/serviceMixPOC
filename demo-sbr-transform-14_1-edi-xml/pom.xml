@@ -17,14 +17,23 @@
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>demo-commons</artifactId>
-			<version>${project.version}</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>com.conztanz</groupId> -->
+		<!-- <artifactId>demo-sbr-stub-14_1</artifactId> -->
+		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>org.milyn</groupId>
+			<artifactId>milyn-smooks-all</artifactId>
 		</dependency>
 
 		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>demo-sbr-stub-14_1</artifactId>
-			<version>${project.version}</version>
+			<groupId>org.milyn</groupId>
+			<artifactId>milyn-smooks-edi</artifactId>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -39,11 +48,57 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Export-Package>com.conztanz.connect.transform.sbr</Export-Package>
 						<Private-Package>com.conztanz.connect.transform.sbr.impl</Private-Package>
+						<Import-Package>*</Import-Package>
+						<!-- <Include-Resource>{maven-resources}</Include-Resource> -->
+						<!-- <Bundle-ClassPath>.,{maven-resources}, {maven-dependencies}</Bundle-ClassPath> -->
+						<!-- <Embed-Dependency>/META-INF/xsd/*;inline=true</Embed-Dependency> -->
+<!-- 						<Embed-Transitive>true</Embed-Transitive> -->
 					</instructions>
 				</configuration>
 			</plugin>
-		</plugins>
 
+
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>copy-dependencies</id> -->
+			<!-- <phase>package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>copy-dependencies</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <outputDirectory>${project.build.directory}/dependencies</outputDirectory> -->
+			<!-- <overWriteReleases>false</overWriteReleases> -->
+			<!-- <overWriteSnapshots>true</overWriteSnapshots> -->
+			<!-- <excludeTransitive>true</excludeTransitive> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
+		</plugins>
+		<!-- <resources> -->
+		<!-- <resource> -->
+		<!-- <directory>src/main/java</directory> -->
+		<!-- <excludes> -->
+		<!-- <exclude>**/*.java</exclude> -->
+		<!-- </excludes> -->
+		<!-- </resource> -->
+		<!-- <resource> -->
+		<!-- <directory>src/main/resources</directory> -->
+		<!-- </resource> -->
+		<!-- </resources> -->
 	</build>
 
+	<!-- <repositories> -->
+	<!-- <repository> -->
+	<!-- <id>codehaus.m2.snapshots</id> -->
+	<!-- <url>https://nexus.codehaus.org/content/repositories/snapshots/</url> -->
+	<!-- <releases> -->
+	<!-- <enabled>false</enabled> -->
+	<!-- </releases> -->
+	<!-- </repository> -->
+	<!-- </repositories> -->
 </project>

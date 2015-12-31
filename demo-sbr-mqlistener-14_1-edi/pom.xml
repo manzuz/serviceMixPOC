@@ -30,7 +30,6 @@
 			<groupId>com.conztanz</groupId>
 			<artifactId>demo-sbr-cleaner</artifactId>
 			<version>${project.version}</version>
-<!-- 			<scope>provided</scope> -->
 		</dependency>
 
 	</dependencies>
@@ -46,7 +45,7 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Export-Package>com.conztanz.connect.mq.sbr.service</Export-Package>
-						<Import-Package>*;resolution:=optional</Import-Package>
+						<Import-Package>*</Import-Package>
 						<Private-Package>com.conztanz.connect.mq.sbr.service.impl</Private-Package>
 					</instructions>
 				</configuration>
