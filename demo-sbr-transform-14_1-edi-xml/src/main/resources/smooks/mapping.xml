@@ -2,7 +2,16 @@
 	<medi:description name="ForPnrHandling" version="1.0"/>
 	<medi:delimiters segment="&#10;" field="{" component="}" fieldRepeat="~"/>
 	<medi:segments xmltag="ForPnrHandling">
-
+		<medi:segment minOccurs="0" maxOccurs="1" truncatable="true" segcode="UNH" xmltag="UNH">
+  			<medi:field xmltag="number" required="true" truncatable="true"/>
+  			<medi:field xmltag="typeSBR" required="true" truncatable="true">
+    				<medi:component xmltag="name"/>
+    				<medi:component xmltag="version"/>
+    				<medi:component xmltag="release"/>
+    				<medi:component xmltag="agency"/>
+  			</medi:field>
+  			<medi:field xmltag="code" required="true"/>
+		</medi:segment>
 		<medi:segment minOccurs="0" maxOccurs="1" truncatable="true" segcode="ATC" xmltag="publicationType">
 			<medi:field xmltag="ANP9017" truncatable="true"/>
 			<medi:field xmltag="attributeDetails" truncatable="true">
@@ -18412,6 +18421,9 @@
 				<medi:component xmltag="ANP9013"/>
 			</medi:field>
 		</medi:segment>
-
+		<medi:segment minOccurs="0" maxOccurs="1" truncatable="true" segcode="UNT" xmltag="UNT">
+			<medi:field xmltag="numberEdifactSegment" required="true" truncatable="true"/>
+			<medi:field xmltag="numberReference" required="true" truncatable="true"/>
+		</medi:segment>
 	</medi:segments>
 </medi:edimap>

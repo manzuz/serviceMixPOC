@@ -29,6 +29,7 @@ public class SBR_14_1_Transformer implements ISBR_14_1_Transformer {
 		// digest configuration '/META-INF/xsd/smooks/edi-1.1.xsd-smooks.xml'
 		// for extended resource configuration namespace 'http://www.milyn.org/xsd/smooks/edi-1.1.xsd'.
 		// This resource must be available on the classpath.
+		//  => pour test: copie en dur depuis le jar smooks vers classpath mqlistener => corrige l'erreur mais pourquoi?
 
 		Locale defaultLocale = Locale.getDefault();
 		Locale.setDefault(new Locale("en", "IE"));
@@ -46,12 +47,18 @@ public class SBR_14_1_Transformer implements ISBR_14_1_Transformer {
 			// Configure the execution context to generate a report...
 			// executionContext.setEventListener(new
 			// HtmlReportGenerator("target/report/report.html"));
-
+			
+			// Permet d'avoir les fichiers  smooks (xsd etc) dans le classpath.
+			ClassLoader classLoader =getClass().getClassLoader();
+			Thread.currentThread().setContextClassLoader(classLoader );
+			smooks.setClassLoader(classLoader);
+			
 			// Filter the input message to the outputWriter, using the execution
 			// context...
 			smooks.filterSource(executionContext, new StreamSource(new ByteArrayInputStream(ediMessage.getBytes())),
 					result);
 
+			
 			Locale.setDefault(defaultLocale);
 
 			return result.getResult();
