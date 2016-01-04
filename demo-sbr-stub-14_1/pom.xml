@@ -11,6 +11,7 @@
 	</parent>
 
 	<artifactId>demo-sbr-stub-14_1</artifactId>
+	
 	<packaging>bundle</packaging>
 
 	<properties>

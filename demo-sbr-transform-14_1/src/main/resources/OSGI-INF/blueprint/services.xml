@@ -1,0 +1,32 @@
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.0.0"
+	xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+	xmlns:amq="http://activemq.apache.org/schema/core" xmlns:blueprint="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/blueprint"
+	xsi:schemaLocation="
+       http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+       http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+
+
+
+	<bean id="smooksService"
+		class="com.conztanz.connect.transform.sbr.impl.SBRTransformer141EDItoXML" />
+
+
+	<!-- Exposition du service OSGI "SBR_14_1_Transformer" -->
+	<service ref="smooksService"
+		interface="com.conztanz.connect.transform.sbr.ISBRTransformer141EDItoXML"
+		id="SBR_TRANSFORM" />
+
+
+<!-- 	<camelContext id="sbr14_1_edi_xml_transformer" -->
+<!-- 		xmlns="http://camel.apache.org/schema/blueprint"> -->
+<!-- 		<route> -->
+<!-- 			<from uri="jms:queue:fuseTestEdiToXml" /> -->
+<!-- 			<to uri="bean:smooksService" /> -->
+<!-- 			<to uri="jms:queue:fuseTestXMLResult" /> -->
+<!-- 		</route> -->
+<!-- 	</camelContext> -->
+
+
+</blueprint>
