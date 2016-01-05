@@ -6,20 +6,42 @@ public class SBRTagEdifactHelper {
 
 	/**
 	 * 
-	 * @param binaryData
+	 * @param messageBody
 	 * @return
 	 */
-	public static String cleanMessage(String binaryData) {
+	public static String cleanMessage(String messageBody) {
+		return cleanMessage(messageBody, false);
+
+	}
+
+	/**
+	 * 
+	 * @param messageBody
+	 * @param decodeBase64BeforeCleaning
+	 * @return
+	 */
+	public static String cleanMessage(String messageBody, boolean decodeBase64BeforeCleaning) {
+
+		System.out.println("\r\n");
+		System.out.println("messageBody:" + messageBody);
+		System.out.println("\r\n");
 
 		StringBuilder cleanMessage = null;
 		try {
-			// String binaryData =
-			// context.getEnvelope().getBody().getFirstElement().getText();
-			byte[] tab = Base64.decodeBase64(binaryData.getBytes());
+
+			byte[] tab = messageBody.getBytes();
+			if (decodeBase64BeforeCleaning) {
+				tab = Base64.decodeBase64(tab);
+			}
+
+			System.out.println("\r\n");
+			System.out.println("tab:" + tab);
+			System.out.println("\r\n");
 
 			StringBuilder sbrresCleanBatch = new StringBuilder();
 
 			for (int i = 0; i < tab.length; i++) {
+
 				if (tab[i] == (byte) 126) {
 					tab[i] = (byte) 46;
 				} else if (tab[i] == (byte) 29) {
@@ -56,7 +78,6 @@ public class SBRTagEdifactHelper {
 
 				// skip unwanted messages UNB and UNZ
 				if (tabBif[i].startsWith("UNB") || tabBif[i].startsWith("UNZ")) {
-					// context.getEnvelope().getBody().getFirstElement().setText("");
 					return "";
 				}
 
@@ -64,6 +85,7 @@ public class SBRTagEdifactHelper {
 		} catch (Exception ex) {
 
 			System.err.println(ex.getMessage());
+
 			// TODO gestion erreur
 			// handleException(ex.getMessage(), ex, context);
 

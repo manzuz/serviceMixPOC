@@ -8,24 +8,22 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<bean id="SBR_14_1_EDI_SERVICE"
-		class="com.conztanz.connect.mq.sbr.service.impl.ConnectMessageListener_SBR14_1_EDIService">
-		<property name="cleaner" ref="ediMessageCleaner" />
-		<property name="smooksTransformer" ref="smooksTransformer" />
-	</bean>
+	<camelContext id="sbr14_1_edi_ftpconnector"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<route>
+			<from uri="file:ftp/incoming/edi" />
+	        <log message="Getting ${file:name} from ftp incoming dir and sending it to the queue"/>
+<!-- 			<to uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
+			<to uri="activemq:LOCAL_SBR_14_1_EDI" />
+		</route>
 
-	<bean id="SBR_14_1_XML_JSON_SERVICE"
-		class="com.conztanz.connect.mq.sbr.service.impl.ConnectMessageListener_SBR14_1_XMLService">
-<!-- 		<property name="smooksTransformer" ref="smooksTransformer" /> -->
-	</bean>
-
-
-
-	<reference id="ediMessageCleaner"
-		interface="com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner" />
-
-	<reference id="smooksTransformer"
-		interface="com.conztanz.connect.transform.sbr.ISBRTransformer141EDItoXML" />
-
+		<route>
+			<from uri="file:ftp/incoming/xml" />
+	        <log message="Getting ${file:name} from ftp incoming dir and sending it to the queue"/>
+<!-- 			<to uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
+			<to uri="activemq:LOCAL_SBR_14_1_XML" />
+		</route>
+		
+	</camelContext>
 
 </blueprint>

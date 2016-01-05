@@ -24,8 +24,6 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 		System.out.println("=> ConnectMessageListener_SBR14_1_EDIService.onMessage()");
 
-		System.out.println("body:" + body);
-
 		Map<String, Object> props = exchange.getProperties();
 		if (props != null) {
 			System.out.println("******************");
@@ -37,35 +35,20 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 			}
 		}
 
-		// Message in = exchange.getIn();
+		// System.out.println("body:" + body);
 
 		// start transaction?
 
-//		System.out.println("Cleaning EDI message via OSGI service...");
-//		String cleanMessage = cleaner.cleanMessage(exchange);
-//		exchange.getIn().setBody(cleanMessage);
-//		System.out.println("OK : EDI message is clean.");
+		System.out.println("Cleaning EDI message via OSGI service...");
+		String cleanMessage = cleaner.cleanMessage(body);
 
 		// conversion en xml via smooks
 
-		body = exchange.getIn().getBody().toString();
+		// body = exchange.getIn().getBody().toString();
 		System.out.println("Transforming EDI message to XML via OSGI service...");
-		String xml = smooksTransformer.transform(body, exchange.getContext());
+		String xml = smooksTransformer.transform(cleanMessage, exchange.getContext());
 		System.out.println("xml:" + xml);
 
-		// CamelContext camelContext = exchange.getContext();
-		// final SmooksFactory smooksFactory = (SmooksFactory)
-		// camelContext.getRegistry().lookup(SmooksFactory.class.getName());
-		// final Smooks smooks = smooksFactory.createInstance();
-
-		/*
-		 * try { Smooks smooks = new Smooks("smooks/smooks-config.xml");
-		 * 
-		 * 
-		 * } catch (IOException | SAXException e) { // TODO Auto-generated catch
-		 * block e.printStackTrace(); }
-		 * 
-		 */
 		// conversion java via jibx (objet de type BINDING dans conztanz one -
 		// AbstractTravelMediator)
 		// => extraction TRAVEL à partir de BINDING
@@ -74,7 +57,7 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 		// commit
 		// appel (travel) AS ?
 
-		return body;
+		return xml;
 	}
 
 	// @Override

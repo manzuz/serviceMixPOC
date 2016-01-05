@@ -10,6 +10,7 @@
 		<bundle>mvn:com.conztanz/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
 
 <!-- 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5.2</bundle> -->
 		

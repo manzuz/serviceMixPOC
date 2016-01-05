@@ -18,14 +18,13 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 	@Override
 	public String transform(@Body String ediMessage, CamelContext camelContext) throws Exception {
 
-		System.out.println("SBRTransformer141EDItoXML=>transform()");
-		System.out.println("ediMessage:" + ediMessage);
+		System.out.println("SBRTransformer141EDItoXML => transform()");
+		// System.out.println("ediMessage:" + ediMessage);
 
-		// TODO
+		// TODO : essayer de ne pas embarquer les xsd smooks dans le code appelant!
 		
-		// CE CODE NE MARCHE PAS ENCORE!!!!:
-		// Erreur de classpath : org.milyn.cdr.SmooksConfigurationException: Unable to locate Smooks
-		// digest configuration '/META-INF/xsd/smooks/edi-1.1.xsd-smooks.xml'
+		// Si on n'embarque pas les xsd smooks dans le code appelant (mqlistener), on a une erreur de classpath : 
+		// org.milyn.cdr.SmooksConfigurationException: Unable to locate Smooks digest configuration '/META-INF/xsd/smooks/edi-1.1.xsd-smooks.xml'
 		// for extended resource configuration namespace 'http://www.milyn.org/xsd/smooks/edi-1.1.xsd'.
 		// This resource must be available on the classpath.
 		//  => pour test: copie en dur depuis le jar smooks vers classpath mqlistener => corrige l'erreur mais pourquoi?
@@ -34,7 +33,6 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 		Locale.setDefault(new Locale("en", "IE"));
 
 		// Instantiate Smooks with the config...
-		// Smooks smooks = new Smooks("smooks/smooks-config.xml");
 		Smooks smooks = new Smooks(this.getClass().getResourceAsStream("/smooks/smooks-config.xml"));
 
 		try {
@@ -52,64 +50,18 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 			Thread.currentThread().setContextClassLoader(classLoader );
 			smooks.setClassLoader(classLoader);
 			
-			// Filter the input message to the outputWriter, using the execution
-			// context...
-			smooks.filterSource(executionContext, new StreamSource(new ByteArrayInputStream(ediMessage.getBytes())),
-					result);
+			// Filter the input message to the outputWriter, using the execution context...
+			ByteArrayInputStream is = new ByteArrayInputStream(ediMessage.getBytes());
+			smooks.filterSource(executionContext, new StreamSource(is), result);
 
 			Locale.setDefault(defaultLocale);
 
 			return result.getResult();
+		
 		} finally {
 			smooks.close();
 		}
 
-		/*
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 * // conversion edi => xml via smooks //
-		 * *************************************** final SmooksFactory
-		 * smooksFactory = (SmooksFactory) camelContext.getRegistry()
-		 * .lookup(SmooksFactory.class.getName()); // final Smooks smooks =
-		 * smooksFactory.createInstance(); StreamSource is = new
-		 * StreamSource(ediMessage); smooks.filterSource(is);
-		 * 
-		 * // ***************************************
-		 * 
-		 * // Smooks smooks = new // Smooks(this.getClass().getResourceAsStream(
-		 * "/smooks/smooks-config.xml")); // SmooksProcessor processor = new
-		 * SmooksProcessor(smooks, // camelContext); // Exchange exchange = //
-		 * ExchangeBuilder.anExchange(camelContext).withBody(ediMessage).build()
-		 * ; // // processor.process(exchange); // // String xml =
-		 * exchange.getIn().getBody().toString(); // System.out.println("xml:" +
-		 * xml); // ***************************************
-		 * 
-		 * // StreamSource is = new StreamSource(ediMessage); // StringWriter
-		 * writer = new StringWriter(); // smooks.filterSource(is, new
-		 * StreamResult(writer)); // System.out.println(
-		 * "==============Message Out============="); // String xml =
-		 * writer.toString(); // System.out.println("xml:" + xml); //
-		 * ***************************************
-		 * 
-		 * // StreamSource is = new StreamSource(ediMessage); // Smooks smooks =
-		 * new Smooks("smooks/smooks-config.xml"); // ExecutionContext ctx =
-		 * smooks.createExecutionContext(); // smooks.filterSource(is);
-		 * 
-		 * // ***************************************
-		 * 
-		 * System.out.println("<= SBRTransformer141EDItoXML=>transform()");
-		 * 
-		 * // Retourne le xml return smooks.toString(); // return xml;
-		 * 
-		 */
 	}
 
 }
