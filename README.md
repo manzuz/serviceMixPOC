@@ -97,10 +97,9 @@ After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should ap
 
         log:tail
 
-10.  Post the sample SBR file:
+10. Post the sample SBR file:
 
 - To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
-
 
 - To do this using windows explorer, download [this file][1] and copy it into your **C:\apache-servicemix-6.1.1\ftp\incoming\edi** folder.
 
