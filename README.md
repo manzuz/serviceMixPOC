@@ -68,7 +68,7 @@ Here are the steps to follow:
 
 2. Download ServiceMix 6.1.1 here : http://www.apache.org/dyn/closer.lua/servicemix/servicemix-6/6.1.1/apache-servicemix-6.1.1.zip
 
-3. Extract the ServiceMix 6.1.1 archive you downloaded in your root folder (C:\apache-servicemix-6.1.0)
+3. Extract the ServiceMix 6.1.1 archive you downloaded in your root folder (C:\apache-servicemix-6.1.1)
 
 4. (optional) Create an eclipse workspace and import the above projects.
 
