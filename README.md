@@ -81,9 +81,9 @@ Here are the steps to follow:
 
         C:\apache-servicemix-6.1.1\ftp\incoming\edi
 
-7. Download [this file][1] and add the smooks feature to ServiceMix by running this command in Karaf console:
+7. Download [this file][1] in a temporary folder (C:\tmp in our example) and add the smooks feature to ServiceMix by running this command in Karaf console:
 
-        feature:repo-add file:C:/Users/Emmanuel/git/serviceMix/_requisites/features.xml
+        feature:repo-add file:C:/tmp/features.xml
         
 8. Install the smooks feature by running this command in Karaf console:
 
