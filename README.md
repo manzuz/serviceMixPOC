@@ -74,11 +74,11 @@ Here are the steps to follow:
 
 5. Start ServiceMix by running the following command :
 
-        C:\apache-servicemix-6.1.0\bin\servicemix
+        C:\apache-servicemix-6.1.1\bin\servicemix
        
 6. Create the following folder:
 
-        C:\apache-servicemix-6.1.0\ftp\incoming\edi
+        C:\apache-servicemix-6.1.1\ftp\incoming\edi
 
 7. Add the smooks feature to ServiceMix by running this command in Karaf console:
 
@@ -93,7 +93,7 @@ Here are the steps to follow:
         cd <your-git-repositories-root-folder>/serviceMix/demo-deployer
         mvn clean clean install -DskipTests=true -Pconztanz
 
-After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.0\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
+After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.1\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
 
         log:tail
 
@@ -102,7 +102,7 @@ After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should ap
 - To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
 
 
-- To do this using windows explorer, download [this file][1] and copy it into your **C:\apache-servicemix-6.1.0\ftp\incoming\edi** folder.
+- To do this using windows explorer, download [this file][1] and copy it into your **C:\apache-servicemix-6.1.1\ftp\incoming\edi** folder.
 
 [1]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/demo-sbr-publisher/src/main/resources/edifact-sample.txt>
   
