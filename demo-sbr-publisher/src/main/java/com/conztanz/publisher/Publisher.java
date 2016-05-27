@@ -42,7 +42,7 @@ public class Publisher {
 		URL iStream = classLoader.getResource(sampleFileName);
 		File sample = new File(iStream.getPath());
 		String relativeIncomingPath = endpointURI.split(":")[1];
-		File destinationFile = new File("C:/apache-servicemix-6.1.0/" + relativeIncomingPath + "/" + sampleFileName);
+		File destinationFile = new File("C:/apache-servicemix-6.1.1/" + relativeIncomingPath + "/" + sampleFileName);
 		System.out.println("Copying sample file to incoming dir...:" + iStream.getPath() + " => " + destinationFile);
 		FileUtil.copyFile(sample, destinationFile);
 
