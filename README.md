@@ -1,8 +1,8 @@
 # serviceMixPOC
-ServiceMix ESB Proof Of Concept
+ServiceMix ESB Proof Of Concept (POC)
 
 ## What is ServiceMix
-ServiceMix is an open-source ESB implementation based on Apache Karaf OSGI framework (see <http://servicemix.apache.org/>).
+ServiceMix is an open-source ESB implementation based on Apache Karaf OSGI framework (see <http://servicemix.apache.org/> for more details).
 
 The aim of this POC is to show how Conztanz ONEConnect could be implemented by this solution, as a replacement to current WSO2 ESB solution.
 
