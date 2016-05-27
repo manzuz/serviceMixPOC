@@ -11,10 +11,15 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 ### Summary
 
 1) Java mediation
+
 2) Multi-versioned dependency management 
+
 3) JPA support
+
 4) XA transaction support
+
 5) Connect lifecycle java implementation
+
 6) Discussion about ideal software architecture / DevOps solutions
 
 ---
