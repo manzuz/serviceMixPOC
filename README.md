@@ -65,9 +65,13 @@ These are the steps:
 
 Here are the steps to follow:
 1. Clone this repo to your windows workstation
-2. Download ServiceMix 6.1.1 here :
+
+2. Download ServiceMix 6.1.1 here : http://www.apache.org/dyn/closer.lua/servicemix/servicemix-6/6.1.1/apache-servicemix-6.1.1.zip
+
 3. Extract the ServiceMix 6.1.1 archive you downloaded in your root folder (C:\apache-servicemix-6.1.0)
+
 4. (optional) Create an eclipse workspace and import the above projects.
+
 5. Start ServiceMix by running the following command :
 
         C:\apache-servicemix-6.1.0\bin\servicemix
