@@ -5,7 +5,7 @@
 	<!-- Parent POM definition -->
 	<parent>
 		<groupId>com.conztanz</groupId>
-		<version>0.0-SNAPSHOT</version>
+		<version>0.2.0-GAMMA</version>
 		<artifactId>framework</artifactId>
 	</parent>
 
@@ -38,7 +38,8 @@
 
 		<smooks.version>1.5.2</smooks.version>
 		<!-- <osgi.container.deploy.path>/jboss-fuse-6.2.1.redhat-084/deploy</osgi.container.deploy.path> -->
-		<osgi.container.deploy.path>/apache-servicemix-6.1.0/deploy</osgi.container.deploy.path>
+<!-- 		<osgi.container.deploy.path>/apache-servicemix-6.1.0/deploy</osgi.container.deploy.path> -->
+		<osgi.container.deploy.path>/apache-servicemix-6.1.1/deploy</osgi.container.deploy.path>
 
 	</properties>
 

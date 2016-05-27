@@ -45,7 +45,7 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Export-Package>com.conztanz.connect.mq.sbr.service</Export-Package>
 						<Private-Package>com.conztanz.connect.mq.sbr.service.impl</Private-Package>
-						<Import-Package>*, org.milyn.smooks.edi</Import-Package>
+						<Import-Package>*</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>
