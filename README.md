@@ -11,10 +11,15 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 ### Summary
 
 1) Java mediation
+
 2) Multi-versioned dependency management 
+
 3) JPA support
+
 4) XA transaction support
+
 5) Connect lifecycle java implementation
+
 6) Discussion about ideal software architecture / DevOps solutions
 
 ---
@@ -95,7 +100,7 @@ After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should ap
 
 - To do this using windows explorer, download [this file][1] and copy it into your **C:\apache-servicemix-6.1.0\ftp\incoming\edi** folder.
 
-[1]: /demo-sbr-publisher/src/main/resources/edifact-sample.txt
+[1]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/demo-sbr-publisher/src/main/resources/edifact-sample.txt>
   
 
    
