@@ -64,25 +64,26 @@ These are the steps:
 ### How to launch the demo?
 
 Here are the steps to follow:
+
 1. Clone this repo to your windows workstation
 
 2. Download ServiceMix 6.1.1 here : http://www.apache.org/dyn/closer.lua/servicemix/servicemix-6/6.1.1/apache-servicemix-6.1.1.zip
 
-3. Extract the ServiceMix 6.1.1 archive you downloaded in your root folder (C:\apache-servicemix-6.1.0)
+3. Extract the ServiceMix 6.1.1 archive you downloaded in your root folder (C:\apache-servicemix-6.1.1)
 
 4. (optional) Create an eclipse workspace and import the above projects.
 
 5. Start ServiceMix by running the following command :
 
-        C:\apache-servicemix-6.1.0\bin\servicemix
+        C:\apache-servicemix-6.1.1\bin\servicemix
        
 6. Create the following folder:
 
-        C:\apache-servicemix-6.1.0\ftp\incoming\edi
+        C:\apache-servicemix-6.1.1\ftp\incoming\edi
 
-7. Add the smooks feature to ServiceMix by running this command in Karaf console:
+7. Download [this file][1] in a temporary folder (C:\tmp in our example) and add the smooks feature to ServiceMix by running this command in Karaf console:
 
-        feature:repo-add file:C:/Users/Emmanuel/git/serviceMix/_requisites/features.xml
+        feature:repo-add file:C:/tmp/features.xml
         
 8. Install the smooks feature by running this command in Karaf console:
 
@@ -93,18 +94,18 @@ Here are the steps to follow:
         cd <your-git-repositories-root-folder>/serviceMix/demo-deployer
         mvn clean clean install -DskipTests=true -Pconztanz
 
-After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.0\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
+After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.1\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
 
         log:tail
 
-10.  Post the sample SBR file:
+10. Post the sample SBR file:
 
 - To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
 
+- To do this using windows explorer, download [this file][2] and copy it into your **C:\apache-servicemix-6.1.1\ftp\incoming\edi** folder.
 
-- To do this using windows explorer, download [this file][1] and copy it into your **C:\apache-servicemix-6.1.0\ftp\incoming\edi** folder.
-
-[1]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/demo-sbr-publisher/src/main/resources/edifact-sample.txt>
+[1]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/_requisites/features.xml>
+[2]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/demo-sbr-publisher/src/main/resources/edifact-sample.txt>
   
 
    
