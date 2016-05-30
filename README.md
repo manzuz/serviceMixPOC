@@ -89,10 +89,12 @@ Here are the steps to follow:
 
         feature:install smooks
 
-9. Build and deploy the demo application archive (.kar) via maven by launching the two following commands in your windows shell (*you can do the same thing inside eclipse if you didn't skip the step 4*):
+9. Build and deploy the demo application archive (.kar) via maven by launching the following commands in your windows shell (*you can do the same thing inside eclipse if you didn't skip the step 4*):
 
+        cd <your-git-repositories-root-folder>/serviceMix/demo-parent
+        mvn clean install
         cd <your-git-repositories-root-folder>/serviceMix/demo-deployer
-        mvn clean clean install -DskipTests=true -Pconztanz
+        mvn clean install -Pconztanz
 
 *Note : -Pconztanz is not necessary if your maven settings.xml is configured to use conztanz as default profile.*
 
