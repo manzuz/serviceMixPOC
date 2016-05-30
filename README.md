@@ -96,11 +96,12 @@ Here are the steps to follow:
         cd <your-git-repositories-root-folder>/serviceMix/demo-deployer
         mvn clean install -Pconztanz
 
-*Note : -Pconztanz is not necessary if your maven settings.xml is configured to use conztanz as default profile.*
+  *Note : -Pconztanz is not necessary if your maven settings.xml is configured to use conztanz as default profile.*
 
-After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.1\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
+  After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.1\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
 
         log:tail
+
 
 10. Post the sample SBR file:
 
