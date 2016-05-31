@@ -4,7 +4,7 @@
 	<!-- Enregistrera la feature pour smooks dans le registre de karaf, quand le kar sera déployé -->
 	<repository>mvn:org.milyn/milyn-smooks-all/1.5.2/xml/features</repository>
 		
-	<feature name="demo-kar" version="0.0.1-SNAPSHOT" >
+	<feature name="demo-kar" version="0.0.1-SNAPSHOT" description="POC - Demo karaf archive">
 
 		<bundle>mvn:com.conztanz/demo-commons/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
