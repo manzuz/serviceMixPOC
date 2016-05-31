@@ -16,13 +16,19 @@
 
 		<dependency>
 			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-commons</artifactId>
+			<version>0.2.0-GAMMA</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.conztanz</groupId>
 			<artifactId>demo-commons</artifactId>
 		</dependency>
 
-		<!-- <dependency> -->
-		<!-- <groupId>com.conztanz</groupId> -->
-		<!-- <artifactId>demo-sbr-stub-14_1</artifactId> -->
-		<!-- </dependency> -->
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>demo-sbr-stub-14_1</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.milyn</groupId>
@@ -42,7 +48,7 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Export-Package>com.conztanz.connect.transform.sbr</Export-Package>
-						<Private-Package>com.conztanz.connect.transform.sbr.impl</Private-Package>
+						<Private-Package>com.conztanz.connect.transform.sbr.impl.*</Private-Package>
 						<Import-Package>*, org.milyn.smooks.edi, org.milyn.edisax</Import-Package>
 					</instructions>
 				</configuration>

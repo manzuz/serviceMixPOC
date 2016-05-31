@@ -5,17 +5,25 @@
 
 	<!-- Enregistrera la feature pour smooks dans le registre de karaf, quand le kar sera déployé -->
 	<repository>mvn:org.milyn/milyn-smooks-all/1.5.2/xml/features</repository>
-		
+	
+<!-- 	<repository>http://jibx.org/repository.xml</repository> -->
+	
 	<feature name="demo-kar" version="0.0.1-SNAPSHOT" description="POC - Demo karaf archive">
 
 		<bundle>mvn:com.conztanz/demo-commons/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz/demo-sbr-stub-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
-
+		
 		<!-- Permet d'installer (et de démarrer) automatiquement le bundle smooks quand le kar sera déployé -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5.2</bundle>
+
+		<!-- Permet d'installer (et de démarrer) automatiquement le bundle Jibx quand le kar sera déployé -->
+		<bundle>wrap:mvn:org.jibx/jibx-run/1.2.6$Bundle-SymbolicName=JibxRun&amp;Bundle-Version=1.2.6</bundle>
+		<bundle>wrap:mvn:com.conztanz/framework-connect-commons/0.1.3$Bundle-SymbolicName=FrameworkConnect&amp;Bundle-Version=0.1.3</bundle>
+
 	    
 	</feature>
 

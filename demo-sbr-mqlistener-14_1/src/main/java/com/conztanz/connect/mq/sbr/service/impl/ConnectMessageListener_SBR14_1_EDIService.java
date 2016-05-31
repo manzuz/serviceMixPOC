@@ -8,7 +8,9 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Handler;
 
 import com.conztanz.connect.mq.sbr.service.IConnectMessageListener_SBR;
+import com.conztanz.connect.transform.sbr.ISBRMarshaller141Service;
 import com.conztanz.connect.transform.sbr.ISBRTransformer141EDItoXML;
+import com.conztanz.jibx.sbr.service.ForPnrHandling;
 import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
 
 //@Service(value = "SBR_14_1_EDI_SERVICE")
@@ -17,6 +19,7 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 	// Injecté par blueprint
 	private ISBREdifactMessageCleaner cleaner;
 	private ISBRTransformer141EDItoXML smooksTransformer;
+	private ISBRMarshaller141Service marshaller;
 
 	@Override
 	@Handler
@@ -51,7 +54,14 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 		// conversion java via jibx (objet de type BINDING dans conztanz one -
 		// AbstractTravelMediator)
-		// => extraction TRAVEL à partir de BINDING
+
+		System.out.println("Unmarshalling XML to java via Jibx...");
+		ForPnrHandling pnr = marshaller.unmarshall(xml, exchange);
+		System.out.println("****************** OK : ForPnrHandling object created!");
+		System.out.println(
+				"Example : pnr.getActMarker().getActionRequestCode() : " + pnr.getActMarker().getActionRequestCode());
+
+		// TODO => extraction TRAVEL à partir de BINDING
 		// conversion des TRAVEL JSON via jackson
 		// checks + insertion lifecycle
 		// commit
@@ -94,6 +104,14 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 	public void setCleaner(ISBREdifactMessageCleaner cleaner) {
 		this.cleaner = cleaner;
+	}
+
+	public ISBRMarshaller141Service getMarshaller() {
+		return marshaller;
+	}
+
+	public void setMarshaller(ISBRMarshaller141Service marshaller) {
+		this.marshaller = marshaller;
 	}
 
 }
