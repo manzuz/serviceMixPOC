@@ -159,3 +159,5 @@ TODO
 ## 7. Discussion about ideal software architecture / DevOps solutions 
 
 TODO
+
+It will be necessary to think about projevct structures and deployment processes to manage genericity and ability to decline different implementations per customer.
