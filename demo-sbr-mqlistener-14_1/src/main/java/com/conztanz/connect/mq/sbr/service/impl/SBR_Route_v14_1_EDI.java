@@ -3,6 +3,7 @@ package com.conztanz.connect.mq.sbr.service.impl;
 import org.apache.camel.builder.RouteBuilder;
 
 // UNUSED - utilisation de config xml
+@Deprecated
 public class SBR_Route_v14_1_EDI extends RouteBuilder {
 
 	@Override
