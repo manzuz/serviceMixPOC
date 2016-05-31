@@ -49,7 +49,7 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
-						<Export-Package>com.conztanz.transform.sbr.v14_1</Export-Package>
+						<Export-Package>${transform.package.jibx}</Export-Package>
 						<Import-Package>*</Import-Package>
 						<!-- <Private-Package>org.apache.servicemix.examples.camel.rest</Private-Package> -->
 					</instructions>
