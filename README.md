@@ -16,11 +16,13 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 
 3) JPA support
 
-4) XA transaction support
+4) Integration tests via PaxExam
 
-5) Connect lifecycle java implementation
+5) XA transaction support
 
-6) Discussion about ideal software architecture / DevOps solutions
+6) Connect lifecycle java implementation
+
+7) Discussion about ideal software architecture / DevOps solutions
 
 ---
 
@@ -136,18 +138,24 @@ TODO
 
 ---
 
-## 4. XA transaction support
+## 4. Integration tests via PaxExam ##
 
 TODO
 
 ---
 
-## 5. Connect lifecycle java implementation
+## 5. XA transaction support
 
 TODO
 
 ---
 
-## 6. Discussion about ideal software architecture / DevOps solutions 
+## 6. Connect lifecycle java implementation
+
+TODO
+
+---
+
+## 7. Discussion about ideal software architecture / DevOps solutions 
 
 TODO
