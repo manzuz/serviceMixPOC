@@ -26,6 +26,8 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 
 8) Discussion about ideal software architecture / DevOps solutions
 
+9) Other topics
+
 ---
 
 ## 1. Java mediation
@@ -169,3 +171,10 @@ TODO
 TODO
 
 It will be necessary to think about project structures and deployment processes to manage genericity and ability to decline different implementations per customer.
+
+## 9. Other topics
+
+- Jibx stubbing
+
+TODO
+
