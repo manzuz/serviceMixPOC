@@ -14,15 +14,17 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 
 2) Multi-versioned dependency management 
 
-3) JPA support
+3) External ActiveMQ broker usage
 
-4) Integration tests via PaxExam
+4) JPA support
 
-5) XA transaction support
+5) Integration tests via PaxExam
 
-6) Connect lifecycle java implementation
+6) XA transaction support
 
-7) Discussion about ideal software architecture / DevOps solutions
+7) Connect lifecycle java implementation
+
+8) Discussion about ideal software architecture / DevOps solutions
 
 ---
 
@@ -132,31 +134,37 @@ TODO
 
 ---
 
-## 3. JPA support
+## 3. External ActiveMQ broker usage ##
 
 TODO
 
 ---
 
-## 4. Integration tests via PaxExam ##
+## 4. JPA support
 
 TODO
 
 ---
 
-## 5. XA transaction support
+## 5. Integration tests via PaxExam ##
 
 TODO
 
 ---
 
-## 6. Connect lifecycle java implementation
+## 6. XA transaction support
 
 TODO
 
 ---
 
-## 7. Discussion about ideal software architecture / DevOps solutions 
+## 7. Connect lifecycle java implementation
+
+TODO
+
+---
+
+## 8. Discussion about ideal software architecture / DevOps solutions 
 
 TODO
 
