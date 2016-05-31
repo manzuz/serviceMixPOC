@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Fichier de configuration pour l'archive de demo (.kar) -->
 <features name="demo-features-repo" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
 
 	<!-- Enregistrera la feature pour smooks dans le registre de karaf, quand le kar sera déployé -->

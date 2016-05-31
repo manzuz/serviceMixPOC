@@ -11,7 +11,6 @@
 	<packaging>bundle</packaging>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>demo-commons</artifactId>
@@ -28,9 +27,6 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
-<!-- 						<Export-Package>com.conztanz.connect.mq.sbr.service</Export-Package> -->
-<!-- 						<Private-Package>com.conztanz.connect.mq.sbr.service.impl</Private-Package> -->
-<!-- 						<Import-Package>*, org.milyn.smooks.edi</Import-Package> -->
 					</instructions>
 				</configuration>
 			</plugin>

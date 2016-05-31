@@ -9,13 +9,13 @@
 	</parent>
 
 	<artifactId>demo-sbr-publisher</artifactId>
+	<description>Tool project for demo manual testing purpose</description>
 
 	<dependencies>
 
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>demo-commons</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 	</dependencies>
