@@ -160,4 +160,4 @@ TODO
 
 TODO
 
-It will be necessary to think about projevct structures and deployment processes to manage genericity and ability to decline different implementations per customer.
+It will be necessary to think about project structures and deployment processes to manage genericity and ability to decline different implementations per customer.
