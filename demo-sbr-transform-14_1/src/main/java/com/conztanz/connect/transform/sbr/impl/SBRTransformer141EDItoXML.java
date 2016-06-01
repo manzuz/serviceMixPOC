@@ -22,7 +22,15 @@ import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
  */
 public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 
-	private ISBREdifactMessageCleaner cleaner;
+	private ISBREdifactMessageCleaner cleanerService;
+
+	public ISBREdifactMessageCleaner getCleanerService() {
+		return cleanerService;
+	}
+
+	public void setCleanerService(ISBREdifactMessageCleaner cleanerService) {
+		this.cleanerService = cleanerService;
+	}
 
 	private static Smooks smooks = null;
 
@@ -32,7 +40,7 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 		System.out.println("SBRTransformer141EDItoXML => transform()");
 
 		System.out.println("Cleaning EDI message via OSGI service...");
-		String cleanMessage = cleaner.cleanMessage(ediMessage);
+		String cleanMessage = cleanerService.cleanMessage(ediMessage);
 
 		// Locale defaultLocale = Locale.getDefault();
 		// Locale.setDefault(new Locale("en", "IE"));
@@ -88,6 +96,34 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 		// => pour test: copie en dur depuis le jar smooks vers classpath
 		// mqlistener => corrige l'erreur mais pourquoi?
 
+		// Post trouvé à la page
+		// http://stackoverflow.com/questions/7564370/importing-resources-from-osgi-bundle
+		// :
+		/*
+		 * "Resources in the root of a bundle are in the "default" package,
+		 * which cannot be imported or exported.
+		 * 
+		 * If you really must access the resources via classloader, you need to
+		 * move them into a package and export that package. Otherwise you can
+		 * use Bundle.getEntry() to read resources from any location of any
+		 * bundle."
+		 * 
+		 * 
+		 * 
+		 * 
+		 * => Impossible de déplacer les xsd car smooks impose de les mettre
+		 * dans META-INF/ à la racine du classpath. => il faut essayer
+		 * Bundle.getEntry(): cf http://stackoverflow.com/questions/3522978/access-resources-in-another-osgi-bundle:
+		 * 
+		 * "...The getEntry(String) method on Bundle is intended for this
+		 * purpose. You can use it to load any resource from any bundle. Also
+		 * see the methods findEntries() and getEntryPaths() if you don't know
+		 * the exact path to the resource inside the bundle.
+		 * 
+		 * There is no need to get hold of the bundle's classloader to do this."
+		 * 
+		 */
+
 		if (smooks == null) {
 			System.out.println("Smooks singleton is null. Instanciation...");
 			// Instantiate Smooks with the config...
@@ -99,14 +135,6 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 		}
 		System.out.println("Smooks singleton is null. Instanciation...");
 		return smooks;
-	}
-
-	public ISBREdifactMessageCleaner getCleaner() {
-		return cleaner;
-	}
-
-	public void setCleaner(ISBREdifactMessageCleaner cleaner) {
-		this.cleaner = cleaner;
 	}
 
 }

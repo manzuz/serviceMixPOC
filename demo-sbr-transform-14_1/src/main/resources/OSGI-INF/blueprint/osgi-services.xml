@@ -14,7 +14,7 @@
 		id="SBRTransformer141EDItoXML" />
 	<bean id="smooksService"
 		class="com.conztanz.connect.transform.sbr.impl.SBRTransformer141EDItoXML">
-		<property name="cleaner" ref="ediMessageCleaner" />
+		<property name="cleanerService" ref="ediMessageCleaner" />
 	</bean>
 	<reference id="ediMessageCleaner"
 		interface="com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner" />
