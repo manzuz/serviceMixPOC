@@ -20,7 +20,7 @@ public class Publisher {
 		// On envoie le message sur une queue écoutée par le service de
 		// transformation smooks EDI => XML
 		// L'appel au service de transformation ne marche pas actuellement car
-		// le xsd smooks-
+		// le xsd smooks n'est pas dans son class path...
 		publishInLocalTransformQueue(10);
 
 	}
