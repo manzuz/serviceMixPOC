@@ -25,11 +25,16 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>demo-sbr-cleaner</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.conztanz</groupId> -->
+<!-- 			<artifactId>demo-sbr-cleaner</artifactId> -->
+<!-- 			<version>${project.version}</version> -->
+<!-- 		</dependency> -->
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.milyn</groupId> -->
+		<!-- <artifactId>milyn-smooks-all</artifactId> -->
+		<!-- </dependency> -->
 
 	</dependencies>
 

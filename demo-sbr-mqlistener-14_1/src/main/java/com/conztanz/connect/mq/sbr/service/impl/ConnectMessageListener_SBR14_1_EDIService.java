@@ -42,15 +42,15 @@ public class ConnectMessageListener_SBR14_1_EDIService implements IConnectMessag
 
 		// start transaction?
 
-		System.out.println("Cleaning EDI message via OSGI service...");
-		String cleanMessage = cleaner.cleanMessage(body);
+//		System.out.println("Cleaning EDI message via OSGI service...");
+//		String cleanMessage = cleaner.cleanMessage(body);
 
 		// conversion en xml via smooks
 
 		// body = exchange.getIn().getBody().toString();
 		System.out.println("Transforming EDI message to XML via OSGI service...");
-		String xml = smooksTransformer.transform(cleanMessage, exchange.getContext());
-		System.out.println("xml:" + xml);
+		String xml = smooksTransformer.transform(body, exchange.getContext());
+//		System.out.println("xml:" + xml);
 
 		// conversion java via jibx (objet de type BINDING dans conztanz one -
 		// AbstractTravelMediator)

@@ -22,6 +22,12 @@
 
 		<dependency>
 			<groupId>com.conztanz</groupId>
+			<artifactId>demo-sbr-cleaner</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.conztanz</groupId>
 			<artifactId>demo-commons</artifactId>
 		</dependency>
 

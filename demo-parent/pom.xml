@@ -41,7 +41,7 @@
 		<osgi.container.deploy.path>/apache-servicemix-6.1.1/deploy</osgi.container.deploy.path>
 
 		<slf4j.version>1.7.12</slf4j.version>
-		
+
 	</properties>
 
 	<build>
@@ -50,6 +50,12 @@
 
 
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
@@ -197,11 +203,6 @@
 
 
 
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${maven-dependency-plugin.version}</version>
-			</dependency>
 
 
 			<dependency>
@@ -302,10 +303,11 @@
 
 	<profiles>
 
-		<!-- Profil qui s'active si un fichier nommé hotDeploy est trouvé à la racine d'un projet.
-		Il est actuellement utilisé par le projet kar, pour permettre de copier le kar généré dans le dossier deploy.
-		C'est un petit outil temporaire utilisé localement pour simplifier, mais ce n'est évidemment pas envisageable en terme de DevOps. 
-		-->
+		<!-- Profil qui s'active si un fichier nommé hotDeploy est trouvé à la 
+			racine d'un projet. Il est actuellement utilisé par le projet kar, pour permettre 
+			de copier le kar généré dans le dossier deploy. C'est un petit outil temporaire 
+			utilisé localement pour simplifier, mais ce n'est évidemment pas envisageable 
+			en terme de DevOps. -->
 		<profile>
 			<id>deployOnESB</id>
 			<activation>
@@ -343,7 +345,7 @@
 				</plugins>
 			</build>
 		</profile>
-		
+
 	</profiles>
-	
+
 </project>
