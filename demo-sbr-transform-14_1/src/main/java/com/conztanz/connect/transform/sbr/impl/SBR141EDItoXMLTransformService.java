@@ -21,9 +21,9 @@ import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
  * @author Emmanuel
  *
  */
-public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
+public class SBR141EDItoXMLTransformService implements ISBRTransformer141EDItoXML {
 
-	private static Logger log = Logger.getLogger(SBRTransformer141EDItoXML.class);
+	private static Logger log = Logger.getLogger(SBR141EDItoXMLTransformService.class);
 	
 	private ISBREdifactMessageCleaner cleanerService;
 
@@ -40,7 +40,7 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 	@Override
 	public String transform(@Body String ediMessage, CamelContext camelContext) throws Exception {
 
-		log.info("SBRTransformer141EDItoXML => transform()");
+		log.info("SBR141EDItoXMLTransformService => transform()");
 
 		log.info("Cleaning EDI message via OSGI service...");
 		String cleanMessage = cleanerService.cleanMessage(ediMessage);

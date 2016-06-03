@@ -16,7 +16,7 @@
 			<from uri="activemq:LOCAL_SBR_14_1_EDI" />
 			<!-- <transacted/> -->
 			<to uri="bean:SBR_14_1_EDI_SERVICE" />
-			<log message="Transformed body:{body}" />
+<!-- 			<log message="Transformed body:{body}" /> -->
 
 		</route>
 
@@ -25,7 +25,7 @@
 			<from uri="activemq:LOCAL_SBR_14_1_XML" />
 			<!-- <transacted/> -->
 			<to uri="bean:SBR_14_1_XML_JSON_SERVICE" />
-			<log message="Transformed body:{body}" />
+<!-- 			<log message="Transformed body:{body}" /> -->
 
 		</route>
 

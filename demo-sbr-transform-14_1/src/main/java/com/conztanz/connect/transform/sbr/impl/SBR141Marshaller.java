@@ -1,4 +1,4 @@
-package com.conztanz.connect.transform.sbr.impl.marshalling;
+package com.conztanz.connect.transform.sbr.impl;
 
 import com.conztanz.jibx.sbr.service.ForPnrHandling;
 import com.conztanz.mediator.xml.AbstractConztanzUnmarshaller;

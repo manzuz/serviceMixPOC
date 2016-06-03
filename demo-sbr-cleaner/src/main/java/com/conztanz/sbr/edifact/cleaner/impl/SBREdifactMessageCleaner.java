@@ -1,6 +1,7 @@
 package com.conztanz.sbr.edifact.cleaner.impl;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 
 import com.conztanz.connect.sbr.edifact.helper.SBRTagEdifactHelper;
 import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
@@ -13,6 +14,8 @@ import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
  *
  */
 public class SBREdifactMessageCleaner implements ISBREdifactMessageCleaner {
+
+	private static Logger log = Logger.getLogger(SBREdifactMessageCleaner.class);
 
 	private static final boolean DECODE_BASE64_BEFORE_CLEANING = true;
 
@@ -27,10 +30,10 @@ public class SBREdifactMessageCleaner implements ISBREdifactMessageCleaner {
 		body = new String(Base64.encodeBase64(body.getBytes()));
 		String cleanedMessageBody = SBRTagEdifactHelper.cleanMessage(body, DECODE_BASE64_BEFORE_CLEANING);
 
-		System.out.println("-------------------");
-		System.out.println("OK : EDI message is clean.");
-		System.out.println("cleanedMessageBody:" + cleanedMessageBody);
-		System.out.println("-------------------");
+		log.info("-------------------");
+		log.info("OK : EDI message is clean.");
+		log.debug("cleanedMessageBody:" + cleanedMessageBody);
+		log.info("-------------------");
 
 		return cleanedMessageBody;
 	}

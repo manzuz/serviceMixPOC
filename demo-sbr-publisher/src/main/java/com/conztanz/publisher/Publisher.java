@@ -13,15 +13,18 @@ public class Publisher {
 
 		initCamelContext();
 
+		publishInLocalQueue(20);
+		publishInLocalDir(20);
 		// publishInRemoteQueue(1);
-		// publishInLocalQueue(20);
-		// publishInLocalDir(20);
 
 		// On envoie le message sur une queue écoutée par le service de
 		// transformation smooks EDI => XML
 		// L'appel au service de transformation ne marche pas actuellement car
 		// le xsd smooks n'est pas dans son class path...
-		publishInLocalTransformQueue(10);
+		// SAUF si on a appelé au moins une fois le mq listener avant
+		// (je pense que c'est normal, car dans ce cas on a une référence vers
+		// un objet de la jvm correctement initialisé)
+		// publishInLocalTransformQueue(1);
 
 	}
 

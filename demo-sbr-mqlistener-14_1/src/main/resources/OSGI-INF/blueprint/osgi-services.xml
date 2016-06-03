@@ -9,17 +9,17 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
 	<bean id="SBR_14_1_EDI_SERVICE"
-		class="com.conztanz.connect.mq.sbr.service.impl.ConnectMessageListener_SBR14_1_EDIService">
+		class="com.conztanz.connect.mq.sbr.service.impl.SBR141EDIMessageListenerService">
 		<property name="cleaner" ref="ediMessageCleaner" />
 		<property name="smooksTransformer" ref="smooksTransformer" />
 		<property name="marshaller" ref="marshaller" />
 	</bean>
 
-	<bean id="SBR_14_1_XML_JSON_SERVICE"
-		class="com.conztanz.connect.mq.sbr.service.impl.ConnectMessageListener_SBR14_1_XMLService">
+<!-- 	<bean id="SBR_14_1_XML_JSON_SERVICE" -->
+<!-- 		class="com.conztanz.connect.mq.sbr.service.impl.SBR141XMLMessageListenerService"> -->
 <!-- 		<property name="smooksTransformer" ref="smooksTransformer" /> -->
 <!-- 		<property name="marshaller" ref="marshaller" /> -->
-	</bean>
+<!-- 	</bean> -->
 
 
 
