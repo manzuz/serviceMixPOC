@@ -36,7 +36,7 @@
 		<!-- <features-maven-plugin.version>2.2.8</features-maven-plugin.version> -->
 		<features-maven-plugin.version>2.3.0</features-maven-plugin.version>
 
-		<smooks.version>1.5.2</smooks.version>
+		<smooks.version>1.5</smooks.version>
 		<!-- <osgi.container.deploy.path>/apache-servicemix-6.1.0/deploy</osgi.container.deploy.path> -->
 		<osgi.container.deploy.path>/apache-servicemix-6.1.1/deploy</osgi.container.deploy.path>
 
