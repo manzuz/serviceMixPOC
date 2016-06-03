@@ -7,6 +7,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.camel.Body;
 import org.apache.camel.CamelContext;
+import org.apache.log4j.Logger;
 import org.milyn.Smooks;
 import org.milyn.container.ExecutionContext;
 import org.milyn.payload.StringResult;
@@ -22,6 +23,8 @@ import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
  */
 public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 
+	private static Logger log = Logger.getLogger(SBRTransformer141EDItoXML.class);
+	
 	private ISBREdifactMessageCleaner cleanerService;
 
 	public ISBREdifactMessageCleaner getCleanerService() {
@@ -37,9 +40,9 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 	@Override
 	public String transform(@Body String ediMessage, CamelContext camelContext) throws Exception {
 
-		System.out.println("SBRTransformer141EDItoXML => transform()");
+		log.info("SBRTransformer141EDItoXML => transform()");
 
-		System.out.println("Cleaning EDI message via OSGI service...");
+		log.info("Cleaning EDI message via OSGI service...");
 		String cleanMessage = cleanerService.cleanMessage(ediMessage);
 
 		// Locale defaultLocale = Locale.getDefault();
@@ -63,7 +66,7 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 			smooks.filterSource(executionContext, new StreamSource(is), result);
 
 			String xml = result.getResult();
-			System.out.println("xml:" + xml);
+			log.debug("xml:" + xml);
 
 			// Locale.setDefault(defaultLocale);
 
@@ -81,7 +84,9 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 	 * @throws IOException
 	 * @throws SAXException
 	 */
-	private synchronized Smooks getSmooksSingleton() throws IOException, SAXException {
+	// private synchronized Smooks getSmooksSingleton() throws IOException,
+	// SAXException {
+	private Smooks getSmooksSingleton() throws IOException, SAXException {
 
 		// TODO : essayer de ne pas embarquer les xsd smooks dans le code
 		// appelant!
@@ -113,7 +118,9 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 		 * 
 		 * => Impossible de déplacer les xsd car smooks impose de les mettre
 		 * dans META-INF/ à la racine du classpath. => il faut essayer
-		 * Bundle.getEntry(): cf http://stackoverflow.com/questions/3522978/access-resources-in-another-osgi-bundle:
+		 * Bundle.getEntry(): cf
+		 * http://stackoverflow.com/questions/3522978/access-resources-in-
+		 * another-osgi-bundle:
 		 * 
 		 * "...The getEntry(String) method on Bundle is intended for this
 		 * purpose. You can use it to load any resource from any bundle. Also
@@ -125,7 +132,7 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 		 */
 
 		if (smooks == null) {
-			System.out.println("Smooks singleton is null. Instanciation...");
+			log.info("Smooks singleton is null. Instanciation...");
 			// Instantiate Smooks with the config...
 			smooks = new Smooks(this.getClass().getResourceAsStream("/smooks/smooks-config.xml"));
 			// Permet d'avoir les fichiers smooks (xsd etc) dans le classpath.
@@ -133,7 +140,7 @@ public class SBRTransformer141EDItoXML implements ISBRTransformer141EDItoXML {
 			Thread.currentThread().setContextClassLoader(classLoader);
 			smooks.setClassLoader(classLoader);
 		}
-		System.out.println("Smooks singleton is null. Instanciation...");
+		log.info("Smooks singleton is null. Instanciation...");
 		return smooks;
 	}
 

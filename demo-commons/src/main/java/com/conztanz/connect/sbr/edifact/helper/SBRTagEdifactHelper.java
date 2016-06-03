@@ -1,8 +1,11 @@
 package com.conztanz.connect.sbr.edifact.helper;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.log4j.Logger;
 
 public class SBRTagEdifactHelper {
+
+	private static Logger log = Logger.getLogger(SBRTagEdifactHelper.class);
 
 	/**
 	 * 
@@ -22,9 +25,7 @@ public class SBRTagEdifactHelper {
 	 */
 	public static String cleanMessage(String messageBody, boolean decodeBase64BeforeCleaning) {
 
-		System.out.println("\r\n");
-		System.out.println("messageBody:" + messageBody);
-		System.out.println("\r\n");
+		log.debug("messageBody:\r\n" + messageBody);
 
 		StringBuilder cleanMessage = null;
 		try {
@@ -34,9 +35,7 @@ public class SBRTagEdifactHelper {
 				tab = Base64.decodeBase64(tab);
 			}
 
-			System.out.println("\r\n");
-			System.out.println("tab:" + tab);
-			System.out.println("\r\n");
+			log.debug("tab:\r\n" + tab);
 
 			StringBuilder sbrresCleanBatch = new StringBuilder();
 
