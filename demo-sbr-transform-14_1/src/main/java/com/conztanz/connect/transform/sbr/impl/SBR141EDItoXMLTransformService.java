@@ -24,16 +24,8 @@ import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
 public class SBR141EDItoXMLTransformService implements ISBRTransformer141EDItoXML {
 
 	private static Logger log = Logger.getLogger(SBR141EDItoXMLTransformService.class);
-	
+
 	private ISBREdifactMessageCleaner cleanerService;
-
-	public ISBREdifactMessageCleaner getCleanerService() {
-		return cleanerService;
-	}
-
-	public void setCleanerService(ISBREdifactMessageCleaner cleanerService) {
-		this.cleanerService = cleanerService;
-	}
 
 	private static Smooks smooks = null;
 
@@ -142,6 +134,14 @@ public class SBR141EDItoXMLTransformService implements ISBRTransformer141EDItoXM
 		}
 		log.info("Smooks singleton is null. Instanciation...");
 		return smooks;
+	}
+
+	public ISBREdifactMessageCleaner getCleanerService() {
+		return cleanerService;
+	}
+
+	public void setCleanerService(ISBREdifactMessageCleaner cleanerService) {
+		this.cleanerService = cleanerService;
 	}
 
 }
