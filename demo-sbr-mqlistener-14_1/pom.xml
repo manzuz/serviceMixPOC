@@ -11,6 +11,7 @@
 
 	<artifactId>demo-sbr-mqlistener-14_1</artifactId>
 	<packaging>bundle</packaging>
+	<description>MQ listener service for SBR 14.1 messages</description>
 
 	<dependencies>
 
@@ -37,9 +38,33 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
+						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
+						
+						<!-- This header declares the packages that are visible outside the 
+							bundle. If a package is not declared in this header, it is visible only within 
+							the bundle. <Export-Package> is now assumed to be the set of packages in 
+							your local Java sources, excluding the default package '.' and any packages 
+							containing 'impl' or 'internal'. -->
 						<Export-Package>com.conztanz.connect.mq.sbr.service</Export-Package>
+
+						<!-- <Private-Package> is now assumed to be the set of packages in 
+							your local Java sources (note that any packages in both <Export-Package> 
+							and <Private-Package> will be exported). -->
 						<Private-Package>com.conztanz.connect.mq.sbr.service.impl</Private-Package>
+
+						<!-- This header declares the external dependencies of the bundle that 
+							the OSGi Framework uses to resolve the bundle. Specific versions or version 
+							ranges for each package can be declared. The <Import-Package> instruction 
+							is a list of packages that are required by the bundle's contained packages. 
+							The default for this header is "*", resulting in importing all referred packages. 
+							This header rarely has to be explicitly specified. -->
 						<Import-Package>*</Import-Package>
+
+						<!-- <Include-Resource> is generated from the project's Maven resources, 
+							typically "src/main/resources/", which will copy the specified project directory 
+							hierarchy into the resulting bundle JAR file, mirroring standard Maven behavior. -->
+						<!-- <Include-Resources></Include-Resources> -->
+
 					</instructions>
 				</configuration>
 			</plugin>

@@ -9,14 +9,14 @@
 		<artifactId>framework</artifactId>
 	</parent>
 
-	<!-- <groupId>com.conztanz</groupId> -->
 	<artifactId>demo-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-
+	<description>ServiceMix POC demo parent pom</description>
 
 	<properties>
 
+		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 
 		<!-- <maven.auto-clean.skip>true</maven.auto-clean.skip> -->

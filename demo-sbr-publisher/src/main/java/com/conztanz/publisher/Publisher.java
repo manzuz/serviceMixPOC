@@ -13,10 +13,10 @@ public class Publisher {
 
 		initCamelContext();
 
-		// publishInLocalQueue(10);
-		// publishInLocalDir(10);
+//		 publishInLocalQueue(10);
+//		 publishInLocalDir(10);
 		// publishInRemoteQueue(1);
-		// publishInLocalTransformQueue(1);
+		 publishInLocalTransformQueue(10);
 
 	}
 

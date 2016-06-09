@@ -17,7 +17,7 @@
 	<modules>
 		<module>../demo-parent</module>
 		<module>../demo-commons</module>
- 		<module>../demo-sbr-stub-14_1</module>
+<!--  		<module>../demo-sbr-stub-14_1</module> -->
 		<module>../demo-sbr-transform-14_1</module>
 		<module>../demo-sbr-cleaner</module>
 		<module>../demo-sbr-ftplistener-14_1</module>

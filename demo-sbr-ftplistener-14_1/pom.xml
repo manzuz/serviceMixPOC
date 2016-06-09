@@ -9,6 +9,7 @@
 
 	<artifactId>demo-sbr-ftplistener-14_1</artifactId>
 	<packaging>bundle</packaging>
+	<description>FTP listener service for SBR 14.1 messages</description>
 
 	<dependencies>
 		<dependency>
@@ -27,6 +28,7 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
+						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 					</instructions>
 				</configuration>
 			</plugin>
