@@ -123,16 +123,18 @@ public class SBR141EDItoXMLTransformService implements ISBRTransformer141EDItoXM
 		 * 
 		 */
 
+		ClassLoader classLoader = this.getClass().getClassLoader();
+		log.info("classLoader:" + classLoader);
 		if (smooks == null) {
+			Thread.currentThread().setContextClassLoader(classLoader);
 			log.info("Smooks singleton is null. Instanciation...");
 			// Instantiate Smooks with the config...
 			smooks = new Smooks(this.getClass().getResourceAsStream("/smooks/smooks-config.xml"));
 			// Permet d'avoir les fichiers smooks (xsd etc) dans le classpath.
-			ClassLoader classLoader = this.getClass().getClassLoader();
-			Thread.currentThread().setContextClassLoader(classLoader);
 			smooks.setClassLoader(classLoader);
+		} else {
+			log.info("Smooks singleton is not null.");
 		}
-		log.info("Smooks singleton is null. Instanciation...");
 		return smooks;
 	}
 

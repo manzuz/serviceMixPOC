@@ -8,6 +8,9 @@
 	
 	<feature name="demo-kar" version="0.0.1-SNAPSHOT" description="POC - Demo karaf archive">
 
+		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
+		<feature version="1.5.0">smooks</feature>
+
 		<bundle>mvn:com.conztanz/demo-commons/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-stub-14_1/0.0.1-SNAPSHOT</bundle>
@@ -15,8 +18,10 @@
 		<bundle>mvn:com.conztanz/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
 		
+		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5</bundle>
 
+		<!-- Permet de créer des bundles JiBX à partir de plain jars, et de les embarquer dans le kar -->
 		<bundle>wrap:mvn:org.jibx/jibx-run/1.2.6$Bundle-SymbolicName=JibxRun&amp;Bundle-Version=1.2.6</bundle>
 		<bundle>wrap:mvn:com.conztanz/framework-connect-commons/0.1.3$Bundle-SymbolicName=FrameworkConnect&amp;Bundle-Version=0.1.3</bundle>
 

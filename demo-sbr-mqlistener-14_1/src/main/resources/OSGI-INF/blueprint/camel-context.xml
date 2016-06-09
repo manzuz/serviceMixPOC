@@ -8,8 +8,7 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<camelContext id="sbr14_1_edi_connector"
-		xmlns="http://camel.apache.org/schema/blueprint">
+	<camelContext id="sbr14_1_edi_connector" xmlns="http://camel.apache.org/schema/blueprint">
 		<!-- <routeBuilder ref="SBR_Route_v14_1_EDI" /> -->
 		<route>
 			<!-- <from uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
