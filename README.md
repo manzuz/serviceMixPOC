@@ -34,7 +34,7 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 
 The first step of this POC consists in demonstrating our ability to implement message processing through java mediation implementation.
 
-Cf <https://github.com/manzuz/serviceMixPOC/tree/SMOOKS_SBR_14_1_WORKING>
+Cf <https://github.com/manzuz/serviceMixPOC/blob/JIBX_SBR_14_1_WORKING/README.md>
 
 ### Demonstration principle
 
