@@ -128,7 +128,7 @@ Here are the steps to follow:
    
 ### OSGI implementation - details
 
-See this presentation : 
+See this presentation : https://docs.google.com/presentation/d/1NTXjhrjQCDqpFP3k3yFWvSHkXQbKTkeY53lndjXR5CM/edit#slide=id.g1452030672_1_149
 ---
 
 ## 2. External ActiveMQ broker usage
