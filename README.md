@@ -12,21 +12,27 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 
 1) Java mediation
 
-2) Multi-versioned dependency management 
+2) External ActiveMQ broker usage
 
-3) External ActiveMQ broker usage
+3) JPA support (hibernate)
 
-4) JPA support
+4) XA transaction support
 
-5) Integration tests via PaxExam
+5) Connect lifecycle java implementation
 
-6) XA transaction support
+6) AS calls
 
-7) Connect lifecycle java implementation
+7) Complete connect message listener
 
-8) Discussion about ideal software architecture / DevOps solutions
+8) Multi-versioned dependency management
 
-9) Other topics
+9) Discussion about ideal software architecture / DevOps solutions 
+
+10) Integration tests via PaxExam
+
+11) Links
+
+
 
 ---
 
@@ -122,21 +128,16 @@ Here are the steps to follow:
    
 ### OSGI implementation - details
 
-
-
-
-
-
-
+See this presentation : 
 ---
-Multi-versioned dependency management
+
 ## 2. External ActiveMQ broker usage
 
 TODO
 
 ---
 
-## 3. JPA support
+## 3. JPA support (hibernate)
 
 TODO
 
@@ -166,16 +167,40 @@ TODO
 
 ---
 
-## 8. Discussion about ideal software architecture / DevOps solutions 
+## 8. Multi-versioned dependency management
 
 TODO
+
+---
+
+## 9. Discussion about ideal software architecture / DevOps solutions 
+
+TODO
+
+---
 
 It will be necessary to think about project structures and deployment processes to manage genericity and ability to decline different implementations per customer.
 
-## 9. Integration tests via PaxExam
-
-## 10. Other topics
-
+## 10. Integration tests via PaxExam
 
 TODO
+
+---
+
+## 11. Resources links
+
+http://servicemix.apache.org/
+http://servicemix.apache.org/docs/6.x/
+http://www.ibm.com/developerworks/opensource/library/os-osgiblueprint/
+http://aries.apache.org/modules/blueprint.html
+http://camel.apache.org/bean-binding.html
+http://camel.apache.org/enterprise-integration-patterns.html
+http://davidmasclet.gisgraphy.com/post/2009/11/26/10-minutes-pour...comprendre-OSGI
+http://servicemix.apache.org/docs/6.x/developers-guide/custom-distribution.html
+http://john.sh/blog/2010/11/30/deploying-osgi-feature-repositories-to-a-maven-repository.html
+http://jibx.sourceforge.net/jibx-maven-plugin/webservice.html
+https://karaf.apache.org/manual/latest-3.0.x/users-guide/provisioning.html
+https://www.osgi.org/developer/architecture/
+https://davidvaleri.wordpress.com/2013/09/17/integration-testing-osgi-bundles-in-apache-karafservicemix-with-pax-exam-3/
+https://ops4j1.jira.com/wiki/display/paxexam/Concepts
 
