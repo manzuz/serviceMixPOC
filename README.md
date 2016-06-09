@@ -129,38 +129,38 @@ Here are the steps to follow:
 
 
 ---
-
-## 2. Multi-versioned dependency management
-
-TODO
-
----
-
-## 3. External ActiveMQ broker usage ##
+Multi-versioned dependency management
+## 2. External ActiveMQ broker usage
 
 TODO
 
 ---
 
-## 4. JPA support
+## 3. JPA support
 
 TODO
 
 ---
 
-## 5. Integration tests via PaxExam ##
+## 4. XA transaction support
 
 TODO
 
 ---
 
-## 6. XA transaction support
+## 5. Connect lifecycle java implementation
 
 TODO
 
 ---
 
-## 7. Connect lifecycle java implementation
+## 6. AS calls
+
+TODO
+
+---
+
+## 7. Complete connect message listener
 
 TODO
 
@@ -172,9 +172,10 @@ TODO
 
 It will be necessary to think about project structures and deployment processes to manage genericity and ability to decline different implementations per customer.
 
-## 9. Other topics
+## 9. Integration tests via PaxExam
 
-- Jibx stubbing
+## 10. Other topics
+
 
 TODO
 
