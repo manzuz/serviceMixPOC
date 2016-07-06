@@ -9,12 +9,6 @@
 
 	<camel:camelContext id="camel-client">
 		<camel:template id="camelTemplate" />
-
-		<!-- <camel:route> -->
-		<!-- <camel:from uri="jms:queue:SBR_14_1_EDI.TO.CC" /> -->
-		<!-- <camel:to uri="jms:queue:manu_test" /> -->
-		<!-- </camel:route> -->
-
 	</camel:camelContext>
 
 	<!-- Camel JMSProducer to be able to send messages to a remote Active MQ 

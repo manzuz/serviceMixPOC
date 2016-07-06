@@ -15,8 +15,8 @@ public class Publisher {
 
 //		 publishInLocalQueue(10);
 //		 publishInLocalDir(10);
-		// publishInRemoteQueue(1);
-		 publishInLocalTransformQueue(10);
+		 publishInRemoteQueue(30);
+//		 publishInLocalTransformQueue(10);
 
 	}
 
@@ -53,7 +53,7 @@ public class Publisher {
 		System.out.println("************* publishInRemoteQueue");
 		System.out.println("Notice this client requires that the CamelServer is already running!");
 		for (int i = 1; i <= nbThreads; i++) {
-			MQPublisherThread pt = new MQPublisherThread("jms:queue:FUSE_SBR_14_1_EDI.TO.CC", "edifact-sample.txt",
+			MQPublisherThread pt = new MQPublisherThread("jms:queue:SMX_SBR_14_1_EDI", "edifact-sample.txt",
 					camelContext);
 			pt.start();
 		}

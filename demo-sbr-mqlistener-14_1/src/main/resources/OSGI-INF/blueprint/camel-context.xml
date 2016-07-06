@@ -9,10 +9,16 @@
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
 	<camelContext id="sbr14_1_edi_connector" xmlns="http://camel.apache.org/schema/blueprint">
+	
+		<!-- Pour définir une route en java et non en blueprint : -->
 		<!-- <routeBuilder ref="SBR_Route_v14_1_EDI" /> -->
+		
 		<route>
-			<!-- <from uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
-			<from uri="activemq:LOCAL_SBR_14_1_EDI" />
+			<!-- Internal Active MQ broker -->
+			<!-- <from uri="activemq:LOCAL_SBR_14_1_EDI" />-->
+			
+			<!-- External Active MQ server (cf bean "jms" dans le fichier activemq-config.xml) -->
+			<from uri="jms:queue:SMX_SBR_14_1_EDI" />
 			<!-- <transacted/> -->
 			<to uri="bean:SBR_14_1_EDI_SERVICE" />
 <!-- 			<log message="Transformed body:{body}" /> -->
@@ -29,5 +35,6 @@
 		</route>
 
 	</camelContext>
+
 
 </blueprint>
