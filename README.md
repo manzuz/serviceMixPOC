@@ -136,7 +136,7 @@ https://docs.google.com/presentation/d/1NTXjhrjQCDqpFP3k3yFWvSHkXQbKTkeY53lndjXR
 
 ## 2. External ActiveMQ broker usage
 
-TODO
+Ok
 
 ---
 
