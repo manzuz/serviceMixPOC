@@ -79,44 +79,35 @@ Here are the steps to follow:
 
 1. Clone this repo to your windows workstation
 
-2. Download ServiceMix 6.1.1 here : http://www.apache.org/dyn/closer.lua/servicemix/servicemix-6/6.1.1/apache-servicemix-6.1.1.zip
 
-3. Extract the ServiceMix 6.1.1 archive you downloaded in your root folder (C:\apache-servicemix-6.1.1)
-
-4. (optional) Create an eclipse workspace and import the above projects.
-
-5. Start ServiceMix by running the following command :
-
-        C:\apache-servicemix-6.1.1\bin\servicemix
-       
-6. Create the following folder:
-
-        C:\apache-servicemix-6.1.1\ftp\incoming\edi
-
-7. Build and deploy the demo application archive (.kar) via maven by launching the following commands in your windows shell (*you can do the same thing inside eclipse if you didn't skip the step 4*):
+2. Build and deploy the demo application via maven by launching the following commands
 
         cd <your-git-repositories-root-folder>/serviceMix/demo-parent
         mvn clean install
         cd <your-git-repositories-root-folder>/serviceMix/demo-deployer
-        mvn clean install -Pconztanz
+        mvn clean install
 
-  *Note : -Pconztanz is not necessary if your maven settings.xml is configured to use conztanz as default profile.*
 
-  After the build finishes, a file named **demo-kar-0.0.1-SNAPSHOT.kar** should appear in your **C:\apache-servicemix-6.1.1\deploy** folder, and you should see ServiceMix detecting the newly deployed archive. To see these logs, just run this command in the Karaf console:
+ After the build finishes, the new folder **C:\apache-servicemix-6.1.1** should have been created on your filesystem. It contains the full servicemix distribution, with the conztanz demo archive embedded in the **C:\apache-servicemix-6.1.1\deploy** subfolder.
+
+
+3. Start ServiceMix by running the following command :
+
+        C:\apache-servicemix-6.1.1\bin\servicemix
+
+ The Karaf console should open. To see the logs, just run this command in the Karaf console:
 
         log:tail
 
 
-8. Post the sample SBR file:
+4. Post the sample SBR file:
 
 - To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
 
 - To do this using windows explorer, download [this file][2] and copy it into your **C:\apache-servicemix-6.1.1\ftp\incoming\edi** folder.
 
-[1]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/_requisites/features.xml>
 [2]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/demo-sbr-publisher/src/main/resources/edifact-sample.txt>
   
-
    
 ### OSGI implementation - details
 
