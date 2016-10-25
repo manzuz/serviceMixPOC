@@ -26,6 +26,8 @@
 	</modules>
 
 	<profiles>
+	
+		<!-- Version beta : Profil qu'on pourra utiliser pour définir une configuration particulière (à compléter). -->
 		<profile>
 			<id>ctzTest</id>
 			<properties>
@@ -63,6 +65,9 @@
 
 
 	<!-- Custom distribution cf : http://servicemix.apache.org/docs/5.x/developers-guide/custom-distribution.html -->
+	<!-- Cette partie est inutilisée pour l'instant mais montre comment construire une distrib custom de service mix en y ajoutant la couche conztanz
+	Actuellement, le clean install se contente de récupérer le zip de la distrib servicemix, de le décompresser, puis d'y copier le kar généré.
+	 -->
 	<build>
 		<plugins>
 			<plugin>
@@ -101,7 +106,6 @@
 								<artifactItem>
 									<groupId>com.conztanz.servicemix</groupId>
 									<artifactId>demo-kar</artifactId>
-									<!-- <version>${project.version}</version> -->
 									<type>kar</type>
 									<outputDirectory>${servicemix.local.target.deploydir}</outputDirectory>
 									<!-- <destFileName>serviceMixConztanz.kar</destFileName> -->
@@ -111,7 +115,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
 
 			<!-- TODO FTP folder creation \ftp\incoming\edi -->
 
