@@ -22,7 +22,7 @@
 		<module>../demo-sbr-cleaner</module>
 		<module>../demo-sbr-ftplistener-14_1</module>
 		<module>../demo-sbr-mqlistener-14_1</module>
-<!-- 		<module>../demo-sbr-publisher</module> -->
+		<module>../demo-sbr-publisher</module>
 		<module>../demo-kar</module>
 <!-- 		<module>../demo-fab</module> -->
 	</modules>

@@ -5,7 +5,7 @@
 	<!-- Parent POM definition -->
 	<parent>
 		<groupId>com.conztanz</groupId>
-		<version>0.2.0-GAMMA</version>
+		<version>0.2.1</version>
 		<artifactId>framework</artifactId>
 	</parent>
 
@@ -16,6 +16,8 @@
 
 	<properties>
 
+		<framework.version>0.2.1</framework.version>
+		
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 
@@ -42,6 +44,8 @@
 
 		<slf4j.version>1.7.12</slf4j.version>
 
+		<activemq.broker.url>activemq-cz-test.conztanz.com:61616</activemq.broker.url>
+		<jms.concurrent.consumers>10</jms.concurrent.consumers>
 	</properties>
 
 	<build>
