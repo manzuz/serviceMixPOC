@@ -22,14 +22,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.conztanz</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>demo-sbr-cleaner</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.conztanz</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>demo-commons</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<!-- <dependency> -->

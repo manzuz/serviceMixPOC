@@ -8,16 +8,18 @@
 	<packaging>pom</packaging>
 
 	<properties>
+		<target.output.directory>target/dependency</target.output.directory>
 		<servicemix.version>6.1.1</servicemix.version>
-		<servicemix.local.target.basedir>target/dependency/apache-servicemix-${servicemix.version}</servicemix.local.target.basedir>
+		<servicemix.rootfolder>apache-servicemix-${servicemix.version}</servicemix.rootfolder>
+		<servicemix.local.target.basedir>${target.output.directory}/${servicemix.rootfolder}</servicemix.local.target.basedir>
 		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
 	</properties>
 
 	<modules>
 		<module>../demo-parent</module>
 		<module>../demo-commons</module>
-		<module>../demo-sbr-transform-14_1</module>
 		<module>../demo-sbr-cleaner</module>
+		<module>../demo-sbr-transform-14_1</module>
 		<module>../demo-sbr-ftplistener-14_1</module>
 		<module>../demo-sbr-mqlistener-14_1</module>
 		<module>../demo-sbr-publisher</module>
@@ -26,23 +28,70 @@
 	</modules>
 
 	<profiles>
-	
-		<!-- Version beta : Profil qu'on pourra utiliser pour définir une configuration particulière (à compléter). -->
+
+		<!-- PROFIL workstation (=> en local) -->
+
+		<profile>
+			<id>workstation</id>
+			<properties>
+				<env>workstation</env>
+				<envConfigFolder>${env}</envConfigFolder>
+				<servicemix.install.filesystem.parentdir>C:\\</servicemix.install.filesystem.parentdir>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>workstation</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<version>1.8</version>
+						<executions>
+							<execution>
+								<id>deployOnWorkstation</id>
+								<phase>process-resources</phase>
+								<configuration>
+									<target>
+										<copy includeEmptyDirs="true"
+											todir="${servicemix.install.filesystem.parentdir}">
+											<fileset dir="${target.output.directory}" includes="**/*" />
+										</copy>
+									</target>
+								</configuration>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+		<!-- PROFIL ctzTest -->
+
 		<profile>
 			<id>ctzTest</id>
 			<properties>
 				<env>ctzTest</env>
 				<envConfigFolder>${env}</envConfigFolder>
-				<activemq.broker.url>activemq-cz-test.conztanz.com:61616</activemq.broker.url>
+				<servicemix.install.filesystem.parentdir>/opt/conztanz</servicemix.install.filesystem.parentdir>
 			</properties>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<activeByDefault>false</activeByDefault>
 				<property>
 					<name>env</name>
 					<value>ctzTest</value>
 				</property>
 			</activation>
 		</profile>
+
+
+
 	</profiles>
 
 	<dependencies>
@@ -65,9 +114,10 @@
 
 
 	<!-- Custom distribution cf : http://servicemix.apache.org/docs/5.x/developers-guide/custom-distribution.html -->
-	<!-- Cette partie est inutilisée pour l'instant mais montre comment construire une distrib custom de service mix en y ajoutant la couche conztanz
-	Actuellement, le clean install se contente de récupérer le zip de la distrib servicemix, de le décompresser, puis d'y copier le kar généré.
-	 -->
+	<!-- Cette partie est inutilisée pour l'instant mais montre comment construire 
+		une distrib custom de service mix en y ajoutant la couche conztanz Actuellement, 
+		le clean install se contente de récupérer le zip de la distrib servicemix, 
+		de le décompresser, puis d'y copier le kar généré. -->
 	<build>
 		<plugins>
 			<plugin>
@@ -87,7 +137,7 @@
 									<groupId>org.apache.servicemix</groupId>
 									<artifactId>apache-servicemix</artifactId>
 									<type>zip</type>
-									<outputDirectory>target/dependency</outputDirectory>
+									<outputDirectory>${target.output.directory}</outputDirectory>
 								</artifactItem>
 							</artifactItems>
 						</configuration>

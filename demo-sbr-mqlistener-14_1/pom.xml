@@ -19,12 +19,13 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>com.conztanz</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>demo-commons</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.conztanz</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>demo-sbr-transform-14_1</artifactId>
 			<version>${project.version}</version>
 		</dependency>
