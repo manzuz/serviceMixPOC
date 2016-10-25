@@ -19,4 +19,14 @@
 		<property name="brokerURL" value="tcp://${activemq.broker.url}" />
 	</bean>
 
+    <cm:property-placeholder persistent-id="com.conztanz.activemq">
+        <cm:default-properties>
+        	<!-- tcp://${activemq.broker.url} est une valeur par défaut venant d'une property maven dans le pom parent
+        	Cette valeur sera appliquée si le placholder n'est pas chargé
+        	(c-à-d. si le fichier de configuration n'a pas été trouvé ou la clé n'a pas été trouvée dans le fichier)
+        	 -->
+            <cm:property name="activemq.broker.url" value="tcp://${activemq.broker.url}"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+    
 </blueprint>

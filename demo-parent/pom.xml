@@ -9,15 +9,17 @@
 		<artifactId>framework</artifactId>
 	</parent>
 
+	<groupId>com.conztanz.servicemix</groupId>
 	<artifactId>demo-parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
 	<packaging>pom</packaging>
 	<description>ServiceMix POC demo parent pom</description>
 
 	<properties>
 
 		<framework.version>0.2.1</framework.version>
-		
+
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 
@@ -47,6 +49,27 @@
 		<activemq.broker.url>activemq-cz-test.conztanz.com:61616</activemq.broker.url>
 		<jms.concurrent.consumers>10</jms.concurrent.consumers>
 	</properties>
+
+
+	<!-- Pour tests mais mauvaise pratique car cela implique de rebuilder l'artefact 
+		en fonction de l'environnement cible! -->
+	<!-- <profiles> -->
+	<!-- <profile> -->
+	<!-- <id>ctzTest</id> -->
+	<!-- <properties> -->
+	<!-- <env>ctzTest</env> -->
+	<!-- <activemq.broker.url>activemq-cz-test.conztanz.com:61616</activemq.broker.url> -->
+	<!-- </properties> -->
+	<!-- <activation> -->
+	<!-- <activeByDefault>true</activeByDefault> -->
+	<!-- <property> -->
+	<!-- <name>env</name> -->
+	<!-- <value>ctzTest</value> -->
+	<!-- </property> -->
+	<!-- </activation> -->
+	<!-- </profile> -->
+	<!-- </profiles> -->
+
 
 	<build>
 

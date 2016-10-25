@@ -3,22 +3,18 @@
 <!-- Fichier de configuration pour l'archive de demo (.kar) -->
 <features name="demo-features-repo" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
 
-	<!-- Enregistrera la feature pour smooks dans le registre de karaf, quand le kar sera déployé -->
-	<repository>mvn:org.milyn/milyn-smooks-all/1.5/xml/features</repository>
-	
 	<feature name="demo-kar" version="0.0.1-SNAPSHOT" description="POC - Demo karaf archive">
 
-		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
-		<feature version="1.5.0">smooks</feature>
-
-		<bundle>mvn:com.conztanz/demo-commons/0.0.1-SNAPSHOT</bundle>
-		<bundle>mvn:com.conztanz/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
-		<bundle>mvn:com.conztanz/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
-		<bundle>mvn:com.conztanz/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
-		<bundle>mvn:com.conztanz/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-commons/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
 		
 		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5</bundle>
+		<!-- Si besoin, installera et démarrera la feature smooks 1.5 quand le kar sera déployé -->
+		<feature version="1.5">smooks</feature>
 
 		<!-- Permet de créer des bundles à partir de plain jars, et de les embarquer dans le kar -->
 		<bundle>wrap:mvn:org.jibx/jibx-run/1.2.6$Bundle-SymbolicName=JibxRun&amp;Bundle-Version=1.2.6</bundle>

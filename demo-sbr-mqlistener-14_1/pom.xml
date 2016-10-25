@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.conztanz</groupId>
+		<groupId>com.conztanz.servicemix</groupId>
 		<artifactId>demo-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
@@ -12,6 +12,9 @@
 	<artifactId>demo-sbr-mqlistener-14_1</artifactId>
 	<packaging>bundle</packaging>
 	<description>MQ listener service for SBR 14.1 messages</description>
+
+
+
 
 	<dependencies>
 
@@ -39,7 +42,7 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						
+
 						<!-- This header declares the packages that are visible outside the 
 							bundle. If a package is not declared in this header, it is visible only within 
 							the bundle. <Export-Package> is now assumed to be the set of packages in 

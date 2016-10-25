@@ -2,17 +2,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-
-	<!-- <parent> -->
-	<!-- <groupId>com.conztanz</groupId> -->
-	<!-- <artifactId>demo-parent</artifactId> -->
-	<!-- <version>0.0.1-SNAPSHOT</version> -->
-	<!-- </parent> -->
-
-	<groupId>com.conztanz</groupId>
+	<groupId>com.conztanz.servicemix</groupId>
 	<artifactId>demo-deployer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
+	<properties>
+		<servicemix.version>6.1.1</servicemix.version>
+		<servicemix.local.target.basedir>target/dependency/apache-servicemix-${servicemix.version}</servicemix.local.target.basedir>
+		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
+	</properties>
 
 	<modules>
 		<module>../demo-parent</module>
@@ -23,8 +22,99 @@
 		<module>../demo-sbr-mqlistener-14_1</module>
 		<module>../demo-sbr-publisher</module>
 		<module>../demo-kar</module>
-<!-- 		<module>../demo-fab</module> -->
+		<!-- <module>../demo-fab</module> -->
 	</modules>
 
+	<profiles>
+		<profile>
+			<id>ctzTest</id>
+			<properties>
+				<env>ctzTest</env>
+				<envConfigFolder>${env}</envConfigFolder>
+				<activemq.broker.url>activemq-cz-test.conztanz.com:61616</activemq.broker.url>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>ctzTest</value>
+				</property>
+			</activation>
+		</profile>
+	</profiles>
 
+	<dependencies>
+
+		<!-- Cf repository http://central.maven.org/maven2/org/apache/servicemix/apache-servicemix/6.1.1/ -->
+		<dependency>
+			<groupId>org.apache.servicemix</groupId>
+			<artifactId>apache-servicemix</artifactId>
+			<version>${servicemix.version}</version>
+			<type>zip</type>
+		</dependency>
+
+		<dependency>
+			<groupId>com.conztanz.servicemix</groupId>
+			<artifactId>demo-kar</artifactId>
+			<version>${project.version}</version>
+			<type>kar</type>
+		</dependency>
+	</dependencies>
+
+
+	<!-- Custom distribution cf : http://servicemix.apache.org/docs/5.x/developers-guide/custom-distribution.html -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Uncompress the standard servicemix distribution -->
+						<id>unpack-servicemix</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.apache.servicemix</groupId>
+									<artifactId>apache-servicemix</artifactId>
+									<type>zip</type>
+									<outputDirectory>target/dependency</outputDirectory>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+
+					<execution>
+						<id>copy-kar</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<!-- Define here the artifacts which should be considered in the assembly -->
+							<!-- For instance, the branding jar -->
+							<artifactItems>
+								<artifactItem>
+									<groupId>com.conztanz.servicemix</groupId>
+									<artifactId>demo-kar</artifactId>
+									<!-- <version>${project.version}</version> -->
+									<type>kar</type>
+									<outputDirectory>${servicemix.local.target.deploydir}</outputDirectory>
+									<!-- <destFileName>serviceMixConztanz.kar</destFileName> -->
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<!-- TODO FTP folder creation \ftp\incoming\edi -->
+
+		</plugins>
+	</build>
 </project>
