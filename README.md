@@ -93,15 +93,7 @@ Here are the steps to follow:
 
         C:\apache-servicemix-6.1.1\ftp\incoming\edi
 
-7. Download [this file][1] in a temporary folder (C:\tmp in our example) and add the smooks feature to ServiceMix by running this command in Karaf console:
-
-        feature:repo-add file:C:/tmp/features.xml
-        
-8. Install the smooks feature by running this command in Karaf console:
-
-        feature:install smooks
-
-9. Build and deploy the demo application archive (.kar) via maven by launching the following commands in your windows shell (*you can do the same thing inside eclipse if you didn't skip the step 4*):
+7. Build and deploy the demo application archive (.kar) via maven by launching the following commands in your windows shell (*you can do the same thing inside eclipse if you didn't skip the step 4*):
 
         cd <your-git-repositories-root-folder>/serviceMix/demo-parent
         mvn clean install
@@ -115,7 +107,7 @@ Here are the steps to follow:
         log:tail
 
 
-10. Post the sample SBR file:
+8. Post the sample SBR file:
 
 - To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
 
