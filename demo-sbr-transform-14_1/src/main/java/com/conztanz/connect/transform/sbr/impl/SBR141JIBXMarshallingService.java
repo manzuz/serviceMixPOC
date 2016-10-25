@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.log4j.Logger;
 
 import com.conztanz.connect.transform.sbr.ISBRMarshaller141Service;
-import com.conztanz.jibx.sbr.service.ForPnrHandling;
+import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
 public class SBR141JIBXMarshallingService implements ISBRMarshaller141Service {
 

@@ -11,8 +11,8 @@ import org.apache.log4j.Logger;
 import com.conztanz.connect.mq.sbr.service.ISBR141EDIMessageListenerService;
 import com.conztanz.connect.transform.sbr.ISBRMarshaller141Service;
 import com.conztanz.connect.transform.sbr.ISBRTransformer141EDItoXML;
-import com.conztanz.jibx.sbr.service.ForPnrHandling;
 import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
+import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
 //@Service(value = "SBR_14_1_EDI_SERVICE")
 public class SBR141EDIMessageListenerService implements ISBR141EDIMessageListenerService {

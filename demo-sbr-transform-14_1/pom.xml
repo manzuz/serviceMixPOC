@@ -12,7 +12,7 @@
 	<artifactId>demo-sbr-transform-14_1</artifactId>
 	<packaging>bundle</packaging>
 	<description>SBR 14.1 EDIfact to XML transformer service</description>
-	
+
 	<dependencies>
 
 		<dependency>
@@ -32,9 +32,15 @@
 			<artifactId>demo-commons</artifactId>
 		</dependency>
 
+		<!-- <dependency> -->
+		<!-- <groupId>com.conztanz</groupId> -->
+		<!-- <artifactId>demo-sbr-stub-14_1</artifactId> -->
+		<!-- </dependency> -->
+
 		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>demo-sbr-stub-14_1</artifactId>
+			<groupId>com.conztanz.third-party.sbr-stub</groupId>
+			<artifactId>sbr-stub-v14_1</artifactId>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
