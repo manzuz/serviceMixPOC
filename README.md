@@ -30,7 +30,9 @@ The aim of this POC is to show how Conztanz ONEConnect could be implemented by t
 
 10) Integration tests via PaxExam
 
-11) Links
+11) Effective logging
+
+12) Links
 
 
 
@@ -173,7 +175,13 @@ TODO
 
 ---
 
-## 11. Resources links
+## 11. Effective logging
+
+TODO
+
+---
+
+## 12. Resources links
 
 http://servicemix.apache.org/
 
