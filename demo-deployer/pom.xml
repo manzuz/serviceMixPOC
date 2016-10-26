@@ -147,12 +147,11 @@
 			</build>
 		</profile>
 
-
 	</profiles>
 
 	<dependencies>
 
-		<!-- Cf repository http://central.maven.org/maven2/org/apache/servicemix/apache-servicemix/6.1.1/ -->
+		<!-- Cf repository http://central.maven.org/maven2/org/apache/servicemix/apache-servicemix -->
 		<dependency>
 			<groupId>org.apache.servicemix</groupId>
 			<artifactId>apache-servicemix</artifactId>
@@ -167,33 +166,6 @@
 			<type>kar</type>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.eclipse</groupId> -->
-<!-- 			<artifactId>org.eclipse.osgi</artifactId> -->
-<!-- 			<version>3.8.0.v20120529-1548</version> -->
-<!-- 		</dependency> -->
-
-		<!-- <dependency> -->
-		<!-- <groupId>org.milyn</groupId> -->
-		<!-- <artifactId>milyn-smooks-all</artifactId> -->
-		<!-- <version>1.5</version> -->
-		<!-- <type>xml</type> -->
-		<!-- <classifier>features</classifier> -->
-		<!-- </dependency> -->
-
 	</dependencies>
-
-	<repositories>
-		<!-- <repository> -->
-		<!-- <id>adobe</id> -->
-		<!-- <name>adobe</name> -->
-		<!-- <url>https://repo.adobe.com/nexus/content/groups/public/</url> -->
-		<!-- </repository> -->
-		<!-- <repository> -->
-		<!-- <id>atlassian</id> -->
-		<!-- <name>Codehaus Snapshots</name> -->
-		<!-- <url>https://maven.atlassian.com/content/groups/public/</url> -->
-		<!-- </repository> -->
-	</repositories>
 
 </project>
