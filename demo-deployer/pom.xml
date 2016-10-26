@@ -13,7 +13,8 @@
 		<servicemix.rootfolder>apache-servicemix-${servicemix.version}</servicemix.rootfolder>
 		<servicemix.local.target.basedir>${target.output.directory}/${servicemix.rootfolder}</servicemix.local.target.basedir>
 		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
-		<ftp.incoming.dir>${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}/ftp/incoming/edi</ftp.incoming.dir>
+		<!-- <servicemix.install.filesystem.parentdir>C:</servicemix.install.filesystem.parentdir> -->
+		<!-- <ftp.incoming.dir>${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}/ftp/incoming/edi</ftp.incoming.dir> -->
 	</properties>
 
 	<modules>
@@ -47,21 +48,92 @@
 				</property>
 			</activation>
 			<build>
+
 				<plugins>
+
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+
+
+
+							<!-- Uncompress the standard servicemix distribution -->
+							<execution>
+								<id>unpackServicemix</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>unpack</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.apache.servicemix</groupId>
+											<artifactId>apache-servicemix</artifactId>
+											<type>zip</type>
+											<outputDirectory>${target.output.directory}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+
+
+							<!-- Embed kar in deploy folder -->
+							<execution>
+								<id>copyKar</id>
+								<phase>generate-resources</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>com.conztanz.servicemix</groupId>
+											<artifactId>demo-kar</artifactId>
+											<type>kar</type>
+											<outputDirectory>${servicemix.local.target.deploydir}</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+								</configuration>
+							</execution>
+
+
+						</executions>
+					</plugin>
+
+
 					<plugin>
 						<artifactId>maven-antrun-plugin</artifactId>
 						<version>1.8</version>
 						<executions>
 							<execution>
-								<id>deployOnWorkstation</id>
+								<id>prepareSpecificFiles</id>
 								<phase>process-resources</phase>
 								<configuration>
 									<target>
-										<copy includeEmptyDirs="true"
+
+										<!-- Copy src/main/resources/** folder content in service mix 
+											distribution -->
+										<copy includeEmptyDirs="true" failonerror="false"
+											todir="${servicemix.local.target.basedir}">
+											<fileset dir="src/main/resources" includes="**/*" />
+										</copy>
+
+										<!-- Create FTP incoming dir in service mix distribution -->
+										<mkdir dir="${servicemix.local.target.basedir}/ftp/incoming" />
+										
+										<!-- Backup previous install -->
+										<move verbose="true" failonerror="false"
+											file="${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}"
+											tofile="${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}_previous" />
+
+										<!-- Copy servicemix distribution to local filesystem -->
+										<copy verbose="true" includeEmptyDirs="true"
 											todir="${servicemix.install.filesystem.parentdir}">
 											<fileset dir="${target.output.directory}" includes="**/*" />
 										</copy>
-										<mkdir dir="${ftp.incoming.dir}"/>
+																				
 									</target>
 								</configuration>
 								<goals>
@@ -70,28 +142,11 @@
 							</execution>
 						</executions>
 					</plugin>
+
+
 				</plugins>
 			</build>
 		</profile>
-
-		<!-- PROFIL ctzTest -->
-
-		<profile>
-			<id>ctzTest</id>
-			<properties>
-				<env>ctzTest</env>
-				<envConfigFolder>${env}</envConfigFolder>
-				<servicemix.install.filesystem.parentdir>/opt/conztanz</servicemix.install.filesystem.parentdir>
-			</properties>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-				<property>
-					<name>env</name>
-					<value>ctzTest</value>
-				</property>
-			</activation>
-		</profile>
-
 
 
 	</profiles>
@@ -112,62 +167,17 @@
 			<version>${project.version}</version>
 			<type>kar</type>
 		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.milyn</groupId> -->
+<!-- 			<artifactId>milyn-smooks-all</artifactId> -->
+<!-- 			<version>1.5</version> -->
+<!-- 			<type>xml</type> -->
+<!-- 			<classifier>features</classifier> -->
+<!-- 		</dependency> -->
+
 	</dependencies>
 
 
-	<!-- Custom distribution cf : http://servicemix.apache.org/docs/5.x/developers-guide/custom-distribution.html -->
-	<!-- Cette partie est inutilisée pour l'instant mais montre comment construire 
-		une distrib custom de service mix en y ajoutant la couche conztanz Actuellement, 
-		le clean install se contente de récupérer le zip de la distrib servicemix, 
-		de le décompresser, puis d'y copier le kar généré. -->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<!-- Uncompress the standard servicemix distribution -->
-						<id>unpack-servicemix</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>org.apache.servicemix</groupId>
-									<artifactId>apache-servicemix</artifactId>
-									<type>zip</type>
-									<outputDirectory>${target.output.directory}</outputDirectory>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
 
-					<execution>
-						<id>copy-kar</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<!-- Define here the artifacts which should be considered in the assembly -->
-							<!-- For instance, the branding jar -->
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.conztanz.servicemix</groupId>
-									<artifactId>demo-kar</artifactId>
-									<type>kar</type>
-									<outputDirectory>${servicemix.local.target.deploydir}</outputDirectory>
-									<!-- <destFileName>serviceMixConztanz.kar</destFileName> -->
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-		</plugins>
-	</build>
 </project>
