@@ -9,7 +9,7 @@
 
 	<properties>
 		<target.output.directory>target/dependency</target.output.directory>
-		<servicemix.version>6.1.1</servicemix.version>
+		<servicemix.version>7.0.0.M2</servicemix.version>
 		<servicemix.rootfolder>apache-servicemix-${servicemix.version}</servicemix.rootfolder>
 		<servicemix.local.target.basedir>${target.output.directory}/${servicemix.rootfolder}</servicemix.local.target.basedir>
 		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
@@ -167,11 +167,11 @@
 			<type>kar</type>
 		</dependency>
 
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>org.eclipse.osgi</artifactId>
-			<version>3.8.0.v20120529-1548</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.eclipse</groupId> -->
+<!-- 			<artifactId>org.eclipse.osgi</artifactId> -->
+<!-- 			<version>3.8.0.v20120529-1548</version> -->
+<!-- 		</dependency> -->
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.milyn</groupId> -->
