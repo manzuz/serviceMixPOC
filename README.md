@@ -186,8 +186,6 @@ TODO
 
 http://servicemix.apache.org/
 
-http://servicemix.apache.org/docs/6.x/
-
 http://www.ibm.com/developerworks/opensource/library/os-osgiblueprint/
 
 http://aries.apache.org/modules/blueprint.html
