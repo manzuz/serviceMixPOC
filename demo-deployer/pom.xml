@@ -113,8 +113,7 @@
 								<configuration>
 									<target>
 
-										<!-- Copy src/main/resources/** folder content in service mix 
-											distribution -->
+										<!-- Copy src/main/resources/** folder content in service mix distribution -->
 										<copy includeEmptyDirs="true" failonerror="false"
 											todir="${servicemix.local.target.basedir}">
 											<fileset dir="src/main/resources" includes="**/*" />
@@ -122,7 +121,7 @@
 
 										<!-- Create FTP incoming dir in service mix distribution -->
 										<mkdir dir="${servicemix.local.target.basedir}/ftp/incoming" />
-										
+
 										<!-- Backup previous install -->
 										<move verbose="true" failonerror="false"
 											file="${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}"
@@ -133,7 +132,7 @@
 											todir="${servicemix.install.filesystem.parentdir}">
 											<fileset dir="${target.output.directory}" includes="**/*" />
 										</copy>
-																				
+
 									</target>
 								</configuration>
 								<goals>
@@ -168,16 +167,33 @@
 			<type>kar</type>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.milyn</groupId> -->
-<!-- 			<artifactId>milyn-smooks-all</artifactId> -->
-<!-- 			<version>1.5</version> -->
-<!-- 			<type>xml</type> -->
-<!-- 			<classifier>features</classifier> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>org.eclipse.osgi</artifactId>
+			<version>3.8.0.v20120529-1548</version>
+		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.milyn</groupId> -->
+		<!-- <artifactId>milyn-smooks-all</artifactId> -->
+		<!-- <version>1.5</version> -->
+		<!-- <type>xml</type> -->
+		<!-- <classifier>features</classifier> -->
+		<!-- </dependency> -->
 
 	</dependencies>
 
-
+	<repositories>
+		<!-- <repository> -->
+		<!-- <id>adobe</id> -->
+		<!-- <name>adobe</name> -->
+		<!-- <url>https://repo.adobe.com/nexus/content/groups/public/</url> -->
+		<!-- </repository> -->
+		<!-- <repository> -->
+		<!-- <id>atlassian</id> -->
+		<!-- <name>Codehaus Snapshots</name> -->
+		<!-- <url>https://maven.atlassian.com/content/groups/public/</url> -->
+		<!-- </repository> -->
+	</repositories>
 
 </project>
