@@ -90,12 +90,12 @@ Here are the steps to follow:
         mvn clean install
 
 
- After the build finishes, the new folder **C:\apache-servicemix-6.1.1** should have been created on your filesystem. It contains the full servicemix distribution, with the conztanz demo archive embedded in the **C:\apache-servicemix-6.1.1\deploy** subfolder.
+ After the build finishes, the new folder **C:\apache-servicemix-7.0.0.M2** should have been created on your filesystem. It contains the full servicemix distribution, with the conztanz demo archive embedded in the **C:\apache-servicemix-7.0.0.M2\deploy** subfolder.
 
 
 3. Start ServiceMix by running the following command :
 
-        C:\apache-servicemix-6.1.1\bin\servicemix
+        C:\apache-servicemix-7.0.0.M2\bin\servicemix
 
  The Karaf console should open. To see the logs, just run this command in the Karaf console:
 
@@ -104,9 +104,12 @@ Here are the steps to follow:
 
 4. Post the sample SBR file:
 
-- To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
+  - To do this using eclipse : right click on **/demo-sbr-publisher/src/main/java/com/conztanz/publisher/Publisher.java**, Run as... Java application.
 
-- To do this using windows explorer, download [this file][2] and copy it into your **C:\apache-servicemix-6.1.1\ftp\incoming\edi** folder.
+  - To do this using windows explorer, download [this file][2] and copy it into your **C:\apache-servicemix-7.0.0.M2\ftp\incoming\edi** folder.
+
+
+5. To shutdown servicemix, type CTRL+D and wait for the console to close.
 
 [2]: <https://raw.githubusercontent.com/manzuz/serviceMixPOC/master/demo-sbr-publisher/src/main/resources/edifact-sample.txt>
   
