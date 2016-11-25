@@ -1,30 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Fichier de configuration pour l'archive de demo (.kar) -->
-<features name="demo-features-repo" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
+		<features name="demo-kar-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0">
 
 	<!-- Enregistrera la feature pour smooks dans le registre de karaf, quand le kar sera déployé -->
 	<repository>mvn:org.milyn/milyn-smooks-all/1.5/xml/features</repository>
-	
-	<feature name="demo-kar" version="0.0.1-SNAPSHOT" description="POC - Demo karaf archive">
+	<repository>mvn:org.apache.cxf.karaf/apache-cxf/3.1.6/xml/features</repository>
+	<repository>mvn:org.apache.karaf.features/enterprise/4.0.5/xml/features</repository>
+	<repository>mvn:org.ops4j.pax.jdbc/pax-jdbc-features/0.8.0/xml/features</repository>
+
+<!-- 	<repository>mvn:com.conztanz.servicemix/demo-conztanz-persistence/${project.version}/xml/features</repository> -->
+<!-- 	<repository>mvn:com.conztanz.servicemix/demo-conztanz-persistence/${project.version}/xml</repository> -->
+
+		<feature name="demo-kar" version="${project.version}" description="POC - Demo karaf archive">
 
 		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
 		<feature version="1.5.0">smooks</feature>
+		<feature>jdbc</feature>
+		<feature>pax-jdbc-spec</feature>
+		<feature>transaction</feature>
+		<feature>jndi</feature>
+		<feature>pax-jdbc-postgresql</feature>
+		<feature>pax-jdbc-pool-dbcp2</feature>
+		<feature>pax-jdbc-config</feature>
+		<feature version="2.3.0">jpa</feature>	
+		<feature version="4.3.6.Final">hibernate</feature>
+		<feature version="0.12.0">pax-cdi</feature>
+		
+		
+
+
 
 		<bundle>mvn:com.conztanz.servicemix/demo-commons/0.0.1-SNAPSHOT</bundle>
+<!-- 		<bundle>mvn:com.conztanz.servicemix/demo-lifecycle/${project.version}</bundle> -->
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-business/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/demo-persistence-jpa/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
+		
 		
 		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5</bundle>
 
 		<!-- Permet de créer des bundles à partir de plain jars, et de les embarquer dans le kar -->
 		<bundle>wrap:mvn:org.jibx/jibx-run/1.2.6$Bundle-SymbolicName=JibxRun&amp;Bundle-Version=1.2.6</bundle>
-		<bundle>wrap:mvn:com.conztanz/framework-connect-commons/0.2.1$Bundle-SymbolicName=FrameworkConnect&amp;Bundle-Version=0.2.1</bundle>
+		<bundle>wrap:mvn:com.conztanz/framework-connect-commons/0.2.1$Bundle-SymbolicName=FrameworkConnectCommons&amp;Bundle-Version=0.2.1</bundle>
 		<bundle>wrap:mvn:com.conztanz.third-party.sbr-stub/sbr-stub-v14_1/1.0.0$Bundle-SymbolicName=SBR_Stub14_1&amp;Bundle-Version=1.0.0</bundle>
+		
 
+		
+<!-- 		<bundle>wrap:mvn:com.conztanz/framework-persistence/${framework.version}$Bundle-SymbolicName=FrameworkPersistence&amp;Bundle-Version=${framework.version}</bundle> -->
+
+<!-- 		postgres bundle  :  -->
+<!-- 		<bundle>wrap:mvn:postgresql/postgresql/9.1-901.jdbc4</bundle> -->
+		
+		
+		<!--
+		La ligne suivante permet de copier dans <servicemix>/etc le fichier com.conztanz.servicemix.activemq.cfg qui est attaché au bundle kar
+		par le plugin build-helper-maven-plugin lancé à l'install du pom de ce projet.
+		
+		Par défaut, si le fichier est déjà présent dans le dossier /etc il ne sera pas remplacé.
+		On positionne donc override à true pour que chaque déploiement du kar mette à jour la config. 
+		-->
+		<configfile finalname="/etc/com.conztanz.servicemix.activemq.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
+		<configfile finalname="/etc/org.ops4j.datasource-message_store.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
+		
 	</feature>
 
 </features>

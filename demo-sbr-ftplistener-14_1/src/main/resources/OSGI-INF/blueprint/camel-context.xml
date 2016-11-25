@@ -14,14 +14,14 @@
 			<from uri="file:ftp/incoming/edi" />
 	        <log message="Getting ${file:name} from ftp incoming dir and sending it to the queue"/>
 <!-- 			<to uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
-			<to uri="activemq:LOCAL_SBR_14_1_EDI" />
+			<to uri="jms:LOCAL_SBR_14_1_EDI" />
 		</route>
 
 		<route>
 			<from uri="file:ftp/incoming/xml" />
 	        <log message="Getting ${file:name} from ftp incoming dir and sending it to the queue"/>
 <!-- 			<to uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
-			<to uri="activemq:LOCAL_SBR_14_1_XML" />
+			<to uri="jms:LOCAL_SBR_14_1_XML" />
 		</route>
 		
 	</camelContext>

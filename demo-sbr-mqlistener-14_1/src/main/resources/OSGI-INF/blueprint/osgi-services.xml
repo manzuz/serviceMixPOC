@@ -31,6 +31,10 @@
 
 	<reference id="marshaller"
 		interface="com.conztanz.connect.transform.sbr.ISBRMarshaller141Service" />
+		
+		
+		<reference id="sbr_14MessageService"
+		interface="com.conztanz.persistence.services.SBR_14MessageService" />
 
 
 </blueprint>

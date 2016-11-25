@@ -15,7 +15,7 @@
 		
 		<route>
 			<!-- Internal Active MQ broker -->
-			<!-- <from uri="activemq:LOCAL_SBR_14_1_EDI" />-->
+			<!-- <from uri="jms:LOCAL_SBR_14_1_EDI" />-->
 			
 			<!-- External Active MQ server (cf bean "jms" dans le fichier activemq-config.xml) -->
 			<from uri="jms:queue:SMX_SBR_14_1_EDI" />
@@ -27,7 +27,7 @@
 
 		<route>
 			<!-- <from uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
-			<from uri="activemq:LOCAL_SBR_14_1_XML" />
+			<from uri="jms:LOCAL_SBR_14_1_XML" />
 			<!-- <transacted/> -->
 			<to uri="bean:SBR_14_1_XML_JSON_SERVICE" />
 <!-- 			<log message="Transformed body:{body}" /> -->

@@ -25,7 +25,7 @@
         	Cette valeur sera appliquée si le placholder n'est pas chargé
         	(c-à-d. si le fichier de configuration n'a pas été trouvé ou la clé n'a pas été trouvée dans le fichier)
         	 -->
-            <cm:property name="activemq.broker.url" value="tcp://${activemq.broker.url}"/>
+            <cm:property name="activemq.broker.url" value="${activemq.broker.url}"/>
         </cm:default-properties>
     </cm:property-placeholder>
     

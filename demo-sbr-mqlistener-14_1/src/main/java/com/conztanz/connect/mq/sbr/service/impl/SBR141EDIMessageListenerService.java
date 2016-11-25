@@ -11,6 +11,8 @@ import org.apache.log4j.Logger;
 import com.conztanz.connect.mq.sbr.service.ISBR141EDIMessageListenerService;
 import com.conztanz.connect.transform.sbr.ISBRMarshaller141Service;
 import com.conztanz.connect.transform.sbr.ISBRTransformer141EDItoXML;
+import com.conztanz.persistence.model.SBRMessage;
+import com.conztanz.persistence.services.SBR_14MessageService;
 import com.conztanz.sbr.edifact.cleaner.ISBREdifactMessageCleaner;
 import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
@@ -23,6 +25,7 @@ public class SBR141EDIMessageListenerService implements ISBR141EDIMessageListene
 	private ISBREdifactMessageCleaner cleaner;
 	private ISBRTransformer141EDItoXML smooksTransformer;
 	private ISBRMarshaller141Service marshaller;
+	private SBR_14MessageService  sbr_14MessageService;
 
 	@Override
 	@Handler
@@ -60,6 +63,8 @@ public class SBR141EDIMessageListenerService implements ISBR141EDIMessageListene
 		log.info("OK : ForPnrHandling object created!");
 
 		log.debug("Example : pnr.getActMarker().getActionRequestCode() : " + pnr.getActMarker().getActionRequestCode());
+		sbr_14MessageService.insertMessage(new SBRMessage());
+		
 
 		// TODO => extraction TRAVEL à partir de BINDING
 

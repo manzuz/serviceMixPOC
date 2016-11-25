@@ -16,7 +16,6 @@ public class SBR141JIBXMarshallingService implements ISBRMarshaller141Service {
 	public ForPnrHandling unmarshall(String body, Exchange exchange) throws Exception {
 
 		log.info("Unmarshalling XML to java via Jibx...");
-
 		return marshaller.unmarshall(body);
 	}
 

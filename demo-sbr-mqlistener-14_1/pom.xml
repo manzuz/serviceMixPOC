@@ -29,6 +29,17 @@
 			<artifactId>demo-sbr-transform-14_1</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+			<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>demo-persistence-jpa</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+			<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>demo-business</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 	</dependencies>
 

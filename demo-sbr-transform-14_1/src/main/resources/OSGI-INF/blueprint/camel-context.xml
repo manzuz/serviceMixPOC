@@ -7,7 +7,18 @@
 	xsi:schemaLocation="
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
-
+	<bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
+		<property name="configuration" ref="jmsConfig" />
+		<!-- <property name="brokerURL" value="vm://myBroker" /> -->
+	</bean>
+	<bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<!-- <property name="concurrentConsumers" value="${jms.concurrent.consumers}" 
+			/> -->
+	</bean>
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://${activemq.broker.url}" />
+	</bean>
 	<camelContext id="sbr14_1_edi_transformer"
 		xmlns="http://camel.apache.org/schema/blueprint">
 		<!-- <routeBuilder ref="SBR_Route_v14_1_EDI" /> -->
@@ -16,7 +27,7 @@
 			<!-- File dédiée au transformer : permet d'attaquer le transformer en 
 				lui envoyant des SBR Edifact -->
 			<!-- <from uri="jms:queue:FUSE_SBR_14_1_EDI.TO.CC" /> -->
-			<from uri="activemq:LOCAL_SBR_14_1_EDI_TRANSFORM" />
+			<from uri="jms:LOCAL_SBR_14_1_EDI_TRANSFORM" />
 			<!-- <transacted/> -->
 			<to uri="bean:smooksService" />
 			<log message="Transformed body:{body}" />

@@ -19,7 +19,8 @@
 	</bean>
 	<bean id="jmsConfig" class="org.apache.camel.component.jms.JmsConfiguration">
 		<property name="connectionFactory" ref="jmsConnectionFactory" />
-		<!-- <property name="concurrentConsumers" value="${jms.concurrent.consumers}" /> -->
+		<!-- <property name="concurrentConsumers" value="${jms.concurrent.consumers}" 
+			/> -->
 	</bean>
 	<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
 		<property name="brokerURL" value="tcp://${activemq.broker.url}" />
