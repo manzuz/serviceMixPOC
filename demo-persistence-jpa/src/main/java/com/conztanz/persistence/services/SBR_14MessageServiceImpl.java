@@ -31,8 +31,10 @@ public class SBR_14MessageServiceImpl implements SBR_14MessageService {
 	@Override
 	public void insertMessage(SBRMessage sbrMessage) {
 		System.out.println("####### insertMessage");
-		 em.persist(sbrMessage);
-	     em.flush();
+		System.out.println();
+		System.out.println(em);
+//		 em.persist(sbrMessage);
+//	     em.flush();
 		
 	}
 

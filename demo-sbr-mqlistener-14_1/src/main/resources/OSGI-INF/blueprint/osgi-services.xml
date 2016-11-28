@@ -8,11 +8,12 @@
        http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
        http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-	<bean id="SBR_14_1_EDI_SERVICE"
-		class="com.conztanz.connect.mq.sbr.service.impl.SBR141EDIMessageListenerService">
+	<bean id="SBR_14_1_EDI_SERVICE" class="com.conztanz.connect.mq.sbr.service.impl.SBR141EDIMessageListenerService">
 		<property name="cleaner" ref="ediMessageCleaner" />
 		<property name="smooksTransformer" ref="smooksTransformer" />
 		<property name="marshaller" ref="marshaller" />
+		<property name="sbr_14MessageService" ref="sbr_14MessageService" />	
+						
 	</bean>
 
 <!-- 	<bean id="SBR_14_1_XML_JSON_SERVICE" -->
@@ -33,7 +34,7 @@
 		interface="com.conztanz.connect.transform.sbr.ISBRMarshaller141Service" />
 		
 		
-		<reference id="sbr_14MessageService"
+	<reference id="sbr_14MessageService"
 		interface="com.conztanz.persistence.services.SBR_14MessageService" />
 
 

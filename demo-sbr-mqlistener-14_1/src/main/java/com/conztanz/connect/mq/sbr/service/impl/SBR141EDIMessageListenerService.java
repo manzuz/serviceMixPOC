@@ -26,7 +26,7 @@ public class SBR141EDIMessageListenerService implements ISBR141EDIMessageListene
 	private ISBRTransformer141EDItoXML smooksTransformer;
 	private ISBRMarshaller141Service marshaller;
 	private SBR_14MessageService  sbr_14MessageService;
-
+								  
 	@Override
 	@Handler
 	public String onMessage(String body, Exchange exchange) throws Exception {
@@ -102,5 +102,18 @@ public class SBR141EDIMessageListenerService implements ISBR141EDIMessageListene
 	public void setMarshaller(ISBRMarshaller141Service marshaller) {
 		this.marshaller = marshaller;
 	}
+
+	public SBR_14MessageService getSbr_14MessageService() {
+		return sbr_14MessageService;
+	}
+
+	public void setSbr_14MessageService(SBR_14MessageService sbr_14MessageService) {
+		this.sbr_14MessageService = sbr_14MessageService;
+	}
+	
+	
+	
+	
+	
 
 }
