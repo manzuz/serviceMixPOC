@@ -23,10 +23,10 @@
 		<feature>pax-jdbc-postgresql</feature>
 		<feature>pax-jdbc-pool-dbcp2</feature>
 		<feature>pax-jdbc-config</feature>
-		<feature version="2.3.0">jpa</feature>	
-		<feature version="4.3.6.Final">hibernate</feature>
+        <feature version="[2.2, 3)">jpa</feature>
+<!-- 		<feature version="3.3.2.GA">hibernate</feature> -->
 		<feature version="0.12.0">pax-cdi</feature>
-		
+		<feature version="[4.3, 5)">hibernate</feature>
 		
 
 
@@ -35,7 +35,7 @@
 <!-- 		<bundle>mvn:com.conztanz.servicemix/demo-lifecycle/${project.version}</bundle> -->
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
-		<bundle>mvn:com.conztanz.servicemix/demo-business/0.0.1-SNAPSHOT</bundle>
+<!-- 		<bundle>mvn:com.conztanz.servicemix/demo-business/0.0.1-SNAPSHOT</bundle> -->
 		<bundle>mvn:com.conztanz.servicemix/demo-persistence-jpa/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
@@ -65,7 +65,7 @@
 		On positionne donc override à true pour que chaque déploiement du kar mette à jour la config. 
 		-->
 		<configfile finalname="/etc/com.conztanz.servicemix.activemq.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
-		<configfile finalname="/etc/org.ops4j.datasource-message_store.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
+		<configfile finalname="/etc/org.ops4j.datasource-testTable.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
 		
 	</feature>
 

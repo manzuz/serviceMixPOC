@@ -35,11 +35,11 @@
 			<artifactId>demo-persistence-jpa</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-			<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>demo-business</artifactId>
-			<version>${project.version}</version>
-		</dependency>
+<!-- 			<dependency> -->
+<!-- 			<groupId>${project.groupId}</groupId> -->
+<!-- 			<artifactId>demo-business</artifactId> -->
+<!-- 			<version>${project.version}</version> -->
+<!-- 		</dependency> -->
 
 	</dependencies>
 

@@ -63,7 +63,7 @@ public class SBR141EDIMessageListenerService implements ISBR141EDIMessageListene
 		log.info("OK : ForPnrHandling object created!");
 
 		log.debug("Example : pnr.getActMarker().getActionRequestCode() : " + pnr.getActMarker().getActionRequestCode());
-		sbr_14MessageService.insertMessage(new SBRMessage());
+		sbr_14MessageService.insertMessage();
 		
 
 		// TODO => extraction TRAVEL à partir de BINDING

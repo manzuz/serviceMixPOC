@@ -26,7 +26,7 @@
 		<module>../demo-sbr-mqlistener-14_1</module>
 		<module>../demo-sbr-publisher</module>
 		<module>../demo-persistence-jpa</module>
-		<module>../demo-business</module>
+<!-- 		<module>../demo-business</module> -->
 		<module>../demo-kar</module>
 		
 		<!-- <module>../demo-fab</module> -->

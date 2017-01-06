@@ -2,40 +2,40 @@ package com.conztanz.persistence.services;
 
 import com.conztanz.persistence.model.SBRMessage;
 
+import java.lang.reflect.Method;
+
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
-
-@OsgiServiceProvider(classes = {SBR_14MessageService.class})
+@OsgiServiceProvider(classes = { SBR_14MessageService.class })
 @Singleton
-@Transactional
+//@Transactional
 public class SBR_14MessageServiceImpl implements SBR_14MessageService {
-	
-	@PersistenceContext(unitName="message_store")
+	// @OsgiServiceProvider(classes = {SBR_14MessageService.class})
+	// @Singleton
+	@PersistenceContext(unitName = "testTable")
 	private EntityManager em;
-	    
-
-	
-	
-	
-	
-	
-	
-	
-	
 
 	@Override
-	public void insertMessage(SBRMessage sbrMessage) {
+	public void insertMessage() {
 		System.out.println("####### insertMessage");
-		System.out.println();
 		System.out.println(em);
-//		 em.persist(sbrMessage);
-//	     em.flush();
-		
+		  try {
+	            Class c = SBRMessage.class;
+	            Method[] m = c.getDeclaredMethods();
+	            for (int i = 0; i < m.length; i++)
+	            System.out.println(m[i].toString());
+	        } catch (Throwable e) {
+	            System.err.println(e);
+	        }
+		SBRMessage message = new SBRMessage();
+//		em.persist(message);
+		// em.flush();
+
 	}
 
 }

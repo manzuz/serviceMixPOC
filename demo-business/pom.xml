@@ -24,8 +24,10 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
-						<Export-Package>com.conztanz.*</Export-Package>
-						<Import-Package>*</Import-Package>
+						<Export-Package>com.conztanz.persistence.model</Export-Package>
+						<Import-Package>org.hibernate.proxy,
+															*
+						</Import-Package>
 					</instructions>
 				</configuration>
 			</plugin>

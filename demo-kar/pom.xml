@@ -48,6 +48,8 @@
 							<artifacts>
 								<artifact>
 									<file>target/classes/com.conztanz.servicemix.activemq.cfg</file>
+									<file>target/classes/org.ops4j.datasource-testTable.cfg</file>
+									
 									<type>cfg</type>
 								</artifact>
 							</artifacts>

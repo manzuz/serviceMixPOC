@@ -41,7 +41,10 @@ https://raw.githubusercontent.com/cschneider/Karaf-Tutorial/master/db/examplejpa
   <service ref="sbr_14MessageService" 
   		interface="com.conztanz.persistence.services.SBR_14MessageService" 
   		/>
-  <bean id="sbr_14MessageService" class="com.conztanz.persistence.services.SBR_14MessageServiceImpl"></bean>
+  <bean id="sbr_14MessageService" class="com.conztanz.persistence.services.SBR_14MessageServiceImpl">
+<!--       <jpa:context property="em" unitname="testTable" /> -->
+ 
+  </bean>
 			
   
   
