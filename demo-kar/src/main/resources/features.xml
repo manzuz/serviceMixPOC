@@ -35,11 +35,10 @@
 <!-- 		<bundle>mvn:com.conztanz.servicemix/demo-lifecycle/${project.version}</bundle> -->
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-cleaner/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle>
-<!-- 		<bundle>mvn:com.conztanz.servicemix/demo-business/0.0.1-SNAPSHOT</bundle> -->
+		<bundle>mvn:com.conztanz.servicemix/demo-persistence-unit-1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-persistence-jpa/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz.servicemix/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle>
-		
 		
 		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5</bundle>

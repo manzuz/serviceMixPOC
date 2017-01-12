@@ -42,10 +42,10 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+<!-- 						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
 
-						<Export-Package>com.conztanz.persistence.services</Export-Package>
-						<!-- <Private-Package>*</Private-Package> -->
+						<Export-Package>com.conztanz.persistence.services,com.conztanz.persistence.model</Export-Package>
+<!-- 						<Private-Package></Private-Package> -->
 						<Import-Package>
 							org.apache.felix.service.command;version="[0.6,1)",
 							org.apache.felix.gogo.commands;version="[0.6,1)",
