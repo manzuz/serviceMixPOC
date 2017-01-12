@@ -70,8 +70,8 @@
 							<goal>create-kar</goal>
 						</goals>
 						<configuration>
-							<!-- <featuresFile>src/main/resources/features.xml</featuresFile> -->
-							<featuresFile>target/classes/features.xml</featuresFile>
+							<featuresFile>src/main/resources/features.xml</featuresFile>
+<!-- 							<featuresFile>target/classes/features.xml</featuresFile> -->
 						</configuration>
 					</execution>
 				</executions>
@@ -92,22 +92,22 @@
 			</plugin>
 
 
-			<plugin>
-				<groupId>org.apache.karaf.tooling</groupId>
-				<artifactId>features-maven-plugin</artifactId>
-				<version>${features-maven-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>create-kar</id>
-						<goals>
-							<goal>create-kar</goal>
-						</goals>
-						<configuration>
-							<featuresFile>src/main/resources/features.xml</featuresFile>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.karaf.tooling</groupId> -->
+<!-- 				<artifactId>features-maven-plugin</artifactId> -->
+<!-- 				<version>${features-maven-plugin.version}</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>create-kar</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>create-kar</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<featuresFile>src/main/resources/features.xml</featuresFile> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 

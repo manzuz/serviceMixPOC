@@ -28,31 +28,20 @@ https://raw.githubusercontent.com/cschneider/Karaf-Tutorial/master/db/examplejpa
 <blueprint  default-activation="eager" 
             xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xmlns:jpa="http://aries.apache.org/xmlns/jpa/v1.0.0"
-            xmlns:tx="http://aries.apache.org/xmlns/transactions/v1.0.0"
+
 			
 			xsi:schemaLocation="
 			http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0 
-			http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2001/XMLSchema-instance 
-			http://aries.apache.org/xmlns/jpa/v1.0.0 http://aries.apache.org/xmlns/jpa/v1.0.0
-			http://aries.apache.org/xmlns/transactions/v1.0.0 http://aries.apache.org/xmlns/transactions/v1.0.0 ">
+			http://www.w3.org/2001/XMLSchema-instance http://www.w3.org/2001/XMLSchema-instance">
 			
 			 
   <service ref="sbr_14MessageService" 
   		interface="com.conztanz.persistence.services.SBR_14MessageService" 
   		/>
   <bean id="sbr_14MessageService" class="com.conztanz.persistence.services.SBR_14MessageServiceImpl">
-<!--       <jpa:context property="em" unitname="testTable" /> -->
- 
   </bean>
 			
   
   
-<!--   <command-bundle xmlns="http://karaf.apache.org/xmlns/shell/v1.0.0"> -->
-<!--         <command name="msg-persistance/test"> -->
-<!--             <action class="com.conztanz.persistence.SBR_14MessageService"> -->
-<!--                 <property name="SBR_14MessageService" ref="SBR_14MessageService"/> -->
-<!--             </action> -->
-<!--         </command> -->
-<!--     </command-bundle> -->
+
 </blueprint>

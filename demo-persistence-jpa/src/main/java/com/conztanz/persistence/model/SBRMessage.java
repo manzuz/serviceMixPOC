@@ -36,7 +36,6 @@ public class SBRMessage implements Serializable   {
 	
 	
 	public SBRMessage() {
-		System.out.println("########################### new entity ! ! ");
 		this.sequenceNumber= 42;	
 	}
 	
@@ -67,7 +66,6 @@ public class SBRMessage implements Serializable   {
 
 
 	private void setId(Long  id) {
-		System.out.println("HEEEEEERE");
 		this.id = id;
 	}
 
