@@ -16,17 +16,29 @@
 
 		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
 		<feature version="1.5.0">smooks</feature>
-		<feature>jdbc</feature>
-		<feature>pax-jdbc-spec</feature>
-		<feature>transaction</feature>
-		<feature>jndi</feature>
-		<feature>pax-jdbc-postgresql</feature>
-		<feature>pax-jdbc-pool-dbcp2</feature>
-		<feature>pax-jdbc-config</feature>
-        <feature version="[2.2, 3)">jpa</feature>
-<!-- 		<feature version="3.3.2.GA">hibernate</feature> -->
-		<feature version="0.12.0">pax-cdi</feature>
-		<feature version="[4.3, 5)">hibernate</feature>
+	<feature>jdbc</feature>
+	<feature>pax-jdbc-spec</feature>
+	<feature>transaction</feature>
+	<feature>jndi</feature>
+	<feature>pax-jdbc-postgresql</feature>
+	<feature>pax-jdbc-pool-dbcp2</feature>
+	<feature>pax-jdbc-config</feature>
+	<feature version="[2.2, 3)">jpa</feature>
+	<!-- <feature version="3.3.2.GA">hibernate</feature> -->
+	<feature version="0.12.0">pax-cdi</feature>
+	<feature version="[4.3, 5)">hibernate</feature>
+<!-- 	<feature>camel-servlet</feature> -->
+<!-- 	<feature>camel-http</feature> -->
+<!-- 	<feature>camel-csv</feature> -->
+<!-- 	<feature>camel-saxon</feature> -->
+<!-- 	<feature>camel-spring-ws</feature> -->
+
+	<feature>cxf-features-logging</feature>
+	<feature>cxf-jaxrs</feature>
+	<feature>cxf-commands</feature>
+	<feature>http</feature>
+	<feature>http-whiteboard</feature>
+		
 		
 
 
@@ -64,7 +76,8 @@
 		On positionne donc override à true pour que chaque déploiement du kar mette à jour la config. 
 		-->
 		<configfile finalname="/etc/com.conztanz.servicemix.activemq.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
-		<configfile finalname="/etc/org.ops4j.datasource-testTable.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
+		<configfile finalname="/etc/org.ops4j.datasource-1.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>
+<!-- 		<configfile finalname="/etc/org.ops4j.datasource-2.cfg" override="true">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile> -->
 		
 	</feature>
 

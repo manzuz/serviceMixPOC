@@ -69,6 +69,13 @@ public class SBRMessage implements Serializable   {
 		this.id = id;
 	}
 
+
+
+	@Override
+	public String toString() {
+		return "SBRMessage [id=" + id + ", sequenceNumber=" + sequenceNumber + "]";
+	}
+
 	
 	
 	
