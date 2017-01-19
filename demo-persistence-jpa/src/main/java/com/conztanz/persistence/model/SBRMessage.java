@@ -17,6 +17,7 @@ import javax.persistence.Transient;
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "sbrmessage")
+//@XmlRootElement
 public class SBRMessage implements Serializable   {
 	/**
 	 * 
@@ -36,7 +37,7 @@ public class SBRMessage implements Serializable   {
 	
 	
 	public SBRMessage() {
-		this.sequenceNumber= 42;	
+	
 	}
 	
 	
@@ -78,7 +79,7 @@ public class SBRMessage implements Serializable   {
 
 	
 	
-	
+
 	
 	
 	
