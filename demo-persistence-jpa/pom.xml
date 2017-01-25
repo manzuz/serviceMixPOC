@@ -116,19 +116,23 @@
 <!-- 			<artifactId>demo-business</artifactId> -->
 <!-- 			<version>0.0.1-SNAPSHOT</version> -->
 <!-- 		</dependency> -->
-		
-		
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.3.1</version>
-		</dependency>
-		    <dependency>
-      <groupId>org.apache.servicemix.specs</groupId>
-      <artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
-      <version>2.5.0</version>
-    </dependency>
-    <dependency>
+<!-- 	<dependency> -->
+<!-- 		<groupId>com.mashape.unirest</groupId> -->
+<!-- 		<artifactId>unirest-java</artifactId> -->
+<!-- 		<version>1.4.9</version> -->
+<!-- 	</dependency> -->
+
+	<dependency>
+		<groupId>org.osgi</groupId>
+		<artifactId>org.osgi.core</artifactId>
+		<version>4.3.1</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.servicemix.specs</groupId>
+		<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
+		<version>2.5.0</version>
+	</dependency>
+	<dependency>
       <groupId>org.apache.servicemix.bundles</groupId>
       <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
       <version>3.1_7</version>
@@ -138,10 +142,15 @@
 			<artifactId>org.apache.karaf.shell.console</artifactId>
 			<version>4.0.5</version>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate.javax.persistence</groupId> -->
+<!-- 			<artifactId>hibernate-jpa-2.1-api</artifactId> -->
+<!-- 			<version>1.0.0.Final</version> -->
+<!-- 		</dependency> -->
+
 		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.0.Final</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.ops4j.pax.cdi/pax-cdi-api -->
 		<dependency>
@@ -172,32 +181,7 @@
             <version>1.2</version>
             <optional>true</optional>
         </dependency>
-	<dependency>
-		<groupId>org.apache.cxf</groupId>
-		<artifactId>cxf-rt-frontend-jaxrs</artifactId>
-		<version>${cxf.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.cxf</groupId>
-		<artifactId>cxf-rt-features-logging</artifactId>
-		<version>${cxf.version}</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.cxf</groupId>
-		<artifactId>cxf-rt-management</artifactId>
-		<version>${cxf.version}</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-common-utilities -->
-	<dependency>
-		<groupId>org.apache.cxf</groupId>
-		<artifactId>cxf-common-utilities</artifactId>
-		<version>2.5.11</version>
-	</dependency>
-        <dependency>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-rt-transports-http</artifactId>
-        <version>${cxf.version}</version>
-    </dependency>
+
 
 	</dependencies>
 </project>
