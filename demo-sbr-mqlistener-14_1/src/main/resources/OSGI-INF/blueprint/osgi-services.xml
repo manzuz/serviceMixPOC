@@ -12,7 +12,7 @@
 		<property name="cleaner" ref="ediMessageCleaner" />
 		<property name="smooksTransformer" ref="smooksTransformer" />
 		<property name="marshaller" ref="marshaller" />
-		<property name="sbr_14MessageService" ref="sbr_14MessageService" />	
+<!-- 		<property name="sbr_14MessageService" ref="sbr_14MessageService" />	 -->
 						
 	</bean>
 
@@ -34,8 +34,8 @@
 		interface="com.conztanz.connect.transform.sbr.ISBRMarshaller141Service" />
 		
 		
-	<reference id="sbr_14MessageService"
-		interface="com.conztanz.persistence.services.SBR_14MessageService" />
+<!-- 	<reference id="sbr_14MessageService" -->
+<!-- 		interface="com.conztanz.persistence.services.SBR_14MessageService" /> -->
 
 
 </blueprint>
