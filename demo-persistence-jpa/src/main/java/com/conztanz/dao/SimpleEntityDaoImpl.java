@@ -1,4 +1,4 @@
-package com.conztanz.doa;
+package com.conztanz.dao;
 
 import java.util.List;
 
@@ -20,21 +20,17 @@ import com.conztanz.persistence.model.SBRMessage;
 
 
 
-@OsgiServiceProvider(classes = { IEntityDaoBoth.class })
+@OsgiServiceProvider(classes = { ISimpleEntityDao.class })
 @Singleton
-public class EntityDaoBothImpl implements IEntityDaoBoth{
-	@PersistenceContext(unitName = "pu1")
-	private EntityManager em1;
-	@PersistenceContext(unitName = "pu2")
-	private EntityManager em2;
+public class SimpleEntityDaoImpl implements ISimpleEntityDao{
 	
-	@Transactional( rollbackOn = {TestRuntimeException.class}, value = TxType.MANDATORY)
-	public void persist(SBRMessage message1,SBRMessage message2) throws TestRuntimeException{
-		em1.persist(message1);
-		em1.flush();
-		
-		em2.persist(message2);
-		em2.flush();
+	@PersistenceContext(unitName = "pu1")
+	private EntityManager em;
+
+	@Override
+	public void persist(SBRMessage message) throws TestRuntimeException {
+		em.persist(message);
+		em.flush();
 	}
 	private List<SBRMessage> allEntries( EntityManager em) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -47,10 +43,13 @@ public class EntityDaoBothImpl implements IEntityDaoBoth{
 	@Transactional( rollbackOn = {TestRuntimeException.class}, value = TxType.MANDATORY)
 	public int getTotalCount() {
 		// TODO Auto-generated method stub
-		return this.allEntries(em1).size() + this.allEntries(em2).size();
+		return this.allEntries(em).size() ;
 	}
-	
-	
+	@Override
+	public void persist() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

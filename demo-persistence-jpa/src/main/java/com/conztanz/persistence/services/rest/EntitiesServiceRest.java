@@ -30,8 +30,6 @@ public class EntitiesServiceRest {
 			// TODO: handle exception
 		}
     	return Response.ok().build();
-//        URI taskURI = uri.getRequestUriBuilder().path(TaskServiceRest.class, "getTask").build(task.getId());
-//        return Response.created(taskURI).build();
     }
     
     

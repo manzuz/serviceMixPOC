@@ -7,8 +7,7 @@ import javax.transaction.Transactional.TxType;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
-import com.conztanz.doa.EntityDaoBothImpl;
-import com.conztanz.doa.IEntityDaoBoth;
+import com.conztanz.dao.IEntityDaoBoth;
 import com.conztanz.exceptions.TestRuntimeException;
 import com.conztanz.persistence.model.SBRMessage;
 
@@ -29,14 +28,13 @@ public class SBR_14MessageServiceImpl implements ISBR_14MessageService {
 	@Transactional(value = TxType.REQUIRED,rollbackOn = {TestRuntimeException.class})
 	public void insertMessage(boolean shouldFail) throws  TestRuntimeException{
 			this.entityDao.persist(new SBRMessage(), new SBRMessage());
-			if(shouldFail)
-				throw new TestRuntimeException();
+//			if(shouldFail)
+//				throw new TestRuntimeException();
 
 	}
 	
 
 
-	@Override
 	@Transactional()
 	public int getTotalCount() {
 		return entityDao.getTotalCount();

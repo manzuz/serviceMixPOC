@@ -57,12 +57,21 @@
 						</goals>
 						<configuration>
 							<artifacts>
-								<artifact>
-									<file>target/classes/com.conztanz.servicemix.activemq.cfg</file>
-									<file>target/classes/org.ops4j.datasource-1.cfg</file>
-									<file>target/classes/org.ops4j.datasource-2.cfg</file>
-									<type>cfg</type>
-								</artifact>
+<!-- 								<artifact> -->
+<!-- 									<file>target/classes/org.ops4j.datasource-1.cfg</file> -->
+<!-- 									<type>cfg</type> -->
+<!-- 									<classifier>ds1</classifier> -->
+<!-- 								</artifact> -->
+<!-- 								<artifact> -->
+<!-- 									<file>target/classes/org.ops4j.datasource-2.cfg</file> -->
+<!-- 									<type>cfg</type> -->
+<!-- 									<classifier>ds2</classifier> -->
+<!-- 								</artifact> -->
+<!-- 								<artifact> -->
+<!-- 									<file>target/classes/com.conztanz.servicemix.activemq.cfg</file> -->
+<!-- 									<type>cfg</type> -->
+<!-- 									<classifier>amq</classifier> -->
+<!-- 								</artifact> -->
 							</artifacts>
 						</configuration>
 					</execution>

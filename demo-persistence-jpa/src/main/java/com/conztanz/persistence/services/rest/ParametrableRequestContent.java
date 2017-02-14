@@ -23,7 +23,8 @@ public class ParametrableRequestContent {
 	public void setShouldFail(boolean shouldFail) {
 		this.shouldFail = shouldFail;
 	}
-
-
-
 }
+
+	
+	
+
