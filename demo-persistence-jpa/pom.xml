@@ -2,37 +2,129 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
+	<!-- <parent> -->
+	<!-- <groupId>com.conztanz.servicemix</groupId> -->
+	<!-- <artifactId>demo-parent</artifactId> -->
+	<!-- <version>0.0.1-SNAPSHOT</version> -->
+	<!-- <relativePath>../demo-parent</relativePath> -->
+	<!-- </parent> -->
 	<parent>
-		<groupId>com.conztanz.servicemix</groupId>
-		<artifactId>demo-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../demo-parent</relativePath>
+		<groupId>com.conztanz</groupId>
+		<version>0.2.1</version>
+		<artifactId>framework</artifactId>
 	</parent>
 
+
+
+	<groupId>com.conztanz.servicemix</groupId>
 	<artifactId>demo-persistence-jpa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
-	<description>Persisting incoming messages</description>
+	<!-- <description>Persisting incoming messages</description> -->
+	
+	
+	<properties>
+
+		<framework.version>0.2.1</framework.version>
+
+		<bundle.vendor>Conztanz</bundle.vendor>
+		<esbDeployableProject>false</esbDeployableProject>
+
+		<!-- <maven.auto-clean.skip>true</maven.auto-clean.skip> -->
+
+<!-- 		<bundle.namespace.root>com.conztanz.demo</bundle.namespace.root> -->
+		<depends-maven-plugin.version>1.3</depends-maven-plugin.version>
+		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+		<maven-resources-plugin.version>2.6</maven-resources-plugin.version>
+		<cxf.version>3.1.4</cxf.version>
+		<cxf.codegen-plugin.version>${cxf.version}</cxf.codegen-plugin.version>
+
+		<commonslogging.version>1.2</commonslogging.version>
+		<xerces.version>2.11.0</xerces.version>
+		<camel.version>2.16.1</camel.version>
+				<camel.version>2.16.1</camel.version>
+		
+		<activemq-camel.version>5.6.0</activemq-camel.version>
+		<xbean-spring.version>3.18</xbean-spring.version>
+		<!-- <features-maven-plugin.version>2.2.8</features-maven-plugin.version> -->
+		<features-maven-plugin.version>2.3.0</features-maven-plugin.version>
+
+		<smooks.version>1.5</smooks.version>
+
+		<slf4j.version>1.7.12</slf4j.version>
+
+		<activemq.broker.url>activemq-cz-test.conztanz.com:61616</activemq.broker.url>
+		<jms.concurrent.consumers>10</jms.concurrent.consumers>
+	</properties>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.aries.blueprint</groupId>
-				<artifactId>blueprint-maven-plugin</artifactId>
-				<version>1.5.0</version>
-				<configuration>
-					<scanPaths>
-						<scanPath>com.conztanz</scanPath>
-					</scanPaths>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>add-resource-dir</goal>
-							<goal>blueprint-generate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>${maven-dependency-plugin.version}</version>
+				</plugin>
+            <plugin>
+                <groupId>org.apache.aries.blueprint</groupId>
+                <artifactId>blueprint-maven-plugin</artifactId>
+                <version>1.5.0</version>
+                <configuration>
+                    <scanPaths>
+                        <scanPath>com.conztanz</scanPath>
+                    </scanPaths>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>add-resource-dir</goal>
+                            <goal>blueprint-generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.cxf</groupId>
+					<artifactId>cxf-codegen-plugin</artifactId>
+					<version>${cxf.codegen-plugin.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>xerces</groupId>
+							<artifactId>xercesImpl</artifactId>
+							<version>${xerces.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>${felix.plugin.bundle.version}</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.camel</groupId>
+					<artifactId>camel-maven-plugin</artifactId>
+					<version>${camel.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.servicemix.tooling</groupId>
+					<artifactId>depends-maven-plugin</artifactId>
+					<version>${depends-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jibx</groupId>
+					<artifactId>jibx-maven-plugin</artifactId>
+					<version>${jibx.version}</version>
+				</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -42,10 +134,12 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-<!-- 						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
+						<!-- <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
 
-						<Export-Package>com.conztanz.persistence.services,com.conztanz.persistence.model</Export-Package>
-<!-- 						<Private-Package></Private-Package> -->
+						<Export-Package>
+						com.conztanz.persistence.services,
+						com.conztanz.persistence.model</Export-Package>
+						<!-- <Private-Package></Private-Package> -->
 						<Import-Package>
 							org.apache.felix.service.command;version="[0.6,1)",
 							org.apache.felix.gogo.commands;version="[0.6,1)",
@@ -62,7 +156,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -105,52 +200,72 @@
 	<dependencies>
 		<!-- to be able to interact with the database via the Karaf console, to 
 			be deleted once persistence POC is done -->
-		<dependency>
-			<groupId>com.conztanz.servicemix</groupId>
-			<artifactId>demo-commons</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
 <!-- 		<dependency> -->
 <!-- 			<groupId>com.conztanz.servicemix</groupId> -->
-<!-- 			<artifactId>demo-business</artifactId> -->
+<!-- 			<artifactId>demo-commons</artifactId> -->
 <!-- 			<version>0.0.1-SNAPSHOT</version> -->
 <!-- 		</dependency> -->
-<!-- 	<dependency> -->
-<!-- 		<groupId>com.mashape.unirest</groupId> -->
-<!-- 		<artifactId>unirest-java</artifactId> -->
-<!-- 		<version>1.4.9</version> -->
-<!-- 	</dependency> -->
 
-	<dependency>
-		<groupId>org.osgi</groupId>
-		<artifactId>org.osgi.core</artifactId>
-		<version>4.3.1</version>
-	</dependency>
-	<dependency>
-		<groupId>org.apache.servicemix.specs</groupId>
-		<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
-		<version>2.5.0</version>
-	</dependency>
-	<dependency>
-      <groupId>org.apache.servicemix.bundles</groupId>
-      <artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
-      <version>3.1_7</version>
-    </dependency>
+<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-codec</artifactId>
+			<version>1.3_5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jsr339-api-2.0</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-httpclient</artifactId>
+			<version>3.1_7</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.karaf.shell</groupId>
 			<artifactId>org.apache.karaf.shell.console</artifactId>
 			<version>4.0.5</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.hibernate.javax.persistence</groupId> -->
-<!-- 			<artifactId>hibernate-jpa-2.1-api</artifactId> -->
-<!-- 			<version>1.0.0.Final</version> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.hibernate.javax.persistence</groupId> -->
+		<!-- <artifactId>hibernate-jpa-2.1-api</artifactId> -->
+		<!-- <version>1.0.0.Final</version> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi_R4_core</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi_R4_compendium</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.ops4j.pax.cdi/pax-cdi-api -->
 		<dependency>
@@ -169,18 +284,17 @@
 			<artifactId>javax.transaction-api</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.9.3</version>
+			<groupId>org.apache.servicemix.bundles</groupId>
+			<artifactId>org.apache.servicemix.bundles.commons-codec</artifactId>
+			<version>1.3_5</version>
 		</dependency>
-		     <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>1.2</version>
-            <optional>true</optional>
-        </dependency>
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+			<optional>true</optional>
+		</dependency>
 
 
 	</dependencies>
