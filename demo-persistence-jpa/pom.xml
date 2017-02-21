@@ -65,6 +65,7 @@
 					<version>${maven-dependency-plugin.version}</version>
 				</plugin>
             <plugin>
+                <!--generate blueprint from annotations -->
                 <groupId>org.apache.aries.blueprint</groupId>
                 <artifactId>blueprint-maven-plugin</artifactId>
                 <version>1.5.0</version>
@@ -82,49 +83,14 @@
                     </execution>
                 </executions>
             </plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>${maven-resources-plugin.version}</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.cxf</groupId>
-					<artifactId>cxf-codegen-plugin</artifactId>
-					<version>${cxf.codegen-plugin.version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>xerces</groupId>
-							<artifactId>xercesImpl</artifactId>
-							<version>${xerces.version}</version>
-						</dependency>
-					</dependencies>
-				</plugin>
+                <!--generate a bundle ( as opposed to a JAR)  -->
 				<plugin>
 					<groupId>org.apache.felix</groupId>
 					<artifactId>maven-bundle-plugin</artifactId>
 					<version>${felix.plugin.bundle.version}</version>
 					<extensions>true</extensions>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.camel</groupId>
-					<artifactId>camel-maven-plugin</artifactId>
-					<version>${camel.version}</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.servicemix.tooling</groupId>
-					<artifactId>depends-maven-plugin</artifactId>
-					<version>${depends-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.jibx</groupId>
-					<artifactId>jibx-maven-plugin</artifactId>
-					<version>${jibx.version}</version>
-				</plugin>
+			<!--  generate import and export statements, based on static analysis of code but also statements mentioned here   -->
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -206,7 +172,7 @@
 <!-- 			<version>0.0.1-SNAPSHOT</version> -->
 <!-- 		</dependency> -->
 
-<dependency>
+		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 		</dependency>
@@ -289,12 +255,12 @@
 			<artifactId>org.apache.servicemix.bundles.commons-codec</artifactId>
 			<version>1.3_5</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<version>1.2</version>
-			<optional>true</optional>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.enterprise</groupId> -->
+<!-- 			<artifactId>cdi-api</artifactId> -->
+<!-- 			<version>1.2</version> -->
+<!-- 			<optional>true</optional> -->
+<!-- 		</dependency> -->
 
 
 	</dependencies>
