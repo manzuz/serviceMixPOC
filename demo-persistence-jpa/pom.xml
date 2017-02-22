@@ -22,7 +22,7 @@
 	<packaging>bundle</packaging>
 	<!-- <description>Persisting incoming messages</description> -->
 	
-	
+<!-- 	TODO : clean properties (there are some unused ones) -->
 	<properties>
 
 		<framework.version>0.2.1</framework.version>
