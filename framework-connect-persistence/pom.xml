@@ -17,7 +17,7 @@
 
 
 	<groupId>com.conztanz.servicemix</groupId>
-	<artifactId>demo-persistence-jpa</artifactId>
+	<artifactId>framework-connect-persistence</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 	<!-- <description>Persisting incoming messages</description> -->

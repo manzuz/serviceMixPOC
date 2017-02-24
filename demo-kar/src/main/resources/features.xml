@@ -39,7 +39,7 @@
 		<!-- <bundle>mvn:com.conztanz.servicemix/demo-sbr-transform-14_1/0.0.1-SNAPSHOT</bundle> -->
 		<bundle>mvn:com.conztanz.servicemix/demo-connectionfactory/0.0.1-SNAPSHOT</bundle>
 <!-- 		<bundle>mvn:com.conztanz.servicemix/demo-persistence-unit-1/0.0.1-SNAPSHOT</bundle> -->
-		<bundle>mvn:com.conztanz.servicemix/demo-persistence-jpa/0.0.1-SNAPSHOT</bundle>
+		<bundle>mvn:com.conztanz.servicemix/framework-connect-persistence/0.0.1-SNAPSHOT</bundle>
 		<!-- <bundle>mvn:com.conztanz.servicemix/demo-sbr-mqlistener-14_1/0.0.1-SNAPSHOT</bundle> -->
 		<!-- <bundle>mvn:com.conztanz.servicemix/demo-sbr-ftplistener-14_1/0.0.1-SNAPSHOT</bundle> -->
 
