@@ -100,7 +100,7 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<!-- <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
+						<Meta-Persistence>META-INF/persistence-conztanz-primary.xml</Meta-Persistence>
 
 						<Export-Package>
 						com.conztanz.persistence.services,
