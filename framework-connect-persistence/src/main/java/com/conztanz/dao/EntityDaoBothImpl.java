@@ -23,9 +23,9 @@ import com.conztanz.persistence.model.SBRMessage;
 @OsgiServiceProvider(classes = { IEntityDaoBoth.class })
 @Singleton
 public class EntityDaoBothImpl implements IEntityDaoBoth{
-	@PersistenceContext(unitName = "pu1")
+	@PersistenceContext(unitName = "ConztanzPersistenceUnitPrimary")
 	private EntityManager em1;
-	@PersistenceContext(unitName = "pu2")
+	@PersistenceContext(unitName = "ConztanzPersistenceUnitSecondary")
 	private EntityManager em2;
 	
 	@Transactional( rollbackOn = {TestRuntimeException.class}, value = TxType.MANDATORY)
