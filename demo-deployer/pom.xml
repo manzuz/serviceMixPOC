@@ -18,9 +18,11 @@
 	</properties>
 
 	<modules>
-
+		<module>../demo-parent</module>
 		<module>../demo-connectionfactory</module>
 		<module>../framework-connect-persistence</module>
+		<module>../demo-kar</module>
+		
 	</modules>
 
 	<profiles>
