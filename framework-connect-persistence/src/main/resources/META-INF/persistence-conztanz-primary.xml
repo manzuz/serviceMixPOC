@@ -1,46 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
- Licensed to the Apache Software Foundation (ASF) under one
- or more contributor license agreements.  See the NOTICE file
- distributed with this work for additional information
- regarding copyright ownership.  The ASF licenses this file
- to you under the Apache License, Version 2.0 (the
- "License"); you may not use this file except in compliance
- with the License.  You may obtain a copy of the License at
- 
- http://www.apache.org/licenses/LICENSE-2.0
- 
- Unless required by applicable law or agreed to in writing,
- software distributed under the License is distributed on an
- "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- KIND, either express or implied.  See the License for the
- specific language governing permissions and limitations
- under the License.   
--->
+<persistence version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
-<!-- 
-###
-https://raw.githubusercontent.com/cschneider/Karaf-Tutorial/master/db/examplejpa/src/main/resources/META-INF/persistence.xml
-###
- -->
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-    												     
-    <persistence-unit name="ConztanzPersistenceUnitPrimary" transaction-type="JTA">
-        <class>com.conztanz.persistence.model.SBRMessage</class>
-    
-<!--     		<mapping-file>config/persistence/persistence-mapping-conztanz-primary.xml</mapping-file> -->
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-			<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=dataSource1)</jta-data-source>
-<!-- 		<non-jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=serviceMix)</non-jta-data-source> -->
-       
-        <properties>
+	<persistence-unit name="ConztanzPersistenceUnitPrimary" transaction-type="JTA">
+		<!-- Persistence Provider -->
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+<!-- 		<provider>org.hibernate.ejb.HibernatePersistence</provider> -->
+		
+		<!--DataSource look up via JNDI  -->
+		<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=ConztanzDB)</jta-data-source>
+		
+<!-- 	<persistence-unit-metadata> -->
+<!-- 		<persistence-unit-defaults> -->
+<!-- 			<schema>${persistence.schema.name}</schema> -->
+<!-- 		</persistence-unit-defaults> -->
+<!-- 	</persistence-unit-metadata> -->
+		<!-- Entity Definition & Persistence Specificity -->
+				        <class>com.conztanz.usertype.UserTypeDefinition</class>
+				        <class>com.conztanz.persistence.model.SBRMessage</class>
+		<mapping-file>com/conztanz/persistence-mapping-conztanz-primary.xml</mapping-file>
+<!-- 		<exclude-unlisted-classes>true</exclude-unlisted-classes> -->
+		
+		
+		<!-- Hibernate / Database bridge settings -->
+		<properties>
+            	<property name="hibernate.default_schema"   value="${persistence.schema.name}"/>
+            
+            
+			<!-- JDBC Database Connection settings -->
+			<!-- In JTA environment, literature says it should be defined as auto (or after_statement)
+			     so that hibernate aggressively release the connection after each statement. But the
+			     XADataSource used will instantly make it available to other hibernate sessions which
+			     would mix up transactions and connections as explain below:
+			
+			        Transaction  start as T1
+			        Session start as S1
+			        S1 borrow a connection C1 from the XADataSource
+			        T1 start on C1
+			        S1 execute the statement on C1
+			        S1 give back C1 to the XADataSource (T1 still active on C1)
+			        
+			           Transaction  start as T2
+			           Session start as S2
+			           S2 borrow a connection C1 from the XADataSource
+			           T2 start on C1 ...... EXCEPTION !!!
+			#######################################################################################
+			     This problem does not exist anymore as JTA process was tweaked to only release the
+			     connection to the pool when not anymore relying on an active transaction.
+			     Above comments are just left to explained problems that could occur when mixing JTA
+			     and connection pools
+			-->
+			<property name="hibernate.connection.release_mode"   value="auto"/>
+		
+			<!-- Hibernate SQL Dialect setting -->
+			<!-- As hibernate does not yet support JSONB PostgreSQL field, it has to be internally extended -->
+			<property name="hibernate.dialect" value="com.conztanz.persistence.dialect.PostgreSQLConztanzDialect"/>
+<!-- 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/> -->
+		
+			<!-- Transaction setting -->
+			<property name="hibernate.current_session_context_class" value="jta"/>
+			<property name="hibernate.transaction.jta.platform"      value="com.conztanz.persistence.jta.ConztanzJtaPlatform"/>
+		
+			<!-- Batch size settings -->
+			<property name="hibernate.jdbc.batch_size" value="25"/>
+			<!-- Allow optimal batch and reduce dead-lock probability -->
+			<property name="hibernate.order_inserts" value="true"/>
+			<property name="hibernate.order_updates" value="true"/>
+<!-- 			<property name="hibernate.max_fetch_depth"       value="4"/> -->
+<!-- 			<property name="hibernate.generate_statistics"   value="true"/> -->
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-<!--             <property name="hibernate.hbm2ddl.auto" value="create"/> -->
-        </properties>
-    </persistence-unit>
-
+<!-- 			<property name="javax.persistence.query.timeout" value="10"/> -->
+		
+			<!-- SQL Log settings -->
+			<property name="hibernate.show_sql"         value="true"/>
+			<property name="hibernate.format_sql"       value="true"/>
+			<property name="hibernate.use_sql_comments" value="false"/>
+			
+<!-- 			<property name="jadira.usertype.databaseZone" value="UTC"/> -->
+<!-- 			<property name="jadira.usertype.javaZone"     value="UTC"/> -->
+		
+			<!-- 2nd level cache settings -->
+<!-- 			<property name="hibernate.cache.use_second_level_cache" value="true"/> -->
+<!-- 			<property name="hibernate.cache.use_query_cache"        value="false"/> -->
+<!-- 			<property name="hibernate.cache.region.factory_class"   value="org.hibernate.cache.infinispan.InfinispanRegionFactory"/> -->
+<!-- 			<property name="hibernate.cache.use_structured_entries" value="true"/> -->
+		</properties>
+	</persistence-unit>
 </persistence>
