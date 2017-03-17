@@ -9,14 +9,23 @@
 		<artifactId>framework</artifactId>
 	</parent>
 
-	<groupId>com.conztanz.servicemix</groupId>
 	<artifactId>framework-connect-persistence</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
+
 	<!-- <description>Persisting incoming messages</description> -->
-	
-<!-- 	TODO : clean properties (there are some unused ones) -->
+
+	<!-- TODO : clean properties (there are some unused ones) -->
 	<properties>
+	
+<!-- 		<project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
+		<product.name>${product.connect.name}</product.name>
+		
+<!-- 		<persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
+		<persistence.ds.name>${product.company}${product.connect.name}DS</persistence.ds.name>
+		<persistence.user.name>${product.company}${product.connect.name}User</persistence.user.name>
+		<persistence.schema.name>${product.connect.name}Schema</persistence.schema.name>
+		
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 		<camel.version>2.16.1</camel.version>
@@ -24,33 +33,42 @@
 
 	<build>
 		<plugins>
-            <plugin>
-                <!--generate blueprint from annotations -->
-                <groupId>org.apache.aries.blueprint</groupId>
-                <artifactId>blueprint-maven-plugin</artifactId>
-                <version>1.5.0</version>
-                <configuration>
-                    <scanPaths>
-                        <scanPath>com.conztanz</scanPath>
-                    </scanPaths>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>add-resource-dir</goal>
-                            <goal>blueprint-generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-                <!--generate a bundle ( as opposed to a JAR)  -->
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>${felix.plugin.bundle.version}</version>
-					<extensions>true</extensions>
-				</plugin>
-			<!--  generate import and export statements, based on static analysis of code but also statements mentioned here   -->
+			<plugin>
+				<!--generate blueprint from annotations -->
+				<groupId>org.apache.aries.blueprint</groupId>
+				<artifactId>blueprint-maven-plugin</artifactId>
+				<version>1.5.0</version>
+				<configuration>
+					<scanPaths>
+						<!-- Specific packages are listed here to prevent the plugin from looking 
+							in other packages (coming from dependencies). Thus causing problems (probably 
+							spring annotations ) -->
+						<scanPath>com.conztanz.camel</scanPath>
+						<scanPath>com.conztanz.dao</scanPath>
+						<scanPath>com.conztanz.exceptions</scanPath>
+						<scanPath>com.conztanz.persistence.model</scanPath>
+						<scanPath>com.conztanz.persistence.services</scanPath>
+					</scanPaths>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>add-resource-dir</goal>
+							<goal>blueprint-generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--generate a bundle ( as opposed to a JAR) -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<!-- <version>${felix.plugin.bundle.version}</version> -->
+				<version>3.0.0</version>
+				<extensions>true</extensions>
+			</plugin>
+			<!-- generate OSGI import and export statements, based on static analysis 
+				of code but also statements mentioned here -->
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -59,22 +77,39 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
-
+						<Meta-Persistence>
+							META-INF/persistence-conztanz-primary.xml
+						</Meta-Persistence>
 						<Export-Package>
-						com.conztanz.persistence.services,
-						com.conztanz.persistence.model
+							com.conztanz.usertype,
+							com.conztanz.persistence.services,
+							com.conztanz.persistence.model,
+							<!-- To allow hibernate bundles to load our homemade dialect -->
+							com.conztanz.persistence.dialect
 						</Export-Package>
 						<!-- <Private-Package></Private-Package> -->
 						<Import-Package>
-							org.apache.felix.service.command;version="[0.6,1)",
-							org.apache.felix.gogo.commands;version="[0.6,1)",
-							org.apache.karaf.shell.console;version="[2.2,4.1)",
-							org.hibernate.proxy,
-							javassist.util.proxy,
-							javax.persistence,
-							*
+						 org.hibernate.*;version="[4.3,5)",
+						 javax.persistence.*;version="[2.1,3)",
+						 javax.inject;resolution:=optional,
+						 javax.jms,javax.transaction;version="[1.2,2)",
+						 javax.ws.rs;version="[2.0,3)",
+						 javax.ws.rs.core;version="[2.0,3)",
+						 javax.xml.bind.annotation,
+						 org.apache.camel;version="[2.16,3)",
+						 org.apache.camel.builder;version="[2.16,3)",
+						 org.apache.camel.component.jms,org.apache.camel.model;version="[2.16,3)",
+						 org.apache.camel.model.dataformat;version="[2.16,3)",
+						 org.apache.camel.spring.spi,org.ops4j.pax.cdi.api;version="[0.12,1)",
+						 org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
+						 org.springframework.transaction,
+						 org.apache.felix.service.command;version="[0.6,1)",
+						 org.apache.felix.gogo.commands;version="[0.6,1)",
+						 org.apache.karaf.shell.console;version="[2.2,4.1)",
+						 javassist.util.proxy;version="[3.18,4)"
 						</Import-Package>
+						<Embed-Dependency>groupId=com.conztanz;groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.apache.camel;scope=compile|runtime</Embed-Dependency>
+						<Embed-Transitive>true</Embed-Transitive>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -141,8 +176,8 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
-		
- 		<!--Contexts and Dependency Injection for OSGi -->
+
+		<!--Contexts and Dependency Injection for OSGi -->
 		<dependency>
 			<groupId>org.ops4j.pax.cdi</groupId>
 			<artifactId>pax-cdi-api</artifactId>
@@ -159,17 +194,28 @@
 			<artifactId>javax.transaction-api</artifactId>
 			<version>1.2</version>
 		</dependency>
-		 <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>1.2</version>
-            <optional>true</optional>
-        </dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.conztanz</groupId> -->
-<!-- 			<artifactId>framework-connect-persistence-test</artifactId> -->
-<!-- 			TODO: move version to parent -->
-<!-- 			<version>0.4-SNAPSHOT</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+			<optional>true</optional>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-persistence-test</artifactId>
+			<version>0.4-SNAPSHOT</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-persistence</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-model</artifactId>
+		</dependency>
 	</dependencies>
 </project>

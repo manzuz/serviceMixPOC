@@ -25,16 +25,16 @@ import com.conztanz.persistence.model.SBRMessage;
 public class EntityDaoBothImpl implements IEntityDaoBoth{
 	@PersistenceContext(unitName = "ConztanzPersistenceUnitPrimary")
 	private EntityManager em1;
-	@PersistenceContext(unitName = "ConztanzPersistenceUnitSecondary")
-	private EntityManager em2;
+//	@PersistenceContext(unitName = "ConztanzPersistenceUnitSecondary")
+//	private EntityManager em2;
 	
 	@Transactional( rollbackOn = {TestRuntimeException.class}, value = TxType.MANDATORY)
 	public void persist(SBRMessage message1,SBRMessage message2){
 		em1.persist(message1);
 		em1.flush();
 		System.out.println("################## here ########################");
-		em2.persist(message2);
-		em2.flush();
+//		em2.persist(message2);
+//		em2.flush();
 	}
 	private List<SBRMessage> allEntries( EntityManager em) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -47,7 +47,8 @@ public class EntityDaoBothImpl implements IEntityDaoBoth{
 	@Transactional( rollbackOn = {TestRuntimeException.class}, value = TxType.MANDATORY)
 	public int getTotalCount() {
 		// TODO Auto-generated method stub
-		return this.allEntries(em1).size() + this.allEntries(em2).size();
+//		return this.allEntries(em1).size() + this.allEntries(em2).size();
+		return 42;
 	}
 	
 	

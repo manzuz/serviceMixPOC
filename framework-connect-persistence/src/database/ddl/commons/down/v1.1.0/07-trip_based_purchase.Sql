@@ -1,0 +1,1 @@
+ALTER TABLE ${persistence.schema.name}.TRIP_BASED_ITEM DROP COLUMN REVISIONS;

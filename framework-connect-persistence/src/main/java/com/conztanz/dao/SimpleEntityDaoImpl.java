@@ -24,7 +24,7 @@ import com.conztanz.persistence.model.SBRMessage;
 @Singleton
 public class SimpleEntityDaoImpl implements ISimpleEntityDao{
 	
-	@PersistenceContext(unitName = "ConztanzPersistenceUnitPrimary")
+	@PersistenceContext(unitName="ConztanzPersistenceUnitPrimary")
 	private EntityManager em;
 
 	@Override
@@ -51,5 +51,6 @@ public class SimpleEntityDaoImpl implements ISimpleEntityDao{
 		
 	}
 	
+
 
 }

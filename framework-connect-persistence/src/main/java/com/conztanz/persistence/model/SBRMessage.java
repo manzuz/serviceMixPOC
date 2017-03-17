@@ -10,15 +10,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
+import com.conztanz.model.AbstractEntity;
 
-@Entity
+
+@Entity(name = "sbr_message")
+@SequenceGenerator(name = "SEQ_ID", sequenceName = "sbr_message_id_seq")
 @Access(AccessType.FIELD)
-@Table(name = "sbrmessage")
-//@XmlRootElement
-public class SBRMessage implements Serializable   {
+public class SBRMessage 
+extends AbstractEntity implements Serializable   
+{
 	/**
 	 * 
 	 */
@@ -27,7 +30,7 @@ public class SBRMessage implements Serializable   {
 	 * 
 	 */
 	
-    @Transient private Long  id;
+//    @Transient private Long  id;
 	
 	/**
 	 * 
@@ -42,14 +45,15 @@ public class SBRMessage implements Serializable   {
 	
 	
 	
-	public SBRMessage(Long  id, int sequenceNumber) {
+	public SBRMessage(/*Long  id,*/ int sequenceNumber) {
 		super();
-		this.id = id;
+//		this.id = id;
 		this.sequenceNumber = sequenceNumber;
 	}
 
 
 	@Access(AccessType.PROPERTY)
+	  @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
 	public int getSequenceNumber() {
 		return sequenceNumber;
 	}
@@ -57,24 +61,35 @@ public class SBRMessage implements Serializable   {
 		this.sequenceNumber = sequenceNumber;
 	}
 
-	  @Access(AccessType.PROPERTY)
-	  @Id()
-	  @Column(name = "ID", length = 20, nullable = false, unique = true)
-	  @GeneratedValue(strategy = GenerationType.AUTO)
-	 public Long  getId() {
-		return id;
-	 }
+//	  @Access(AccessType.PROPERTY)
+//	  @Id()
+//	  @Column(name = "ID", length = 20, nullable = false, unique = true)
+//	  @GeneratedValue(strategy = GenerationType.AUTO)
+//	 public Long  getId() {
+//		return id;
+//	 }
+//
+//
+//	private void setId(Long  id) {
+//		this.id = id;
+//	}
 
 
-	private void setId(Long  id) {
-		this.id = id;
+
+	
+
+	@Override
+	protected boolean sameContentInternal(Object toBeCompared) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 
 
 	@Override
-	public String toString() {
-		return "SBRMessage [id=" + id + ", sequenceNumber=" + sequenceNumber + "]";
+	protected boolean sameLinksInternal(Object toBeCompared) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

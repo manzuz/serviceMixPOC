@@ -1,5 +1,8 @@
 package com.conztanz.camel;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -87,6 +90,29 @@ public class JTARoute extends RouteBuilder {
 	        return format;
 	    }
 	 
-	 
+//	public static void main(String[] args) throws IOException {
+//		String everything = "";
+//		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\User\\Desktop\\packages.txt"));
+//		try {
+//			StringBuilder sb = new StringBuilder();
+//			String line = br.readLine();
+//
+//			while (line != null) {
+//				sb.append(line);
+//				sb.append(System.lineSeparator());
+//				line = br.readLine();
+//			}
+//			everything = sb.toString();
+//		} finally {
+//			br.close();
+//		}
+//		everything.replace("\n", "");
+//		everything.replace(" ", "");
+//
+////		System.out.println(everything);
+//		String [] split  = everything.split(",");
+//		for(String s : split)
+//			System.out.println(s);
+//	}
 
 }
