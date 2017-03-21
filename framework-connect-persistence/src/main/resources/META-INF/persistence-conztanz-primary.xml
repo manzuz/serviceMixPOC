@@ -3,33 +3,22 @@
              xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+                                   http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">  
 
 	<persistence-unit name="ConztanzPersistenceUnitPrimary" transaction-type="JTA">
+	
 		<!-- Persistence Provider -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 <!-- 		<provider>org.hibernate.ejb.HibernatePersistence</provider> -->
-		
 		<!--DataSource look up via JNDI  -->
 		<jta-data-source>osgi:service/javax.sql.DataSource/(osgi.jndi.service.name=ConztanzDB)</jta-data-source>
 		
-<!-- 	<persistence-unit-metadata> -->
-<!-- 		<persistence-unit-defaults> -->
-<!-- 			<schema>${persistence.schema.name}</schema> -->
-<!-- 		</persistence-unit-defaults> -->
-<!-- 	</persistence-unit-metadata> -->
-		<!-- Entity Definition & Persistence Specificity -->
-				        <class>com.conztanz.usertype.UserTypeDefinition</class>
-				        <class>com.conztanz.persistence.model.SBRMessage</class>
-		<mapping-file>com/conztanz/persistence-mapping-conztanz-primary.xml</mapping-file>
-<!-- 		<exclude-unlisted-classes>true</exclude-unlisted-classes> -->
+		<!-- Entity Definition & Persistence Specificity -->   
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		
 		<!-- Hibernate / Database bridge settings -->
-		<properties>
-            	<property name="hibernate.default_schema"   value="${persistence.schema.name}"/>
-            
-            
+		<properties>            
 			<!-- JDBC Database Connection settings -->
 			<!-- In JTA environment, literature says it should be defined as auto (or after_statement)
 			     so that hibernate aggressively release the connection after each statement. But the

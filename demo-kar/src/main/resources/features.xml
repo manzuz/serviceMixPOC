@@ -12,7 +12,25 @@
 	<repository>mvn:org.apache.aries.jpa/jpa-features/2.5.0/xml/features</repository>
 <!-- 	<repository>mvn:org.hibernate/enterprise-4.0.5/4.3.11.Final/xml/karaf</repository> -->
 <!-- 	 hibernate feature -->
-	 <feature name="hibernate" description="Hibernate 4.3.x JPA persistence engine support" version="4.3.11.Final">
+	
+    
+	<feature name="demo-kar" version="${project.version}"
+		description="POC - Demo karaf archive">
+		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
+		<feature version="1.5.0">smooks</feature>
+		<feature>jdbc</feature>
+		<feature>pax-jdbc-spec</feature>
+		<feature>transaction</feature>
+		<feature>jndi</feature>
+		<feature>pax-jdbc-postgresql</feature>
+		<feature>pax-jdbc-pool-dbcp2</feature>
+		<feature>pax-jdbc-config</feature>
+		<feature>jpa</feature>
+		<feature>camel-csv</feature>
+		<feature version="0.12.0">pax-cdi</feature>
+    </feature>
+    
+	<feature name="hibernate" description="Hibernate 4.3.x JPA persistence engine support" version="4.3.11.Final">
         <details>Enable Hibernate 4.3.x as persistence engine.</details>
         <feature prerequisite="false" dependency="false">http</feature>
         <feature version="[2.1.0,2.2.0)" prerequisite="false" dependency="false">persistence-api</feature>
@@ -31,28 +49,8 @@
         <bundle>mvn:org.hibernate/hibernate-osgi/4.3.11.Final</bundle>
     </feature>
     
-	<feature name="demo-kar" version="${project.version}"
-		description="POC - Demo karaf archive">
-		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
-		<feature version="1.5.0">smooks</feature>
-		<feature>jdbc</feature>
-		<feature>pax-jdbc-spec</feature>
-		<feature>transaction</feature>
-		<feature>jndi</feature>
-		<feature>pax-jdbc-postgresql</feature>
-		<feature>pax-jdbc-pool-dbcp2</feature>
-		<feature>pax-jdbc-config</feature>
-		<feature>jpa</feature>
-		<feature>camel-csv</feature>
-		<feature version="0.12.0">pax-cdi</feature>
-<!-- 		<feature version="[4.3, 5)">hibernate</feature> -->
-
-
-
-
-
-
-
+    
+	<feature name="connect" version="${project.version}">
 		<bundle>mvn:com.conztanz.servicemix/demo-connectionfactory/0.0.1-SNAPSHOT</bundle>
 		<bundle>mvn:com.conztanz/framework-connect-persistence/0.0.1-SNAPSHOT</bundle>
 
@@ -64,15 +62,10 @@
 <!-- 		<bundle>wrap:mvn:org.jibx/jibx-run/1.2.6$Bundle-SymbolicName=JibxRun&amp;Bundle-Version=1.2.6</bundle> -->
 <!-- 		<bundle>wrap:mvn:com.conztanz/framework-connect-commons/0.2.1$Bundle-SymbolicName=FrameworkConnectCommons&amp;Bundle-Version=0.2.1</bundle> -->
 <!-- 		<bundle>wrap:mvn:com.conztanz.third-party.sbr-stub/sbr-stub-v14_1/1.0.0$Bundle-SymbolicName=SBR_Stub14_1&amp;Bundle-Version=1.0.0</bundle> -->
-
-
-
 		<!-- <bundle>wrap:mvn:com.conztanz/framework-persistence/${framework.version}$Bundle-SymbolicName=FrameworkPersistence&amp;Bundle-Version=${framework.version}</bundle> -->
 
 		<!-- postgres bundle : -->
 		<!-- <bundle>wrap:mvn:postgresql/postgresql/9.1-901.jdbc4</bundle> -->
-
-
 		<!-- La ligne suivante permet de copier dans <servicemix>/etc le fichier 
 			com.conztanz.servicemix.activemq.cfg qui est attaché au bundle kar par le 
 			plugin build-helper-maven-plugin lancé à l'install du pom de ce projet. Par 

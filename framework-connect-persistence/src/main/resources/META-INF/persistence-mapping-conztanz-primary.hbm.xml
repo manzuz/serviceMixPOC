@@ -5,13 +5,13 @@
                  xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
                                      http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
 
-<!-- 	<persistence-unit-metadata> -->
-<!-- 		<persistence-unit-defaults> -->
-<!-- 			<schema>${persistence.schema.name}</schema> -->
-<!-- 		</persistence-unit-defaults> -->
-<!-- 	</persistence-unit-metadata> -->
+	<persistence-unit-metadata>
+		<persistence-unit-defaults>
+			<schema>${persistence.schema.name}</schema>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
 
-	<mapped-superclass class="com.conztanz.usertype.UserTypeDefinition"/>
+<!-- 	<mapped-superclass class="com.conztanz.usertype.UserTypeDefinition"/> -->
 	<entity class="com.conztanz.persistence.model.SBRMessage"/>
 
 </entity-mappings>
