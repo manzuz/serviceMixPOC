@@ -11,7 +11,7 @@
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>
 
-<!-- 	<mapped-superclass class="com.conztanz.usertype.UserTypeDefinition"/> -->
+	<mapped-superclass class="com.conztanz.usertype.UserTypeDefinition"/>
 	<entity class="com.conztanz.persistence.model.SBRMessage"/>
 
 </entity-mappings>

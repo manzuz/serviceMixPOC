@@ -7,13 +7,11 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import com.conztanz.model.AbstractEntity;
+import com.conztanz.persistence.AbstractEntityDaoImpl;
 
 
 @Entity(name = "sbr_message")
@@ -26,6 +24,7 @@ extends AbstractEntity implements Serializable
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * 
 	 */

@@ -40,9 +40,11 @@
 				<version>1.5.0</version>
 				<configuration>
 					<scanPaths>
-						<!-- Specific packages are listed here to prevent the plugin from looking 
+						<!-- 
+						Specific packages are listed here to prevent the plugin from looking 
 							in other packages (coming from dependencies). Thus causing problems (probably 
-							spring annotations ) -->
+							spring annotations ) 
+						-->
 						<scanPath>com.conztanz.camel</scanPath>
 						<scanPath>com.conztanz.dao</scanPath>
 						<scanPath>com.conztanz.exceptions</scanPath>
@@ -89,26 +91,30 @@
 						</Export-Package>
 						<!-- <Private-Package></Private-Package> -->
 						<Import-Package>
-						 org.hibernate.*;version="[4.3,5)",
-						 javax.persistence.*;version="[2.1,3)",
-						 javax.inject;resolution:=optional,
-						 javax.jms,javax.transaction;version="[1.2,2)",
-						 javax.ws.rs;version="[2.0,3)",
-						 javax.ws.rs.core;version="[2.0,3)",
-						 javax.xml.bind.annotation,
-						 org.apache.camel;version="[2.16,3)",
-						 org.apache.camel.builder;version="[2.16,3)",
-						 org.apache.camel.component.jms,org.apache.camel.model;version="[2.16,3)",
-						 org.apache.camel.model.dataformat;version="[2.16,3)",
-						 org.apache.camel.spring.spi,org.ops4j.pax.cdi.api;version="[0.12,1)",
-						 org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
-						 org.springframework.transaction,
-						 org.apache.felix.service.command;version="[0.6,1)",
-						 org.apache.felix.gogo.commands;version="[0.6,1)",
-						 org.apache.karaf.shell.console;version="[2.2,4.1)",
-						 javassist.util.proxy;version="[3.18,4)"
+							 org.hibernate.*;version="[4.3,5)",
+							 javax.persistence.*;version="[2.1,3)",
+							 javax.inject;resolution:=optional,
+							 javax.jms,javax.transaction;version="[1.2,2)",
+							 javax.ws.rs;version="[2.0,3)",
+							 javax.ws.rs.core;version="[2.0,3)",
+							 javax.xml.bind.annotation,
+							 org.apache.camel;version="[2.16,3)",
+							 org.apache.camel.builder;version="[2.16,3)",
+							 org.apache.camel.component.jms,org.apache.camel.model;version="[2.16,3)",
+							 org.apache.camel.model.dataformat;version="[2.16,3)",
+							 org.apache.camel.spring.spi,org.ops4j.pax.cdi.api;version="[0.12,1)",
+							 org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
+							 org.springframework.transaction,
+							 org.apache.felix.service.command;version="[0.6,1)",
+							 org.apache.felix.gogo.commands;version="[0.6,1)",
+							 org.apache.karaf.shell.console;version="[2.2,4.1)",
+							 javassist.util.proxy;version="[3.18,4)"
 						</Import-Package>
-						<Embed-Dependency>groupId=com.conztanz;groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.apache.camel;scope=compile|runtime</Embed-Dependency>
+						<Embed-Dependency>
+							groupId=com.conztanz;
+							groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.apache.camel;
+							scope=compile|runtime
+						</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 					</instructions>
 				</configuration>

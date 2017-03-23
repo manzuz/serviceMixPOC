@@ -1,8 +1,5 @@
 package com.conztanz.camel;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -13,7 +10,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.CsvDataFormat;
 
-import com.conztanz.exceptions.TestRuntimeException;
+import com.conztanz.exception.ConztanzTechnicalException;
 import com.conztanz.persistence.services.ISBR_14MessageService;
 
 @Singleton
@@ -24,16 +21,7 @@ public class JTARoute extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-//		onException(TestRuntimeException.class)
-//	        .maximumRedeliveries(1)
-//	        .handled(true)
-//	        .to("activemq:DLQ")
-//	        .markRollbackOnly();
-		
-//        errorHandler(deadLetterChannel("jms:errors"))
-//        ;
-//		 mdp = serviceMix
-		
+
 		/**
 		 * Get a file and process it, then send it to the Q
 		 */
@@ -54,7 +42,7 @@ public class JTARoute extends RouteBuilder {
 			@Override
 			public void process(Exchange exchange) throws Exception {
 				if( (boolean) exchange.getIn().getBody())
-					throw new TestRuntimeException();				
+					throw new ConztanzTechnicalException("ERROOOOOOOOOOOOOOOOOOOOR MESSAGE");				
 			}
 		});
 		

@@ -1,56 +1,48 @@
 package com.conztanz.dao;
 
-import java.util.List;
-
 import javax.inject.Singleton;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
+import com.conztanz.exception.ConztanzException;
+import com.conztanz.exception.PersistenceException;
 import com.conztanz.exceptions.TestRuntimeException;
 import com.conztanz.persistence.model.SBRMessage;
 
-
-
-
 @OsgiServiceProvider(classes = { ISimpleEntityDao.class })
 @Singleton
-public class SimpleEntityDaoImpl implements ISimpleEntityDao{
+public class SimpleEntityDaoImpl extends AbstractConnectDaoImpl<SBRMessage> implements ISimpleEntityDao {
+
+	public SimpleEntityDaoImpl() {
+		super(SBRMessage.class);
+	}
+
 	
-	@PersistenceContext(unitName="ConztanzPersistenceUnitPrimary")
-	private EntityManager em;
+	@Override
+	@Transactional(rollbackOn = { ConztanzException.class }, value = TxType.MANDATORY)
+	public SBRMessage add(SBRMessage entity) throws PersistenceException {
+		return super.add(entity);
+	}
 
 	@Override
-	public void persist(SBRMessage message) throws TestRuntimeException {
-		em.persist(message);
-		em.flush();
+	@Transactional(rollbackOn = { ConztanzException.class }, value = TxType.MANDATORY)
+	public void persist(SBRMessage message1) throws TestRuntimeException, PersistenceException {
+		this.add(message1);
+
 	}
-	private List<SBRMessage> allEntries( EntityManager em) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        CriteriaQuery<SBRMessage> cq = cb.createQuery(SBRMessage.class);
-        Root<SBRMessage> rootEntry = cq.from(SBRMessage.class);
-        CriteriaQuery<SBRMessage> all = cq.select(rootEntry);
-        TypedQuery<SBRMessage> allQuery = em.createQuery(all);
-        return allQuery.getResultList();
- }
-	@Transactional( rollbackOn = {TestRuntimeException.class}, value = TxType.MANDATORY)
+
+	@Override
 	public int getTotalCount() {
 		// TODO Auto-generated method stub
-		return this.allEntries(em).size() ;
+		return 0;
 	}
+
 	@Override
 	public void persist() {
 		// TODO Auto-generated method stub
-		
-	}
-	
 
+	}
 
 }
