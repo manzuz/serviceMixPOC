@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+
+	<!-- Persistence JNDI names definition -->
+	<bean class="java.lang.String" id="ConztanzXADataSourcePrimaryJNDIName">
+		<constructor-arg value="#{ConztanzPersistenceJNDINameBase + '${persistence.ds.name}'}"/>
+	</bean>
+	<bean class="java.lang.String" id="ConztanzXAConnectionPoolPrimaryJNDIName">
+		<constructor-arg value="#{ConztanzXADataSourcePrimaryJNDIName + 'Pool'}"/>
+	</bean>
+	
+	<bean class="java.lang.String" id="ConztanzNonXADataSourcePrimaryJNDIName">
+		<constructor-arg value="#{ConztanzPersistenceJNDINameBase + '${persistence.ds.name}NonXA'}"/>
+	</bean>
+	
+	<!-- Here we export the Data Sources to local JNDI for lookup by the jboss XA transaction management -->
+	<bean id="initPersistenceResourcesJNDI" class="com.conztanz.j2ee.utils.JndiExporter"
+	      depends-on="initExternalPersistenceResourcesJNDI">
+		<property name="jndiMapping">
+			<map>
+				<entry key="#{ConztanzXAConnectionPoolPrimaryJNDIName}"   value-ref="ConztanzXAConnectionPoolPrimary"/>
+			</map>
+		</property>
+		<property name="standAlone" value="true"/>
+	</bean>
+	<bean id="initExternalPersistenceResourcesJNDI" class="com.conztanz.j2ee.utils.JndiExporter">
+		<property name="jndiMapping">
+			<map>
+				<entry key="#{ConztanzXADataSourcePrimaryJNDIName}"   value-ref="ConztanzXADataSourcePrimaryJNDI"/>
+				
+				<entry key="#{ConztanzNonXADataSourcePrimaryJNDIName}" value-ref="ConztanzNonXADataSourcePrimaryJNDI"/>
+			</map>
+		</property>
+		<property name="standAlone" value="true"/>
+	</bean>
+
+	<!-- DataSources definition -->
+	<bean class="com.conztanz.persistence.datasource.PGConztanzXADataSource" id="ConztanzXADataSourcePrimaryJNDI">
+		<property name="serverName"   value="${persistence.db.server.name.test}"/>
+		<property name="portNumber"   value="${persistence.db.server.port.test}"/>
+		<property name="databaseName" value="${persistence.db.name.test}"/>
+		<property name="user"         value="${persistence.user.name.test}"/>
+		<property name="password"     value="${persistence.user.password.test}"/>
+	</bean>
+	
+	<bean class="org.postgresql.ds.PGSimpleDataSource" id="ConztanzNonXADataSourcePrimaryJNDI">
+		<property name="serverName"   value="${persistence.db.server.name.test}"/>
+		<property name="portNumber"   value="${persistence.db.server.port.test}"/>
+		<property name="databaseName" value="${persistence.db.name.test}"/>
+		<property name="user"         value="${persistence.user.name.test}"/>
+		<property name="password"     value="${persistence.user.password.test}"/>
+	</bean>
+</beans>

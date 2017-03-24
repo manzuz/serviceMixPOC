@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.conztanz</groupId>
 		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework</artifactId>
+		<artifactId>framework-connect</artifactId>
 	</parent>
 
 	<!-- POM Definition -->
@@ -16,5 +16,21 @@
 	<name>${product.name} tests configuration</name>
 	<description>${product.company} ${product.name} tests configuration</description>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>${framework.groupId}</groupId>
+			<artifactId>${framework.parent.artifact.base}-testing</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>${framework.groupId}</groupId>
+			<artifactId>${framework.parent.artifact.base}-model</artifactId>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>${framework.groupId}</groupId>
+			<artifactId>${framework.parent.artifact.base}-persistence</artifactId>
+			<type>test-jar</type>
+		</dependency>
+	</dependencies>
 </project>

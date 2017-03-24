@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<parent>
+		<groupId>com.conztanz</groupId>
+		<version>0.4-SNAPSHOT</version>
+		<artifactId>framework</artifactId>
+	</parent>
+
+	<artifactId>framework-connect</artifactId>
+	<packaging>pom</packaging>
+
+	<!-- <description>Persisting incoming messages</description> -->
+
+	<!-- TODO : clean properties (there are some unused ones) -->
+	<properties>
+	
+<!-- 		<project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
+		<product.name>${product.connect.name}</product.name>
+		
+<!-- 		<persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
+		<persistence.ds.name>${product.company}${product.connect.name}DS</persistence.ds.name>
+		<persistence.user.name>${product.company}${product.connect.name}User</persistence.user.name>
+		<persistence.schema.name>${product.connect.name}Schema</persistence.schema.name>
+		
+		<bundle.vendor>Conztanz</bundle.vendor>
+		<esbDeployableProject>false</esbDeployableProject>
+		<camel.version>2.16.1</camel.version>
+	</properties>
+
+
+</project>

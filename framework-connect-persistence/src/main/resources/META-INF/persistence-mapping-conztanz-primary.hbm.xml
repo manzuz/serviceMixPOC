@@ -13,5 +13,9 @@
 
 	<mapped-superclass class="com.conztanz.usertype.UserTypeDefinition"/>
 	<entity class="com.conztanz.persistence.model.SBRMessage"/>
+	<entity class="com.conztanz.model.test.SimpleEntity"/>
+	<entity class="com.conztanz.model.test.InheritedEntityParent"/>
+	<entity class="com.conztanz.model.test.InheritedEntityChild1"/>
+	<entity class="com.conztanz.model.test.InheritedEntityChild2"/>
 
 </entity-mappings>

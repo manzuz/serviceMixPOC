@@ -11,7 +11,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import com.conztanz.model.AbstractEntity;
-import com.conztanz.persistence.AbstractEntityDaoImpl;
 
 
 @Entity(name = "sbr_message")

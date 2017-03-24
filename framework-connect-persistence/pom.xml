@@ -6,30 +6,13 @@
 	<parent>
 		<groupId>com.conztanz</groupId>
 		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework</artifactId>
+		<artifactId>framework-connect</artifactId>
 	</parent>
 
 	<artifactId>framework-connect-persistence</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
 	<!-- <description>Persisting incoming messages</description> -->
-
-	<!-- TODO : clean properties (there are some unused ones) -->
-	<properties>
-	
-<!-- 		<project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
-		<product.name>${product.connect.name}</product.name>
-		
-<!-- 		<persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
-		<persistence.ds.name>${product.company}${product.connect.name}DS</persistence.ds.name>
-		<persistence.user.name>${product.company}${product.connect.name}User</persistence.user.name>
-		<persistence.schema.name>${product.connect.name}Schema</persistence.schema.name>
-		
-		<bundle.vendor>Conztanz</bundle.vendor>
-		<esbDeployableProject>false</esbDeployableProject>
-		<camel.version>2.16.1</camel.version>
-	</properties>
 
 	<build>
 		<plugins>
@@ -207,21 +190,39 @@
 			<optional>true</optional>
 		</dependency>
 		
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>framework-connect-persistence-test</artifactId>
-			<version>0.4-SNAPSHOT</version>
-		</dependency>
 
 
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-persistence</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-model</artifactId>
 		</dependency>
+		
+		
+		
+		<!-- Test dependencies -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>${framework.groupId}</groupId> -->
+<!-- 			<artifactId>${framework.artifact.base}-testing</artifactId> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+		
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-persistence-test</artifactId>
+			<version>0.4-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>${framework.groupId}</groupId> -->
+<!-- 			<artifactId>${framework.parent.artifact.base}-model</artifactId> -->
+<!-- 			<type>test-jar</type> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+		
+
 	</dependencies>
 </project>
