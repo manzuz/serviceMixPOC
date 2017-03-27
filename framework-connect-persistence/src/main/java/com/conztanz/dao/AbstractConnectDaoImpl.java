@@ -16,7 +16,8 @@ public abstract class AbstractConnectDaoImpl<ENTITY extends AbstractEntity> exte
 	protected AbstractConnectDaoImpl(Class<ENTITY> entityClass) {
 		super(entityClass);
 	}
-
 	
+	
+
 
 }
