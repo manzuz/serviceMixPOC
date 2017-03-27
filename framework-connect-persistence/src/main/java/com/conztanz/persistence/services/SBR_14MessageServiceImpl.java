@@ -10,7 +10,6 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import com.conztanz.dao.ISimpleEntityDao;
 import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.PersistenceException;
-import com.conztanz.exceptions.TestRuntimeException;
 import com.conztanz.persistence.model.SBRMessage;
 
 @OsgiServiceProvider(classes = { ISBR_14MessageService.class })
@@ -28,7 +27,7 @@ public class SBR_14MessageServiceImpl implements ISBR_14MessageService {
 	
 	
 	@Transactional(value = TxType.REQUIRED,rollbackOn = {ConztanzException.class})
-	public void insertMessage(boolean shouldFail) throws  TestRuntimeException, PersistenceException{
+	public void insertMessage(boolean shouldFail) throws   PersistenceException{
 			this.entityDao.persist(new SBRMessage());
 //			if(shouldFail)
 //				throw new TestRuntimeException();

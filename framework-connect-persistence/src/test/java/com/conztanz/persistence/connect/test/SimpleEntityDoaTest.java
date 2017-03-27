@@ -1,5 +1,6 @@
 package com.conztanz.persistence.connect.test;
 
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,6 +32,9 @@ public class SimpleEntityDoaTest extends AbstractDaoTester<SimpleEntity>  {
 	protected AbstractEntityTestFactory<SimpleEntity> getTestFactory() {
 		return null;
 	}
+	
+	
+
 	
 	
 	  

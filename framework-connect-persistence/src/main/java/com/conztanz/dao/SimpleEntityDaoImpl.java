@@ -8,10 +8,9 @@ import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 
 import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.PersistenceException;
-import com.conztanz.exceptions.TestRuntimeException;
 import com.conztanz.persistence.model.SBRMessage;
 
-@OsgiServiceProvider(classes = { ISimpleEntityDao.class })
+@OsgiServiceProvider(classes = { ISimpleEntityDao.class})
 @Singleton
 public class SimpleEntityDaoImpl extends AbstractConnectDaoImpl<SBRMessage> implements ISimpleEntityDao {
 
@@ -28,7 +27,7 @@ public class SimpleEntityDaoImpl extends AbstractConnectDaoImpl<SBRMessage> impl
 
 	@Override
 	@Transactional(rollbackOn = { ConztanzException.class }, value = TxType.MANDATORY)
-	public void persist(SBRMessage message1) throws TestRuntimeException, PersistenceException {
+	public void persist(SBRMessage message1) throws  PersistenceException {
 		this.add(message1);
 
 	}
