@@ -61,7 +61,7 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 <!-- 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor> -->
 						<Meta-Persistence>
-							META-INF/persistence-conztanz-primary.xml
+							config/persistence/persistence-conztanz-primary-osgi.xml
 						</Meta-Persistence>
 						<Export-Package>
 							com.conztanz.usertype,

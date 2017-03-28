@@ -19,6 +19,8 @@
 
 	<modules>
 		<module>../demo-parent</module>
+		<module>../framework-connect</module>
+		<module>../framework-connect-persistence</module>
 		<module>../demo-connectionfactory</module>
 		<module>../demo-persistence</module>
 		<module>../demo-kar</module>	

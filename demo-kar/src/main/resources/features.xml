@@ -13,6 +13,21 @@
 <!-- 	<repository>mvn:org.hibernate/enterprise-4.0.5/4.3.11.Final/xml/karaf</repository> -->
 <!-- 	 hibernate feature -->
 	
+	<feature name="demo-kar" version="${project.version}" description="POC - Demo karaf archive">
+		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
+		<feature version="1.5.0">smooks</feature>
+		<feature>jdbc</feature>
+		<feature>pax-jdbc-spec</feature>
+		<feature>transaction</feature>
+		<feature>jndi</feature>
+		<feature>pax-jdbc-postgresql</feature>
+		<feature>pax-jdbc-pool-dbcp2</feature>
+		<feature>pax-jdbc-config</feature>
+		<feature>jpa</feature>
+		<feature>camel-csv</feature>
+		<feature version="0.12.0">pax-cdi</feature>
+    </feature>
+    
     
     
     
@@ -34,27 +49,12 @@
         <bundle>mvn:org.hibernate/hibernate-entitymanager/4.3.11.Final</bundle>
         <bundle>mvn:org.hibernate/hibernate-osgi/4.3.11.Final</bundle>
     </feature>
-	<feature name="demo-kar" version="${project.version}" description="POC - Demo karaf archive">
-		<!-- Si besoin, installera et démarrera smooks quand le kar sera déployé -->
-		<feature version="1.5.0">smooks</feature>
-		<feature>jdbc</feature>
-		<feature>pax-jdbc-spec</feature>
-		<feature>transaction</feature>
-		<feature>jndi</feature>
-		<feature>pax-jdbc-postgresql</feature>
-		<feature>pax-jdbc-pool-dbcp2</feature>
-		<feature>pax-jdbc-config</feature>
-		<feature>jpa</feature>
-		<feature>camel-csv</feature>
-		<feature version="0.12.0">pax-cdi</feature>
-    </feature>
-    
 
     
     
 	<feature name="connect" version="${project.version}">
 		<bundle>mvn:com.conztanz.servicemix/demo-connectionfactory/0.0.1-SNAPSHOT</bundle>
-		<bundle>mvn:com.conztanz/framework-connect-persistence/0.0.1-SNAPSHOT</bundle>
+		<bundle start-level="85">mvn:com.conztanz/demo-persistence/0.4-SNAPSHOT</bundle>
 
 		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5</bundle>
