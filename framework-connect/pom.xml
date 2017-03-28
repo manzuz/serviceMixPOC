@@ -8,7 +8,6 @@
 		<version>0.4-SNAPSHOT</version>
 		<artifactId>framework</artifactId>
 	</parent>
-
 	<artifactId>framework-connect</artifactId>
 	<packaging>pom</packaging>
 
