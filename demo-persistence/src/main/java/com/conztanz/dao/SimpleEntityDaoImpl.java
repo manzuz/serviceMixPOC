@@ -19,16 +19,12 @@ public class SimpleEntityDaoImpl extends AbstractConnectDaoImpl<SBRMessage> impl
 	}
 
 	
-	@Override
-	@Transactional(rollbackOn = { ConztanzException.class }, value = TxType.MANDATORY)
-	public SBRMessage add(SBRMessage entity) throws PersistenceException {
-		return super.add(entity);
-	}
+
 
 	@Override
 	@Transactional(rollbackOn = { ConztanzException.class }, value = TxType.MANDATORY)
-	public void persist(SBRMessage message1) throws  PersistenceException {
-		this.add(message1);
+	public SBRMessage  add(SBRMessage message1) throws  PersistenceException {
+		return super.add(message1);
 
 	}
 
@@ -38,10 +34,6 @@ public class SimpleEntityDaoImpl extends AbstractConnectDaoImpl<SBRMessage> impl
 		return 0;
 	}
 
-	@Override
-	public void persist() {
-		// TODO Auto-generated method stub
 
-	}
 
 }

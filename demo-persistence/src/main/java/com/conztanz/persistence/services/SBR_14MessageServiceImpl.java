@@ -27,8 +27,8 @@ public class SBR_14MessageServiceImpl implements ISBR_14MessageService {
 	
 	
 	@Transactional(value = TxType.REQUIRED,rollbackOn = {ConztanzException.class})
-	public void insertMessage(boolean shouldFail) throws   PersistenceException{
-			this.entityDao.persist(new SBRMessage());
+	public void insertMessage() throws   PersistenceException{
+			this.entityDao.add(new SBRMessage());
 
 
 	}

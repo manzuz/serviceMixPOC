@@ -37,7 +37,7 @@ public class JTARoute extends RouteBuilder {
 		 */
 		from("amq:JtaPoc")
 		.transacted()
-		.bean(sBR_14MessageService, "insertMessage(${body})")
+		.bean(sBR_14MessageService, "insertMessage()")
 		.process(new Processor() {
 			@Override
 			public void process(Exchange exchange) throws Exception {

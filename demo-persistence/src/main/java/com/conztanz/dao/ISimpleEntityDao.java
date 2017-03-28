@@ -6,8 +6,8 @@ import com.conztanz.persistence.model.SBRMessage;
 public interface ISimpleEntityDao {
 	
 	
-	 void persist(SBRMessage message1) throws PersistenceException;
+	SBRMessage add(SBRMessage message) throws PersistenceException;
 	 int getTotalCount();
-	 void persist();
+
 
 }

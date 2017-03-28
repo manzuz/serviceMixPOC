@@ -7,6 +7,6 @@ import com.conztanz.persistence.IAbstractEntityDao;
 public interface ISimpleEntityDao extends IAbstractEntityDao<SimpleEntity> {
 	
 	
-	SimpleEntity add(SimpleEntity message1) throws  PersistenceException;
+	SimpleEntity add(SimpleEntity simpleEntity) throws  PersistenceException;
 
 }
