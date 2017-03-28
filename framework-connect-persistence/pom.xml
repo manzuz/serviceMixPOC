@@ -62,9 +62,9 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<Meta-Persistence>
-							META-INF/persistence-conztanz-primary.xml
-						</Meta-Persistence>
+<!-- 						<Meta-Persistence> -->
+<!-- 							META-INF/persistence-conztanz-primary.xml -->
+<!-- 						</Meta-Persistence> -->
 						<Export-Package>
 							com.conztanz.usertype,
 							com.conztanz.persistence.services,
@@ -171,7 +171,7 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
-			<optional>true</optional>
+<!-- 			<optional>true</optional> -->
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
