@@ -8,5 +8,5 @@ public interface ISimpleEntityDao extends IAbstractEntityDao<SimpleEntity> {
 	
 	
 	SimpleEntity add(SimpleEntity simpleEntity) throws  PersistenceException;
-
+	int getTotalCount();
 }

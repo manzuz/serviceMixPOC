@@ -31,6 +31,8 @@
 						<scanPath>com.conztanz.exceptions</scanPath>
 						<scanPath>com.conztanz.persistence.model</scanPath>
 						<scanPath>com.conztanz.persistence.services</scanPath>
+						<scanPath>com.conztanz.persistence.connect.test</scanPath>
+						
 					</scanPaths>
 				</configuration>
 				<executions>
@@ -108,7 +110,19 @@
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<version>0.4-SNAPSHOT</version>
+			<artifactId>framework-model</artifactId>
+			<type>test-jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<version>0.4-SNAPSHOT</version>
 			<artifactId>framework-connect-persistence</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<version>0.4-SNAPSHOT</version>
+			<artifactId>framework-connect-persistence</artifactId>
+			<type>test-jar</type>
 		</dependency>
 	</dependencies>
 
