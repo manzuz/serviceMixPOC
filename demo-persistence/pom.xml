@@ -99,20 +99,15 @@
 							 javassist.util.proxy;version="[3.18,4)",
 							 org.osgi.framework.*,
 							 com.conztanz.j2ee.utils,
-<!-- 							 com.fasterxml.*, -->
 							 com.conztanz.json
-<!-- 							 org.xml.sax, -->
-<!-- 							 javax.xml.parsers, -->
-<!-- 							 org.w3c.dom.*, -->
-<!-- 							 com.conztanz.activator -->
 						</Import-Package>
 						
 						<Embed-Dependency>
 							*;
 							scope=compile|runtime;
 							groupId=!org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel;
-							artifactId=!spring-tx|spring-orm|spring-jdbc|spring-context-support|framework-json
-<!-- 							inline=true -->
+							artifactId=!spring-tx|spring-orm|spring-jdbc|spring-context-support|framework-json;
+							inline=true
 						</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
 					</instructions>

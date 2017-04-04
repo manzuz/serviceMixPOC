@@ -1,1 +1,0 @@
-# First version of the db model for this component
