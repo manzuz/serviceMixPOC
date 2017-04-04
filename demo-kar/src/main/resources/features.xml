@@ -48,14 +48,17 @@
         <bundle>mvn:org.hibernate/hibernate-core/4.3.11.Final</bundle>
         <bundle>mvn:org.hibernate/hibernate-entitymanager/4.3.11.Final</bundle>
         <bundle>mvn:org.hibernate/hibernate-osgi/4.3.11.Final</bundle>
+        <bundle>mvn:org.hibernate/hibernate-osgi/4.3.11.Final</bundle>
+<!--         <bundle>mvn:org.hibernate/hibernate-validator/4.2.0.Final</bundle>  -->
+        
     </feature>
 
     
     
 	<feature name="connect" version="${project.version}">
-		<bundle>mvn:com.conztanz.servicemix/demo-connectionfactory/0.0.1-SNAPSHOT</bundle>
-		<bundle start-level="85">mvn:com.conztanz/demo-persistence/0.4-SNAPSHOT</bundle>
-
+		<bundle start-level="80">mvn:com.conztanz/bundle-activator/0.4-SNAPSHOT</bundle>
+		<bundle start-level="90">mvn:com.conztanz.servicemix/demo-connectionfactory/0.0.1-SNAPSHOT</bundle>
+		<bundle start-level="90">mvn:com.conztanz/demo-persistence/0.4-SNAPSHOT</bundle>
 		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->
 		<bundle>mvn:org.milyn/milyn-smooks-all/1.5</bundle>
 

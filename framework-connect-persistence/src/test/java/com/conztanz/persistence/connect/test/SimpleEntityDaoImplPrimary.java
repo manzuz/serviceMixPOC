@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import com.conztanz.dao.AbstractConnectDaoImpl;
 import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.PersistenceException;
+import com.conztanz.j2ee.utils.ConztanzSpringApplicationContext;
 import com.conztanz.model.test.SimpleEntity;
 
 
@@ -34,5 +35,14 @@ public class SimpleEntityDaoImplPrimary extends AbstractConnectDaoImpl<SimpleEnt
 	public int getTotalCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public static void main(String[] args) {
+		ConztanzSpringApplicationContext.contextStartup("/config/persistence/TestapplicationContext.xml");
+		
+		String a = ConztanzSpringApplicationContext.getBean("articleView");
+		System.out.println(a);
+		System.out.println("ezddedede");
+
 	}
 }
