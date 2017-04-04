@@ -10,7 +10,7 @@ public class SpringContextLoader implements BundleActivator {
 	@Override
 	public void start(BundleContext context) throws Exception {
 		 Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader()); 
-		ConztanzSpringApplicationContext.contextStartup("/config/TestapplicationContext.xml");
+		ConztanzSpringApplicationContext.contextStartup("/config/applicationContext.xml");
 		System.out.println("\n"
 				+ "#######################################################\n"
 				+  " ConztanzSpringApplicationContext Loaded \n"
