@@ -20,7 +20,7 @@
 	<modules>
 		<module>../demo-parent</module>
 		<module>../framework-connect</module>
-		<module>../bundle-activator</module>
+		<module>../framework-connect-spring-context-bundle</module>
 		<module>../framework-connect-persistence</module>
 		<module>../demo-connectionfactory</module>
 		<module>../demo-persistence</module>

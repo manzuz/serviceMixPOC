@@ -56,7 +56,7 @@
     
     
 	<feature name="connect" version="${project.version}">
-		<bundle start-level="80">mvn:com.conztanz/bundle-activator/0.4-SNAPSHOT</bundle>
+		<bundle start-level="80">mvn:com.conztanz/framework-connect-spring-context-bundle/0.4-SNAPSHOT</bundle>
 		<bundle start-level="90">mvn:com.conztanz.servicemix/demo-connectionfactory/0.0.1-SNAPSHOT</bundle>
 		<bundle start-level="90">mvn:com.conztanz/demo-persistence/0.4-SNAPSHOT</bundle>
 		<!-- Permet d'embarquer le bundle smooks 1.5 dans le kar -->

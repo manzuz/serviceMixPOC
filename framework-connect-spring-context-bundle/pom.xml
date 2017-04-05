@@ -8,7 +8,7 @@
 		<artifactId>framework-connect</artifactId>
 	</parent>
 
-	<artifactId>bundle-activator</artifactId>
+	<artifactId>framework-connect-spring-context-bundle</artifactId>
 	<packaging>bundle</packaging>
 
 	<build>
