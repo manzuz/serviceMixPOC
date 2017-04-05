@@ -75,7 +75,6 @@
 						</Export-Package>
 <!-- 						<Private-Package></Private-Package> -->
 <!--        					 <Bundle-Activator>com.conztanz.activator.SpringContextLoader</Bundle-Activator> -->
-
 						<Import-Package>
 							 !org.hibernate.validator.*,
 							 org.hibernate.*;version="[4.3,5)",
@@ -101,12 +100,9 @@
 							 com.conztanz.j2ee.utils,
 							 com.conztanz.json
 						</Import-Package>
-						
 						<Embed-Dependency>
-							*;
-							scope=compile|runtime;
-							groupId=!org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel;
-							artifactId=!spring-tx|spring-orm|spring-jdbc|spring-context-support|framework-json;
+							groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel;
+							artifactId=!framework-json;
 							inline=true
 						</Embed-Dependency>
 						<Embed-Transitive>true</Embed-Transitive>
