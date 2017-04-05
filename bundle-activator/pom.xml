@@ -10,7 +10,6 @@
 
 	<artifactId>bundle-activator</artifactId>
 	<packaging>bundle</packaging>
-	<description>XA connectionfactory</description>
 
 	<build>
 	<plugins>
@@ -31,11 +30,10 @@
 					<Bundle-Activator>com.conztanz.activator.SpringContextLoaderActivator</Bundle-Activator>
 					<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
 					<Export-Package>
-					com.conztanz.j2ee.utils,
-					com.conztanz.activator,
-					com.fasterxml.*,
-					com.conztanz.json
-					
+						com.conztanz.j2ee.utils,
+						com.conztanz.activator,
+						com.fasterxml.*,
+						com.conztanz.json
 					</Export-Package>
 					<Embed-Dependency>
 							groupId=!org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel;
