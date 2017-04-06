@@ -22,7 +22,7 @@
 		<module>../framework-connect</module>
 		<module>../framework-connect-spring-context-bundle</module>
 		<module>../framework-connect-persistence</module>
-		<module>../demo-connectionfactory</module>
+		<module>../framework-connect-connection-factory</module>
 		<module>../demo-persistence</module>
 		<module>../demo-kar</module>	
 	</modules>

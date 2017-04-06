@@ -3,19 +3,26 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.conztanz.servicemix</groupId>
-		<artifactId>demo-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../demo-parent</relativePath>
+		<groupId>com.conztanz</groupId>
+		<artifactId>framework-connect</artifactId>
+		<version>0.4-SNAPSHOT</version>
+		<relativePath>../framework-connect</relativePath>
 	</parent>
 
-	<artifactId>demo-connectionfactory</artifactId>
+	<artifactId>framework-connect-connection-factory</artifactId>
 	<packaging>bundle</packaging>
-	<description>XA connectionfactory</description>
+	<description>XA connection factory</description>
 
 	<build>
 		<plugins>
-			
+			<!--generate a bundle ( as opposed to a JAR) -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<!-- <version>${felix.plugin.bundle.version}</version> -->
+				<version>3.0.0</version>
+				<extensions>true</extensions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -25,7 +32,7 @@
 						<Bundle-Description>${project.description}</Bundle-Description>
 
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-<!-- 						<Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
+						<!-- <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
 
 						<Export-Package>*</Export-Package>
 						<!-- <Private-Package>*</Private-Package> -->

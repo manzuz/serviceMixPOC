@@ -35,13 +35,7 @@
 	<reference id="transactionManager" interface="org.springframework.transaction.PlatformTransactionManager" />
 
 	<reference  id="connectionFactory" interface="javax.jms.ConnectionFactory" filter = "(osgi.jndi.service.name=jms/ConztanzTest)"/>
-<!-- 		<property name="brokerURL" value="tcp://${activemq.broker.url}" /> -->
 	
-	
-<!-- 	<bean  id="connectionFactory" class ="org.apache.activemq.ActiveMQXAConnectionFactory"> -->
-<!-- 		<property name="brokerURL" value="tcp://${activemq.broker.url}" /> -->
-<!-- 		</bean> -->
-		
 	<bean id="amq" class="org.apache.camel.component.jms.JmsComponent">
 		<property name="connectionFactory" ref="connectionFactory" />
 		<property name="transactionManager" ref="transactionManager" />
