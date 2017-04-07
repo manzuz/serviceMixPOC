@@ -11,7 +11,10 @@
 	<artifactId>framework-connect</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-
+		
+	
+	
+	
 		<!-- <project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
 		<product.name>${product.connect.name}</product.name>
 		<!-- <persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
@@ -22,6 +25,23 @@
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 	</properties>
+	
+	
+	<profiles>
+		<!-- Modules defining ConztanZ Framework Cucumber -->
+		<profile>
+			<id>modules</id>
+			<modules>
+				<module>../${framework.connect.artifact.base}-connection-factory</module>
+				<module>../${framework.connect.artifact.base}-model</module>
+				<module>../${framework.connect.artifact.base}-persistence</module>
+				<module>../${framework.connect.artifact.base}-persistence-bundle</module>
+				<module>../${framework.connect.artifact.base}-spring-context</module>
+				<module>../${framework.connect.artifact.base}-spring-context-bundle</module>
+			</modules>
+		</profile>
+	</profiles>
+
 
 
 </project>
