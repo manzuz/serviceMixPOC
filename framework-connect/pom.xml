@@ -21,7 +21,6 @@
 
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
-		<camel.version>2.16.1</camel.version>
 	</properties>
 
 
