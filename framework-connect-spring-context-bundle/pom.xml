@@ -8,7 +8,7 @@
 		<artifactId>framework-connect</artifactId>
 	</parent>
 
-	<artifactId>framework-connect-spring-context-bundle</artifactId>
+	<artifactId>${framework.connect.artifact.base}-spring-context-bundle</artifactId>
 	<packaging>bundle</packaging>
 
 	<build>
@@ -60,7 +60,7 @@
   
   	<dependency>
 		<groupId>com.conztanz</groupId>
-		<artifactId>framework-connect-spring-context</artifactId>
+		<artifactId>${framework.connect.artifact.base}-spring-context</artifactId>
 		<version>0.4-SNAPSHOT</version>
 	</dependency>
   </dependencies>

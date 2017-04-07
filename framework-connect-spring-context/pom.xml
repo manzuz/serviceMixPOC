@@ -8,33 +8,31 @@
 		<artifactId>framework-connect</artifactId>
 	</parent>
 
-	<artifactId>framework-connect-spring-context</artifactId>
+	<artifactId>${framework.connect.artifact.base}-spring-context</artifactId>
 
 
   <dependencies>
-  
+	<!--Framework dependencies -->
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>${framework.parent.artifact.base}-logger</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>${framework.parent.artifact.base}-json</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>${framework.parent.artifact.base}-commons</artifactId>
+	</dependency>
+	
+	
 	<!--OSGI dependencies -->
 	<dependency>
 		<groupId>org.ops4j.pax.cdi</groupId>
 		<artifactId>pax-cdi-api</artifactId>
 		<version>0.12.0</version>
 	</dependency>
-	
-	
-	<!--Framework dependencies -->
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-logger</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-json</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-commons</artifactId>
-	</dependency>
-
 
 	<!-- Spring  dependencies -->
 	<dependency>

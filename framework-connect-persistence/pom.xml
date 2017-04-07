@@ -9,7 +9,7 @@
 		<artifactId>framework-connect</artifactId>
 	</parent>
 
-	<artifactId>framework-connect-persistence</artifactId>
+	<artifactId>${framework.connect.artifact.base}-persistence</artifactId>
 	<packaging>jar</packaging>
 
 	<dependencies>
@@ -51,11 +51,11 @@
 		<!-- Framework dependencies -->
 		<dependency>
 			<groupId>com.conztanz</groupId>
-			<artifactId>framework-persistence</artifactId>
+			<artifactId>${framework.parent.artifact.base}-persistence</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.conztanz</groupId>
-			<artifactId>framework-connect-model</artifactId>
+			<artifactId>${framework.connect.artifact.base}-model</artifactId>
 			<version>0.4-SNAPSHOT</version>
 		</dependency>
 
@@ -63,7 +63,7 @@
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>com.conztanz</groupId>
-			<artifactId>framework-connect-persistence-test</artifactId>
+			<artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
 			<version>0.4-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>

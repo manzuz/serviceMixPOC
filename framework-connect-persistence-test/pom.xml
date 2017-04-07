@@ -10,7 +10,7 @@
 	</parent>
 
 	<!-- POM Definition -->
-	<artifactId>framework-connect-persistence-test</artifactId>
+	<artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
 	<packaging>jar</packaging>
 
 	<name>${product.name} tests configuration</name>
@@ -34,7 +34,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.conztanz</groupId>
-			<artifactId>framework-connect-model</artifactId>
+			<artifactId>${framework.connect.artifact.base}-model</artifactId>
 			<version>0.4-SNAPSHOT</version>
 			<type>test-jar</type>
 		</dependency>

@@ -9,9 +9,8 @@
 		<relativePath>../framework-connect</relativePath>
 	</parent>
 
-	<artifactId>framework-connect-connection-factory</artifactId>
+	<artifactId>${framework.connect.artifact.base}-connection-factory</artifactId>
 	<packaging>bundle</packaging>
-	<description>XA connection factory</description>
 
 	<build>
 		<plugins>
