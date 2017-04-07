@@ -18,13 +18,13 @@
 	</properties>
 
 	<modules>
-		<module>../demo-parent</module>
+<!-- 		<module>../demo-parent</module> -->
 		<module>../framework-connect</module>
 		<module>../framework-connect-spring-context-bundle</module>
 		<module>../framework-connect-persistence</module>
 		<module>../framework-connect-connection-factory</module>
 		<module>../framework-connect-persistence-bundle</module>
-		<module>../demo-kar</module>	
+		<module>../framework-connect-kar</module>	
 	</modules>
 
 	<profiles>
@@ -87,8 +87,8 @@
 								<configuration>
 									<artifactItems>
 										<artifactItem>
-											<groupId>com.conztanz.servicemix</groupId>
-											<artifactId>demo-kar</artifactId>
+											<groupId>com.conztanz</groupId>
+											<artifactId>framework-connect-kar</artifactId>
 											<type>kar</type>
 											<outputDirectory>${servicemix.local.target.deploydir}</outputDirectory>
 										</artifactItem>
@@ -158,9 +158,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.conztanz.servicemix</groupId>
-			<artifactId>demo-kar</artifactId>
-			<version>${project.version}</version>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-kar</artifactId>
+			<version>0.4-SNAPSHOT</version>
 			<type>kar</type>
 		</dependency>
 

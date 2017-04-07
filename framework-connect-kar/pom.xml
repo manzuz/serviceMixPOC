@@ -11,12 +11,6 @@
 	<artifactId>${framework.connect.artifact.base}-kar</artifactId>
 	<packaging>pom</packaging>
 
-
-
-
-
-
-
 	<build>
 		<resources>
 			<resource>
@@ -42,27 +36,11 @@
 						</goals>
 						<configuration>
 							<artifacts>
-<!-- 								<artifact> -->
-<!-- 									<file>target/classes/org.ops4j.datasource-1.cfg</file> -->
-<!-- 									<type>cfg</type> -->
-<!-- 									<classifier>ds1</classifier> -->
-<!-- 								</artifact> -->
-<!-- 								<artifact> -->
-<!-- 									<file>target/classes/org.ops4j.datasource-2.cfg</file> -->
-<!-- 									<type>cfg</type> -->
-<!-- 									<classifier>ds2</classifier> -->
-<!-- 								</artifact> -->
-<!-- 								<artifact> -->
-<!-- 									<file>target/classes/com.conztanz.servicemix.activemq.cfg</file> -->
-<!-- 									<type>cfg</type> -->
-<!-- 									<classifier>amq</classifier> -->
-<!-- 								</artifact> -->
 							</artifacts>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-
 			<!-- Construit l'archive karaf à partir du fichier features.xml -->
 			<plugin>
 				<groupId>org.apache.karaf.tooling</groupId>
@@ -76,7 +54,6 @@
 						</goals>
 						<configuration>
 							<featuresFile>src/main/resources/features.xml</featuresFile>
-<!-- 							<featuresFile>target/classes/features.xml</featuresFile> -->
 						</configuration>
 					</execution>
 				</executions>
@@ -95,45 +72,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.karaf.tooling</groupId> -->
-<!-- 				<artifactId>features-maven-plugin</artifactId> -->
-<!-- 				<version>${features-maven-plugin.version}</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>create-kar</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>create-kar</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<featuresFile>src/main/resources/features.xml</featuresFile> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
 		</plugins>
 	</build>
-
-
-	<dependencies>
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.conztanz</groupId> -->
-<!-- 			<artifactId>framework-connect-commons</artifactId> -->
-<!-- 		</dependency> -->
-
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>${project.groupId}</groupId> -->
-<!-- 			<artifactId>demo-commons</artifactId> -->
-<!-- 			<version>${project.version}</version> -->
-<!-- 		</dependency> -->
-
-
-
-
-	</dependencies>
-
 </project>
