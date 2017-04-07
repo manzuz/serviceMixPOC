@@ -10,7 +10,6 @@
 
 	<artifactId>framework-connect-persistence-bundle</artifactId>
 	<packaging>bundle</packaging>
-	<description>Demo of using framework connect persistence</description>
 
 	<build>
 		<plugins>
@@ -22,7 +21,7 @@
 				<configuration>
 					<scanPaths>
 						<!-- 
-						Specific packages are listed here to prevent the plugin from looking 
+							Specific packages are listed here to prevent the plugin from looking 
 							in other packages (coming from dependencies). Thus causing problems (probably 
 							spring annotations ) 
 						-->
@@ -47,12 +46,13 @@
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
-<!-- 				<version>${felix.plugin.bundle.version}</version> -->
 				<version>3.0.0</version>
 				<extensions>true</extensions>
 			</plugin>
-			<!-- generate OSGI import and export statements, based on static analysis 
-				of code but also statements mentioned here -->
+			<!-- 
+				generate OSGI import and export statements, based on static analysis 
+				of code but also statements mentioned here 
+			-->
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -72,8 +72,6 @@
 							com.conztanz.persistence.dialect,
 							com.conztanz.activator.SpringContextLoader
 						</Export-Package>
-<!-- 						<Private-Package></Private-Package> -->
-<!--        					 <Bundle-Activator>com.conztanz.activator.SpringContextLoader</Bundle-Activator> -->
 						<Import-Package>
 							 !org.hibernate.validator.*,
 							 org.hibernate.*;version="[4.3,5)",
@@ -97,7 +95,7 @@
 							 javassist.util.proxy;version="[3.18,4)",
 							 org.osgi.framework.*,
 							 com.conztanz.j2ee.utils,
-							 com.conztanz.json,*
+							 com.conztanz.json
 						</Import-Package>
 						<Embed-Dependency>
 							groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel;
@@ -112,41 +110,18 @@
 </build>
 
 	<dependencies>
-	<!--Project dependencies -->
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-connect-model</artifactId>
-		<version>0.4-SNAPSHOT</version>
-		<type>test-jar</type>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework-connect-persistence</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework-connect-persistence</artifactId>
-		<type>test-jar</type>
-	</dependency>
 	
-	<!--AOP-->
+	<!-- Framework dependencies -->
 	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-aspects</artifactId>
+		<groupId>com.conztanz</groupId>
+		<version>0.4-SNAPSHOT</version>
+		<artifactId>framework-connect-persistence</artifactId>
 	</dependency>
 	<dependency>
-		<groupId>org.aspectj</groupId>
-		<artifactId>aspectjrt</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.aspectj</groupId>
-		<artifactId>aspectjweaver</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-web</artifactId>
+		<groupId>com.conztanz</groupId>
+		<version>0.4-SNAPSHOT</version>
+		<artifactId>framework-connect-persistence</artifactId>
+		<type>test-jar</type>
 	</dependency>
 </dependencies>
 

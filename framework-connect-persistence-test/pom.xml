@@ -32,5 +32,11 @@
 			<artifactId>${framework.parent.artifact.base}-persistence</artifactId>
 			<type>test-jar</type>
 		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-model</artifactId>
+			<version>0.4-SNAPSHOT</version>
+			<type>test-jar</type>
+		</dependency>
 	</dependencies>
 </project>

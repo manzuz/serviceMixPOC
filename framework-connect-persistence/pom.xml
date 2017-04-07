@@ -12,12 +12,6 @@
 	<artifactId>framework-connect-persistence</artifactId>
 	<packaging>jar</packaging>
 
-	<!-- <description>Persisting incoming messages</description> -->
-
-
-
-
-
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -61,20 +55,10 @@
 		</dependency>
 		<dependency>
 			<groupId>com.conztanz</groupId>
-			<artifactId>framework-model</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>framework-connect-model</artifactId>
-			<version>0.4-SNAPSHOT</version>
-			<type>test-jar</type>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.conztanz</groupId>
 			<artifactId>framework-connect-model</artifactId>
 			<version>0.4-SNAPSHOT</version>
 		</dependency>
+
 	
 		<!-- Test dependencies -->
 		<dependency>

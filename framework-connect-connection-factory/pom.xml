@@ -30,12 +30,8 @@
 					<instructions>
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Description>${project.description}</Bundle-Description>
-
 						<Bundle-Vendor>${bundle.vendor}</Bundle-Vendor>
-						<!-- <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence> -->
-
 						<Export-Package>*</Export-Package>
-						<!-- <Private-Package>*</Private-Package> -->
 						<Import-Package>*</Import-Package>
 					</instructions>
 				</configuration>
@@ -44,14 +40,11 @@
 		</plugins>
 	</build>
 
-
   <dependencies>
   	<dependency>
   		<groupId>org.apache.activemq</groupId>
   		<artifactId>activemq-pool</artifactId>
   	</dependency>
   </dependencies>
-
-	
 
 </project>

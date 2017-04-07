@@ -10,20 +10,16 @@
 	</parent>
 	<artifactId>framework-connect</artifactId>
 	<packaging>pom</packaging>
-
-	<!-- <description>Persisting incoming messages</description> -->
-
-	<!-- TODO : clean properties (there are some unused ones) -->
 	<properties>
-	
-<!-- 		<project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
+
+		<!-- <project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
 		<product.name>${product.connect.name}</product.name>
-		
-<!-- 		<persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
+
+		<!-- <persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
 		<persistence.ds.name>${product.company}${product.connect.name}DS</persistence.ds.name>
 		<persistence.user.name>${product.company}${product.connect.name}User</persistence.user.name>
 		<persistence.schema.name>${product.connect.name}Schema</persistence.schema.name>
-		
+
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 		<camel.version>2.16.1</camel.version>
