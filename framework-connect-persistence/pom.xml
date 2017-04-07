@@ -16,7 +16,6 @@
 		<dependency>
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-core</artifactId>
-			<version>${camel.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -26,24 +25,22 @@
 		<dependency>
 			<groupId>org.ops4j.pax.cdi</groupId>
 			<artifactId>pax-cdi-api</artifactId>
-			<version>0.12.0</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
-			<version>1</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>javax.transaction-api</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<version>1.2</version>
-			<optional>true</optional>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.transaction</groupId> -->
+<!-- 			<artifactId>javax.transaction-api</artifactId> -->
+<!-- 			<version>1.2</version> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.enterprise</groupId> -->
+<!-- 			<artifactId>cdi-api</artifactId> -->
+<!-- 			<version>1.2</version> -->
+<!-- 			<optional>true</optional> -->
+<!-- 		</dependency> -->
 		<!-- Framework dependencies -->
 		<dependency>
 			<groupId>com.conztanz</groupId>
