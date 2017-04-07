@@ -8,7 +8,7 @@
 		<artifactId>framework-connect</artifactId>
 	</parent>
 
-	<artifactId>demo-persistence</artifactId>
+	<artifactId>framework-connect-persistence-bundle</artifactId>
 	<packaging>bundle</packaging>
 	<description>Demo of using framework connect persistence</description>
 
@@ -32,7 +32,6 @@
 						<scanPath>com.conztanz.persistence.model</scanPath>
 						<scanPath>com.conztanz.persistence.services</scanPath>
 						<scanPath>com.conztanz.persistence.connect.test</scanPath>
-						
 					</scanPaths>
 				</configuration>
 				<executions>
@@ -98,7 +97,7 @@
 							 javassist.util.proxy;version="[3.18,4)",
 							 org.osgi.framework.*,
 							 com.conztanz.j2ee.utils,
-							 com.conztanz.json
+							 com.conztanz.json,*
 						</Import-Package>
 						<Embed-Dependency>
 							groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel;
@@ -113,8 +112,26 @@
 </build>
 
 	<dependencies>
-
-	<!-- 	AOP -->
+	<!--Project dependencies -->
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>framework-connect-model</artifactId>
+		<version>0.4-SNAPSHOT</version>
+		<type>test-jar</type>
+	</dependency>
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<version>0.4-SNAPSHOT</version>
+		<artifactId>framework-connect-persistence</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<version>0.4-SNAPSHOT</version>
+		<artifactId>framework-connect-persistence</artifactId>
+		<type>test-jar</type>
+	</dependency>
+	
+	<!--AOP-->
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-aspects</artifactId>
@@ -130,26 +147,6 @@
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-web</artifactId>
-	</dependency>
-	<dependency>
-
-
-
-
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-model</artifactId>
-		<type>test-jar</type>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework-connect-persistence</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework-connect-persistence</artifactId>
-		<type>test-jar</type>
 	</dependency>
 </dependencies>
 
