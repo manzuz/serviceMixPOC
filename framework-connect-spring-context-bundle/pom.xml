@@ -61,7 +61,6 @@
   	<dependency>
 		<groupId>com.conztanz</groupId>
 		<artifactId>${framework.connect.artifact.base}-spring-context</artifactId>
-		<version>0.4-SNAPSHOT</version>
 	</dependency>
   </dependencies>
 

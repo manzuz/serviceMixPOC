@@ -18,12 +18,10 @@
 			<artifactId>camel-core</artifactId>
 			<version>${camel.version}</version>
 		</dependency>
-	
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
-	
 		<!--Contexts and Dependency Injection for OSGi -->
 		<dependency>
 			<groupId>org.ops4j.pax.cdi</groupId>
@@ -34,7 +32,6 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
-			<!-- <optional>true</optional> -->
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
@@ -47,7 +44,6 @@
 			<version>1.2</version>
 			<optional>true</optional>
 		</dependency>
-	
 		<!-- Framework dependencies -->
 		<dependency>
 			<groupId>com.conztanz</groupId>
@@ -56,15 +52,11 @@
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>${framework.connect.artifact.base}-model</artifactId>
-			<version>0.4-SNAPSHOT</version>
 		</dependency>
-
-	
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
-			<version>0.4-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
