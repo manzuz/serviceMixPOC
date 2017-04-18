@@ -2,25 +2,22 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.conztanz.servicemix</groupId>
-	<artifactId>demo-deployer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>com.conztanz</groupId>
+		<artifactId>framework-connect</artifactId>
+		<version>0.4-SNAPSHOT</version>
+		<relativePath>../framework-connect</relativePath>
+	</parent>
+	
+	<artifactId>framework-connect-deployer</artifactId>
 	<packaging>pom</packaging>
-
-	<properties>
-		<target.output.directory>target/dependency</target.output.directory>
-		<servicemix.version>7.0.0.M2</servicemix.version>
-		<servicemix.rootfolder>apache-servicemix-${servicemix.version}</servicemix.rootfolder>
-		<servicemix.local.target.basedir>${target.output.directory}/${servicemix.rootfolder}</servicemix.local.target.basedir>
-		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
-		<!-- <servicemix.install.filesystem.parentdir>C:</servicemix.install.filesystem.parentdir> -->
-		<!-- <ftp.incoming.dir>${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}/ftp/incoming/edi</ftp.incoming.dir> -->
-	</properties>
-
 	<modules>
-<!-- 		<module>../demo-parent</module> -->
 		<module>../framework-connect</module>
+		<module>../framework-connect-spring-context</module>
+
 		<module>../framework-connect-spring-context-bundle</module>
+		<module>../framework-connect-model</module>
+		<module>../framework-connect-persistence-test</module>
 		<module>../framework-connect-persistence</module>
 		<module>../framework-connect-connection-factory</module>
 		<module>../framework-connect-persistence-bundle</module>
