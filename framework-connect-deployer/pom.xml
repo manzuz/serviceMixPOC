@@ -14,7 +14,6 @@
 	<modules>
 		<module>../framework-connect</module>
 		<module>../framework-connect-spring-context</module>
-
 		<module>../framework-connect-spring-context-bundle</module>
 		<module>../framework-connect-model</module>
 		<module>../framework-connect-persistence-test</module>
@@ -153,11 +152,9 @@
 			<version>${servicemix.version}</version>
 			<type>zip</type>
 		</dependency>
-
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-connect-kar</artifactId>
-			<version>0.4-SNAPSHOT</version>
 			<type>kar</type>
 		</dependency>
 

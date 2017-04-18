@@ -11,6 +11,8 @@
 	<artifactId>framework-connect</artifactId>
 	<packaging>pom</packaging>
 	<properties>
+
+		<!-- Local deployment dependencies -->
 		<target.output.directory>target/dependency</target.output.directory>
 		<servicemix.version>7.0.0.M2</servicemix.version>
 		<servicemix.rootfolder>apache-servicemix-${servicemix.version}</servicemix.rootfolder>
@@ -18,9 +20,9 @@
 		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
 		<!-- <servicemix.install.filesystem.parentdir>C:</servicemix.install.filesystem.parentdir> -->
 		<!-- <ftp.incoming.dir>${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}/ftp/incoming/edi</ftp.incoming.dir> -->
-	
-	
-	
+
+
+
 		<!-- <project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
 		<product.name>${product.connect.name}</product.name>
 		<!-- <persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
@@ -31,8 +33,8 @@
 		<bundle.vendor>Conztanz</bundle.vendor>
 		<esbDeployableProject>false</esbDeployableProject>
 	</properties>
-	
-	
+
+
 	<profiles>
 		<!-- Modules defining ConztanZ Framework Cucumber -->
 		<profile>
