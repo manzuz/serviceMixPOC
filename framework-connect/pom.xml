@@ -11,7 +11,13 @@
 	<artifactId>framework-connect</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		
+		<target.output.directory>target/dependency</target.output.directory>
+		<servicemix.version>7.0.0.M2</servicemix.version>
+		<servicemix.rootfolder>apache-servicemix-${servicemix.version}</servicemix.rootfolder>
+		<servicemix.local.target.basedir>${target.output.directory}/${servicemix.rootfolder}</servicemix.local.target.basedir>
+		<servicemix.local.target.deploydir>${servicemix.local.target.basedir}/deploy</servicemix.local.target.deploydir>
+		<!-- <servicemix.install.filesystem.parentdir>C:</servicemix.install.filesystem.parentdir> -->
+		<!-- <ftp.incoming.dir>${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}/ftp/incoming/edi</ftp.incoming.dir> -->
 	
 	
 	
