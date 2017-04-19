@@ -12,31 +12,54 @@
 	<packaging>pom</packaging>
 
 	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
+		<!-- <resources> -->
+		<!-- <resource> -->
+		<!-- <directory>src/main/resources</directory> -->
+		<!-- <filtering>true</filtering> -->
+		<!-- </resource> -->
+		<!-- </resources> -->
 		<plugins>
 			<!-- Permet d'embarquer dans le kar le fichier com.conztanz.servicemix.activemq.cfg, 
 				après filtrage. Ce fichier sera installé automatiquement dans servicemix 
 				grâce au système de features.xml => /demo-kar/src/main/resources/features.xml 
 				(<configfile finalname="/etc/com.conztanz.servicemix.activemq.cfg">mvn:com.conztanz.servicemix/demo-kar/0.0.1-SNAPSHOT/cfg</configfile>) 
 				Cf : http://www.liquid-reality.de/display/liquid/2011/09/23/Karaf+Tutorial+Part+2+-+Using+the+Configuration+Admin+Service -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>build-helper-maven-plugin</artifactId> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>attach-artifacts</id> -->
+			<!-- <phase>package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>attach-artifact</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <artifacts> -->
+			<!-- </artifacts> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
 				<executions>
 					<execution>
-						<id>attach-artifacts</id>
-						<phase>package</phase>
+						<id>copy-resources</id>
+						<phase>validate</phase>
 						<goals>
-							<goal>attach-artifact</goal>
+							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<artifacts>
-							</artifacts>
+							<outputDirectory>${basedir}/target</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
 						</configuration>
 					</execution>
 				</executions>
@@ -53,25 +76,25 @@
 							<goal>create-kar</goal>
 						</goals>
 						<configuration>
-							<featuresFile>src/main/resources/features.xml</featuresFile>
+							<featuresFile>${basedir}/target/framework-connect-persistence-features.xml</featuresFile>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<!-- Filtering maven -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>filter</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>resources</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+	<!-- 	Filtering maven -->
+	<!-- 	<plugin> -->
+	<!-- 		<groupId>org.apache.maven.plugins</groupId> -->
+	<!-- 		<artifactId>maven-resources-plugin</artifactId> -->
+	<!-- 		<executions> -->
+	<!-- 			<execution> -->
+	<!-- 				<id>filter</id> -->
+	<!-- 				<phase>generate-resources</phase> -->
+	<!-- 				<goals> -->
+	<!-- 					<goal>resources</goal> -->
+	<!-- 				</goals> -->
+	<!-- 			</execution> -->
+	<!-- 		</executions> -->
+	<!-- 	</plugin> -->
 		</plugins>
 	</build>
 </project>

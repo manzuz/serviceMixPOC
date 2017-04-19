@@ -36,7 +36,7 @@
 
 
 	<profiles>
-		<!-- Modules defining ConztanZ Framework Cucumber -->
+		<!-- Modules defining ConztanZ Framework Connect -->
 		<profile>
 			<id>modules</id>
 			<modules>

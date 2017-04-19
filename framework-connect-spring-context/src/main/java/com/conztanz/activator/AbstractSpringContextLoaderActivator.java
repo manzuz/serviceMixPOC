@@ -18,7 +18,9 @@ public abstract class AbstractSpringContextLoaderActivator   implements BundleAc
 	 * Nothing to do here 
 	 */
 	@Override
-	public void stop(BundleContext context) throws Exception {}
+	public void stop(BundleContext context) throws Exception {
+		System.out.println("STOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOP");
+	}
 	
 	
 	

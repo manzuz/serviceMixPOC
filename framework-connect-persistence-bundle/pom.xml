@@ -13,6 +13,13 @@
 
 	<build>
 	<plugins>
+			<!--generate a bundle ( as opposed to a JAR) -->
+		<plugin>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>maven-bundle-plugin</artifactId>
+			<version>${maven-bundle-plugin.version}</version>
+			<extensions>true</extensions>
+		</plugin>
 		<plugin>
 			<!--generate blueprint from annotations -->
 			<groupId>org.apache.aries.blueprint</groupId>
@@ -32,13 +39,7 @@
 				</scanPaths>
 			</configuration>
 		</plugin>
-		<!--generate a bundle ( as opposed to a JAR) -->
-		<plugin>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>maven-bundle-plugin</artifactId>
-			<version>3.0.0</version>
-			<extensions>true</extensions>
-		</plugin>
+
 		<!-- generate OSGI import and export statements, based on static analysis 
 			of code but also statements mentioned here -->
 		<plugin>
