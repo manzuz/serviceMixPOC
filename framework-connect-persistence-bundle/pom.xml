@@ -99,18 +99,21 @@
 </build>
 
 	<dependencies>
-	
-	<!-- Framework dependencies -->
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-connect-persistence</artifactId>
-	</dependency>
-	<dependency>
-		<groupId>com.conztanz</groupId>
-		<artifactId>framework-connect-persistence</artifactId>
-		<type>test-jar</type>
-	</dependency>
-</dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+		</dependency>
+		<!-- Framework dependencies -->
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-persistence</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-persistence</artifactId>
+			<type>test-jar</type>
+		</dependency>
+	</dependencies>
 
 	
 

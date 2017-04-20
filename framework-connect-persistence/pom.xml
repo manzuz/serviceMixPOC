@@ -14,10 +14,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
@@ -30,6 +26,7 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>
+		
 <!-- 		<dependency> -->
 <!-- 			<groupId>javax.transaction</groupId> -->
 <!-- 			<artifactId>javax.transaction-api</artifactId> -->
@@ -41,20 +38,22 @@
 <!-- 			<version>1.2</version> -->
 <!-- 			<optional>true</optional> -->
 <!-- 		</dependency> -->
-		<!-- Framework dependencies -->
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>${framework.parent.artifact.base}-persistence</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>${framework.connect.artifact.base}-model</artifactId>
-		</dependency>
-		<!-- Test dependencies -->
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+
+
+	<!-- Framework dependencies -->
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>${framework.parent.artifact.base}-persistence</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>${framework.connect.artifact.base}-model</artifactId>
+	</dependency>
+	<!-- Test dependencies -->
+	<dependency>
+		<groupId>com.conztanz</groupId>
+		<artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
+		<scope>test</scope>
+	</dependency>
 	</dependencies>
 </project>
