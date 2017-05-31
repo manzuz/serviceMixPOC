@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+
+	<bean id="PFSIncomingMessageFactory" class="com.conztanz.connect.factory.PFSIncomingMessageFactory" scope="singleton"/>
+	<bean id="PFSSmooksTransformer" class="com.conztanz.connect.transform.travel.airimp.PFSSmooksTransformer" scope="singleton"/>
+		<bean id="PFSConnectInitialzer" class="com.conztanz.connect.PFSConnectInitialzer" scope="singleton"/>
+	
+
+</beans>

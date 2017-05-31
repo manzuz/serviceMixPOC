@@ -1,5 +1,7 @@
 package com.conztanz.connect;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.factory.PFSIncomingMessageFactory;
 import com.conztanz.connect.initialize.AbstractConnectInitialzer;
@@ -12,12 +14,11 @@ import com.conztanz.connect.transform.travel.airimp.PFSSmooksTransformer;
  */
 public class PFSConnectInitialzer extends AbstractConnectInitialzer<PFSSmooksTransformer, PFSIncomingMessage> {
 
+	@Autowired
+	private PFSIncomingMessageFactory pFSIncomingMessageFactory;
 
-	// @Autowired
-	private PFSIncomingMessageFactory pFSIncomingMessageFactory = new PFSIncomingMessageFactory();
-
-	// @Autowired
-	private PFSSmooksTransformer pFSSmooksTransformer = new PFSSmooksTransformer();
+	@Autowired
+	private PFSSmooksTransformer pFSSmooksTransformer;
 
 	@Override
 	public AbstractIncomingMessageFactory<PFSIncomingMessage> getMessageFactory() {
