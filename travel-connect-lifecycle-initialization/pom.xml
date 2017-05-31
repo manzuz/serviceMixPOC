@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM definition -->
+	<parent>
+		<groupId>com.conztanz</groupId>
+		<version>1.4-SNAPSHOT</version>
+		<artifactId>travel</artifactId>
+	</parent>
+
+	<!-- POM Definition -->
+	<artifactId>travel-connect-lifecycle-initialization</artifactId>
+	<packaging>jar</packaging>
+
+
+
+	<dependencies>
+
+		<!-- Framework dependencies -->
+		<dependency>
+			<groupId>${framework.groupId}</groupId>
+			<artifactId>${framework.connect.artifact.base}-lifecycle-initialization</artifactId>
+		</dependency>
+
+		<!-- Travel dependencies -->
+		<dependency>
+			<groupId>${product.groupId}</groupId>
+			<artifactId>${product.parent.artifact.base}-model</artifactId>
+		</dependency>
+	</dependencies>
+
+
+
+
+
+</project>

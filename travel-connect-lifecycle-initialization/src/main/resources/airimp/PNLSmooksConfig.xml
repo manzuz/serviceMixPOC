@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd">
+ 
+    <reader class="com.conztanz.connect.transform.travel.airimp.PNLSmooksReader">
+<!--         <params> -->
+<!--     	    <param name="fields">firstname,lastname</param> -->
+<!--         </params> -->
+    </reader>
+ 
+</smooks-resource-list>

@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM definition -->
+	<parent>
+		<groupId>com.conztanz</groupId>
+		<version>1.4-SNAPSHOT</version>
+		<artifactId>travel</artifactId>
+	</parent>
+
+	<!-- POM Definition -->
+	<artifactId>travel-connect</artifactId>
+	<packaging>pom</packaging>
+
+		
+
+	<properties>
+	
+		<project.package.base>${product.groupId}</project.package.base>
+		<!-- TODO TO BE REMOVED WHEN REFACTORED SHOULD IS DEFINED AS FOLLOW IN PARENT POM project.package.base>${product.package.base}</project.package.base-->
+		<!-- Project configuration definition -->
+		<project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base>
+		<product.name>${product.connect.name}</product.name>
+
+		<!-- <project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
+<!-- 		<product.name>${product.connect.name}</product.name> -->
+		<!-- <persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
+<!-- 		<persistence.ds.name>${product.company}${product.connect.name}DS</persistence.ds.name> -->
+<!-- 		<persistence.user.name>${product.company}${product.connect.name}User</persistence.user.name> -->
+<!-- 		<persistence.schema.name>${product.connect.name}Schema</persistence.schema.name> -->
+	</properties>
+
+<profiles>
+		<!-- Modules defining Conztanz TravelConnect -->
+		<profile>
+			<id>modules</id>
+			<modules>
+<!-- 				<module></module> -->
+			</modules>
+		</profile>
+	</profiles>
+
+
+
+
+</project>
