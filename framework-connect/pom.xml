@@ -43,6 +43,7 @@
 				<module>../${framework.connect.artifact.base}-connection-factory</module>
 				<module>../${framework.connect.artifact.base}-model</module>
 				<module>../${framework.connect.artifact.base}-persistence</module>
+				<module>../${framework.connect.artifact.base}-lifecycle-initialization</module>
 				<module>../${framework.connect.artifact.base}-persistence-bundle</module>
 				<module>../${framework.connect.artifact.base}-spring-context</module>
 				<module>../${framework.connect.artifact.base}-spring-context-bundle</module>
