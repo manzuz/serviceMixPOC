@@ -1,12 +1,7 @@
 package com.conztanz.connect.transform.travel.airimp;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import javax.inject.Singleton;
 
-import com.conztanz.connect.PFSConnectInitialzer;
-import com.conztanz.connect.PFSIncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 
 /**
@@ -15,6 +10,7 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
  *
  * @param <TRANSFORMER>
  */
+@Singleton
 public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 
 	@Override
@@ -24,19 +20,19 @@ public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 	
 	
 	
-	public static void main(String[] args) throws IOException {
-//		java.nio.file.Path p =  new Path("airimp/PFS.txt");
-//		new PFSSmooksTransformer().transform2XML(Files.readAllBytes(p));
-		
-		Path path = Paths.get("C:\\Users\\User\\Desktop\\serviceMixPOC\\travel-connect-lifecycle-initialization\\src\\test\\resources\\airimp\\PFS.txt");
-		byte [] payload = Files.readAllBytes(path); 
-//		System.out.println(		new PFSSmooksTransformer().transform2XML(payload));
-		PFSConnectInitialzer p = new PFSConnectInitialzer();
-		PFSIncomingMessage m = p.init(payload);
-		System.out.println(m.getType());
-		System.out.println(m.getRawPayload().length);
-
-	}
+//	public static void main(String[] args) throws IOException {
+////		java.nio.file.Path p =  new Path("airimp/PFS.txt");
+////		new PFSSmooksTransformer().transform2XML(Files.readAllBytes(p));
+//		
+//		Path path = Paths.get("C:\\Users\\User\\Desktop\\serviceMixPOC\\travel-connect-lifecycle-initialization\\src\\test\\resources\\airimp\\PFS.txt");
+//		byte [] payload = Files.readAllBytes(path); 
+////		System.out.println(		new PFSSmooksTransformer().transform2XML(payload));
+//		PFSConnectInitialzer p = new PFSConnectInitialzer();
+//		PFSIncomingMessage m = p.init(payload);
+//		System.out.println(m.getType());
+//		System.out.println(m.getRawPayload().length);
+//
+//	}
 	
 
 	

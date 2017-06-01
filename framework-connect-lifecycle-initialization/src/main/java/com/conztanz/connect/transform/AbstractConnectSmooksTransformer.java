@@ -23,6 +23,7 @@ public abstract class AbstractConnectSmooksTransformer {
 			this.getSmooksReader().filterSource(new StreamSource(this.byteToStream(payload)), serializedEvents);
 		} catch (SmooksException | IOException | SAXException e) {
 			// TODO Auto-generated catch block
+			System.out.println("heeeeeeeeeeeeeeeeeeeeeeeeere");
 			e.printStackTrace();
 		}
 		return serializedEvents.getResult();

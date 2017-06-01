@@ -64,12 +64,23 @@
 	<feature name="Camel Csv parsing" >
 		<feature version="${camel-csv.version}">camel-csv</feature>
 	</feature>
+	
+	<!-- Parsing for lifecycle-->
+	<feature name="milyn-1.5">
+		<!-- TODO version management -->
+		<feature version="1.5.0">smooks</feature>
+	</feature>
 
 	<!-- Framework Connect persistence bundles -->
 	<feature name="${framework.connect.artifact.base}-persistence" >
 		<bundle start-level="80"> mvn:com.conztanz/${framework.connect.artifact.base}-spring-context-bundle/${framework.version}</bundle>
 		<bundle start-level="90">mvn:com.conztanz/${framework.connect.artifact.base}-connection-factory/${framework.version}</bundle>
-		<bundle start-level="90">mvn:com.conztanz/${framework.connect.artifact.base}-persistence-bundle/${framework.version}</bundle>
+<!-- 		<bundle start-level="90">mvn:com.conztanz/${framework.connect.artifact.base}-persistence-bundle/${framework.version}</bundle> -->
+	</feature>
+	
+	<!-- Travel Connect lifecycle bundles -->
+	<feature name="${framework.connect.artifact.base}-lifecycle" >
+		<bundle start-level="90"> mvn:com.conztanz/travel-connect-lifecycle-initialization-bundle/1.4-SNAPSHOT</bundle>
 	</feature>
 
 	<!-- <feature>pax-jdbc-spec</feature> -->
