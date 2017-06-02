@@ -4,22 +4,21 @@ import javax.inject.Singleton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.conztanz.connect.PFSConnectInitialzer;
+import com.conztanz.connect.PFSConnectInitializer;
 import com.conztanz.connect.processor.FileProcessor;
 
 @Singleton
-public class PFSInitializationFileSystemCamelRoute
-		extends AbstractInitializationCamelRoute<PFSConnectInitialzer, FileProcessor> {
+public class PFSInitializationFileSystemCamelRoute extends AbstractInitializationCamelRoute<PFSConnectInitializer, FileProcessor> {
 
 	@Autowired
-	private PFSConnectInitialzer pFSConnectInitialzer;
+	private PFSConnectInitializer pFSConnectInitializer;
 
 	@Autowired
 	private FileProcessor fileProcessor;
 
 	@Override
-	public PFSConnectInitialzer getInitializer() {
-		return pFSConnectInitialzer;
+	public PFSConnectInitializer getInitializer() {
+		return pFSConnectInitializer;
 	}
 
 	@Override

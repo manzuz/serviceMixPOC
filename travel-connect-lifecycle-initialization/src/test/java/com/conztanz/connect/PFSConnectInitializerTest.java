@@ -13,7 +13,7 @@ public class PFSConnectInitializerTest {
 	
 	
 	@Autowired
-	private PFSConnectInitialzer pfsConnectInitialzer;
+	private PFSConnectInitializer pfsConnectInitializer;
 	
 	
 	
@@ -21,7 +21,7 @@ public class PFSConnectInitializerTest {
 	
 	@Test
 	public void test() {
-		PFSIncomingMessage msg = pfsConnectInitialzer.getMessageFactory().createMessage(new byte[10]);
+		PFSIncomingMessage msg = pfsConnectInitializer.getMessageFactory().createMessage(new byte[10]);
 		assertEquals(msg.getType(), MessageType.PFS);
 	}
 

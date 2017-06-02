@@ -20,7 +20,7 @@ public abstract class AbstractConnectSmooksTransformer {
 	public String transform2XML(byte[] payload) {
 		StringResult serializedEvents = new StringResult();
 		try {
-			this.getSmooksReader().filterSource(new StreamSource(this.byteToStream(payload)), serializedEvents);
+			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(payload)), serializedEvents);
 		} catch (SmooksException | IOException | SAXException e) {
 			// TODO Auto-generated catch block
 			System.out.println("heeeeeeeeeeeeeeeeeeeeeeeeere");
@@ -44,7 +44,7 @@ public abstract class AbstractConnectSmooksTransformer {
 	 * 
 	 * @return
 	 */
-	private InputStream byteToStream(byte[] payload) {
+	private InputStream byte2Stream(byte[] payload) {
 		InputStream inputStream = new ByteArrayInputStream(payload);
 		return inputStream;
 	}
