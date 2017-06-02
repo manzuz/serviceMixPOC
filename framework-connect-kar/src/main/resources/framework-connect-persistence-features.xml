@@ -67,7 +67,7 @@
 	
 	<!-- Parsing for lifecycle-->
 	<feature name="milyn-1.5">
-		<!-- TODO version management -->
+<!-- 		TODO version management -->
 		<feature version="1.5.0">smooks</feature>
 	</feature>
 

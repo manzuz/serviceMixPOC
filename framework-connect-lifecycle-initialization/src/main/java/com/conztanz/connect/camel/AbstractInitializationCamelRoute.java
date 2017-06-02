@@ -15,10 +15,12 @@ public abstract class AbstractInitializationCamelRoute<INITIALIZER extends Abstr
 	public void configure() throws Exception {
 		from(this.getRouteEndpoint())
 			.transacted()
-			.log("{${body}}")
+//			.log("{${body}}")
 			.process(this.getProcessor())
-			.bean(getInitializer(), "init(${body})").
-			log("DOOOONE");
+			.bean(getInitializer())
+//			.bean(getInitializer(), "init(${body})")
+			.log("${body}")
+			.log("DOOOONE");
 
 	}
 

@@ -22,9 +22,14 @@
 			<artifactId>${framework.connect.artifact.base}-model</artifactId>
 		</dependency>
 		<!-- Smooks -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.milyn</groupId> -->
+<!-- 			<artifactId>milyn-smooks-core</artifactId> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>org.milyn</groupId>
-			<artifactId>milyn-smooks-core</artifactId>
+			<artifactId>milyn-smooks-all</artifactId>
+			<version>1.5</version>
 		</dependency>
 		<!-- Camel dependencies -->
 		<dependency>
@@ -32,11 +37,11 @@
 			<artifactId>camel-core</artifactId>
 		</dependency>
 
-<!-- 	<dependency> -->
-<!-- 		<groupId>xml-apis</groupId> -->
-<!-- 		<artifactId>xml-apis</artifactId> -->
-<!-- 		<version>1.0.b2</version> -->
-<!-- 	</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>xml-apis</groupId> -->
+<!-- 			<artifactId>xml-apis</artifactId> -->
+<!-- 			<version>1.0.b2</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 

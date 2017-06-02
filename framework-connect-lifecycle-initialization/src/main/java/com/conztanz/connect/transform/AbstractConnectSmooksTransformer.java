@@ -17,15 +17,16 @@ public abstract class AbstractConnectSmooksTransformer {
 	 * @param payload
 	 * @return
 	 */
-	public String transform2XML(byte[] payload) {
+	public String transform2XML(byte[] payLoad) {
 		StringResult serializedEvents = new StringResult();
+		//		TODO decodeBase64BeforeCleaning
+		this.getCleaner().clean(payLoad,false);
 		try {
-			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(payload)), serializedEvents);
+			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(payLoad)), serializedEvents);
 		} catch (SmooksException | IOException | SAXException e) {
-			// TODO Auto-generated catch block
-			System.out.println("heeeeeeeeeeeeeeeeeeeeeeeeere");
 			e.printStackTrace();
 		}
+//		System.out.println(serializedEvents.getResult());
 		return serializedEvents.getResult();
 	}
 
@@ -54,5 +55,11 @@ public abstract class AbstractConnectSmooksTransformer {
 	 * @return
 	 */
 	public abstract String getPathToConfigFile();
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public abstract IMessageCleaner getCleaner();
 
 }

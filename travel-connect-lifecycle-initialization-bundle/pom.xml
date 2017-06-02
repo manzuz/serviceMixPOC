@@ -77,14 +77,16 @@
 						org.osgi.framework.*,
 						org.xml.*,
 						javax.xml.transform,
-						org.milyn.*,
+	 					org.milyn.*,
 						javax.xml.*,
-						org.apache.camel.*
+						org.apache.camel.*,
+						org.milyn.smooks.edi, 
+						org.milyn.edisax
 <!-- 						com.conztanz.j2ee.utils, -->
 <!-- 						com.conztanz.json -->
 					</Import-Package>
 					<Embed-Dependency>
-						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn
+						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
 <!-- 						inline=true -->
 					</Embed-Dependency>
 					<Embed-Transitive>true</Embed-Transitive>
@@ -93,7 +95,6 @@
 		</plugin>
 	</plugins>
 </build>
-
 
 	<dependencies>
 		<!-- Framework dependencies -->

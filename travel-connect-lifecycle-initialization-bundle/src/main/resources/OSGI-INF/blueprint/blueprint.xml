@@ -46,9 +46,13 @@
 		<property name="propagationBehaviorName" value="PROPAGATION_REQUIRED" />
 	</bean>
 
-	<camelContext id="message-router"
+	<camelContext id="message-router-pfs"
 		xmlns="http://camel.apache.org/schema/blueprint">
 		<routeBuilder ref="pFSInitializationFileSystemCamelRoute" />
 	</camelContext>
-
+	
+	<camelContext id="message-router-sbr"
+		xmlns="http://camel.apache.org/schema/blueprint">
+		<routeBuilder ref="sBRInitializationFileSystemCamelRoute" />
+	</camelContext>
 </blueprint>

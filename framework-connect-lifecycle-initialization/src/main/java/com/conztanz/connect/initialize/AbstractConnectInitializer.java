@@ -24,6 +24,7 @@ public abstract class AbstractConnectInitializer<TRANSFORMER extends AbstractCon
 		MESSAGE m = this.getMessageFactory().createMessage(payload);
 		String transformedPayload = this.getSmooksTransformer().transform2XML(payload);
 		m.setTransformedPayload(transformedPayload);
+		System.out.println(m);
 		return m;
 	}
 
