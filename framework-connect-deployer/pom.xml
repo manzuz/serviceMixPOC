@@ -55,27 +55,24 @@
 						<executions>
 
 
-
 							<!-- Uncompress the standard servicemix distribution -->
-							<execution>
-								<id>unpackServicemix</id>
-								<phase>generate-resources</phase>
-								<goals>
-									<goal>unpack</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<artifactItem>
-											<groupId>org.apache.servicemix</groupId>
-											<artifactId>apache-servicemix</artifactId>
-											<type>zip</type>
-											<outputDirectory>${target.output.directory}</outputDirectory>
-										</artifactItem>
-									</artifactItems>
-								</configuration>
-							</execution>
-
-
+<!-- 							<execution> -->
+<!-- 								<id>unpackServicemix</id> -->
+<!-- 								<phase>generate-resources</phase> -->
+<!-- 								<goals> -->
+<!-- 									<goal>unpack</goal> -->
+<!-- 								</goals> -->
+<!-- 								<configuration> -->
+<!-- 									<artifactItems> -->
+<!-- 										<artifactItem> -->
+<!-- 											<groupId>org.apache.servicemix</groupId> -->
+<!-- 											<artifactId>apache-servicemix</artifactId> -->
+<!-- 											<type>zip</type> -->
+<!-- 											<outputDirectory>${target.output.directory}</outputDirectory> -->
+<!-- 										</artifactItem> -->
+<!-- 									</artifactItems> -->
+<!-- 								</configuration> -->
+<!-- 							</execution> -->
 							<!-- Embed kar in deploy folder -->
 							<execution>
 								<id>copyKar</id>
@@ -120,12 +117,20 @@
 										<mkdir dir="${servicemix.local.target.basedir}/ftp/incoming" />
 
 										<!-- Backup previous install -->
+										<!-- 
 										<move verbose="true" failonerror="false"
 											file="${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}"
 											tofile="${servicemix.install.filesystem.parentdir}/${servicemix.rootfolder}_previous" />
 
+										 -->
+										 
+										<copy verbose="false" includeEmptyDirs="true"
+											todir="${target.output.directory}/apache-servicemix-7.0.0.M2">
+											<fileset dir="C:/Users/User/Desktop/apache-servicemix-7.0.0.M2" includes="**/*" />
+										</copy>										 
+										 
 										<!-- Copy servicemix distribution to local filesystem -->
-										<copy verbose="true" includeEmptyDirs="true"
+										<copy verbose="false" includeEmptyDirs="true"
 											todir="${servicemix.install.filesystem.parentdir}">
 											<fileset dir="${target.output.directory}" includes="**/*" />
 										</copy>
