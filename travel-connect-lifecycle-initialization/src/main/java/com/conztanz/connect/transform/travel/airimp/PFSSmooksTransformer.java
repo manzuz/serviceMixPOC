@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 
 import javax.inject.Singleton;
 
-import com.conztanz.connect.PFSIncomingMessage;
 import com.conztanz.connect.SBR14ConnectInitializer;
 import com.conztanz.connect.SBR14IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
@@ -28,7 +27,7 @@ public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 	 */
 	@Override
 	public String getPathToConfigFile() {
-		return "airimp/PFSSmooksConfig.xml";
+		return "/airimp/PFSSmooksConfig.xml";
 	}
 	
 	

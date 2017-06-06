@@ -31,12 +31,6 @@
 			<artifactId>milyn-smooks-all</artifactId>
 			<version>1.5</version>
 		</dependency>
-		<!-- Camel dependencies -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-		</dependency>
-
 <!-- 		<dependency> -->
 <!-- 			<groupId>xml-apis</groupId> -->
 <!-- 			<artifactId>xml-apis</artifactId> -->

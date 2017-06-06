@@ -50,9 +50,9 @@ public class EdifactCleaner implements IMessageCleaner {
 				continue;
 			}
 			sbrresCleanBatch.append((char) tab[i]);
-			if("UNH{1{SBRRES}12}1}1A{030614/0122/4/7AEDL9/020614".equals(sbrresCleanBatch.toString()))  {
-				System.out.println("AVANT SAUT D ELIGNE");
-			}
+//			if("UNH{1{SBRRES}12}1}1A{030614/0122/4/7AEDL9/020614".equals(sbrresCleanBatch.toString()))  {
+//				System.out.println("AVANT SAUT D ELIGNE");
+//			}
 //			System.out.println((char) tab[i] + " vs " + tab[i]);
 //			System.out.println(tab[i] + " vs " + (char) tab[i] );
 //			System.out.println(tab[i]);

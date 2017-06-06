@@ -1,5 +1,6 @@
 package com.conztanz.connect.camel;
 
+
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
@@ -9,7 +10,7 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 
 public abstract class AbstractInitializationCamelRoute<INITIALIZER extends AbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage>, 
 														PREPROCESSOR extends Processor>
-		extends RouteBuilder {
+														extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
@@ -17,9 +18,8 @@ public abstract class AbstractInitializationCamelRoute<INITIALIZER extends Abstr
 			.transacted()
 //			.log("{${body}}")
 			.process(this.getProcessor())
-			.bean(getInitializer())
-//			.bean(getInitializer(), "init(${body})")
-			.log("${body}")
+			.bean(getInitializer(), "init(${body})")
+//			.log("${body}")
 			.log("DOOOONE");
 
 	}
@@ -32,14 +32,11 @@ public abstract class AbstractInitializationCamelRoute<INITIALIZER extends Abstr
 
 	/**
 	 * TODO : method name
-	 * 
 	 * @return
 	 */
-
 	public abstract PREPROCESSOR getProcessor();
 
 	/**
-	 * 
 	 * @return
 	 */
 	public abstract String getRouteEndpoint();
