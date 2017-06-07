@@ -81,7 +81,9 @@
 	<!-- Travel Connect lifecycle bundles -->
 	<feature name="${framework.connect.artifact.base}-lifecycle" >
 		<bundle start-level="90"> mvn:com.conztanz/travel-connect-lifecycle-initialization-bundle/1.4-SNAPSHOT</bundle>
+		<bundle start-level="90"> mvn:com.conztanz/travel-connect-lifecycle-identification-bundle/1.4-SNAPSHOT</bundle>
 		<bundle start-level="90"> mvn:com.conztanz/travel-connect-lifecycle-orchestration-bundle/1.4-SNAPSHOT</bundle>
+		
 		
 	</feature>
 
