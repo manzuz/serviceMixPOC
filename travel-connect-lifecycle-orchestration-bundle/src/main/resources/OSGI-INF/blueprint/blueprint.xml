@@ -48,11 +48,11 @@
 
 	<camelContext id="message-router-pfs"
 		xmlns="http://camel.apache.org/schema/blueprint">
-		<routeBuilder ref="pFSInitializationFileSystemCamelRoute" />
+		<routeBuilder ref="pFSOrchestrationFileSystemCamelRoute" />
 	</camelContext>
 	
 	<camelContext id="message-router-sbr"
 		xmlns="http://camel.apache.org/schema/blueprint">
-		<routeBuilder ref="sBRInitializationFileSystemCamelRoute" />
+		<routeBuilder ref="sBROrchestrationFileSystemCamelRoute" />
 	</camelContext>
 </blueprint>

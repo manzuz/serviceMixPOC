@@ -12,6 +12,6 @@ public interface IMessageCleaner {
 	 * @param payLoad
 	 * @return
 	 */
-	void  clean(byte[] payLoad,boolean decodeBase64BeforeCleaning);
+	byte[]  clean(byte[] payLoad,boolean decodeBase64BeforeCleaning);
 
 }

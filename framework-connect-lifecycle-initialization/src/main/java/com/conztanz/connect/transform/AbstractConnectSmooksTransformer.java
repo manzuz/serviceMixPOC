@@ -19,10 +19,10 @@ public abstract class AbstractConnectSmooksTransformer {
 	 */
 	public String transform2XML(byte[] payLoad) {
 		StringResult serializedEvents = new StringResult();
-		//		TODO decodeBase64BeforeCleaning
-		this.getCleaner().clean(payLoad,false);
+		//TODO decodeBase64BeforeCleaning
+		byte[] cleanedpayLoad = this.getCleaner().clean(payLoad,false);
 		try {
-			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(payLoad)), serializedEvents);
+			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(cleanedpayLoad)), serializedEvents);
 		} catch (SmooksException | IOException | SAXException e) {
 			e.printStackTrace();
 		}

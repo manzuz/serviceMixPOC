@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import javax.inject.Singleton;
 
 import com.conztanz.connect.SBR14ConnectInitializer;
-import com.conztanz.connect.SBR14IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 import com.conztanz.connect.transform.IMessageCleaner;
 
@@ -38,8 +37,8 @@ public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 	public IMessageCleaner getCleaner() {
 		return new IMessageCleaner() {
 			@Override
-			public void clean(byte[] payLoad,boolean decodeBase64BeforeCleaning) {
-				//NOOP
+			public byte[] clean(byte[] payLoad,boolean decodeBase64BeforeCleaning) {
+				return payLoad;
 			}
 		};
 	}
@@ -51,7 +50,7 @@ public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 		Path path = Paths.get("C:\\Users\\User\\Desktop\\serviceMixPOC\\travel-connect-lifecycle-initialization\\src\\test\\resources\\edifact\\edifact-sample.txt");
 		byte [] payload = Files.readAllBytes(path); 
 		SBR14ConnectInitializer initializer  = new SBR14ConnectInitializer();
-		SBR14IncomingMessage m = initializer.init(payload);
+//		SBR14IncomingMessage m = initializer.init(payload);
 //		System.out.println(m.getType());
 //		System.out.println(m.getRawPayload().length);
 	}

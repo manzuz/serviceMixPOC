@@ -10,10 +10,11 @@
 	</parent>
 
 	<!-- POM Definition -->
-	<artifactId>travel-connect-lifecycle-orchestration-bundle</artifactId>
+	<artifactId>travel-connect-lifecycle-identification-bundle</artifactId>
 	<packaging>bundle</packaging>
+
 	
-	<build>
+<build>
 	<plugins>
 		<!--generate a bundle ( as opposed to a JAR) -->
 		<plugin>
@@ -31,9 +32,9 @@
 					<!-- Specific packages are listed here to prevent the plugin from looking 
 						in other packages (coming from dependencies). Thus causing problems (probably 
 						spring annotations ) -->
-					<scanPath>com.conztanz.connect.camel</scanPath>
-					<scanPath>com.conztanz.connect.processor</scanPath>	
-					<scanPath>com.conztanz.connect</scanPath>				
+<!-- 					<scanPath>com.conztanz.connect.camel</scanPath> -->
+					<scanPath>com.conztanz.connect.identification</scanPath>
+					<scanPath>com.conztanz.connect.marshalling</scanPath>
 				</scanPaths>
 			</configuration>
 		</plugin>
@@ -46,7 +47,10 @@
 				<instructions>
 					<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 					<Bundle-Description>${project.description}</Bundle-Description>
-					<Export-Package></Export-Package>
+					<Export-Package>
+						com.conztanz.connect.identification,
+						com.conztanz.connect.marshalling
+						</Export-Package>
 					<Import-Package>
 						<!-- Black list -->
 <!-- 						!org.hibernate.validator.*, -->
@@ -71,26 +75,19 @@
 						org.apache.camel.spring.spi,org.ops4j.pax.cdi.api;version="[0.12,1)",
 						org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
 						org.springframework.transaction,
-						org.apache.camel.*,
 						org.osgi.framework.*,
 <!-- 						org.xml.*, -->
-<!-- 						JAVAX.XML.TRAnsform, -->
-						<!-- INITIALISATION -->
-						com.conztanz.connect,
-						com.conztanz.connect.initialize,
-						com.conztanz.connect.transform,
-						com.conztanz.connect.factory,
-						com.conztanz.connect.transform.travel.airimp,
-						com.conztanz.connect.transform.travel.sbr,
-						
-						<!--IDENTIFICATION -->
-						com.conztanz.connect.identification,
-						com.conztanz.connect.marshalling
+<!-- 						javax.xml.transform, -->
+<!-- 	 					org.milyn.*, -->
+<!-- 						javax.xml.*, -->
+<!-- 						org.apache.camel.*, -->
+<!-- 						org.milyn.smooks.edi,  -->
+<!-- 						org.milyn.edisax -->
+<!-- 						com.conztanz.j2ee.utils, -->
+<!-- 						com.conztanz.json -->
 					</Import-Package>
 					<Embed-Dependency>
 						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
-						artifactId=!framework-connect-lifecycle-initialization|travel-connect-lifecycle-initialization
-									|framework-connect-lifecycle-identification|travel-connect-lifecycle-identification;
 <!-- 						inline=true -->
 					</Embed-Dependency>
 					<Embed-Transitive>true</Embed-Transitive>
@@ -99,18 +96,29 @@
 		</plugin>
 	</plugins>
 </build>
+
 	<dependencies>
+		<!-- Framework dependencies -->
 		<dependency>
 			<groupId>${framework.groupId}</groupId>
-			<artifactId>travel-connect-lifecycle-orchestration</artifactId>
-			<version>1.4-SNAPSHOT</version>
+			<artifactId>travel-connect-lifecycle-identification</artifactId>
 		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-context</artifactId> -->
+<!-- 		</dependency> -->
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>${framework.groupId}</groupId> -->
+<!-- 			<artifactId>${framework.parent.artifact.base}-testing</artifactId> -->
+<!-- 		</dependency>		 -->
+		<!-- Travel dependencies -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>${product.groupId}</groupId> -->
+<!-- 			<artifactId>${product.parent.artifact.base}-model</artifactId> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
-
-
-
-	
 
 
 

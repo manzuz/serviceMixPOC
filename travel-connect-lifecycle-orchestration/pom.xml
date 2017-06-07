@@ -27,38 +27,25 @@
 		<groupId>${framework.groupId}</groupId>
 		<artifactId>travel-connect-lifecycle-initialization</artifactId>
 	</dependency>
-	
-		<dependency>
+	<dependency>
+		<groupId>${framework.groupId}</groupId>
+		<artifactId>travel-connect-lifecycle-identification</artifactId>
+	</dependency>
+	<dependency>
 		<groupId>${framework.groupId}</groupId>
 		<artifactId>framework-connect-lifecycle-orchestration</artifactId>
-					<version>0.4-SNAPSHOT</version>
-		
+		<version>0.4-SNAPSHOT</version>
 	</dependency>
-		
- 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-		</dependency>
-		
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.servicemix.bundles</groupId> -->
-<!-- 			<artifactId>org.apache.servicemix.bundles.commons-codec</artifactId> -->
-<!-- 			<version>1.3_5</version> -->
-<!-- 		</dependency> -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>${framework.groupId}</groupId> -->
-<!-- 			<artifactId>${framework.parent.artifact.base}-testing</artifactId> -->
-<!-- 		</dependency>		 -->
-		<!-- Travel dependencies -->
-<!-- 	<dependency> -->
-<!-- 			<groupId>${product.groupId}</groupId> -->
-<!-- 			<artifactId>${product.parent.artifact.base}-model</artifactId> -->
-<!-- 		</dependency> -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-		</dependency> 
-	
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+	</dependency>
+
+	<dependency>
+		<groupId>javax.inject</groupId>
+		<artifactId>javax.inject</artifactId>
+	</dependency> 
 	</dependencies>
 
 

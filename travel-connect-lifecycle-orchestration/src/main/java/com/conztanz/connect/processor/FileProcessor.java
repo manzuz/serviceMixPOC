@@ -21,7 +21,7 @@ public class FileProcessor implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		org.apache.camel.component.file.GenericFile<File> f = (org.apache.camel.component.file.GenericFile<File>) exchange
 				.getIn().getBody();
-		System.out.println(f.getFileNameOnly());
+//		System.out.println(f.getFileNameOnly());
 		// byte[] b = body.getBytes(Charset.forName("UTF-8"));
 		// exchange.getIn().setBody(b);
 

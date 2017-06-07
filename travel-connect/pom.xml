@@ -37,6 +37,11 @@
 			<id>modules</id>
 			<modules>
 				<module>../travel-connect-lifecycle-initialization</module>
+				<module>../travel-connect-lifecycle-identification</module>
+				<module>../travel-connect-lifecycle-orchestration</module>
+				<module>../travel-connect-lifecycle-initialization-bundle</module>
+				<module>../travel-connect-lifecycle-identification-bundle</module>
+				<module>../travel-connect-lifecycle-orchestration-bundle</module>
 			</modules>
 		</profile>
 	</profiles>
