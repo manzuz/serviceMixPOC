@@ -9,7 +9,6 @@ import com.conztanz.connect.initialize.AbstractConnectInitializer;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 import com.conztanz.marshalling.AbstractConztanzUnmarshaller;
-import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 /**
  * 
  * @author User
@@ -20,7 +19,8 @@ import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
  */
 public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends AbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage>, 
 													  PREPROCESSOR extends Processor,
-													  IDENTIFIER extends AbstractConnectIdentifier<? extends AbstractConztanzUnmarshaller<ForPnrHandling>>
+													  BINDING,
+													  IDENTIFIER extends AbstractConnectIdentifier<BINDING,? extends AbstractConztanzUnmarshaller<BINDING>>
 													  >
 														extends RouteBuilder {
 

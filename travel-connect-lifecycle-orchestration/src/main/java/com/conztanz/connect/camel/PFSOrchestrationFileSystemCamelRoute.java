@@ -5,11 +5,12 @@ import javax.inject.Singleton;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.conztanz.connect.PFSConnectInitializer;
-import com.conztanz.connect.identification.ConnectIdentifier;
+import com.conztanz.connect.identification.PFSConnectIdentifier;
 import com.conztanz.connect.processor.FileProcessor;
+import com.conztanz.transform.delivery.Delivery;
 
 @Singleton
-public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializer, FileProcessor,ConnectIdentifier> {
+public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializer, FileProcessor,Delivery,PFSConnectIdentifier> {
 
 	@Autowired
 	private PFSConnectInitializer pFSConnectInitializer;
@@ -18,7 +19,7 @@ public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationC
 	private FileProcessor fileProcessor;
 	
 	@Autowired 
-	ConnectIdentifier connectIdentifier ;
+	PFSConnectIdentifier pfsconnectIdentifier ;
 
 	@Override
 	public PFSConnectInitializer getInitializer() {
@@ -36,8 +37,8 @@ public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationC
 	}
 
 	@Override
-	public ConnectIdentifier getIdentifier() {
-		return connectIdentifier;
+	public PFSConnectIdentifier getIdentifier() {
+		return pfsconnectIdentifier;
 	}
 
 }

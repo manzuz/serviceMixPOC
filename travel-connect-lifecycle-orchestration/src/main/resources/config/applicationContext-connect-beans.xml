@@ -22,15 +22,18 @@
 
 	<bean id="PFSConnectInitialzer" class="com.conztanz.connect.PFSConnectInitializer"
 		scope="singleton" />
-	<bean id="SBR14ConnectInitializer" class="com.conztanz.connect.SBR14ConnectInitializer"
+	<bean id="SBR14ConnectInitializer" class="com.conztanz.connect.SBR141ConnectInitializer"
 		scope="singleton" />
 
-	<bean id="connectIdentifier" class="com.conztanz.connect.identification.ConnectIdentifier"
+	<bean id="sBR141ConnectIdentifier" class="com.conztanz.connect.identification.SBR141ConnectIdentifier"
 		scope="singleton" />
-
+	<bean id="pFSConnectIdentifier" class="com.conztanz.connect.identification.PFSConnectIdentifier"
+		scope="singleton" />
 	<bean id="sBR141UnMarshaller"
 		class="com.conztanz.connect.marshalling.SBR141UnMarshaller"
 		scope="singleton" />
-
+	<bean id="pFSUnMarshaller"
+		class="com.conztanz.connect.marshalling.PFSUnMarshaller"
+		scope="singleton" />
 
 </beans>

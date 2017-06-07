@@ -4,31 +4,39 @@ import org.jibx.runtime.JiBXException;
 
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.marshalling.AbstractConztanzUnmarshaller;
-import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
 /**
  * 
  * @author User
  *
+ * @param <BINDING>
  * @param <UNMARSHALLER>
  */
-public abstract class AbstractConnectIdentifier< UNMARSHALLER extends AbstractConztanzUnmarshaller<ForPnrHandling>> {
+public abstract class AbstractConnectIdentifier<BINDING,
+												UNMARSHALLER extends AbstractConztanzUnmarshaller<BINDING>> {
+/**
+ * 
+ * @param incomingMessage
+ * @return
+ * @throws JiBXException
+ */
+	public BINDING unmarshall(String payload ) throws JiBXException {
+		BINDING binding = this.getUnmarshaller().unmarshall(payload);
+		return binding;
+		
+	}
 	/**
 	 * 
-	 * @param payLoad
 	 * @return
-	 * @throws JiBXException
 	 */
-	public String identify(IncomingMessage incomingMessage) throws JiBXException {
-		ForPnrHandling forPnrHandling = this.getUnmarshaller().unmarshall(incomingMessage.getTransformedPayload());
-		System.out.println(forPnrHandling.getAgency());
-		System.out.println(forPnrHandling.getVersion());
-		System.out.println(forPnrHandling.getType());
-		System.out.println(forPnrHandling.getType());
-		System.out.println(forPnrHandling.getSequenceNum());
-		return "lol";
-	}
-
 	public abstract UNMARSHALLER getUnmarshaller();
+	
+	/**
+	 * 
+	 * @param incomingMessage
+	 * @return
+	 * @throws JiBXException 
+	 */
+	public abstract String identify(IncomingMessage incomingMessage) throws JiBXException;
 
 }

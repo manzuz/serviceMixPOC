@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.factory.SBR14IncomingMessageFactory;
 import com.conztanz.connect.initialize.AbstractConnectInitializer;
-import com.conztanz.connect.model.SBR14IncomingMessage;
+import com.conztanz.connect.model.SBR141IncomingMessage;
 import com.conztanz.connect.transform.travel.sbr.SBR141EDI2XMLSmooksTransformer;
 
 
 
 @Singleton
-public class SBR14ConnectInitializer
-		extends AbstractConnectInitializer<SBR141EDI2XMLSmooksTransformer, SBR14IncomingMessage> {
+public class SBR141ConnectInitializer
+		extends AbstractConnectInitializer<SBR141EDI2XMLSmooksTransformer, SBR141IncomingMessage> {
 
 	@Autowired
 	private SBR14IncomingMessageFactory sBR14IncomingMessageFactory;
@@ -23,7 +23,7 @@ public class SBR14ConnectInitializer
 	private SBR141EDI2XMLSmooksTransformer sBR141EDI2XMLSmooksTransformer;
 
 	@Override
-	public AbstractIncomingMessageFactory<SBR14IncomingMessage> getMessageFactory() {
+	public AbstractIncomingMessageFactory<SBR141IncomingMessage> getMessageFactory() {
 		return sBR14IncomingMessageFactory;
 	}
 

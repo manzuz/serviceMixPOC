@@ -4,26 +4,27 @@ import javax.inject.Singleton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.conztanz.connect.SBR14ConnectInitializer;
-import com.conztanz.connect.identification.ConnectIdentifier;
+import com.conztanz.connect.SBR141ConnectInitializer;
+import com.conztanz.connect.identification.SBR141ConnectIdentifier;
 import com.conztanz.connect.processor.FileProcessor;
+import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
 
 @Singleton
-public class SBROrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<SBR14ConnectInitializer, FileProcessor,ConnectIdentifier>{
+public class SBROrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<SBR141ConnectInitializer, FileProcessor,ForPnrHandling,SBR141ConnectIdentifier>{
 	
 	@Autowired
-	private SBR14ConnectInitializer sBR14ConnectInitializer ;
+	private SBR141ConnectInitializer sBR14ConnectInitializer ;
 	
 	@Autowired
 	private FileProcessor fileProcessor;
 	
 	@Autowired 
-	ConnectIdentifier connectIdentifier ;
+	SBR141ConnectIdentifier connectIdentifier ;
 	
 	
 	@Override
-	public SBR14ConnectInitializer getInitializer() {
+	public SBR141ConnectInitializer getInitializer() {
 		return sBR14ConnectInitializer;
 	}
 
@@ -38,7 +39,7 @@ public class SBROrchestrationFileSystemCamelRoute extends AbstractOrchestrationC
 	}
 
 	@Override
-	public ConnectIdentifier getIdentifier() {
+	public SBR141ConnectIdentifier getIdentifier() {
 		return connectIdentifier;
 	}
 }

@@ -17,7 +17,17 @@
 
 
 	<dependencies>
-
+		<!-- Stubs -->
+		<dependency>
+			<groupId>com.conztanz.third-party.sbr-stub</groupId>
+			<artifactId>sbr-stub-v14_1</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz.third-party.delivery-stub</groupId>
+			<artifactId>delivery-stub</artifactId>
+			<!--TODO : version management -->
+			<version>1.0.0</version>
+		</dependency>
 		<!-- Framework dependencies -->
 		<dependency>
 			<groupId>${framework.groupId}</groupId>
