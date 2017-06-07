@@ -1,11 +1,11 @@
-package com.conztanz.connect;
+package com.conztanz.connect.model;
 
 import com.conztanz.model.AbstractEntity;
 
 //@Entity(name = "INCOMING_MESSAGE")
 //@SequenceGenerator(name = "SEQ_ID", sequenceName = "INCOMING_MESSAGE_ID_SEQ")
 //@Access(AccessType.FIELD)
-public class IncomingMessage extends AbstractEntity {
+public abstract class IncomingMessage extends AbstractEntity {
 
 	/**
 	 * 

@@ -66,7 +66,7 @@ public class EdifactCleaner implements IMessageCleaner {
 		for(int i  = 0 ; i< tabBif.length ; i++){
 //			System.out.println(tab[i] + "  " + cleanMessage.toString().getBytes()[i]);
 		}
-		System.out.println(cleanMessage.toString());
+//		System.out.println(cleanMessage.toString());
 		return  cleanMessage.toString().getBytes();
 	}
 	

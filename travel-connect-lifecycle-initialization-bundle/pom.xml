@@ -56,7 +56,8 @@
 						com.conztanz.connect.transform,
 						com.conztanz.connect.factory,
 						com.conztanz.connect.transform.travel.airimp,
-						com.conztanz.connect.transform.travel.sbr
+						com.conztanz.connect.transform.travel.sbr,
+						com.conztanz.connect.model
 						</Export-Package>
 					<Import-Package>
 						<!-- Black list -->

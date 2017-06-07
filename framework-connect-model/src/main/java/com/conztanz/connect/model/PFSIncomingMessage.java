@@ -1,4 +1,4 @@
-package com.conztanz.connect;
+package com.conztanz.connect.model;
 
 public class PFSIncomingMessage extends IncomingMessage {
 

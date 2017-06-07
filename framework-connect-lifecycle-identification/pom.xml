@@ -16,6 +16,10 @@
 
 	<dependencies>
 	<dependency>
+			<groupId>com.conztanz</groupId>
+		<artifactId>framework-connect-model</artifactId>
+	</dependency>
+	<dependency>
 		<groupId>com.conztanz.third-party.sbr-stub</groupId>
 		<artifactId>sbr-stub-v14_1</artifactId>
 		<version>1.0.0</version>

@@ -1,4 +1,4 @@
-package com.conztanz.connect;
+package com.conztanz.connect.model;
 
 public enum MessageType {
 	PFS("Passenger Final Sales"),

@@ -76,6 +76,7 @@
 						org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
 						org.springframework.transaction,
 						org.osgi.framework.*,
+						com.conztanz.connect.model
 <!-- 						org.xml.*, -->
 <!-- 						javax.xml.transform, -->
 <!-- 	 					org.milyn.*, -->
@@ -88,6 +89,7 @@
 					</Import-Package>
 					<Embed-Dependency>
 						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
+						artifactId=!framework-connect-model|framewoek-model
 <!-- 						inline=true -->
 					</Embed-Dependency>
 					<Embed-Transitive>true</Embed-Transitive>

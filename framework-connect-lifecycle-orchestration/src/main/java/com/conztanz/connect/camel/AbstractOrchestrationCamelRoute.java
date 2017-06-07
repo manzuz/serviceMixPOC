@@ -4,9 +4,9 @@ package com.conztanz.connect.camel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
-import com.conztanz.connect.IncomingMessage;
 import com.conztanz.connect.identification.AbstractConnectIdentifier;
 import com.conztanz.connect.initialize.AbstractConnectInitializer;
+import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 import com.conztanz.marshalling.AbstractConztanzUnmarshaller;
 import com.conztanz.transform.sbr.v14_1.ForPnrHandling;

@@ -4,10 +4,10 @@ import javax.inject.Singleton;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.conztanz.connect.PFSIncomingMessage;
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.factory.PFSIncomingMessageFactory;
 import com.conztanz.connect.initialize.AbstractConnectInitializer;
+import com.conztanz.connect.model.PFSIncomingMessage;
 import com.conztanz.connect.transform.travel.airimp.PFSSmooksTransformer;
 
 /**

@@ -12,6 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.conztanz.connect.model.MessageType;
+import com.conztanz.connect.model.PFSIncomingMessage;
+import com.conztanz.connect.model.SBR14IncomingMessage;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/applicationContext-connect-beans.xml")
 public class PFSConnectInitializerTest {

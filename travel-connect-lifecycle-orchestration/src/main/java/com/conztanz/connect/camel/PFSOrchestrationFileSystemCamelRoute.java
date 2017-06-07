@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.conztanz.connect.PFSConnectInitializer;
 import com.conztanz.connect.identification.ConnectIdentifier;
-import com.conztanz.connect.marshalling.SBR141UnMarshaller;
 import com.conztanz.connect.processor.FileProcessor;
 
 @Singleton

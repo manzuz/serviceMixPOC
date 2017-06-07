@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.factory.SBR14IncomingMessageFactory;
 import com.conztanz.connect.initialize.AbstractConnectInitializer;
+import com.conztanz.connect.model.SBR14IncomingMessage;
 import com.conztanz.connect.transform.travel.sbr.SBR141EDI2XMLSmooksTransformer;
 
 
