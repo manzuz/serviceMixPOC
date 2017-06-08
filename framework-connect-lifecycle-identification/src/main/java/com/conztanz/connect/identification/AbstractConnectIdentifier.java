@@ -26,7 +26,6 @@ public abstract class AbstractConnectIdentifier {
 	public abstract void identify(IncomingMessage incomingMessage) throws  ParserConfigurationException, SAXException, IOException, XPathExpressionException;
 	
 	/**
-	 * 
 	 * @param incomingMessage
 	 * @return
 	 * @throws SAXException

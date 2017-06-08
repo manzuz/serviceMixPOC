@@ -85,7 +85,10 @@
 						
 						<!--IDENTIFICATION -->
 						com.conztanz.connect.identification,
-						com.conztanz.connect.marshalling
+						com.conztanz.connect.marshalling,
+						com.conztanz.connect.identification.xpath,
+						javax.xml.xpath,
+<!-- 						javax.xml.* -->
 					</Import-Package>
 					<Embed-Dependency>
 						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;

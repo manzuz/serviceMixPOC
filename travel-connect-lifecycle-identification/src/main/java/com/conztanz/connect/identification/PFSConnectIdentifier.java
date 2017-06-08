@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.inject.Singleton;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ import com.conztanz.connect.model.IncomingMessage;
 public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	
 	@Autowired
-	private  XpathClient xpathClient;
+	private  XpathClient xpathClient ;
 
 	
 	private final String XPATH_COMPANY ="//delivery/segment/designator/company";
@@ -37,20 +36,20 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	@Override
 	public void  identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException  {
 		Document doc = super.getDocument(incomingMessage);
+		System.out.println(this.getXpathClient());
 		String company = this.getXpathClient().request(XPATH_COMPANY, doc);
 		String flightNum = this.getXpathClient().request(XPATH_FLIGHTNUM, doc);
 		String depDate = this.getXpathClient().request(XPATH_DEPDATE, doc);
 		String station = this.getXpathClient().request(XPATH_STATION, doc);
 		
 		String objectID = company + flightNum + "//" + depDate + station;
+		System.out.println(objectID);
 		incomingMessage.setObjectId(objectID);
 
 
 	
 	}
 
-	
-	
 
 
 
@@ -58,13 +57,9 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 		return xpathClient;
 	}
 
-
-
 	public void setXpathClient(XpathClient xpathClient) {
-		xpathClient = xpathClient;
+		this.xpathClient = xpathClient;
 	}
-	
-	
 	
 	
 	

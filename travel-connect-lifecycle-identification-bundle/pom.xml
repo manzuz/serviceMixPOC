@@ -49,17 +49,10 @@
 					<Bundle-Description>${project.description}</Bundle-Description>
 					<Export-Package>
 						com.conztanz.connect.identification,
-						com.conztanz.connect.marshalling
+						com.conztanz.connect.marshalling,
+						com.conztanz.connect.identification.xpath,
 						</Export-Package>
 					<Import-Package>
-						<!-- Black list -->
-<!-- 						!org.hibernate.validator.*, -->
-<!-- 						!org.springframework.*, -->
-<!-- 						!COM.*, -->
-<!-- 						!jrockit.* -->
-<!-- 						!jrockit, -->
-<!-- 						!com.bea.*, -->
-						<!-- END Black list \-->
 						org.hibernate.*;version="[4.3,5)",
 						javax.persistence.*;version="[2.1,3)",
 <!-- 						org.hibernate.proxy, -->
@@ -76,7 +69,12 @@
 						org.osgi.service.blueprint;version="[1.0.0,2.0.0)",
 						org.springframework.transaction,
 						org.osgi.framework.*,
-						com.conztanz.connect.model
+						com.conztanz.connect.model,
+						javax.xml.*,
+						org.apache.xerces.jaxp,
+						org.w3c.dom,
+						 org.xml.*
+						
 <!-- 						org.xml.*, -->
 <!-- 						javax.xml.transform, -->
 <!-- 	 					org.milyn.*, -->
@@ -89,7 +87,7 @@
 					</Import-Package>
 					<Embed-Dependency>
 						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
-						artifactId=!framework-connect-model|framewoek-model
+						artifactId=!framework-connect-model|framewoek-model|xml-apis
 <!-- 						inline=true -->
 					</Embed-Dependency>
 					<Embed-Transitive>true</Embed-Transitive>

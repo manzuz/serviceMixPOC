@@ -8,7 +8,6 @@ import com.conztanz.connect.identification.AbstractConnectIdentifier;
 import com.conztanz.connect.initialize.AbstractConnectInitializer;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
-import com.conztanz.marshalling.AbstractConztanzUnmarshaller;
 /**
  * 
  * @author User
@@ -20,19 +19,18 @@ import com.conztanz.marshalling.AbstractConztanzUnmarshaller;
 public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends AbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage>, 
 													  PREPROCESSOR extends Processor,
 													  BINDING,
-													  IDENTIFIER extends AbstractConnectIdentifier<BINDING,? extends AbstractConztanzUnmarshaller<BINDING>>
-													  >
-														extends RouteBuilder {
+													  IDENTIFIER extends AbstractConnectIdentifier>
+				extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
+		
+		
 		from(this.getRouteEndpoint())
 			.transacted()
-			.process(this.getProcessor())
+//			.process(this.getProcessor())
 			.bean(getInitializer(), "init(${body})")
 			.bean(this.getIdentifier(),"identify(${body})")
-//			.bean(this.getUnmarshaller(),"unmarshall(${body})")
-//			.log("${body}")
 			.log("###################\nDone ! ###################\n");
 
 	}

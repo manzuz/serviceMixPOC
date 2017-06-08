@@ -23,7 +23,7 @@ public class XpathClient {
 	 * 
 	 */
 	private Map<String, XPathExpression> compiledExpressions;
-	
+
 	/**
 	 * 
 	 */
@@ -37,6 +37,7 @@ public class XpathClient {
 		// we only compile expressions once
 		if (!compiledExpressions.containsKey(xpath))
 			compiledExpressions.put(xpath, this.getXpathInstance().compile(xpath));
+
 		XPathExpression expression = this.getCompiledExpressions().get(xpath);
 		return expression.evaluate(doc);
 	}
@@ -44,7 +45,7 @@ public class XpathClient {
 	/**
 	 * @return
 	 */
-	protected XPath getXpathInstance() {
+	private XPath getXpathInstance() {
 		if (this.xpathInstance == null) {
 			XPathFactory xPathfactory = XPathFactory.newInstance();
 			this.setXpathInstance(xPathfactory.newXPath());
@@ -56,9 +57,10 @@ public class XpathClient {
 		return compiledExpressions;
 	}
 
-//	public void setCompiledExpressions(Map<String, XPathExpression> compiledExpressions) {
-//		this.compiledExpressions = compiledExpressions;
-//	}
+	// public void setCompiledExpressions(Map<String, XPathExpression>
+	// compiledExpressions) {
+	// this.compiledExpressions = compiledExpressions;
+	// }
 
 	public void setXpathInstance(XPath xpathInstance) {
 		this.xpathInstance = xpathInstance;
