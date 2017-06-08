@@ -35,5 +35,7 @@
 	<bean id="pFSUnMarshaller"
 		class="com.conztanz.connect.marshalling.PFSUnMarshaller"
 		scope="singleton" />
-
+	<bean id="xpathClient"
+		class="com.conztanz.connect.identification.xpath.XpathClient"
+		scope="singleton" />
 </beans>

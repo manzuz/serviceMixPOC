@@ -16,6 +16,11 @@ public abstract class IncomingMessage extends AbstractEntity {
 	 * 
 	 */
 	private byte[] rawPayload;
+	
+	/**
+	 * TODO generics instead of string (with a string implementation for now) 
+	 */
+	private String objectId;
 
 	/**
 	 * 
@@ -63,5 +68,19 @@ public abstract class IncomingMessage extends AbstractEntity {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public String getObjectId() {
+		return objectId;
+	}
+
+	public void setObjectId(String objectId) {
+		this.objectId = objectId;
+	}
+
+	public void setRawPayload(byte[] rawPayload) {
+		this.rawPayload = rawPayload;
+	}
+	
+	
 
 }

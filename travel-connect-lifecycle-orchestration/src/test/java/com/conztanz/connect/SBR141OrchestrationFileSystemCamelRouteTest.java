@@ -29,7 +29,7 @@ public class SBR141OrchestrationFileSystemCamelRouteTest {
 		
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./edifact/edifact-sample.txt");
 		SBR141IncomingMessage m  = sBR14ConnectInitializer.init(IOUtils.toByteArray(is));
-		connectIdentifier.unmarshall(m.getTransformedPayload());
+//		connectIdentifier.unmarshall(m.getTransformedPayload());
 		
 	}
 }

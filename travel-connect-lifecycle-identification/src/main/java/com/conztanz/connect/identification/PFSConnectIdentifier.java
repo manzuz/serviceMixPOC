@@ -1,33 +1,75 @@
 package com.conztanz.connect.identification;
 
+import java.io.IOException;
+
 import javax.inject.Singleton;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
 
-import org.jibx.runtime.JiBXException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 
-import com.conztanz.connect.marshalling.PFSUnMarshaller;
+import com.conztanz.connect.identification.xpath.XpathClient;
 import com.conztanz.connect.model.IncomingMessage;
-import com.conztanz.transform.delivery.Delivery;
 
 //TODO : naming 
 @Singleton
-public class PFSConnectIdentifier extends AbstractConnectIdentifier<Delivery,PFSUnMarshaller> {
+public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	
 	@Autowired
-	private PFSUnMarshaller pFSUnMarshaller;
+	private  XpathClient xpathClient;
+
+	
+	private final String XPATH_COMPANY ="//delivery/segment/designator/company";
+	private final String XPATH_FLIGHTNUM = "//delivery/segment/designator/number";
+	private final String XPATH_DEPDATE = "//delivery/segment/departure/date";
+	private final String XPATH_STATION = "//delivery/segment/departure/station";
+
+
+	
+	
+	
+
+	
 
 	@Override
-	public PFSUnMarshaller getUnmarshaller() {
-		return pFSUnMarshaller;
+	public void  identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException  {
+		Document doc = super.getDocument(incomingMessage);
+		String company = this.getXpathClient().request(XPATH_COMPANY, doc);
+		String flightNum = this.getXpathClient().request(XPATH_FLIGHTNUM, doc);
+		String depDate = this.getXpathClient().request(XPATH_DEPDATE, doc);
+		String station = this.getXpathClient().request(XPATH_STATION, doc);
+		
+		String objectID = company + flightNum + "//" + depDate + station;
+		incomingMessage.setObjectId(objectID);
+
+
+	
 	}
 
-	@Override
-	public String identify(IncomingMessage incomingMessage) throws JiBXException {
-		Delivery delivery  = this.getUnmarshaller().unmarshall(incomingMessage.getTransformedPayload());
-		System.out.println(delivery.getSegment());
-		System.out.println(delivery.getSegment().getDeparture());
+	
+	
 
-		return null;
+
+
+	public XpathClient getXpathClient() {
+		return xpathClient;
 	}
 
+
+
+	public void setXpathClient(XpathClient xpathClient) {
+		xpathClient = xpathClient;
+	}
+	
+	
+	
+	
+	
+
+	
+	
+	
 }
