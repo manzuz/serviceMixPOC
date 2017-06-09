@@ -1,29 +1,31 @@
 package com.conztanz.connect.camel;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.conztanz.connect.PFSConnectInitializer;
+import com.conztanz.connect.PFSConnectInitializerWrapper;
 import com.conztanz.connect.identification.PFSConnectIdentifier;
 import com.conztanz.connect.processor.FileProcessor;
 import com.conztanz.transform.delivery.Delivery;
 
 @Singleton
-public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializer, FileProcessor,Delivery,PFSConnectIdentifier> {
-
-	@Autowired
-	private PFSConnectInitializer pFSConnectInitializer;
-
-	@Autowired
-	private FileProcessor fileProcessor;
+public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializerWrapper, FileProcessor,Delivery,PFSConnectIdentifier> {
+//
+//	@Inject
+//	private PFSConnectInitializer pFSConnectInitializer;
+//
+//	@Inject
+//	private FileProcessor fileProcessor;
+//	
+//	@Inject
+//	PFSConnectIdentifier pfsconnectIdentifier ;
 	
-	@Autowired 
-	PFSConnectIdentifier pfsconnectIdentifier ;
+	@Inject
+	PFSConnectInitializerWrapper pFSConnectInitializerWrapper ; 
 
 	@Override
-	public PFSConnectInitializer getInitializer() {
-		return pFSConnectInitializer;
+	public PFSConnectInitializerWrapper getInitializer() {
+		return pFSConnectInitializerWrapper;
 	}
 
 	@Override
@@ -33,12 +35,12 @@ public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationC
 
 	@Override
 	public FileProcessor getProcessor() {
-		return fileProcessor;
+		return null;
 	}
 
 	@Override
 	public PFSConnectIdentifier getIdentifier() {
-		return pfsconnectIdentifier;
+		return null;
 	}
 
 }

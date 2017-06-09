@@ -49,6 +49,8 @@
 				<instructions>
 					<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 					<Bundle-Description>${project.description}</Bundle-Description>
+					<Bundle-Activator>com.conztanz.connect.activator.ConnectIdentifierContextLoaderActivator</Bundle-Activator>
+					
 					<Export-Package>
 						com.conztanz.connect,
 						com.conztanz.connect.initialize,
@@ -60,20 +62,11 @@
 						com.conztanz.connect.model
 						</Export-Package>
 					<Import-Package>
-						<!-- Black list -->
-<!-- 						!org.hibernate.validator.*, -->
-<!-- 						!org.springframework.*, -->
-<!-- 						!COM.*, -->
-<!-- 						!jrockit.* -->
-<!-- 						!jrockit, -->
-<!-- 						!com.bea.*, -->
-						<!-- END Black list \-->
-						org.hibernate.*;version="[4.3,5)",
+<!-- 						org.hibernate.*;version="[4.3,5)", -->
+						!javax.xml.rpc.*,
 						javax.persistence.*;version="[2.1,3)",
-<!-- 						org.hibernate.proxy, -->
 						javax.inject;resolution:=optional,
 						javax.jms,javax.transaction;version="[1.2,2)",
-<!-- 						javax.ws.rs;version="[2.0,3)", -->
 						javax.ws.rs.core;version="[2.0,3)",
 						javax.xml.bind.annotation,
 						org.apache.camel;version="[2.16,3)",
@@ -90,13 +83,15 @@
 						javax.xml.*,
 						org.apache.camel.*,
 						org.milyn.smooks.edi, 
-						org.milyn.edisax
-<!-- 						com.conztanz.j2ee.utils, -->
-<!-- 						com.conztanz.json -->
+						org.milyn.edisax,
+						org.apache.xerces.jaxp,
+						org.w3c.dom.*,
+						javax.annotation,
+						javax.naming
 					</Import-Package>
 					<Embed-Dependency>
-						groupId=!org.springframework|org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
-<!-- 						inline=true -->
+						groupId=!org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
+						artifactId=!spring-tx|spring-orm|spring-jdbc|spring-context-support
 					</Embed-Dependency>
 					<Embed-Transitive>true</Embed-Transitive>
 				</instructions>
@@ -111,20 +106,11 @@
 			<groupId>${framework.groupId}</groupId>
 			<artifactId>travel-connect-lifecycle-initialization</artifactId>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework</groupId> -->
-<!-- 			<artifactId>spring-context</artifactId> -->
-<!-- 		</dependency> -->
-		
-<!-- 		<dependency> -->
-<!-- 			<groupId>${framework.groupId}</groupId> -->
-<!-- 			<artifactId>${framework.parent.artifact.base}-testing</artifactId> -->
-<!-- 		</dependency>		 -->
-		<!-- Travel dependencies -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>${product.groupId}</groupId> -->
-<!-- 			<artifactId>${product.parent.artifact.base}-model</artifactId> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>${framework.groupId}</groupId>
+			<artifactId>framework-connect-spring-context</artifactId>
+			<version>0.4-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 

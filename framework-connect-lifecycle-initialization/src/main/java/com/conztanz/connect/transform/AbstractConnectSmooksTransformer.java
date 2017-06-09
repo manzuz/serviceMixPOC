@@ -35,15 +35,9 @@ public abstract class AbstractConnectSmooksTransformer {
 	 * @return
 	 */
 	public Smooks getSmooksReader() throws IOException, SAXException {
-		
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		Thread.currentThread().setContextClassLoader(classLoader);
 		return new Smooks(this.getClass().getResourceAsStream(this.getPathToConfigFile()));
-//		InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(this.getPathToConfigFile());
-//		System.out.println(inputStream);
-//		Smooks smooks = new Smooks(inputStream);
-//		return smooks;
-
 	}
 
 	/**

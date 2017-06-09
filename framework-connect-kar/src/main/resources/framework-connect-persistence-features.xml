@@ -75,7 +75,7 @@
 	<feature name="${framework.connect.artifact.base}-persistence" >
 		<bundle start-level="80"> mvn:com.conztanz/${framework.connect.artifact.base}-spring-context-bundle/${framework.version}</bundle>
 		<bundle start-level="90">mvn:com.conztanz/${framework.connect.artifact.base}-connection-factory/${framework.version}</bundle>
-<!-- 		<bundle start-level="90">mvn:com.conztanz/${framework.connect.artifact.base}-persistence-bundle/${framework.version}</bundle> -->
+		<bundle start-level="90">mvn:com.conztanz/${framework.connect.artifact.base}-persistence-bundle/${framework.version}</bundle>
 	</feature>
 	
 	<!-- Travel Connect lifecycle bundles -->

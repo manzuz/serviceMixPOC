@@ -4,7 +4,7 @@ import javax.inject.Singleton;
 
 import com.conztanz.connect.model.MessageType;
 import com.conztanz.connect.model.SBR141IncomingMessage;
-@Singleton
+//@Singleton
 public class SBR14IncomingMessageFactory extends AbstractIncomingMessageFactory<SBR141IncomingMessage>{
 
 	@Override

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
+	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+
+
+
+	<bean id="product.config.properties.location" class="java.lang.String">
+		<!-- Embedded configuration for test running scope -->
+		<constructor-arg value="${product.embedded.config.properties.location}" />
+	</bean>
+	<bean id="product.config.logs.location" class="java.lang.String">
+		<!-- Embedded configuration for test running scope -->
+		<constructor-arg value="${product.embedded.config.logs.location}" />
+	</bean>
+
+	<!-- Commons initialization -->
+	<import resource="classpath:config/applicationContext-commons.xml" />
+	<!-- Logger initialization -->
+	<import resource="classpath:config/applicationContext-logger.xml" />
+	<!-- Model initialization -->
+	<import resource="classpath:config/applicationContext-model.xml" />
+	<!-- JSon parsing definition -->
+	<import resource="classpath:config/applicationContext-json.xml" />
+	
+	<bean id="PFSIncomingMessageFactory" class="com.conztanz.connect.factory.PFSIncomingMessageFactory" scope="singleton" />
+	
+    <bean id="SBR14IncomingMessageFactory" class="com.conztanz.connect.factory.SBR14IncomingMessageFactory" scope="singleton" />
+    
+    <bean id="PFSSmooksTransformer" class="com.conztanz.connect.transform.travel.airimp.PFSSmooksTransformer" scope="singleton" />
+    
+    <bean id="SBR141EDI2XMLSmooksTransformer" class="com.conztanz.connect.transform.travel.sbr.SBR141EDI2XMLSmooksTransformer" scope="singleton" />
+   
+    <bean id="EdifactCleaner" class="com.conztanz.connect.transform.travel.sbr.EdifactCleaner" scope="singleton" />
+   
+    <bean id="PFSConnectInitialzer" class="com.conztanz.connect.PFSConnectInitializer" scope="singleton" />
+   
+    <bean id="SBR14ConnectInitializer" class="com.conztanz.connect.SBR141ConnectInitializer" scope="singleton" />
+</beans>

@@ -11,7 +11,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import com.conztanz.connect.transform.IMessageCleaner;
 
-@Singleton
+//@Singleton
 public class EdifactCleaner implements IMessageCleaner {
 
 	@Override

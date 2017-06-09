@@ -30,7 +30,7 @@ public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends Abstr
 			.transacted()
 //			.process(this.getProcessor())
 			.bean(getInitializer(), "init(${body})")
-			.bean(this.getIdentifier(),"identify(${body})")
+//			.bean(this.getIdentifier(),"identify(${body})")
 			.log("###################\nDone ! ###################\n");
 
 	}

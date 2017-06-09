@@ -11,7 +11,7 @@ import com.conztanz.connect.model.PFSIncomingMessage;
  * @author User
  *
  */
-@Singleton
+//@Singleton
 public class PFSIncomingMessageFactory extends AbstractIncomingMessageFactory<PFSIncomingMessage> {
 	
 	

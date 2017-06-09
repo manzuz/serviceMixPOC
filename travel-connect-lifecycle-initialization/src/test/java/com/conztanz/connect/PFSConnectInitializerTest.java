@@ -43,6 +43,7 @@ public class PFSConnectInitializerTest {
 	public void testEDI2XML() throws IOException {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./edifact/edifact-sample.txt");
 		SBR141IncomingMessage m  = sBR14ConnectInitializer.init(IOUtils.toByteArray(is));
+//		System.out.println(m.getTransformedPayload());
 //		SBR14IncomingMessage msg = sBR14ConnectInitializer.getMessageFactory().createMessage(payload);
 	}
 

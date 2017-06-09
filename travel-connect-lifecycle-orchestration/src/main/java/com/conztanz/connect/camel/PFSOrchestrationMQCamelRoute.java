@@ -9,16 +9,16 @@ import com.conztanz.connect.identification.PFSConnectIdentifier;
 import com.conztanz.connect.processor.FileProcessor;
 import com.conztanz.transform.delivery.Delivery;
 
-@Singleton
+//@Singleton
 public class PFSOrchestrationMQCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializer, FileProcessor,Delivery,PFSConnectIdentifier> {
 
-	@Autowired
+//	@Autowired
 	private PFSConnectInitializer pFSConnectInitializer;
 
-	@Autowired
+//	@Autowired
 	private FileProcessor fileProcessor;
 	
-	@Autowired 
+//	@Autowired 
 	PFSConnectIdentifier pfsconnectIdentifier ;
 
 	@Override

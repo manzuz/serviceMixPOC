@@ -5,7 +5,7 @@ import org.osgi.framework.BundleContext;
 
 import com.conztanz.j2ee.utils.ConztanzSpringApplicationContext;
 
-public abstract class AbstractSpringContextLoaderActivator   implements BundleActivator {
+public abstract class AbstractSpringContextLoaderActivator implements BundleActivator {
 	
 	/**
 	 * Path to Spring XML configuration file
@@ -31,6 +31,7 @@ public abstract class AbstractSpringContextLoaderActivator   implements BundleAc
 		 */
 		Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
 		ConztanzSpringApplicationContext.contextStartup(this.getSpringContextXmlLocation());
+		
 	}
 	
 

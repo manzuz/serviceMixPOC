@@ -13,7 +13,7 @@ import com.conztanz.connect.transform.IMessageCleaner;
  *
  * @param <TRANSFORMER>
  */
-@Singleton
+//@Singleton
 public  class SBR141EDI2XMLSmooksTransformer extends AbstractConnectSmooksTransformer{
 	
 	

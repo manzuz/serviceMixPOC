@@ -16,7 +16,8 @@ import com.conztanz.connect.transform.travel.airimp.PFSSmooksTransformer;
  *
  */
 
-@Singleton
+//@Singleton
+//@Component()
 public class PFSConnectInitializer extends AbstractConnectInitializer<PFSSmooksTransformer, PFSIncomingMessage> {
 
 	@Autowired

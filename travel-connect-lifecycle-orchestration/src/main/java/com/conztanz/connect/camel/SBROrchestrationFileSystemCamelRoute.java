@@ -10,16 +10,16 @@ import com.conztanz.connect.processor.FileProcessor;
 import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
 
-@Singleton
+//@Singleton
 public class SBROrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<SBR141ConnectInitializer, FileProcessor,ForPnrHandling,SBR141ConnectIdentifier>{
 	
-	@Autowired
+//	@Autowired
 	private SBR141ConnectInitializer sBR14ConnectInitializer ;
 	
-	@Autowired
+//	@Autowired
 	private FileProcessor fileProcessor;
 	
-	@Autowired 
+//	@Autowired 
 	SBR141ConnectIdentifier connectIdentifier ;
 	
 	

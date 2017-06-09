@@ -1,5 +1,6 @@
 package com.conztanz.connect.initialize;
 
+
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;
 
@@ -18,11 +19,12 @@ import com.conztanz.exception.ConztanzException;
 public abstract class AbstractConnectInitializer<TRANSFORMER extends AbstractConnectSmooksTransformer, MESSAGE extends IncomingMessage> {
 	
 	
-	
+//	@TransactionIdentifiable
 	@Transactional(value = TxType.REQUIRED, rollbackOn = { ConztanzException.class })
 	public MESSAGE init(byte[] payload) {
 		MESSAGE m = this.getMessageFactory().createMessage(payload);
 		String transformedPayload = this.getSmooksTransformer().transform2XML(payload);
+		System.out.println(transformedPayload );
 		m.setTransformedPayload(transformedPayload);
 		return m;
 	}

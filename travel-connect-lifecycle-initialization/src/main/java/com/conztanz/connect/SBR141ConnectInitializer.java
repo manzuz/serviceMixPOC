@@ -12,7 +12,7 @@ import com.conztanz.connect.transform.travel.sbr.SBR141EDI2XMLSmooksTransformer;
 
 
 
-@Singleton
+//@Singleton
 public class SBR141ConnectInitializer
 		extends AbstractConnectInitializer<SBR141EDI2XMLSmooksTransformer, SBR141IncomingMessage> {
 

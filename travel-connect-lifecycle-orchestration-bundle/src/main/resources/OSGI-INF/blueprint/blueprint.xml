@@ -51,18 +51,18 @@
 		<routeBuilder ref="pFSOrchestrationFileSystemCamelRoute" />
 	</camelContext>
 	
-	<camelContext id="message-router-sbr-fileSystem"
-		xmlns="http://camel.apache.org/schema/blueprint">
-		<routeBuilder ref="sBROrchestrationFileSystemCamelRoute" />
-	</camelContext>
+<!-- 	<camelContext id="message-router-sbr-fileSystem" -->
+<!-- 		xmlns="http://camel.apache.org/schema/blueprint"> -->
+<!-- 		<routeBuilder ref="sBROrchestrationFileSystemCamelRoute" /> -->
+<!-- 	</camelContext> -->
 	
-	<camelContext id="message-router-pfs-mq"
-		xmlns="http://camel.apache.org/schema/blueprint">
-		<routeBuilder ref="pFSOrchestrationMQCamelRoute" />
-	</camelContext>
+<!-- 	<camelContext id="message-router-pfs-mq" -->
+<!-- 		xmlns="http://camel.apache.org/schema/blueprint"> -->
+<!-- 		<routeBuilder ref="pFSOrchestrationMQCamelRoute" /> -->
+<!-- 	</camelContext> -->
 	
-	<camelContext id="message-router-fs-mq"
-		xmlns="http://camel.apache.org/schema/blueprint">
-		<routeBuilder ref="testingRoutes" />
-	</camelContext>
+<!-- 	<camelContext id="message-router-fs-mq" -->
+<!-- 		xmlns="http://camel.apache.org/schema/blueprint"> -->
+<!-- 		<routeBuilder ref="testingRoutes" /> -->
+<!-- 	</camelContext> -->
 </blueprint>
