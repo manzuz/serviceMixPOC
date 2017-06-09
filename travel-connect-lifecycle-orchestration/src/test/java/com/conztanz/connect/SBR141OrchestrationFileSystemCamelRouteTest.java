@@ -11,8 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.conztanz.connect.SBR141ConnectInitializer;
 import com.conztanz.connect.identification.SBR141ConnectIdentifier;
-import com.conztanz.connect.model.SBR141IncomingMessage;
+import com.conztanz.connect.travel.model.SBR141IncomingMessage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/applicationContext-connect-beans.xml")

@@ -4,8 +4,8 @@ package com.conztanz.connect.camel;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 
-import com.conztanz.connect.identification.AbstractConnectIdentifier;
-import com.conztanz.connect.initialize.AbstractConnectInitializer;
+import com.conztanz.connect.identification.IAbstractConnectIdentifier;
+import com.conztanz.connect.initialize.IAbstractConnectInitializer;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 /**
@@ -16,10 +16,10 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
  * @param <PREPROCESSOR>
  * @param <IDENTIFIER>
  */
-public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends AbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage>, 
+public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends IAbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage>, 
 													  PREPROCESSOR extends Processor,
 													  BINDING,
-													  IDENTIFIER extends AbstractConnectIdentifier>
+													  IDENTIFIER   extends IAbstractConnectIdentifier>
 				extends RouteBuilder {
 
 	@Override
@@ -30,7 +30,7 @@ public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends Abstr
 			.transacted()
 //			.process(this.getProcessor())
 			.bean(getInitializer(), "init(${body})")
-//			.bean(this.getIdentifier(),"identify(${body})")
+			.bean(this.getIdentifier(),"identify(${body})")
 			.log("###################\nDone ! ###################\n");
 
 	}

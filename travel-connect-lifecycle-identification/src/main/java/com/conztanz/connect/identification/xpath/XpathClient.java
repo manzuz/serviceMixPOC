@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
  *
  */
 
-@Singleton
+//@Singleton
 public class XpathClient {
 	/**
 	 * 

@@ -3,22 +3,18 @@ package com.conztanz.connect.camel;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import com.conztanz.connect.PFSConnectInitializerWrapper;
-import com.conztanz.connect.identification.PFSConnectIdentifier;
+import com.conztanz.connect.identification.wrapping.PFSConnectIdentifierWrapper;
+import com.conztanz.connect.initialization.wrapping.PFSConnectInitializerWrapper;
 import com.conztanz.connect.processor.FileProcessor;
 import com.conztanz.transform.delivery.Delivery;
 
 @Singleton
-public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializerWrapper, FileProcessor,Delivery,PFSConnectIdentifier> {
-//
-//	@Inject
-//	private PFSConnectInitializer pFSConnectInitializer;
-//
+public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializerWrapper, FileProcessor,Delivery,PFSConnectIdentifierWrapper> {
 //	@Inject
 //	private FileProcessor fileProcessor;
 //	
-//	@Inject
-//	PFSConnectIdentifier pfsconnectIdentifier ;
+	@Inject
+	PFSConnectIdentifierWrapper pFSConnectIdentifierWrapper ;
 	
 	@Inject
 	PFSConnectInitializerWrapper pFSConnectInitializerWrapper ; 
@@ -39,8 +35,10 @@ public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationC
 	}
 
 	@Override
-	public PFSConnectIdentifier getIdentifier() {
-		return null;
+	public PFSConnectIdentifierWrapper getIdentifier() {
+		return pFSConnectIdentifierWrapper;
 	}
+
+	
 
 }

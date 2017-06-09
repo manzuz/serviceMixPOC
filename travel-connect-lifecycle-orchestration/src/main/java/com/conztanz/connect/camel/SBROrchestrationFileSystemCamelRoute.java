@@ -1,31 +1,29 @@
 package com.conztanz.connect.camel;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.conztanz.connect.SBR141ConnectInitializer;
-import com.conztanz.connect.identification.SBR141ConnectIdentifier;
+import com.conztanz.connect.identification.wrapping.SBR141ConnectIdentifierWrapper;
+import com.conztanz.connect.initialization.wrapping.SBR141ConnectInitializerWrapper;
 import com.conztanz.connect.processor.FileProcessor;
 import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
+@Singleton
+public class SBROrchestrationFileSystemCamelRoute extends
+		AbstractOrchestrationCamelRoute<SBR141ConnectInitializerWrapper, FileProcessor, ForPnrHandling, SBR141ConnectIdentifierWrapper> {
 
-//@Singleton
-public class SBROrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<SBR141ConnectInitializer, FileProcessor,ForPnrHandling,SBR141ConnectIdentifier>{
-	
-//	@Autowired
-	private SBR141ConnectInitializer sBR14ConnectInitializer ;
-	
-//	@Autowired
+	@Inject
+	private SBR141ConnectInitializerWrapper sBR14ConnectInitializerWrapper;
+
+	// @Autowired
 	private FileProcessor fileProcessor;
-	
-//	@Autowired 
-	SBR141ConnectIdentifier connectIdentifier ;
-	
-	
+
+	@Inject
+	SBR141ConnectIdentifierWrapper sBR141ConnectIdentifierWrapper;
+
 	@Override
-	public SBR141ConnectInitializer getInitializer() {
-		return sBR14ConnectInitializer;
+	public SBR141ConnectInitializerWrapper getInitializer() {
+		return sBR14ConnectInitializerWrapper;
 	}
 
 	@Override
@@ -39,7 +37,7 @@ public class SBROrchestrationFileSystemCamelRoute extends AbstractOrchestrationC
 	}
 
 	@Override
-	public SBR141ConnectIdentifier getIdentifier() {
-		return connectIdentifier;
+	public SBR141ConnectIdentifierWrapper getIdentifier() {
+		return sBR141ConnectIdentifierWrapper;
 	}
 }

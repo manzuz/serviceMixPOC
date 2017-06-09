@@ -15,8 +15,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.xml.sax.SAXException;
 
+import com.conztanz.connect.PFSConnectInitializer;
 import com.conztanz.connect.identification.PFSConnectIdentifier;
-import com.conztanz.connect.model.PFSIncomingMessage;
+import com.conztanz.connect.travel.model.PFSIncomingMessage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/applicationContext-connect-beans.xml")

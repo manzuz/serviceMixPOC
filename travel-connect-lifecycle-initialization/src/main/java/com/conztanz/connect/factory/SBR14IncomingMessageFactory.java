@@ -1,9 +1,7 @@
 package com.conztanz.connect.factory;
 
-import javax.inject.Singleton;
-
 import com.conztanz.connect.model.MessageType;
-import com.conztanz.connect.model.SBR141IncomingMessage;
+import com.conztanz.connect.travel.model.SBR141IncomingMessage;
 //@Singleton
 public class SBR14IncomingMessageFactory extends AbstractIncomingMessageFactory<SBR141IncomingMessage>{
 

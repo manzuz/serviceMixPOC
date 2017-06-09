@@ -1,7 +1,5 @@
 package com.conztanz.connect.transform.travel.sbr;
 
-import javax.inject.Singleton;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
@@ -14,7 +12,8 @@ import com.conztanz.connect.transform.IMessageCleaner;
  * @param <TRANSFORMER>
  */
 //@Singleton
-public  class SBR141EDI2XMLSmooksTransformer extends AbstractConnectSmooksTransformer{
+public  class SBR141EDI2XMLSmooksTransformer extends AbstractConnectSmooksTransformer
+{
 	
 	
 	@Autowired
@@ -32,10 +31,4 @@ public  class SBR141EDI2XMLSmooksTransformer extends AbstractConnectSmooksTransf
 	public IMessageCleaner getCleaner() {
 		return edifactCleaner;
 	}
-	
-
-	
-
-	
-
 }

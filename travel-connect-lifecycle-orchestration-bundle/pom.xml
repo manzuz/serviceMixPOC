@@ -77,14 +77,15 @@
 <!-- 						JAVAX.XML.TRAnsform, -->
 						<!-- INITIALISATION -->
 						com.conztanz.connect,
+						com.conztanz.connect.initialization.wrapping,
 						com.conztanz.connect.initialize,
 						com.conztanz.connect.transform,
 						com.conztanz.connect.factory,
 						com.conztanz.connect.transform.travel.airimp,
 						com.conztanz.connect.transform.travel.sbr,
-						
 						<!--IDENTIFICATION -->
 						com.conztanz.connect.identification,
+						com.conztanz.connect.identification.wrapping,
 						com.conztanz.connect.marshalling,
 						com.conztanz.connect.identification.xpath,
 						javax.xml.xpath,

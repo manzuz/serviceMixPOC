@@ -42,6 +42,10 @@
 			<artifactId>${product.parent.artifact.base}-model</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>${product.groupId}</groupId>
+			<artifactId>${product.connect.artifact.base}-model</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
+	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+    <bean id="sBR141ConnectIdentifier" class="com.conztanz.connect.identification.SBR141ConnectIdentifier" scope="singleton" />
+    
+    <bean id="pFSConnectIdentifier" class="com.conztanz.connect.identification.PFSConnectIdentifier" scope="singleton" />
+    
+    <bean id="sBR141UnMarshaller" class="com.conztanz.connect.marshalling.SBR141UnMarshaller" scope="singleton" />
+    
+    <bean id="pFSUnMarshaller" class="com.conztanz.connect.marshalling.PFSUnMarshaller" scope="singleton" />
+    
+    <bean id="xpathClient" class="com.conztanz.connect.identification.xpath.XpathClient" scope="singleton" />
+</beans>

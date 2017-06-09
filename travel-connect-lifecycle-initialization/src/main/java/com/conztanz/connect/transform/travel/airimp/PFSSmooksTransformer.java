@@ -1,7 +1,5 @@
 package com.conztanz.connect.transform.travel.airimp;
 
-import javax.inject.Singleton;
-
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 import com.conztanz.connect.transform.IMessageCleaner;
 
@@ -11,7 +9,6 @@ import com.conztanz.connect.transform.IMessageCleaner;
  *
  * @param <TRANSFORMER>
  */
-@Singleton
 public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 	
 	

@@ -4,26 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
 	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
-
-
-	<bean id="product.config.properties.location" class="java.lang.String">
-		<!-- Embedded configuration for test running scope -->
-		<constructor-arg value="${product.embedded.config.properties.location}" />
-	</bean>
-	<bean id="product.config.logs.location" class="java.lang.String">
-		<!-- Embedded configuration for test running scope -->
-		<constructor-arg value="${product.embedded.config.logs.location}" />
-	</bean>
-
-	<!-- Commons initialization -->
-	<import resource="classpath:config/applicationContext-commons.xml" />
-	<!-- Logger initialization -->
-	<import resource="classpath:config/applicationContext-logger.xml" />
-	<!-- Model initialization -->
-	<import resource="classpath:config/applicationContext-model.xml" />
-	<!-- JSon parsing definition -->
-	<import resource="classpath:config/applicationContext-json.xml" />
-	
 	<bean id="PFSIncomingMessageFactory" class="com.conztanz.connect.factory.PFSIncomingMessageFactory" scope="singleton" />
 	
     <bean id="SBR14IncomingMessageFactory" class="com.conztanz.connect.factory.SBR14IncomingMessageFactory" scope="singleton" />

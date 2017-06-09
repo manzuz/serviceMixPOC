@@ -1,9 +1,7 @@
 package com.conztanz.connect.factory;
 
-import javax.inject.Singleton;
-
 import com.conztanz.connect.model.MessageType;
-import com.conztanz.connect.model.PFSIncomingMessage;
+import com.conztanz.connect.travel.model.PFSIncomingMessage;
 
 
 /**

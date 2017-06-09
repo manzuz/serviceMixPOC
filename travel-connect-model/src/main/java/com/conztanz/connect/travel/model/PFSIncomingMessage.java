@@ -1,4 +1,7 @@
-package com.conztanz.connect.model;
+package com.conztanz.connect.travel.model;
+
+import com.conztanz.connect.model.IncomingMessage;
+import com.conztanz.connect.model.MessageType;
 
 public class PFSIncomingMessage extends IncomingMessage {
 

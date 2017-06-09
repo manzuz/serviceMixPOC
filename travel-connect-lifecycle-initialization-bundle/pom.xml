@@ -33,10 +33,10 @@
 						in other packages (coming from dependencies). Thus causing problems (probably 
 						spring annotations ) -->
 <!-- 					<scanPath>com.conztanz.connect.camel</scanPath> -->
-					<scanPath>com.conztanz.connect</scanPath>
-					<scanPath> com.conztanz.connect.factory</scanPath>
-					<scanPath>com.conztanz.connect.transform.travel.airimp</scanPath>
-					<scanPath>com.conztanz.connect.processor</scanPath>
+					<scanPath>com.conztanz.connect.initialization.wrapping</scanPath>
+<!-- 					<scanPath> com.conztanz.connect.factory</scanPath> -->
+<!-- 					<scanPath>com.conztanz.connect.transform.travel.airimp</scanPath> -->
+<!-- 					<scanPath>com.conztanz.connect.processor</scanPath> -->
 				</scanPaths>
 			</configuration>
 		</plugin>
@@ -59,7 +59,8 @@
 						com.conztanz.connect.factory,
 						com.conztanz.connect.transform.travel.airimp,
 						com.conztanz.connect.transform.travel.sbr,
-						com.conztanz.connect.model
+						com.conztanz.connect.model.*,
+						com.conztanz.connect.initialization.wrapping
 						</Export-Package>
 					<Import-Package>
 <!-- 						org.hibernate.*;version="[4.3,5)", -->

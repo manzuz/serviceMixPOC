@@ -2,7 +2,6 @@ package com.conztanz.connect.identification;
 
 import java.io.IOException;
 
-import javax.inject.Singleton;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -13,13 +12,10 @@ import org.xml.sax.SAXException;
 import com.conztanz.connect.identification.xpath.XpathClient;
 import com.conztanz.connect.model.IncomingMessage;
 
-//TODO : naming 
-@Singleton
 public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	
 	@Autowired
 	private  XpathClient xpathClient ;
-
 	
 	private final String XPATH_COMPANY ="//delivery/segment/designator/company";
 	private final String XPATH_FLIGHTNUM = "//delivery/segment/designator/number";
@@ -36,12 +32,10 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	@Override
 	public void  identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException  {
 		Document doc = super.getDocument(incomingMessage);
-		System.out.println(this.getXpathClient());
 		String company = this.getXpathClient().request(XPATH_COMPANY, doc);
 		String flightNum = this.getXpathClient().request(XPATH_FLIGHTNUM, doc);
 		String depDate = this.getXpathClient().request(XPATH_DEPDATE, doc);
 		String station = this.getXpathClient().request(XPATH_STATION, doc);
-		
 		String objectID = company + flightNum + "//" + depDate + station;
 		System.out.println(objectID);
 		incomingMessage.setObjectId(objectID);
@@ -52,7 +46,6 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 
 
 
-
 	public XpathClient getXpathClient() {
 		return xpathClient;
 	}
@@ -60,7 +53,6 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	public void setXpathClient(XpathClient xpathClient) {
 		this.xpathClient = xpathClient;
 	}
-	
 	
 	
 

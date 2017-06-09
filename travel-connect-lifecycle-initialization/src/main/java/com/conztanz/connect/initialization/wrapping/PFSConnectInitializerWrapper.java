@@ -1,11 +1,12 @@
-package com.conztanz.connect;
+package com.conztanz.connect.initialization.wrapping;
 
 import javax.inject.Singleton;
 
+import com.conztanz.connect.PFSConnectInitializer;
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
-import com.conztanz.connect.initialize.AbstractConnectInitializer;
-import com.conztanz.connect.model.PFSIncomingMessage;
+import com.conztanz.connect.initialize.IAbstractConnectInitializer;
 import com.conztanz.connect.transform.travel.airimp.PFSSmooksTransformer;
+import com.conztanz.connect.travel.model.PFSIncomingMessage;
 import com.conztanz.j2ee.utils.ConztanzSpringApplicationContext;
 
 /**
@@ -15,7 +16,7 @@ import com.conztanz.j2ee.utils.ConztanzSpringApplicationContext;
  */
 
 @Singleton
-public class PFSConnectInitializerWrapper extends AbstractConnectInitializer<PFSSmooksTransformer, PFSIncomingMessage> {
+public class PFSConnectInitializerWrapper implements IAbstractConnectInitializer<PFSSmooksTransformer, PFSIncomingMessage> {
 
 	public PFSIncomingMessage init(byte[] payload) {
 		return ConztanzSpringApplicationContext.getBean(PFSConnectInitializer.class).init(payload);
