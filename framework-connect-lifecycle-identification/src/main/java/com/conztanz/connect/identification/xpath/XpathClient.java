@@ -3,7 +3,6 @@ package com.conztanz.connect.identification.xpath;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.inject.Singleton;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
@@ -17,8 +16,8 @@ import org.w3c.dom.Document;
  *
  */
 
-//@Singleton
-public class XpathClient {
+public class XpathClient 
+{
 	/**
 	 * 
 	 */
@@ -57,10 +56,6 @@ public class XpathClient {
 		return compiledExpressions;
 	}
 
-	// public void setCompiledExpressions(Map<String, XPathExpression>
-	// compiledExpressions) {
-	// this.compiledExpressions = compiledExpressions;
-	// }
 
 	public void setXpathInstance(XPath xpathInstance) {
 		this.xpathInstance = xpathInstance;

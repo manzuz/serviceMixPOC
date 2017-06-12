@@ -1,6 +1,5 @@
 package com.conztanz.connect.factory;
 
-import com.conztanz.connect.model.MessageType;
 import com.conztanz.connect.travel.model.PFSIncomingMessage;
 
 
@@ -18,7 +17,7 @@ public class PFSIncomingMessageFactory extends AbstractIncomingMessageFactory<PF
 	 */
 	@Override
 	public PFSIncomingMessage createMessage(byte[] payload) {
-		return new PFSIncomingMessage(payload, MessageType.PFS);
+		return new PFSIncomingMessage(payload);
 
 	}
 

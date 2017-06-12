@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/database/ddl/commons=UTF-8
+encoding//src/database/ddl/main=UTF-8
+encoding//src/database/ddl/test=UTF-8
+encoding//src/main/java=UTF-8
 encoding/<project>=UTF-8

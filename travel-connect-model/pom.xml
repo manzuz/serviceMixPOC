@@ -10,17 +10,22 @@
 	</parent>
 	<artifactId>travel-connect-model</artifactId>
 	<packaging>jar</packaging>
-
-
-
+	<properties>
+		<!-- <project.current.artifact.base>${product.connect.artifact.base}</project.current.artifact.base> -->
+		<product.name>${product.connect.name}</product.name>
+		<!-- <persistence.base.name>${product.company}${product.connect.name}</persistence.base.name> -->
+		<persistence.ds.name>${product.company}${product.connect.name}DS</persistence.ds.name>
+		<persistence.user.name>${product.company}${product.connect.name}User</persistence.user.name>
+		<persistence.schema.name>${product.connect.name}Schema</persistence.schema.name>
+	</properties>
 
 
 	<dependencies>
 		<!-- Framework dependencies -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>com.conztanz</groupId> -->
-<!-- 			<artifactId>travel-model</artifactId> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>com.conztanz</groupId> -->
+		<!-- <artifactId>travel-model</artifactId> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-connect-model</artifactId>

@@ -10,7 +10,7 @@ public abstract class IncomingMessage extends AbstractEntity {
 	/**
 	 * 
 	 */
-	private MessageType type;
+//	private MessageType type;
 
 	/**
 	 * 
@@ -32,10 +32,10 @@ public abstract class IncomingMessage extends AbstractEntity {
 		this.rawPayload = rawPayload;
 	}
 
-	public IncomingMessage(byte[] rawPayload, MessageType type) {
-		this.type = type;
-		this.rawPayload = rawPayload;
-	}
+//	public IncomingMessage(byte[] rawPayload, MessageType type) {
+//		this.type = type;
+//		this.rawPayload = rawPayload;
+//	}
 
 	public String getTransformedPayload() {
 		return transformedPayload;
@@ -49,13 +49,13 @@ public abstract class IncomingMessage extends AbstractEntity {
 		return rawPayload;
 	}
 
-	public MessageType getType() {
-		return type;
-	}
-
-	public void setType(MessageType type) {
-		this.type = type;
-	}
+//	public MessageType getType() {
+//		return type;
+//	}
+//
+//	public void setType(MessageType type) {
+//		this.type = type;
+//	}
 
 	@Override
 	protected boolean sameContentInternal(Object toBeCompared) {
