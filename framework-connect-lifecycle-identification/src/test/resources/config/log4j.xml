@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<!-- EMBEDDED LOGGING CONFIGURATION TO BE USED INSIDE TESTS -->
+
+	<!-- APPENDERS -->
+	<!-- Console appender -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<!-- Console file appender -->
+	<appender name="CATCHALL" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="threshold" value="DEBUG" />
+		<!-- CONSOLE_LOG_LOCATION -->
+		<param name="file" value="${product.logs.path}/test/catchall/console.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Technical file appender -->
+	<appender name="TECHNICAL" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="threshold" value="DEBUG" />
+		<!-- TECHNICAL_LOG_LOCATION -->
+		<param name="file" value="${product.logs.path}/test/technical/technical.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5p] %X{transactionId} [%t] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Functional file appender -->
+	<appender name="FUNCTIONAL" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="threshold" value="DEBUG" />
+		<!-- FUNCTIONAL_LOG_LOCATION -->
+		<param name="file" value="${product.logs.path}/test/functional/functional.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5p] %X{transactionId} [%t] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Activity file appender -->
+	<appender name="ACTIVITY" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="threshold" value="TRACE" />
+		<!-- ACTIVITY_LOG_LOCATION -->
+		<param name="file" value="${product.logs.path}/test/activity/activity.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%-5p] %X{transactionId} [%t] %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Functional loggers -->
+	<logger name="functional" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="FUNCTIONAL" />
+	</logger>
+
+	<!-- Technical loggers -->
+	<logger name="technical" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="TECHNICAL" />
+	</logger>
+
+	<!-- Activity loggers -->
+	<logger name="activity" additivity="false">
+		<level value="TRACE" />
+		<appender-ref ref="ACTIVITY" />
+	</logger>
+
+
+	<!-- Root logger -->
+	<root>
+		<priority value="DEBUG" />
+<!-- 		<appender-ref ref="STDOUT" /> -->
+		<appender-ref ref="CATCHALL" />
+	</root>
+</log4j:configuration>

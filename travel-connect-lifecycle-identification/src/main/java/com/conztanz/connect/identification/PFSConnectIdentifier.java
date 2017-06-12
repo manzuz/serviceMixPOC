@@ -15,7 +15,7 @@ import com.conztanz.connect.model.IncomingMessage;
 public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	
 	@Autowired
-	private  XpathClient xpathClient ;
+	private  XpathClient  xpathClient ;
 	
 	private final String XPATH_COMPANY ="//delivery/segment/designator/company";
 	private final String XPATH_FLIGHTNUM = "//delivery/segment/designator/number";
@@ -37,7 +37,6 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 		String depDate = this.getXpathClient().request(XPATH_DEPDATE, doc);
 		String station = this.getXpathClient().request(XPATH_STATION, doc);
 		String objectID = company + flightNum + "//" + depDate + station;
-		System.out.println(objectID);
 		incomingMessage.setObjectId(objectID);
 
 
@@ -46,11 +45,11 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 
 
 
-	public XpathClient getXpathClient() {
+	public XpathClient  getXpathClient() {
 		return xpathClient;
 	}
 
-	public void setXpathClient(XpathClient xpathClient) {
+	public void setXpathClient(XpathClient  xpathClient) {
 		this.xpathClient = xpathClient;
 	}
 	

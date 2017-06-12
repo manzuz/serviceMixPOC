@@ -20,7 +20,11 @@
 			<artifactId>framework-connect-model</artifactId>
 		</dependency>
 
-		
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-testing</artifactId>
+		</dependency>
+
 		<!-- JIBX -->
 		<dependency>
 			<groupId>org.jibx</groupId>

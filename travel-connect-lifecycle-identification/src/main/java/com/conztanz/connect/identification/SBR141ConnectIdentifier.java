@@ -4,7 +4,6 @@ package com.conztanz.connect.identification;
 
 import java.io.IOException;
 
-import javax.inject.Singleton;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
@@ -31,7 +30,6 @@ public class SBR141ConnectIdentifier extends AbstractConnectIdentifier
 		String controlNumber = this.getXpathClient().request(CONTROL_NUMBER, doc);
 		String creationDate = this.getXpathClient().request(CREATION_DATE, doc);
 		String objectID = controlNumber + "//" + creationDate;
-		System.out.println(objectID);
 		incomingMessage.setObjectId(objectID);
 	}
 
