@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
 	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
-	<bean id="SimpleMessageIncomingMessageFactory" class="com.conztanz.connect.identification.xpath.XpathClient" scope="singleton" />
+	<bean id="XpathClient" class="com.conztanz.connect.identification.xpath.XpathClient" scope="singleton" />
+   	<bean id="SimpleConnectIdentifier" class="com.conztanz.connect.identification.SimpleConnectIdentifier" scope="singleton" />
    
 </beans>

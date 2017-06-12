@@ -18,7 +18,7 @@ public abstract class IncomingMessage extends AbstractEntity {
 	private byte[] rawPayload;
 	
 	/**
-	 * TODO generics instead of string (with a string implementation for now) 
+	 * TODO generic instead of string (with a string implementation for now) 
 	 */
 	private String objectId;
 

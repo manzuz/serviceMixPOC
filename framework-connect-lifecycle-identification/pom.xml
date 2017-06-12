@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.conztanz</groupId>
 		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework-connect</artifactId>
+		<artifactId>framework</artifactId>
 	</parent>
 	<!-- <artifactId>${framework.connect.artifact.base}-lifecycle-identification</artifactId> -->
 	<artifactId>framework-connect-lifecycle-identification</artifactId>
@@ -23,8 +23,14 @@
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-testing</artifactId>
+			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-lifecycle-initialization</artifactId>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
 		<!-- JIBX -->
 		<dependency>
 			<groupId>org.jibx</groupId>

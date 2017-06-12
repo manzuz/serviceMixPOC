@@ -18,7 +18,7 @@
 	<!-- Commons initialization -->
 	<import resource="classpath:config/applicationContext-commons.xml" />
 	<!-- Logger initialization -->
-	<import resource="classpath:config/applicationContext-logger.xml" />
+<!-- 	<import resource="classpath:config/applicationContext-logger.xml" /> -->
 	<!-- Model initialization -->
 	<import resource="classpath:config/applicationContext-model.xml" />
 	<!-- JSon parsing definition -->
