@@ -19,8 +19,8 @@ import com.conztanz.connect.PFSConnectInitializer;
 import com.conztanz.connect.identification.PFSConnectIdentifier;
 import com.conztanz.connect.travel.model.PFSIncomingMessage;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:config/applicationContext-connect-beans.xml")
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@ContextConfiguration(locations = "classpath:config/applicationContext-connect-beans.xml")
 public class PFSOrchestrationFileSystemCamelRouteTest {
 
 	@Autowired
@@ -29,7 +29,7 @@ public class PFSOrchestrationFileSystemCamelRouteTest {
 	@Autowired
 	PFSConnectIdentifier pFSConnectIdentifier;
 
-	@Test
+//	@Test
 	public void camelRouteTest() throws IOException, JiBXException, XPathExpressionException, ParserConfigurationException, SAXException {
 		
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./airimp/PFS.txt");

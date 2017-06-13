@@ -9,7 +9,7 @@ import com.conztanz.connect.processor.FileProcessor;
 import com.conztanz.transform.delivery.Delivery;
 
 @Singleton
-public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializerWrapper, FileProcessor,Delivery,PFSConnectIdentifierWrapper> {
+public class PFSOrchestrationFileSystemCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializerWrapper, FileProcessor,PFSConnectIdentifierWrapper> {
 //	@Inject
 //	private FileProcessor fileProcessor;
 //	

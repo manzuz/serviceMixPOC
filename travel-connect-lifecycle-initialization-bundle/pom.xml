@@ -60,6 +60,7 @@
 						com.conztanz.connect.transform.travel.airimp,
 						com.conztanz.connect.transform.travel.sbr,
 						com.conztanz.connect.model.*,
+						com.conztanz.connect.travel.model,
 						com.conztanz.connect.initialization.wrapping
 						</Export-Package>
 					<Import-Package>

@@ -16,11 +16,10 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
  * @param <PREPROCESSOR>
  * @param <IDENTIFIER>
  */
-public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends IAbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage>, 
+public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends IAbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage<?>>, 
 													  PREPROCESSOR extends Processor,
-													  BINDING,
-													  IDENTIFIER   extends IAbstractConnectIdentifier>
-				extends RouteBuilder {
+													  IDENTIFIER   extends IAbstractConnectIdentifier<?>>
+						extends RouteBuilder {
 
 	@Override
 	public void configure() throws Exception {

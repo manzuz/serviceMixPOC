@@ -9,7 +9,8 @@ import com.conztanz.connect.transform.IMessageCleaner;
  *
  * @param <TRANSFORMER>
  */
-public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
+public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer
+{
 	
 	
 	/**
@@ -33,14 +34,4 @@ public  class PFSSmooksTransformer extends AbstractConnectSmooksTransformer{
 			}
 		};
 	}
-
-
-
-	
-	
-
-	
-
-	
-
 }

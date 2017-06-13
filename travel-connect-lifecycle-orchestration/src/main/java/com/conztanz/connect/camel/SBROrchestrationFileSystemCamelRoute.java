@@ -3,14 +3,14 @@ package com.conztanz.connect.camel;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import com.conztanz.connect.identification.wrapping.SBR141ConnectIdentifierWrapper;
+import com.conztanz.connect.identification.wrapping.SBRConnectIdentifierWrapper;
 import com.conztanz.connect.initialization.wrapping.SBR141ConnectInitializerWrapper;
 import com.conztanz.connect.processor.FileProcessor;
-import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
 @Singleton
 public class SBROrchestrationFileSystemCamelRoute extends
-		AbstractOrchestrationCamelRoute<SBR141ConnectInitializerWrapper, FileProcessor, ForPnrHandling, SBR141ConnectIdentifierWrapper> {
+		AbstractOrchestrationCamelRoute<SBR141ConnectInitializerWrapper, FileProcessor,  SBRConnectIdentifierWrapper>
+{
 
 	@Inject
 	private SBR141ConnectInitializerWrapper sBR14ConnectInitializerWrapper;
@@ -19,7 +19,7 @@ public class SBROrchestrationFileSystemCamelRoute extends
 	private FileProcessor fileProcessor;
 
 	@Inject
-	SBR141ConnectIdentifierWrapper sBR141ConnectIdentifierWrapper;
+	SBRConnectIdentifierWrapper sBR141ConnectIdentifierWrapper;
 
 	@Override
 	public SBR141ConnectInitializerWrapper getInitializer() {
@@ -37,7 +37,7 @@ public class SBROrchestrationFileSystemCamelRoute extends
 	}
 
 	@Override
-	public SBR141ConnectIdentifierWrapper getIdentifier() {
+	public SBRConnectIdentifierWrapper getIdentifier() {
 		return sBR141ConnectIdentifierWrapper;
 	}
 }

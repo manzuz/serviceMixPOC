@@ -1,8 +1,8 @@
 package com.conztanz.connect.camel;
 
-import javax.inject.Singleton;
-
 import org.apache.camel.builder.RouteBuilder;
+
+import javax.inject.Singleton;
 @Singleton
 public class TestingRoutes extends RouteBuilder {
 

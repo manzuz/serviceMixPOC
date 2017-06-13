@@ -71,6 +71,7 @@
 						org.springframework.transaction,
 						org.osgi.framework.*,
 						com.conztanz.connect.model,
+						com.conztanz.connect.travel.model,
 						javax.xml.*,
 						org.apache.xerces.jaxp,
 						org.w3c.dom,
@@ -80,7 +81,7 @@
 					</Import-Package>
 					<Embed-Dependency>
 						groupId=!org.osgi|org.apache.felix|org.apache.karaf|javax.*|org.hibernate|org.hibernate.*|org.apache.camel|org.milyn;
-						artifactId=!framework-connect-model|framewoek-model|xml-apis|spring-tx|spring-orm|spring-jdbc|spring-context-support
+						artifactId=!framework-connect-model|travel-connect-model|framewoek-model|xml-apis|spring-tx|spring-orm|spring-jdbc|spring-context-support
 <!-- 						inline=true -->
 					</Embed-Dependency>
 					<Embed-Transitive>true</Embed-Transitive>

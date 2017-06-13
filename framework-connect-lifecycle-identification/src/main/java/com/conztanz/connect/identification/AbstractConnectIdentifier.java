@@ -18,13 +18,12 @@ import com.conztanz.connect.model.IncomingMessage;
  * 
  * @author User
  *
- * @param <BINDING>
- * @param <UNMARSHALLER>
  */
-public abstract class AbstractConnectIdentifier implements IAbstractConnectIdentifier 
-{
+public abstract class AbstractConnectIdentifier<INCOMING_MESSAGE extends IncomingMessage<?>>
+																 implements IAbstractConnectIdentifier<INCOMING_MESSAGE> {
 
-	public abstract void identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
+	public abstract void identify(INCOMING_MESSAGE incomingMessage)
+			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
 
 	/**
 	 * @param incomingMessage
@@ -33,8 +32,8 @@ public abstract class AbstractConnectIdentifier implements IAbstractConnectIdent
 	 * @throws IOException
 	 * @throws ParserConfigurationException
 	 */
-	protected Document getDocument(IncomingMessage incomingMessage) throws SAXException, IOException, ParserConfigurationException 
-	{
+	protected Document getDocument(INCOMING_MESSAGE incomingMessage)
+			throws SAXException, IOException, ParserConfigurationException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse(new InputSource(new StringReader(incomingMessage.getTransformedPayload())));

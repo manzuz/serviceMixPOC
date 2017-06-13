@@ -5,12 +5,9 @@ import com.conztanz.model.AbstractEntity;
 //@Entity(name = "INCOMING_MESSAGE")
 //@SequenceGenerator(name = "SEQ_ID", sequenceName = "INCOMING_MESSAGE_ID_SEQ")
 //@Access(AccessType.FIELD)
-public abstract class IncomingMessage extends AbstractEntity {
+public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity {
 
-	/**
-	 * 
-	 */
-//	private MessageType type;
+	
 
 	/**
 	 * 
@@ -20,7 +17,7 @@ public abstract class IncomingMessage extends AbstractEntity {
 	/**
 	 * TODO generic instead of string (with a string implementation for now) 
 	 */
-	private String objectId;
+	private OBJECT_ID objectId;
 
 	/**
 	 * 
@@ -32,10 +29,6 @@ public abstract class IncomingMessage extends AbstractEntity {
 		this.rawPayload = rawPayload;
 	}
 
-//	public IncomingMessage(byte[] rawPayload, MessageType type) {
-//		this.type = type;
-//		this.rawPayload = rawPayload;
-//	}
 
 	public String getTransformedPayload() {
 		return transformedPayload;
@@ -69,11 +62,11 @@ public abstract class IncomingMessage extends AbstractEntity {
 		return false;
 	}
 
-	public String getObjectId() {
+	public OBJECT_ID getObjectId() {
 		return objectId;
 	}
 
-	public void setObjectId(String objectId) {
+	public void setObjectId(OBJECT_ID objectId) {
 		this.objectId = objectId;
 	}
 

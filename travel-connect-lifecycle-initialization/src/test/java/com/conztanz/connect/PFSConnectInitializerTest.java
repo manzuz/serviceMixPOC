@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 //import com.conztanz.connect.model.MessageType;
 import com.conztanz.connect.travel.model.PFSIncomingMessage;
-import com.conztanz.connect.travel.model.SBR141IncomingMessage;
+import com.conztanz.connect.travel.model.SBRIncomingMessage;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/applicationContext.xml")
@@ -42,7 +42,7 @@ public class PFSConnectInitializerTest {
 	@Test
 	public void testEDI2XML() throws IOException {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./edifact/edifact-sample.txt");
-		SBR141IncomingMessage m  = sBR14ConnectInitializer.init(IOUtils.toByteArray(is));
+		SBRIncomingMessage m  = sBR14ConnectInitializer.init(IOUtils.toByteArray(is));
 		System.out.println(m.getTransformedPayload());
 //		SBR14IncomingMessage msg = sBR14ConnectInitializer.getMessageFactory().createMessage(payload);
 	}

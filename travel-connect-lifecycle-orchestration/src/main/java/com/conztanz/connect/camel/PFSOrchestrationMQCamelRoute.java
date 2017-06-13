@@ -1,16 +1,11 @@
 package com.conztanz.connect.camel;
 
-import javax.inject.Singleton;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.conztanz.connect.PFSConnectInitializer;
-import com.conztanz.connect.identification.PFSConnectIdentifier;
+import com.conztanz.connect.identification.wrapping.PFSConnectIdentifierWrapper;
 import com.conztanz.connect.processor.FileProcessor;
-import com.conztanz.transform.delivery.Delivery;
 
 //@Singleton
-public class PFSOrchestrationMQCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializer, FileProcessor,Delivery,PFSConnectIdentifier> {
+public class PFSOrchestrationMQCamelRoute extends AbstractOrchestrationCamelRoute<PFSConnectInitializer, FileProcessor,PFSConnectIdentifierWrapper> {
 
 //	@Autowired
 	private PFSConnectInitializer pFSConnectInitializer;
@@ -19,7 +14,7 @@ public class PFSOrchestrationMQCamelRoute extends AbstractOrchestrationCamelRout
 	private FileProcessor fileProcessor;
 	
 //	@Autowired 
-	PFSConnectIdentifier pfsconnectIdentifier ;
+	PFSConnectIdentifierWrapper pfsconnectIdentifier ;
 
 	@Override
 	public PFSConnectInitializer getInitializer() {
@@ -37,7 +32,7 @@ public class PFSOrchestrationMQCamelRoute extends AbstractOrchestrationCamelRout
 	}
 
 	@Override
-	public PFSConnectIdentifier getIdentifier() {
+	public PFSConnectIdentifierWrapper getIdentifier() {
 		return pfsconnectIdentifier;
 	}
 

@@ -13,8 +13,10 @@ import com.conztanz.connect.model.IncomingMessage;
  * 
  * @author User
  *
+ * @param <OBJECT_ID>
  */
-public interface IAbstractConnectIdentifier {
+public interface IAbstractConnectIdentifier<INCOMING_MESSAGE extends IncomingMessage<?>> 
+{
 	
 	/**
 	 * 
@@ -24,6 +26,6 @@ public interface IAbstractConnectIdentifier {
 	 * @throws IOException
 	 * @throws XPathExpressionException
 	 */
-	void identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
+	void identify(INCOMING_MESSAGE incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
 
 }

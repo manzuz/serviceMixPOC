@@ -16,7 +16,8 @@ import com.conztanz.j2ee.utils.ConztanzSpringApplicationContext;
  */
 
 @Singleton
-public class PFSConnectInitializerWrapper implements IAbstractConnectInitializer<PFSSmooksTransformer, PFSIncomingMessage> {
+public class PFSConnectInitializerWrapper implements IAbstractConnectInitializer<PFSSmooksTransformer, PFSIncomingMessage> 
+{
 
 	public PFSIncomingMessage init(byte[] payload) {
 		return ConztanzSpringApplicationContext.getBean(PFSConnectInitializer.class).init(payload);

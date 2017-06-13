@@ -1,12 +1,12 @@
 package com.conztanz.connect.factory;
 
-import com.conztanz.connect.travel.model.SBR141IncomingMessage;
+import com.conztanz.connect.travel.model.SBRIncomingMessage;
 //@Singleton
-public class SBR14IncomingMessageFactory extends AbstractIncomingMessageFactory<SBR141IncomingMessage>{
+public class SBR14IncomingMessageFactory extends AbstractIncomingMessageFactory<SBRIncomingMessage>{
 
 	@Override
-	public SBR141IncomingMessage createMessage(byte[] payload) {
-		return new SBR141IncomingMessage(payload);
+	public SBRIncomingMessage createMessage(byte[] payload) {
+		return new SBRIncomingMessage(payload);
 	}
 
 }

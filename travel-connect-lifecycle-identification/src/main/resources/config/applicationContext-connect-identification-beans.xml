@@ -4,16 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
 	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 	
-	
-	
-	
-	
-	
-
-	
-	
-	
-    <bean id="sBR141ConnectIdentifier" class="com.conztanz.connect.identification.SBR141ConnectIdentifier" scope="singleton" />
+    <bean id="sBRConnectIdentifier" class="com.conztanz.connect.identification.SBRConnectIdentifier" scope="singleton" />
     
     <bean id="pFSConnectIdentifier" class="com.conztanz.connect.identification.PFSConnectIdentifier" scope="singleton" />
     
