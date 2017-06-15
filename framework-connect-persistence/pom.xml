@@ -50,6 +50,12 @@
 			<groupId>com.conztanz</groupId>
 			<artifactId>${framework.connect.artifact.base}-model</artifactId>
 		</dependency>
+<!--        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-model</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>-->
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>com.conztanz</groupId>

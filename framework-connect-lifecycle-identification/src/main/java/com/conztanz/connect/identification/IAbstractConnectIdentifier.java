@@ -9,13 +9,7 @@ import org.xml.sax.SAXException;
 
 import com.conztanz.connect.model.IncomingMessage;
 
-/**
- * 
- * @author User
- *
- * @param <OBJECT_ID>
- */
-public interface IAbstractConnectIdentifier<INCOMING_MESSAGE extends IncomingMessage<?>> 
+public interface IAbstractConnectIdentifier<INCOMING_MESSAGE extends IncomingMessage<?>>
 {
 	
 	/**

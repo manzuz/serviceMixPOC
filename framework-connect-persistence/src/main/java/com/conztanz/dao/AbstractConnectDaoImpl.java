@@ -8,8 +8,10 @@ import com.conztanz.model.AbstractEntity;
 import com.conztanz.persistence.AbstractEntityDaoImpl;
 
 
-
-
+/**
+ *
+ * @param <ENTITY>
+ */
 @Transactional(value = TxType.MANDATORY, rollbackOn = {ConztanzException.class} )
 public abstract class AbstractConnectDaoImpl<ENTITY extends AbstractEntity> extends AbstractEntityDaoImpl<ENTITY> {
 

@@ -2,78 +2,65 @@ package com.conztanz.connect.model;
 
 import com.conztanz.model.AbstractEntity;
 
-//@Entity(name = "INCOMING_MESSAGE")
-//@SequenceGenerator(name = "SEQ_ID", sequenceName = "INCOMING_MESSAGE_ID_SEQ")
-//@Access(AccessType.FIELD)
 public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity {
 
-	
 
-	/**
-	 * 
-	 */
-	private byte[] rawPayload;
-	
-	/**
-	 * TODO generic instead of string (with a string implementation for now) 
-	 */
-	private OBJECT_ID objectId;
+    /**
+     *
+     */
+    private byte[] rawPayload;
 
-	/**
-	 * 
-	 * @return
-	 */
-	private String transformedPayload;
+    /**
+     * TODO generic instead of string (with a string implementation for now)
+     */
+    private OBJECT_ID objectId;
 
-	public IncomingMessage(byte[] rawPayload) {
-		this.rawPayload = rawPayload;
-	}
+    /**
+     * @return
+     */
+    private String transformedPayload;
+
+    public IncomingMessage(byte[] rawPayload) {
+        this.rawPayload = rawPayload;
+    }
 
 
-	public String getTransformedPayload() {
-		return transformedPayload;
-	}
+    public String getTransformedPayload() {
+        return transformedPayload;
+    }
 
-	public void setTransformedPayload(String transformedPayload) {
-		this.transformedPayload = transformedPayload;
-	}
+    public void setTransformedPayload(String transformedPayload) {
+        this.transformedPayload = transformedPayload;
+    }
 
-	public byte[] getRawPayload() {
-		return rawPayload;
-	}
+    public byte[] getRawPayload() {
+        return rawPayload;
+    }
 
-//	public MessageType getType() {
-//		return type;
-//	}
-//
-//	public void setType(MessageType type) {
-//		this.type = type;
-//	}
 
-	@Override
-	protected boolean sameContentInternal(Object toBeCompared) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    protected boolean sameContentInternal(Object toBeCompared) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	@Override
-	protected boolean sameLinksInternal(Object toBeCompared) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    protected boolean sameLinksInternal(Object toBeCompared) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public OBJECT_ID getObjectId() {
-		return objectId;
-	}
+    public OBJECT_ID getObjectId() {
+        return objectId;
+    }
 
-	public void setObjectId(OBJECT_ID objectId) {
-		this.objectId = objectId;
-	}
+    public void setObjectId(OBJECT_ID objectId) {
+        this.objectId = objectId;
+    }
 
-	public void setRawPayload(byte[] rawPayload) {
-		this.rawPayload = rawPayload;
-	}
-	
-	
+    public void setRawPayload(byte[] rawPayload) {
+        this.rawPayload = rawPayload;
+    }
+
 
 }

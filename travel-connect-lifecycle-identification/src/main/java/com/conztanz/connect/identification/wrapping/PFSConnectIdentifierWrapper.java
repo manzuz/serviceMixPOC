@@ -7,12 +7,10 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
 import com.conztanz.connect.travel.model.PFSIncomingMessage;
-import com.conztanz.connect.travel.model.SBRIncomingMessage;
 import org.xml.sax.SAXException;
 
 import com.conztanz.connect.identification.IAbstractConnectIdentifier;
 import com.conztanz.connect.identification.PFSConnectIdentifier;
-import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.j2ee.utils.ConztanzSpringApplicationContext;
 
 /**

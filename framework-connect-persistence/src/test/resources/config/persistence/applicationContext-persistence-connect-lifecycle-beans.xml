@@ -4,8 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
-	<bean id="SimpleEntityDaoPrimary" class="com.conztanz.persistence.connect.SimpleEntityDaoImplPrimary" scope="singleton"/>
+	<bean id="SimpleSequencedWorkingMessageDao" class="com.conztanz.persistence.connect.SimpleSequencedWorkingMessageDao" scope="singleton"/>
 <!-- 	<import resource="classpath:config/applicationContext-commons.xml" /> -->
-<!-- 	<import resource="classpath:config/persistence/applicationContext-persistence-primary.xml" /> -->
 
 </beans>
