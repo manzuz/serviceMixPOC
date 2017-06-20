@@ -1,6 +1,7 @@
 package com.conztanz.connect.factory;
 
-public class SimpleIncomingMessagFactory extends AbstractIncomingMessageFactory<SimpleIncomingMessage> {
+public class SimpleIncomingMessageFactory extends AbstractIncomingMessageFactory<SimpleIncomingMessage>
+{
 
 	@Override
 	public SimpleIncomingMessage createMessage(byte[] payload) {

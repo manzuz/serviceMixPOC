@@ -1,4 +1,4 @@
-package com.conztanz.dao;
+package com.conztanz.connect.persistence;
 
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.exception.ConztanzException;
@@ -14,21 +14,44 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by User on 6/13/2017.
  */
-public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage<OBJECT_ID>> extends AbstractEntityDaoImpl<ENTITY>
+public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage<OBJECT_ID>>
+       extends AbstractEntityDaoImpl<ENTITY> implements IWorkingMessageDao<OBJECT_ID, ENTITY>
 {
     protected WorkingMessageDao(Class<ENTITY> entityClass)
     {
         super(entityClass);
     }
 
+    /**
+     * @return
+     */
     @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, propagation = Propagation.SUPPORTS)
     public abstract ConztanzFieldSimple<ENTITY, OBJECT_ID> buildObjectIdField();
 
+    /**
+     * @param objectIds
+     * @return
+     */
     @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, propagation = Propagation.SUPPORTS)
-    public ConztanzData<ENTITY, OBJECT_ID> buildObjectIdCriteria(OBJECT_ID... objectIds) {
+    public ConztanzData<ENTITY, OBJECT_ID> buildObjectIdCriteria(OBJECT_ID... objectIds)
+    {
         return this.buildData(this.buildObjectIdField(), objectIds);
     }
 
+
+    /**
+     * @param objectId
+     * @return
+     * @throws PersistenceException
+     * @throws NotFoundException
+     */
+    @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, noRollbackFor = {NotFoundException.class}, propagation = Propagation.SUPPORTS)
+    public ENTITY lock(OBJECT_ID objectId) throws PersistenceException,NotFoundException
+    {
+        ENTITY entity  = this.getOne(objectId);
+        entity = super.lock(entity);
+        return entity;
+    }
 
     /**
      *
@@ -37,10 +60,20 @@ public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage
      * @throws PersistenceException
      * @throws NotFoundException
      */
-    public ENTITY lock(OBJECT_ID objectId) throws PersistenceException,NotFoundException
+    public ENTITY getOne(OBJECT_ID objectId) throws PersistenceException ,NotFoundException
     {
-        ENTITY entity  = this.getOne(this.buildObjectIdCriteria(objectId));
-        super.lock(entity);
-        return entity;
+        return this.getOne(this.buildObjectIdCriteria(objectId));
+    }
+
+    /**
+     *
+     * @param entity Entity to be added to persistence context
+     * @return
+     * @throws PersistenceException
+     */
+    @Transactional(readOnly = false, rollbackFor = {ConztanzException.class}, propagation = Propagation.MANDATORY)
+    public ENTITY add(ENTITY entity) throws PersistenceException
+    {
+        return super.add(entity);
     }
 }

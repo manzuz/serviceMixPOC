@@ -31,7 +31,8 @@ public class SimpleSequencedWorkingMessageDaoTest extends AbstractDaoTester<Simp
     private ISimpleSequencedWorkingMessageDao dao = null;
 
     @Override
-    protected ISimpleSequencedWorkingMessageDao getDao() {
+    protected ISimpleSequencedWorkingMessageDao getDao()
+    {
         return  this.dao;
     }
 
@@ -42,14 +43,35 @@ public class SimpleSequencedWorkingMessageDaoTest extends AbstractDaoTester<Simp
 
 
     @Test
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void testLock()  {
-//        this.getDao().add(new SimpleSequencedWorkingMessage("123456789"));
-       /* try {
-            SimpleSequencedWorkingMessage simpleSequencedWorkingMessage = this.getDao().lock("0000000");
-            fail("should have not found and entity ");
-        } catch (PersistenceException e) {
+    @Transactional
+    public void testLock() throws PersistenceException {
+        try
+        {
+            this.getDao().lock("0000000");
+            fail("should not have found an entity ");
+        }
+        catch (PersistenceException e)
+        {
             e.printStackTrace();
-        }*/
+        }
+        SimpleSequencedWorkingMessage workingMessage = this.getDao().add(new SimpleSequencedWorkingMessage("123456789"));
+        try
+        {
+            this.getDao().lock("0000000");
+            fail("should not have found an entity ");
+        }
+        catch (PersistenceException e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            this.getDao().lock(workingMessage.getObjectId());
+        }
+        catch (PersistenceException e)
+        {
+            e.printStackTrace();
+            fail("should have found an entity ");
+        }
     }
 }

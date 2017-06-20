@@ -1,9 +1,6 @@
 package com.conztanz.connect.model;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * Created by User on 6/14/2017.
@@ -12,8 +9,7 @@ import javax.persistence.MappedSuperclass;
 @Access(AccessType.FIELD)
 public abstract class SequencedWorkingMessage<OBJECT_ID> extends WorkingMessage<OBJECT_ID>
 {
-    @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
-    @Access(AccessType.PROPERTY)
+    @Transient
     private int sequenceNumber;
 
     public SequencedWorkingMessage()
@@ -21,7 +17,8 @@ public abstract class SequencedWorkingMessage<OBJECT_ID> extends WorkingMessage<
         this.sequenceNumber = -1;
     }
 
-    public SequencedWorkingMessage(OBJECT_ID object_id) {
+    public SequencedWorkingMessage(OBJECT_ID object_id)
+    {
         super(object_id);
     }
 
@@ -30,11 +27,15 @@ public abstract class SequencedWorkingMessage<OBJECT_ID> extends WorkingMessage<
         this.sequenceNumber = sequenceNumber;
     }
 
-    public int getSequenceNumber() {
+    @Access(AccessType.PROPERTY)
+    @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
+    public int getSequenceNumber()
+    {
         return sequenceNumber;
     }
 
-    public void setSequenceNumber(int sequenceNumber) {
+    public void setSequenceNumber(int sequenceNumber)
+    {
         this.sequenceNumber = sequenceNumber;
     }
 

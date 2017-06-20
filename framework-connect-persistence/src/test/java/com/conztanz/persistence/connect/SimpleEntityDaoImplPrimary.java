@@ -7,7 +7,7 @@ import javax.transaction.Transactional.TxType;
 import org.ops4j.pax.cdi.api.OsgiServiceProvider;
 import org.springframework.transaction.annotation.Propagation;
 
-import com.conztanz.dao.AbstractConnectDaoImpl;
+import com.conztanz.connect.persistence.AbstractConnectDaoImpl;
 import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.PersistenceException;
 import com.conztanz.model.test.SimpleEntity;

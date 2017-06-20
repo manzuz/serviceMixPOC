@@ -13,7 +13,7 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
  * @param <MESSAGE>
  */
 public abstract class AbstractConnectInitializer<TRANSFORMER extends AbstractConnectSmooksTransformer, 
-												  MESSAGE    extends IncomingMessage>
+												 MESSAGE     extends IncomingMessage>
 					  implements IAbstractConnectInitializer<TRANSFORMER, MESSAGE>
 {
 	

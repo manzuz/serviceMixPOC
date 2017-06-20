@@ -9,8 +9,6 @@ import javax.persistence.*;
 @SequenceGenerator(name = "SEQ_ID", sequenceName = "SIMPLE_SEQUENCED_WORKING_MESSAGE_ID_SEQ")
 @Access(AccessType.FIELD)
 public class SimpleSequencedWorkingMessage extends SequencedWorkingMessage<String>
-
-
 {
 
     public SimpleSequencedWorkingMessage(String objectID)
@@ -29,5 +27,4 @@ public class SimpleSequencedWorkingMessage extends SequencedWorkingMessage<Strin
     public String getObjectId() {
         return super.getObjectId();
     }
-
 }

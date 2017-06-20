@@ -1,4 +1,4 @@
-package com.conztanz.dao;
+package com.conztanz.connect.persistence;
 
 import javax.transaction.Transactional;
 import javax.transaction.Transactional.TxType;

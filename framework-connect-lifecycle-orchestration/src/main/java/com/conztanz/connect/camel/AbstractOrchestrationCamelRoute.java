@@ -22,7 +22,8 @@ public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends IAbst
 						extends RouteBuilder {
 
 	@Override
-	public void configure() throws Exception {
+	public void configure() throws Exception
+    {
 		
 		
 		from(this.getRouteEndpoint())

@@ -14,13 +14,13 @@ import org.xml.sax.helpers.AttributesImpl;
  *
  */
 
-public class SimpleSmooksReader extends AbstractSmooksXMLReader {
+public class SimpleSmooksReader extends AbstractSmooksXMLReader
+{
 	/**
 	 * 
 	 */
-	public void parse(InputSource prlInputSource) throws IOException, SAXException {
-		// BufferedReader reader = new
-		// BufferedReader(prlInputSource.getCharacterStream());
+	public void parse(InputSource prlInputSource) throws IOException, SAXException
+    {
 
 		// Send the start of message events to the handler...
 		this.getContentHandler().startDocument();
@@ -32,12 +32,12 @@ public class SimpleSmooksReader extends AbstractSmooksXMLReader {
 	}
 
 	@Override
-	public void parse(String systemId) throws IOException, SAXException {
-		// TODO Auto-generated method stub
-
+	public void parse(String systemId) throws IOException, SAXException
+    {
 	}
 
-	protected String getDocumentStart() {
+	protected String getDocumentStart()
+    {
 		return "test";
 	}
 

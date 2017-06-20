@@ -2,32 +2,53 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Parent POM definition -->
+
 	<parent>
 		<groupId>com.conztanz</groupId>
 		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework</artifactId>
+		<artifactId>framework-connect</artifactId>
 	</parent>
-
-	<!-- POM Definition -->
-	<artifactId>framework-connect-lifecycle-locking</artifactId>
+	<artifactId>${framework.connect.artifact.base}-lifecycle-locking</artifactId>
 	<packaging>jar</packaging>
 
 
-    <dependencies>
+
+
+
+	<dependencies>
+		<!-- Framework dependencies -->
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>${framework.connect.artifact.base}-model</artifactId>
+		</dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
-            <artifactId>framework-connect-persistence</artifactId>
+            <artifactId>${framework.connect.artifact.base}-model</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>${framework.groupId}</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence</artifactId>
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
-            <artifactId>framework-connect-model</artifactId>
+            <artifactId>${framework.connect.artifact.base}-persistence</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
         </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-testing</artifactId>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+	</dependencies>
 
-
-
-	
 
 
 

@@ -35,7 +35,7 @@ public class XpathClientTest
 
 
 	@Test
-	public void retrievetest() throws IOException, XPathExpressionException, ParserConfigurationException, SAXException {
+	public void retrieveTest() throws IOException, XPathExpressionException, ParserConfigurationException, SAXException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./Xml_sample.xml");

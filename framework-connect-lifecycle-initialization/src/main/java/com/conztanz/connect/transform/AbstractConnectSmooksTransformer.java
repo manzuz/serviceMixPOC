@@ -11,7 +11,11 @@ import org.milyn.SmooksException;
 import org.milyn.payload.StringResult;
 import org.xml.sax.SAXException;
 
-public abstract class AbstractConnectSmooksTransformer {
+/**
+ * 
+ */
+public abstract class AbstractConnectSmooksTransformer
+{
 	/**
 	 * 
 	 * @param payload
@@ -20,13 +24,15 @@ public abstract class AbstractConnectSmooksTransformer {
 	public String transform2XML(byte[] payLoad) {
 		StringResult serializedEvents = new StringResult();
 		//TODO decodeBase64BeforeCleaning
-		byte[] cleanedpayLoad = this.getCleaner().clean(payLoad,false);
-		try {
-			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(cleanedpayLoad)), serializedEvents);
-		} catch (SmooksException | IOException | SAXException e) {
+		byte[] cleanedPayLoad = this.getCleaner().clean(payLoad,false);
+		try
+        {
+			this.getSmooksReader().filterSource(new StreamSource(this.byte2Stream(cleanedPayLoad)), serializedEvents);
+		}
+		catch (SmooksException | IOException | SAXException e)
+        {
 			e.printStackTrace();
 		}
-//		System.out.println(serializedEvents.getResult());
 		return serializedEvents.getResult();
 	}
 

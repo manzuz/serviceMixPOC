@@ -15,7 +15,8 @@ import javax.persistence.Transient;
 public abstract class WorkingMessage<OBJECT_ID> extends AbstractEntity
 {
 
-    @Transient private OBJECT_ID objectId;
+    @Transient
+    private OBJECT_ID objectId;
 
     public WorkingMessage(OBJECT_ID objectId)
     {

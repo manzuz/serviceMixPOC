@@ -1,6 +1,7 @@
 package com.conztanz.persistence.connect;
 
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
+import com.conztanz.connect.persistence.IWorkingMessageDao;
 import com.conztanz.exception.NotFoundException;
 import com.conztanz.exception.PersistenceException;
 import com.conztanz.model.test.SimpleEntity;
@@ -10,19 +11,6 @@ import com.conztanz.transport.ConztanzResultList;
 /**
  * Created by User on 6/15/2017.
  */
-public interface ISimpleSequencedWorkingMessageDao extends IAbstractEntityDao<SimpleSequencedWorkingMessage>
+public interface ISimpleSequencedWorkingMessageDao extends IWorkingMessageDao<String, SimpleSequencedWorkingMessage>
 {
-    /**
-     *
-     * @param simpleSequencedWorkingMessage
-     * @return
-     */
-    SimpleSequencedWorkingMessage add(SimpleSequencedWorkingMessage simpleSequencedWorkingMessage) throws PersistenceException;
-
-    /**
-     *
-     * @param objectID
-     * @return
-     */
-    SimpleSequencedWorkingMessage lock(String objectID) throws PersistenceException,NotFoundException;
 }

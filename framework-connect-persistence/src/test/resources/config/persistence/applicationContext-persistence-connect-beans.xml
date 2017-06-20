@@ -5,7 +5,5 @@
                            http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
 	<bean id="SimpleEntityDaoPrimary" class="com.conztanz.persistence.connect.SimpleEntityDaoImplPrimary" scope="singleton"/>
-<!-- 	<import resource="classpath:config/applicationContext-commons.xml" /> -->
-<!-- 	<import resource="classpath:config/persistence/applicationContext-persistence-primary.xml" /> -->
 
 </beans>
