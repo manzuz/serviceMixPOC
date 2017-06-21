@@ -20,12 +20,15 @@ public class SimpleConnectLocker extends AbstractConnectLocker<String,
 
     @Autowired
     private SimpleSequencedWorkingMessageFactory simpleSequencedWorkingMessageFactory;
+
     @Override
-    public SimpleSequencedWorkingMessageDao getDAO() {
+    public SimpleSequencedWorkingMessageDao getDAO()
+    {
         return simpleSequencedWorkingMessageDao;
     }
     @Override
-    public SimpleSequencedWorkingMessageFactory getWorkingMessageFactory() {
+    public SimpleSequencedWorkingMessageFactory getWorkingMessageFactory()
+    {
         return simpleSequencedWorkingMessageFactory;
     }
 

@@ -15,6 +15,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
+
 /**
  * Created by User on 6/19/2017.
  */
@@ -31,38 +34,48 @@ public class SimpleConnectLockerTest extends AbstractDaoTester<SimpleSequencedWo
         return simpleConnectLocker;
     }
 
+    /**
+     *
+     * @throws PersistenceException
+     */
     @Test
     @Transactional
     public void testLockBySelectFirst() throws PersistenceException
     {
-
         String objectID = "123456789";
-//        this.getSimpleConnectLocker().getDAO().add(this.getSimpleConnectLocker().getWorkingMessageFactory().create("1234562789"));
-//        this.getSimpleConnectLocker().getDAO().flush();
+
         SimpleSequencedWorkingMessage entity1 = getSimpleConnectLocker().lockBySelectFirst(objectID);
-//        System.out.println(entity);
+        assertNotNull(entity1);
+        assertEquals(objectID,entity1.getObjectId());
+
         SimpleSequencedWorkingMessage entity2 = getSimpleConnectLocker().lockBySelectFirst(objectID);
+        assertNotNull(entity2);
+        assertEquals(objectID,entity2.getObjectId());
     }
+
+    /**
+     *
+     * @throws PersistenceException
+     */
     @Test
     @Transactional
     public void testLockByInsertFirst() throws PersistenceException
     {
-
         String objectID = "123456789";
-//        this.getSimpleConnectLocker().getDAO().add(this.getSimpleConnectLocker().getWorkingMessageFactory().create("1234562789"));
-//        this.getSimpleConnectLocker().getDAO().flush();
         SimpleSequencedWorkingMessage entity1 = getSimpleConnectLocker().lockByInsertFirst(objectID);
-//        System.out.println(entity);
+        System.out.println("########################################################");
         SimpleSequencedWorkingMessage entity2 = getSimpleConnectLocker().lockByInsertFirst(objectID);
     }
 
     @Override
-    protected IAbstractEntityDao<SimpleSequencedWorkingMessage> getDao() {
+    protected IAbstractEntityDao<SimpleSequencedWorkingMessage> getDao()
+    {
         return getSimpleConnectLocker().getDAO();
     }
 
     @Override
-    protected AbstractEntityTestFactory<SimpleSequencedWorkingMessage> getTestFactory() {
+    protected AbstractEntityTestFactory<SimpleSequencedWorkingMessage> getTestFactory()
+    {
         return null;
     }
 }

@@ -15,7 +15,7 @@ public interface IWorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage<OBJ
      * @param entity
      * @return
      */
-    ENTITY add(ENTITY entity) throws PersistenceException;
+    ENTITY addToto(ENTITY entity) throws PersistenceException;
 
     /**
      *

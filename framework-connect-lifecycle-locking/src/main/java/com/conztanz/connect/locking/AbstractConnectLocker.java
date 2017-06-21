@@ -6,6 +6,7 @@ import com.conztanz.connect.persistence.WorkingMessageDao;
 import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.NotFoundException;
 import com.conztanz.exception.PersistenceException;
+import com.conztanz.exception.UniqueViolationException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @param <FACTORY>
  */
 @Transactional(value = "ConztanzTransactionManager", propagation = Propagation.MANDATORY,
-               readOnly = false, rollbackFor = {ConztanzException.class})
+        readOnly = false, rollbackFor = {ConztanzException.class})
 public abstract class AbstractConnectLocker<OBJECT_ID,
                                             ENTITY  extends WorkingMessage<OBJECT_ID>,
                                             DAO     extends WorkingMessageDao<OBJECT_ID,ENTITY>,
@@ -39,22 +40,27 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
         catch (NotFoundException nfe)
         {
             workingMessage = this.getWorkingMessageFactory().create(objectId);
-            workingMessage = this.getDAO().add(workingMessage);
+            workingMessage = this.getDAO().addToto(workingMessage);
         }
         return workingMessage;
     }
 
-
+    /**
+     *
+     * @param objectId
+     * @return
+     * @throws PersistenceException
+     */
     public ENTITY lockByInsertFirst(OBJECT_ID objectId) throws PersistenceException
     {
-        ENTITY workingMessage;
+        ENTITY workingMessage  ;
         try
         {
             workingMessage = this.getWorkingMessageFactory().create(objectId);
-            workingMessage = this.getDAO().add(workingMessage);
-            this.getDAO().flush();
+            workingMessage = this.getDAO().addToto(workingMessage);
+//            this.getDAO().flush();
         }
-        catch (Exception nfe)
+        catch (UniqueViolationException nfe)
         {
             workingMessage = this.getDAO().lock(objectId);
         }

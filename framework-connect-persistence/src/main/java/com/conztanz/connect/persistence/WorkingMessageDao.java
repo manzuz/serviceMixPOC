@@ -4,6 +4,7 @@ import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.NotFoundException;
 import com.conztanz.exception.PersistenceException;
+import com.conztanz.exception.UniqueViolationException;
 import com.conztanz.model.jpa.ConztanzField.ConztanzFieldSimple;
 import com.conztanz.persistence.AbstractEntityDaoImpl;
 import com.conztanz.persistence.jpa.data.ConztanzData;
@@ -45,7 +46,7 @@ public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage
      * @throws PersistenceException
      * @throws NotFoundException
      */
-    @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, noRollbackFor = {NotFoundException.class}, propagation = Propagation.SUPPORTS)
+    @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, noRollbackFor = {NotFoundException.class}, propagation = Propagation.MANDATORY)
     public ENTITY lock(OBJECT_ID objectId) throws PersistenceException,NotFoundException
     {
         ENTITY entity  = this.getOne(objectId);
@@ -71,9 +72,13 @@ public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage
      * @return
      * @throws PersistenceException
      */
-    @Transactional(readOnly = false, rollbackFor = {ConztanzException.class}, propagation = Propagation.MANDATORY)
-    public ENTITY add(ENTITY entity) throws PersistenceException
+    @Transactional(readOnly = false, rollbackFor = {ConztanzException.class}, noRollbackFor={Exception.class},propagation = Propagation.MANDATORY)
+    public ENTITY addToto(ENTITY entity) throws PersistenceException,UniqueViolationException
     {
-        return super.add(entity);
+        entity =  super.add(entity);
+        super.flush();
+        return entity;
     }
+
+
 }

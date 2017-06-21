@@ -54,7 +54,7 @@ public class SimpleSequencedWorkingMessageDaoTest extends AbstractDaoTester<Simp
         {
             e.printStackTrace();
         }
-        SimpleSequencedWorkingMessage workingMessage = this.getDao().add(new SimpleSequencedWorkingMessage("123456789"));
+        SimpleSequencedWorkingMessage workingMessage = this.getDao().addToto(new SimpleSequencedWorkingMessage("123456789"));
         try
         {
             this.getDao().lock("0000000");

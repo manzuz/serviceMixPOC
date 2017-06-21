@@ -23,10 +23,5 @@ public class SimpleSequencedWorkingMessageDao extends WorkingMessageDao<String,S
           return new ConztanzFieldSimple<>(SimpleSequencedWorkingMessage_.objectId);
     }
 
-    /*@Override
-    public SimpleSequencedWorkingMessage  add(SimpleSequencedWorkingMessage simpleSequencedWorkingMessage) throws PersistenceException {
-        return super.add(simpleSequencedWorkingMessage);
-    }*/
-
 
 }
