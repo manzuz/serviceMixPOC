@@ -20,10 +20,19 @@ import com.conztanz.connect.model.IncomingMessage;
  *
  */
 public abstract class AbstractConnectIdentifier<INCOMING_MESSAGE extends IncomingMessage<?>>
-        implements IAbstractConnectIdentifier<INCOMING_MESSAGE> {
+        implements IAbstractConnectIdentifier<INCOMING_MESSAGE>
+{
 
-	public abstract void identify(INCOMING_MESSAGE incomingMessage)
-			throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
+
+    /**
+     *
+     * @param incomingMessage
+     * @throws ParserConfigurationException
+     * @throws SAXException
+     * @throws IOException
+     * @throws XPathExpressionException
+     */
+	public abstract void identify(INCOMING_MESSAGE incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
 
 	/**
 	 * @param incomingMessage
@@ -32,7 +41,7 @@ public abstract class AbstractConnectIdentifier<INCOMING_MESSAGE extends Incomin
 	 * @throws IOException
 	 * @throws ParserConfigurationException
 	 */
-	protected Document getDocument(INCOMING_MESSAGE incomingMessage)throws SAXException, IOException, ParserConfigurationException
+	protected Document getDocument(INCOMING_MESSAGE incomingMessage) throws SAXException, IOException, ParserConfigurationException
     {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();

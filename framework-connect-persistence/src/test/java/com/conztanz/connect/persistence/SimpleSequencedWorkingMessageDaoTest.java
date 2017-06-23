@@ -1,21 +1,19 @@
-package com.conztanz.persistence.connect;
+package com.conztanz.connect.persistence;
 
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.exception.PersistenceException;
 import com.conztanz.factory.AbstractEntityTestFactory;
 import com.conztanz.persistence.AbstractDaoTester;
-import com.conztanz.persistence.IAbstractEntityDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.text.html.parser.Entity;
-
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 /**
@@ -37,41 +35,34 @@ public class SimpleSequencedWorkingMessageDaoTest extends AbstractDaoTester<Simp
     }
 
     @Override
-    protected AbstractEntityTestFactory<SimpleSequencedWorkingMessage> getTestFactory() {
+    protected AbstractEntityTestFactory<SimpleSequencedWorkingMessage> getTestFactory()
+    {
         return null;
     }
 
 
+//    @Test
+//    @Transactional
+//    public void testLock() throws PersistenceException
+//    {
+//
+//        SimpleSequencedWorkingMessage workingMessage = this.getDao().addToto(new SimpleSequencedWorkingMessage("123456789"));
+//
+//    }
+
     @Test
     @Transactional
-    public void testLock() throws PersistenceException {
-        try
-        {
-            this.getDao().lock("0000000");
-            fail("should not have found an entity ");
-        }
-        catch (PersistenceException e)
-        {
-            e.printStackTrace();
-        }
-        SimpleSequencedWorkingMessage workingMessage = this.getDao().addToto(new SimpleSequencedWorkingMessage("123456789"));
-        try
-        {
-            this.getDao().lock("0000000");
-            fail("should not have found an entity ");
-        }
-        catch (PersistenceException e)
-        {
-            e.printStackTrace();
-        }
-        try
-        {
-            this.getDao().lock(workingMessage.getObjectId());
-        }
-        catch (PersistenceException e)
-        {
-            e.printStackTrace();
-            fail("should have found an entity ");
-        }
+    public void testAddEntityWithWorkingStatus() throws PersistenceException
+    {
+        SimpleSequencedWorkingMessage toStore = new SimpleSequencedWorkingMessage("123AZE",
+                                                                                        42,
+                                                                                        MessageStatus.WORKING);
+        this.getDao().addToto(toStore );
+        this.getDao().flush();
+        SimpleSequencedWorkingMessage retrieved = this.getDao().findById(toStore .getId());
+        assertEquals(toStore.getObjectId(),retrieved.getObjectId());
+        assertEquals(toStore.getSequenceNumber(),retrieved.getSequenceNumber());
+        assertEquals(toStore.getStatus(), MessageStatus.WORKING);
     }
+
 }

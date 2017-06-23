@@ -2,63 +2,68 @@ package com.conztanz.connect.model;
 
 import com.conztanz.model.AbstractEntity;
 
-public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity {
+import javax.persistence.*;
+
+@MappedSuperclass
+@Access(AccessType.FIELD)
+public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
+{
 
 
-    /**
-     *
-     */
-    private byte[] rawPayload;
+    @Transient private byte[] rawPayload;
 
-    /**
-     * TODO generic instead of string (with a string implementation for now)
-     */
-    private OBJECT_ID objectId;
+    @Transient private OBJECT_ID objectId;
 
-    /**
-     * @return
-     */
-    private String transformedPayload;
+    @Transient private String transformedPayload;
 
-    public IncomingMessage(byte[] rawPayload) {
+
+    public IncomingMessage(byte[] rawPayload)
+    {
         this.rawPayload = rawPayload;
     }
 
-
-    public String getTransformedPayload() {
+    @Access(AccessType.PROPERTY)
+    @Column(name = "TRANSFORMED_PAYLOAD", nullable = false)
+    public String getTransformedPayload()
+    {
         return transformedPayload;
     }
 
-    public void setTransformedPayload(String transformedPayload) {
-        this.transformedPayload = transformedPayload;
-    }
-
-    public byte[] getRawPayload() {
+    @Access(AccessType.PROPERTY)
+    @Column(name = "RAW_PAYLOAD", nullable = false)
+    public byte[] getRawPayload()
+    {
         return rawPayload;
     }
 
-
+    public void setTransformedPayload(String transformedPayload)
+    {
+        this.transformedPayload = transformedPayload;
+    }
     @Override
-    protected boolean sameContentInternal(Object toBeCompared) {
-        // TODO Auto-generated method stub
+    protected boolean sameContentInternal(Object toBeCompared)
+    {
         return false;
     }
 
     @Override
-    protected boolean sameLinksInternal(Object toBeCompared) {
-        // TODO Auto-generated method stub
+    protected boolean sameLinksInternal(Object toBeCompared)
+    {
         return false;
     }
 
-    public OBJECT_ID getObjectId() {
+    public OBJECT_ID getObjectId()
+    {
         return objectId;
     }
 
-    public void setObjectId(OBJECT_ID objectId) {
+    public void setObjectId(OBJECT_ID objectId)
+    {
         this.objectId = objectId;
     }
 
-    public void setRawPayload(byte[] rawPayload) {
+    public void setRawPayload(byte[] rawPayload)
+    {
         this.rawPayload = rawPayload;
     }
 

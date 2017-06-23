@@ -42,7 +42,7 @@ public class SimpleConnectLockerTest extends AbstractDaoTester<SimpleSequencedWo
     @Transactional
     public void testLockBySelectFirst() throws PersistenceException
     {
-        String objectID = "123456789";
+        String objectID = "007";
 
         SimpleSequencedWorkingMessage entity1 = getSimpleConnectLocker().lockBySelectFirst(objectID);
         assertNotNull(entity1);

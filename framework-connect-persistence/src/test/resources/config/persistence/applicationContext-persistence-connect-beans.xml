@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
-	<bean id="SimpleEntityDaoPrimary" class="com.conztanz.persistence.connect.SimpleEntityDaoImplPrimary" scope="singleton"/>
+	<!--<bean id="SimpleEntityDaoPrimary" class="com.conztanz.persistence.connect.SimpleEntityDaoImplPrimary" scope="singleton"/>-->
 
 </beans>

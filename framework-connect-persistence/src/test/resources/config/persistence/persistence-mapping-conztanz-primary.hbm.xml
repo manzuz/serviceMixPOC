@@ -17,5 +17,7 @@
 	<entity class="com.conztanz.model.test.InheritedEntityChild1"/>
 	<entity class="com.conztanz.model.test.InheritedEntityChild2"/>
     <entity class="com.conztanz.connect.model.SimpleSequencedWorkingMessage"/>
+    <entity class="com.conztanz.connect.model.SimpleSequencedIncomingMessage"/>
+
 
 </entity-mappings>

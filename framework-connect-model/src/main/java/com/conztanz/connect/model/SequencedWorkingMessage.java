@@ -22,11 +22,16 @@ public abstract class SequencedWorkingMessage<OBJECT_ID> extends WorkingMessage<
         super(object_id);
     }
 
-    public SequencedWorkingMessage(OBJECT_ID object_id, int sequenceNumber) {
+    public SequencedWorkingMessage(OBJECT_ID object_id, int sequenceNumber)
+    {
         super(object_id);
         this.sequenceNumber = sequenceNumber;
     }
-
+    public SequencedWorkingMessage(OBJECT_ID object_id, int sequenceNumber,MessageStatus status)
+    {
+        super(object_id,status);
+        this.sequenceNumber = sequenceNumber;
+    }
     @Access(AccessType.PROPERTY)
     @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
     public int getSequenceNumber()

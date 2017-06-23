@@ -13,11 +13,20 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Created by User on 6/13/2017.
+ *
+ * @param <OBJECT_ID>
+ * @param <ENTITY>
  */
-public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage<OBJECT_ID>>
-       extends AbstractEntityDaoImpl<ENTITY> implements IWorkingMessageDao<OBJECT_ID, ENTITY>
+public abstract class WorkingMessageDao<OBJECT_ID,
+                                        ENTITY extends WorkingMessage<OBJECT_ID>>
+        extends     AbstractEntityDaoImpl<ENTITY>
+        implements  IWorkingMessageDao<OBJECT_ID, ENTITY>
 {
+
+    /**
+     *
+     * @param entityClass
+     */
     protected WorkingMessageDao(Class<ENTITY> entityClass)
     {
         super(entityClass);
@@ -72,7 +81,8 @@ public abstract class WorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage
      * @return
      * @throws PersistenceException
      */
-    @Transactional(readOnly = false, rollbackFor = {ConztanzException.class}, noRollbackFor={Exception.class},propagation = Propagation.MANDATORY)
+    //TODO
+//    @Transactional(readOnly = false, rollbackFor = {ConztanzException.class}, noRollbackFor={UniqueViolationException.class}, propagation = Propagation.NESTED)
     public ENTITY addToto(ENTITY entity) throws PersistenceException,UniqueViolationException
     {
         entity =  super.add(entity);

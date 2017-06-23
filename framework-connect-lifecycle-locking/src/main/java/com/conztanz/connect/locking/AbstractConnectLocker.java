@@ -53,12 +53,11 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
      */
     public ENTITY lockByInsertFirst(OBJECT_ID objectId) throws PersistenceException
     {
-        ENTITY workingMessage  ;
+        ENTITY workingMessage;
         try
         {
             workingMessage = this.getWorkingMessageFactory().create(objectId);
             workingMessage = this.getDAO().addToto(workingMessage);
-//            this.getDAO().flush();
         }
         catch (UniqueViolationException nfe)
         {
@@ -66,8 +65,6 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
         }
         return workingMessage;
     }
-
-
 
     /**
      *

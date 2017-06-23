@@ -1,4 +1,4 @@
-package com.conztanz.persistence.connect;
+package com.conztanz.connect.persistence;
 
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
 import com.conztanz.connect.persistence.IWorkingMessageDao;

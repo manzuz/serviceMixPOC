@@ -19,7 +19,7 @@ import org.w3c.dom.Document;
 public class XpathClient 
 {
 	/**
-	 * 
+	 * Compiled expressions are stored here to be reused
 	 */
 	private Map<String, XPathExpression> compiledExpressions;
 
@@ -28,11 +28,20 @@ public class XpathClient
 	 */
 	private XPath xpathInstance;
 
-	public XpathClient() {
+	public XpathClient()
+    {
 		this.compiledExpressions = new HashMap<>();
 	}
 
-	public String request(String xpath, Document doc) throws XPathExpressionException {
+    /**
+     *
+     * @param xpath
+     * @param doc
+     * @return
+     * @throws XPathExpressionException
+     */
+	public String request(String xpath, Document doc) throws XPathExpressionException
+    {
 		// we only compile expressions once
 		if (!compiledExpressions.containsKey(xpath))
 			compiledExpressions.put(xpath, this.getXpathInstance().compile(xpath));
@@ -44,20 +53,24 @@ public class XpathClient
 	/**
 	 * @return
 	 */
-	private XPath getXpathInstance() {
-		if (this.xpathInstance == null) {
+	private XPath getXpathInstance()
+    {
+		if (this.xpathInstance == null)
+		{
 			XPathFactory xPathfactory = XPathFactory.newInstance();
 			this.setXpathInstance(xPathfactory.newXPath());
 		}
 		return this.xpathInstance;
 	}
 
-	public Map<String, XPathExpression> getCompiledExpressions() {
+	public Map<String, XPathExpression> getCompiledExpressions()
+    {
 		return compiledExpressions;
 	}
 
 
-	public void setXpathInstance(XPath xpathInstance) {
+	public void setXpathInstance(XPath xpathInstance)
+    {
 		this.xpathInstance = xpathInstance;
 	}
 

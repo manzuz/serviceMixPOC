@@ -12,16 +12,15 @@
 	<artifactId>framework-connect-deployer</artifactId>
 	<packaging>pom</packaging>
 	<modules>
-		<module>../framework-connect</module>
+		<!--<module>../framework-connect</module>-->
 		<module>../framework-connect-spring-context</module>
 		<module>../framework-connect-spring-context-bundle</module>
-		<module>../framework-connect-model</module>
-		<module>../framework-connect-persistence-test</module>
-		<module>../framework-connect-persistence</module>
+		<!--<module>../framework-connect-persistence-test</module>-->
+		<!--<module>../framework-connect-persistence</module>-->
 		
-		<module>../framework-connect-lifecycle-initialization</module>
-		<module>../framework-connect-lifecycle-identification</module>
-		<module>../framework-connect-lifecycle-orchestration</module>
+		<!--<module>../framework-connect-lifecycle-initialization</module>-->
+		<!--<module>../framework-connect-lifecycle-identification</module>-->
+		<!--<module>../framework-connect-lifecycle-orchestration</module>-->
 		
 		
 		<module>../travel-connect-model</module>

@@ -1,7 +1,7 @@
 package com.conztanz.connect.locking;
 
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
-import com.conztanz.persistence.connect.SimpleSequencedWorkingMessageDao;
+import com.conztanz.connect.persistence.SimpleSequencedWorkingMessageDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**

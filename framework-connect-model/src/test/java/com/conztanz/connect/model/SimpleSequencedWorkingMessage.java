@@ -16,15 +16,20 @@ public class SimpleSequencedWorkingMessage extends SequencedWorkingMessage<Strin
         super(objectID);
     }
 
-    public SimpleSequencedWorkingMessage(String objectID, int sequenceNumber) {
+    public SimpleSequencedWorkingMessage(String objectID, int sequenceNumber)
+    {
         super(objectID, sequenceNumber);
     }
-
+    public SimpleSequencedWorkingMessage(String objectID, int sequenceNumber,MessageStatus status)
+    {
+        super(objectID, sequenceNumber,status);
+    }
 
     @Override
-    @Column(name = "OBJECT_ID", nullable = false, unique = false)
+    @Column(name = "OBJECT_ID", nullable = false, unique = true)
     @Access(AccessType.PROPERTY)
-    public String getObjectId() {
+    public String getObjectId()
+    {
         return super.getObjectId();
     }
 }

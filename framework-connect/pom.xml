@@ -34,22 +34,31 @@
 		<esbDeployableProject>false</esbDeployableProject>
 	</properties>
 
-
-	<profiles>
-		<!-- Modules defining ConztanZ Framework Connect -->
-		<profile>
-			<id>modules</id>
-			<modules>
-				<module>../${framework.connect.artifact.base}-connection-factory</module>
-				<module>../${framework.connect.artifact.base}-model</module>
-				<module>../${framework.connect.artifact.base}-persistence</module>
-				<module>../${framework.connect.artifact.base}-lifecycle-initialization</module>
-				<module>../${framework.connect.artifact.base}-persistence-bundle</module>
-				<module>../${framework.connect.artifact.base}-spring-context</module>
-				<module>../${framework.connect.artifact.base}-spring-context-bundle</module>
-			</modules>
-		</profile>
-	</profiles>
+    <modules>
+        <module>../framework-connect-model</module>
+        <module>../framework-connect-persistence-test</module>
+        <module>../framework-connect-persistence</module>
+        <module>../framework-connect-lifecycle-initialization</module>
+        <module>../framework-connect-lifecycle-identification</module>
+        <module>../framework-connect-lifecycle-locking</module>
+        <module>../framework-connect-lifecycle-continuity</module>
+        <module>../framework-connect-lifecycle-orchestration</module>
+    </modules>
+	<!--<profiles>-->
+		<!--&lt;!&ndash; Modules defining ConztanZ Framework Connect &ndash;&gt;-->
+		<!--<profile>-->
+			<!--<id>modules</id>-->
+			<!--<modules>-->
+				<!--<module>../${framework.connect.artifact.base}-connection-factory</module>-->
+				<!--<module>../${framework.connect.artifact.base}-model</module>-->
+				<!--<module>../${framework.connect.artifact.base}-persistence</module>-->
+				<!--<module>../${framework.connect.artifact.base}-lifecycle-initialization</module>-->
+				<!--<module>../${framework.connect.artifact.base}-persistence-bundle</module>-->
+				<!--<module>../${framework.connect.artifact.base}-spring-context</module>-->
+				<!--<module>../${framework.connect.artifact.base}-spring-context-bundle</module>-->
+			<!--</modules>-->
+		<!--</profile>-->
+	<!--</profiles>-->
 
 
 

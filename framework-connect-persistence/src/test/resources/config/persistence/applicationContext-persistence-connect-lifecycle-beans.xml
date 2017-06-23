@@ -4,6 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
-	<bean id="SimpleSequencedWorkingMessageDao" class="com.conztanz.persistence.connect.SimpleSequencedWorkingMessageDao" scope="singleton"/>
+    <bean id="SimpleSequencedWorkingMessageDao" class="com.conztanz.connect.persistence.SimpleSequencedWorkingMessageDao" scope="singleton"/>
+    <bean id="SimpleSequencedIncomingMessageDao" class="com.conztanz.connect.persistence.SimpleSequencedIncomingMessageDao" scope="singleton"/>
+
 
 </beans>

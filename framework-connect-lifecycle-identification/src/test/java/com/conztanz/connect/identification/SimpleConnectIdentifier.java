@@ -16,7 +16,8 @@ public class SimpleConnectIdentifier extends AbstractConnectIdentifier
 	@Autowired 
 	private XpathClient xpathClient;
 	@Override
-	public void identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+	public void identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException
+    {
 		incomingMessage.setObjectId(xpathClient.request("//root//objectID", getDocument(incomingMessage)));
 	}
 

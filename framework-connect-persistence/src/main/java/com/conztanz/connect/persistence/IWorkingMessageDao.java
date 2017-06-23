@@ -8,7 +8,9 @@ import com.conztanz.persistence.IAbstractEntityDao;
 /**
  * Created by User on 6/20/2017.
  */
-public interface IWorkingMessageDao<OBJECT_ID, ENTITY extends WorkingMessage<OBJECT_ID>> extends IAbstractEntityDao<ENTITY>
+public interface IWorkingMessageDao<OBJECT_ID,
+                                    ENTITY extends WorkingMessage<OBJECT_ID>>
+        extends IAbstractEntityDao<ENTITY>
 {
     /**
      *
