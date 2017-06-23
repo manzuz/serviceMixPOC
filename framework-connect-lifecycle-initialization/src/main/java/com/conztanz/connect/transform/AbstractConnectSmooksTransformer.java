@@ -18,7 +18,7 @@ public abstract class AbstractConnectSmooksTransformer
 {
 	/**
 	 * 
-	 * @param payload
+	 * @param payLoad
 	 * @return
 	 */
 	public String transform2XML(byte[] payLoad) {
@@ -40,7 +40,8 @@ public abstract class AbstractConnectSmooksTransformer
 	 * 
 	 * @return
 	 */
-	public Smooks getSmooksReader() throws IOException, SAXException {
+	public Smooks getSmooksReader() throws IOException, SAXException
+    {
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		Thread.currentThread().setContextClassLoader(classLoader);
 		return new Smooks(this.getClass().getResourceAsStream(this.getPathToConfigFile()));
@@ -50,7 +51,8 @@ public abstract class AbstractConnectSmooksTransformer
 	 * 
 	 * @return
 	 */
-	private InputStream byte2Stream(byte[] payload) {
+	private InputStream byte2Stream(byte[] payload)
+    {
 		InputStream inputStream = new ByteArrayInputStream(payload);
 		return inputStream;
 	}

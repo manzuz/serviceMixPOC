@@ -1,6 +1,9 @@
-/target/
-/.classpath
-/.project
-/.settings/
-/bin/
-.idea/  
+.classpath
+.project
+.settings/
+target/
+bin/
+
+**/.idea/
+**/*.iml
+node_modules

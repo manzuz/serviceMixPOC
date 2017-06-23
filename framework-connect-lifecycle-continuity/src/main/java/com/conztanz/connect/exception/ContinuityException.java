@@ -15,6 +15,6 @@ public class ContinuityException extends ConztanzException
     public ContinuityException(String message)
     {
         super(message);
-    }
 
+    }
 }

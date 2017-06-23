@@ -6,12 +6,17 @@ package com.conztanz.connect.exception;
 public class KOContinuityException extends ContinuityException
 {
 
+
+
     /**
      *
      * @param ObjectID
      */
     public KOContinuityException(String ObjectID)
     {
+
         super("A message with the same object ID: " + ObjectID +" is in KO state");
     }
+
+
 }

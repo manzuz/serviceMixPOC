@@ -17,27 +17,6 @@ public abstract class SequencedContinuityChecker<OBJECT_ID,
         extends ContinuityChecker<OBJECT_ID,SEQUENCED_INCOMING_MESSAGE,SEQUENCED_WORKING_MESSAGE>
 {
 
-
-    /*
-       #####################################################################################################
-       # Methods to do comparison between Incoming Message and Working Message respective sequence numbers #
-       # The sense of the comparison is Incoming Message to Working Message                                #
-       #####################################################################################################
-     */
-
-    /**
-     *
-     * @param incomingMessage
-     * @param sequencedWorkingMessage
-     * @throws SequenceContinuityException
-     */
-    private void checkGreaterThan(SEQUENCED_INCOMING_MESSAGE incomingMessage, SEQUENCED_WORKING_MESSAGE sequencedWorkingMessage)
-            throws SequenceContinuityException
-    {
-        if(incomingMessage.getSequenceNumber() < sequencedWorkingMessage.getSequenceNumber())
-            throw new SequenceContinuityException(SequenceContinuityError.OLD_INCOMING_MESSAGE);
-    }
-
     /**
      *
      * @param incomingMessage
@@ -58,6 +37,31 @@ public abstract class SequencedContinuityChecker<OBJECT_ID,
     {
         this.checkSequenceContinuity(incomingMessage,workingMessage);
     }
+
+
+
+
+
+    /*
+       #####################################################################################################
+       # Methods to do comparison between Incoming Message and Working Message respective sequence numbers #
+       # The sense of the comparison is Incoming Message to Working Message                                #
+       #####################################################################################################
+     */
+
+    /**
+     *
+     * @param incomingMessage
+     * @param sequencedWorkingMessage
+     * @throws SequenceContinuityException
+     */
+    protected void checkGreaterThan(SEQUENCED_INCOMING_MESSAGE incomingMessage, SEQUENCED_WORKING_MESSAGE sequencedWorkingMessage)
+            throws SequenceContinuityException
+    {
+        if(incomingMessage.getSequenceNumber() < sequencedWorkingMessage.getSequenceNumber())
+            throw new SequenceContinuityException(SequenceContinuityError.OLD_INCOMING_MESSAGE);
+    }
+
 
 
 }

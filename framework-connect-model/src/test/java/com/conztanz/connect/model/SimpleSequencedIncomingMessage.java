@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 public class SimpleSequencedIncomingMessage extends SequencedIncomingMessage<String>
 {
-    public SimpleSequencedIncomingMessage(byte[] rawPayload)
+    public SimpleSequencedIncomingMessage(byte[] rawPayload,int sequenceNumber)
     {
-        super(rawPayload);
+        super(rawPayload, sequenceNumber);
     }
 
     @Override

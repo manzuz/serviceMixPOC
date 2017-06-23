@@ -23,6 +23,11 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-testing</artifactId>
+        </dependency>
     </dependencies>
 
 

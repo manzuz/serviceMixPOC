@@ -19,6 +19,12 @@ public class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessage<OBJECT_
     {
         super(rawPayload);
     }
+
+    public SequencedIncomingMessage(byte[] rawPayload,int sequenceNumber)
+    {
+        super(rawPayload);
+        this.sequenceNumber=sequenceNumber;
+    }
     @Access(AccessType.PROPERTY)
     @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
     public int getSequenceNumber()

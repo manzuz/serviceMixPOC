@@ -1,4 +1,4 @@
-package com.conztanz.continuity;
+package com.conztanz.connect.continuity;
 
 import com.conztanz.connect.continuity.SequencedContinuityChecker;
 import com.conztanz.connect.exception.*;
@@ -15,7 +15,7 @@ public class SimpleIncreasingSequenceContinuityChecker extends SequencedContinui
      * @throws ContinuityException
      */
     @Override
-    protected void react2KOState(SimpleSequencedWorkingMessage workingMessage) throws KOContinuityException
+    protected void react2KOState(SimpleSequencedIncomingMessage simpleSequencedIncomingMessage,SimpleSequencedWorkingMessage workingMessage) throws KOContinuityException
     {
         throw new KOContinuityException(workingMessage.getObjectId());
     }
@@ -25,9 +25,9 @@ public class SimpleIncreasingSequenceContinuityChecker extends SequencedContinui
      * @throws ContinuityException
      */
     @Override
-    protected void react2WORKINGState(SimpleSequencedWorkingMessage workingMessage) throws WORKINGContinuityException
+    protected void react2WORKINGState(SimpleSequencedIncomingMessage simpleSequencedIncomingMessage,SimpleSequencedWorkingMessage workingMessage) throws WORKINGContinuityException
     {
-
+        throw new   WORKINGContinuityException(workingMessage.getObjectId());
     }
 
     /**

@@ -69,11 +69,4 @@ public class EdifactCleaner implements IMessageCleaner {
 //		System.out.println(cleanMessage.toString());
 		return  cleanMessage.toString().getBytes();
 	}
-	
-	public static void main(String[] args) throws IOException {
-		Path path = Paths.get("C:\\Users\\User\\Desktop\\serviceMixPOC\\travel-connect-lifecycle-initialization\\src\\test\\resources\\edifact\\edifact-sample.txt");
-		byte [] payload = Files.readAllBytes(path); 
-		new EdifactCleaner().clean(payload, false);
-		System.out.println(((char)(byte) 10)+ "##");
-	}
 }

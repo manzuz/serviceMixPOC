@@ -14,7 +14,7 @@ import com.conztanz.connect.model.WorkingMessage;
  */
 public abstract class ContinuityChecker<OBJECT_ID,
                                         INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>,
-                                        WORKING_MESSAGE extends WorkingMessage<OBJECT_ID>>
+                                        WORKING_MESSAGE  extends WorkingMessage<OBJECT_ID>>
 {
     /**
      * @param incomingMessage
@@ -26,10 +26,10 @@ public abstract class ContinuityChecker<OBJECT_ID,
         switch (workingMessage.getStatus())
         {
             case KO:
-                this.react2KOState(workingMessage);
+                this.react2KOState(incomingMessage,workingMessage);
                 break;
             case WORKING:
-                this.react2WORKINGState(workingMessage);
+                this.react2WORKINGState(incomingMessage,workingMessage);
                 break;
             case OK:
                 this.react2OKState(incomingMessage, workingMessage);
@@ -41,13 +41,13 @@ public abstract class ContinuityChecker<OBJECT_ID,
      * @param workingMessage
      * @throws ContinuityException
      */
-    protected abstract void react2KOState(WORKING_MESSAGE workingMessage) throws KOContinuityException;
+    protected abstract void react2KOState(INCOMING_MESSAGE incomingMessage,WORKING_MESSAGE workingMessage) throws KOContinuityException;
 
     /**
      * @param workingMessage
      * @throws ContinuityException
      */
-    protected abstract void react2WORKINGState(WORKING_MESSAGE workingMessage) throws WORKINGContinuityException  ;
+    protected abstract void react2WORKINGState(INCOMING_MESSAGE incomingMessage,WORKING_MESSAGE workingMessage) throws WORKINGContinuityException  ;
 
     /**
      * @param incomingMessage

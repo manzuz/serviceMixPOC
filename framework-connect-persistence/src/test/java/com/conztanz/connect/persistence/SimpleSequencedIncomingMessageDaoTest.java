@@ -54,10 +54,10 @@ public class SimpleSequencedIncomingMessageDaoTest extends AbstractDaoTester<Sim
     @Test
     public void testRawPayLoadStorage() throws PersistenceException
     {
-        SimpleSequencedIncomingMessage message1 = new SimpleSequencedIncomingMessage(new byte[10]);
+        SimpleSequencedIncomingMessage message1 = new SimpleSequencedIncomingMessage(new byte[10],1);
         this.getDao().add(message1);
         //TODO null ??????
-        SimpleSequencedIncomingMessage message2 = new SimpleSequencedIncomingMessage(null);
+        SimpleSequencedIncomingMessage message2 = new SimpleSequencedIncomingMessage(null,1);
         this.getDao().add(message2);
 
     }

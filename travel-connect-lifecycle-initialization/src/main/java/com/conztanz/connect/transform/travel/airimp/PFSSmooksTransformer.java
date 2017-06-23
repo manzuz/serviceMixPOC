@@ -4,7 +4,7 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 import com.conztanz.connect.transform.IMessageCleaner;
 
 /**
- * 
+ *
  * @author User
  *
  * @param <TRANSFORMER>
