@@ -40,9 +40,10 @@
         <module>../framework-connect-persistence</module>
         <module>../framework-connect-lifecycle-initialization</module>
         <module>../framework-connect-lifecycle-identification</module>
-        <module>../framework-connect-lifecycle-locking</module>
         <module>../framework-connect-lifecycle-continuity</module>
+        <!--TODO  : reorder-->
         <module>../framework-connect-lifecycle-orchestration</module>
+        <module>../framework-connect-lifecycle-locking</module>
     </modules>
 	<!--<profiles>-->
 		<!--&lt;!&ndash; Modules defining ConztanZ Framework Connect &ndash;&gt;-->

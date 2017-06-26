@@ -4,6 +4,7 @@ package com.conztanz.connect.initialize;
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
+import com.conztanz.connect.transform.exception.ConnectTransformationException;
 
 /**
  * 
@@ -22,7 +23,7 @@ public interface IAbstractConnectInitializer<TRANSFORMER extends AbstractConnect
 	 * @param payload
 	 * @return
 	 */
-	public MESSAGE init(byte[] payload)  ;
+	public MESSAGE init(byte[] payload) throws ConnectTransformationException;
 
 	/**
 	 * 

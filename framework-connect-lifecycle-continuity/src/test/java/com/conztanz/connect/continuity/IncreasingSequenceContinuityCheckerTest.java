@@ -23,6 +23,8 @@ public class IncreasingSequenceContinuityCheckerTest
     @Autowired
     private SimpleIncreasingSequenceContinuityChecker checker = null;
 
+    private String GENERIC_FUNCTIONAL_EXCEPTION = "Generic functional exception:";
+
     public SimpleIncreasingSequenceContinuityChecker getChecker()
     {
         return checker;
@@ -32,38 +34,42 @@ public class IncreasingSequenceContinuityCheckerTest
     @Test
     public void testCheckContinuityKO() throws ContinuityException
     {
-        String ObjectID = "1234";
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10],1);
-        SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(ObjectID,2, MessageStatus.KO);
+        String objectID = "1234";
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(objectID,new byte[10],1);
+        SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(objectID,2, MessageStatus.KO);
         try
         {
             this.getChecker().checkContinuity(im,wm);
             fail();
-        } catch (KOContinuityException e)
+        }
+        catch (KOContinuityException e)
         {
-//            assertEquals("A message with the same object ID: " + ObjectID +" is in KO state",e.toString());
+            assertEquals(GENERIC_FUNCTIONAL_EXCEPTION+" A message with the same object ID: " + objectID +" is in KO state",e.getMessage());
         }
     }
 
     @Test
     public void testCheckContinuityWORKING() throws ContinuityException
     {
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10],1);
-        SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage("",2, MessageStatus.WORKING);
+        String objectID = "1234";
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(objectID,new byte[10],1);
+        SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(objectID,2, MessageStatus.WORKING);
         try
         {
             this.getChecker().checkContinuity(im,wm);
             fail();
-        } catch (WORKINGContinuityException e)
+        }
+        catch (WORKINGContinuityException e)
         {
-//            assertEquals("A message with the same object ID: " + ObjectID +" is in KO state",e.toString());
+            assertEquals(GENERIC_FUNCTIONAL_EXCEPTION+" A message with the same object ID: " + objectID +" is in WORKING state",e.getMessage());
         }
     }
     @Test
     public void testCheckContinuityOKWithOldSequence() throws ContinuityException
     {
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10],1);
-        SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage("",2, MessageStatus.OK);
+        String objectID = "1234";
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(objectID,new byte[10],1);
+        SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(objectID,2, MessageStatus.OK);
         try
         {
             this.getChecker().checkContinuity(im,wm);

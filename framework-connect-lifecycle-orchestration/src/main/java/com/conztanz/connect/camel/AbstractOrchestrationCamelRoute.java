@@ -19,19 +19,20 @@ import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 public abstract class AbstractOrchestrationCamelRoute<INITIALIZER  extends IAbstractConnectInitializer<? extends AbstractConnectSmooksTransformer, ? extends IncomingMessage<?>>, 
 													  PREPROCESSOR extends Processor,
 													  IDENTIFIER   extends IAbstractConnectIdentifier<?>>
-						extends RouteBuilder {
+						extends RouteBuilder
+{
 
 	@Override
 	public void configure() throws Exception
     {
-		
-		
+
+        /**
+         * TODO : two steps (from init to continuity, transacted, then the rest not transacted)
+         */
 		from(this.getRouteEndpoint())
 			.transacted()
-//			.process(this.getProcessor())
-			.bean(getInitializer(), "init(${body})")
-			.bean(this.getIdentifier(),"identify(${body})")
-			.log("###################\nDone ! ###################\n");
+			.bean(this.getInitializer(), "init(${body})")
+			.bean(this.getIdentifier(),"identify(${body})");
 
 	}
 

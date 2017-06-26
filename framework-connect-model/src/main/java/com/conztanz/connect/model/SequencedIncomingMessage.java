@@ -19,10 +19,19 @@ public class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessage<OBJECT_
     {
         super(rawPayload);
     }
-
+    public SequencedIncomingMessage(OBJECT_ID objectId , byte[] rawPayload)
+    {
+        super(objectId,rawPayload);
+    }
     public SequencedIncomingMessage(byte[] rawPayload,int sequenceNumber)
     {
         super(rawPayload);
+        this.sequenceNumber=sequenceNumber;
+    }
+
+    public SequencedIncomingMessage(OBJECT_ID objectId , byte[] rawPayload,int sequenceNumber)
+    {
+        super(objectId,rawPayload);
         this.sequenceNumber=sequenceNumber;
     }
     @Access(AccessType.PROPERTY)

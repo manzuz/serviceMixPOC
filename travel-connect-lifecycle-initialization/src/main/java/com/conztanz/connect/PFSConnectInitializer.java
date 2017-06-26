@@ -29,7 +29,8 @@ public class PFSConnectInitializer extends AbstractConnectInitializer<PFSSmooksT
 	}
 
 	@Override
-	public PFSSmooksTransformer getSmooksTransformer() {
+	public PFSSmooksTransformer getSmooksTransformer()
+    {
 		return pFSSmooksTransformer;
 	}
 

@@ -21,7 +21,7 @@ public abstract class ContinuityChecker<OBJECT_ID,
      * @param workingMessage
      * @throws ContinuityException
      */
-    public void checkContinuity(INCOMING_MESSAGE incomingMessage, WORKING_MESSAGE workingMessage) throws ContinuityException
+    public void checkContinuity(INCOMING_MESSAGE incomingMessage, WORKING_MESSAGE workingMessage) throws KOContinuityException, WORKINGContinuityException, SequenceContinuityException
     {
         switch (workingMessage.getStatus())
         {
@@ -47,7 +47,7 @@ public abstract class ContinuityChecker<OBJECT_ID,
      * @param workingMessage
      * @throws ContinuityException
      */
-    protected abstract void react2WORKINGState(INCOMING_MESSAGE incomingMessage,WORKING_MESSAGE workingMessage) throws WORKINGContinuityException  ;
+    protected abstract void react2WORKINGState(INCOMING_MESSAGE incomingMessage,WORKING_MESSAGE workingMessage) throws WORKINGContinuityException ;
 
     /**
      * @param incomingMessage

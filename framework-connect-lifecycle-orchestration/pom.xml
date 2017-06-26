@@ -1,44 +1,47 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
 
-	<parent>
-		<groupId>com.conztanz</groupId>
-		<version>0.4-SNAPSHOT</version>
-		<artifactId>framework-connect</artifactId>
-	</parent>
-	<artifactId>${framework.connect.artifact.base}-lifecycle-orchestration</artifactId>
-	<packaging>jar</packaging>
+    <parent>
+        <groupId>com.conztanz</groupId>
+        <version>0.4-SNAPSHOT</version>
+        <artifactId>framework-connect</artifactId>
+    </parent>
+    <artifactId>${framework.connect.artifact.base}-lifecycle-orchestration</artifactId>
+    <packaging>jar</packaging>
 
 
-	<dependencies>
-		<!-- Framework Dependencies -->
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>${framework.connect.artifact.base}-lifecycle-initialization</artifactId>
-		</dependency>
-				<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>${framework.connect.artifact.base}-lifecycle-identification</artifactId>
-		</dependency>
-		<!-- Camel dependencies -->
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-		</dependency>
+    <dependencies>
+        <!-- Framework Dependencies -->
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-lifecycle-initialization</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-lifecycle-identification</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-lifecycle-locking</artifactId>
+            <!--<version>0.4-SNAPSHOT</version>-->
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-lifecycle-continuity</artifactId>
+            <!--<version>0.4-SNAPSHOT</version>-->
+        </dependency>
+
+        <!-- Camel dependencies -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-core</artifactId>
+        </dependency>
 
 
-	</dependencies>
 
-
-
-
-
-
-
-
-
+    </dependencies>
 
 
 </project>

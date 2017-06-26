@@ -27,9 +27,9 @@ public abstract class SequencedWorkingMessage<OBJECT_ID> extends WorkingMessage<
         super(object_id);
         this.sequenceNumber = sequenceNumber;
     }
-    public SequencedWorkingMessage(OBJECT_ID object_id, int sequenceNumber,MessageStatus status)
+    public SequencedWorkingMessage(OBJECT_ID objectId, int sequenceNumber,MessageStatus status)
     {
-        super(object_id,status);
+        super(objectId,status);
         this.sequenceNumber = sequenceNumber;
     }
     @Access(AccessType.PROPERTY)

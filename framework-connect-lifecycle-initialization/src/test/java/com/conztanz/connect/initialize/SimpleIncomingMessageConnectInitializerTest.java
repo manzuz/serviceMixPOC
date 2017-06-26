@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 
+import com.conztanz.connect.transform.exception.ConnectTransformationException;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,19 +30,19 @@ public class SimpleIncomingMessageConnectInitializerTest {
 	
 	
 	@Test
-	public void loadingReaderClassTest() throws IOException {
+	public void loadingReaderClassTest() throws IOException, ConnectTransformationException
+  {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./messages/SimpleIncomingMessage.txt");
 		simpleIncomingMessageConnectInitializer.init(IOUtils.toByteArray(is));
 	}
 	
-	public void payLoadInitializationTest() throws IOException{
+	public void payLoadInitializationTest() throws IOException, ConnectTransformationException
+  {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./messages/SimpleIncomingMessage.txt");
 		byte[] rawPayload = IOUtils.toByteArray(is);
 		SimpleIncomingMessage message = simpleIncomingMessageConnectInitializer.init(IOUtils.toByteArray(is));
 		assert(message.getTransformedPayload().equals("<test />"));
 		assertEquals(rawPayload, message.getRawPayload()); 
-
-
 	}
 	
 

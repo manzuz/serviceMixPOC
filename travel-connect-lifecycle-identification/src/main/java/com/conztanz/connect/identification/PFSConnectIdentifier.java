@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+import com.conztanz.connect.identification.exception.ConnectIdentificationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -30,18 +31,26 @@ public class PFSConnectIdentifier extends AbstractConnectIdentifier {
 	
 
 	@Override
-	public void  identify(IncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException  {
-		Document doc = super.getDocument(incomingMessage);
-		String company = this.getXpathClient().request(XPATH_COMPANY, doc);
-		String flightNum = this.getXpathClient().request(XPATH_FLIGHTNUM, doc);
-		String depDate = this.getXpathClient().request(XPATH_DEPDATE, doc);
-		String station = this.getXpathClient().request(XPATH_STATION, doc);
-		String objectID = company + flightNum + "//" + depDate + station;
-		incomingMessage.setObjectId(objectID);
+	public void  identify(IncomingMessage incomingMessage) throws ConnectIdentificationException
+  {
+      Document doc = null;
+      try
+      {
+          doc = super.getDocument(incomingMessage);
+          String company = this.getXpathClient().request(XPATH_COMPANY, doc);
+          String flightNum = this.getXpathClient().request(XPATH_FLIGHTNUM, doc);
+          String depDate = this.getXpathClient().request(XPATH_DEPDATE, doc);
+          String station = this.getXpathClient().request(XPATH_STATION, doc);
+          String objectID = company + flightNum + "//" + depDate + station;
+          incomingMessage.setObjectId(objectID);
+      }
+      catch (SAXException | ParserConfigurationException | IOException | XPathExpressionException e)
+      {
+        throw  new ConnectIdentificationException(e);
+      }
 
 
-	
-	}
+  }
 
 
 

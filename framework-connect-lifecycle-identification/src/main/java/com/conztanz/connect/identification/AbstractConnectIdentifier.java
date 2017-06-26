@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+import com.conztanz.connect.identification.exception.ConnectIdentificationException;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -32,7 +33,7 @@ public abstract class AbstractConnectIdentifier<INCOMING_MESSAGE extends Incomin
      * @throws IOException
      * @throws XPathExpressionException
      */
-	public abstract void identify(INCOMING_MESSAGE incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
+	public abstract void identify(INCOMING_MESSAGE incomingMessage) throws ConnectIdentificationException;
 
 	/**
 	 * @param incomingMessage
@@ -42,7 +43,7 @@ public abstract class AbstractConnectIdentifier<INCOMING_MESSAGE extends Incomin
 	 * @throws ParserConfigurationException
 	 */
 	protected Document getDocument(INCOMING_MESSAGE incomingMessage) throws SAXException, IOException, ParserConfigurationException
-    {
+  {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.parse(new InputSource(new StringReader(incomingMessage.getTransformedPayload())));

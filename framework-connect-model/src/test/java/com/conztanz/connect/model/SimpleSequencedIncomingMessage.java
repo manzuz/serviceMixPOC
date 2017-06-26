@@ -14,7 +14,10 @@ public class SimpleSequencedIncomingMessage extends SequencedIncomingMessage<Str
     {
         super(rawPayload, sequenceNumber);
     }
-
+    public SimpleSequencedIncomingMessage(String objectId ,byte[] rawPayload,int sequenceNumber)
+    {
+        super(objectId,rawPayload, sequenceNumber);
+    }
     @Override
     @Column(name = "OBJECT_ID", nullable = false, unique = false)
     @Access(AccessType.PROPERTY)

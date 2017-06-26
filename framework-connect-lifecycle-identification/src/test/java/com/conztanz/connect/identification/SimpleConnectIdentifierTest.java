@@ -8,6 +8,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
 import static org.junit.Assert.*;
+
+import com.conztanz.connect.identification.exception.ConnectIdentificationException;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +27,8 @@ public class SimpleConnectIdentifierTest {
 	@Autowired
 	private   SimpleConnectIdentifier simpleConnectIdentifier;
 	@Test
-	public void identificationTest() throws IOException, XPathExpressionException, ParserConfigurationException, SAXException {
+	public void identificationTest() throws IOException, ConnectIdentificationException
+  {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./Xml_sample.xml");
 		StringWriter writer = new StringWriter();
 		IOUtils.copy(is, writer);

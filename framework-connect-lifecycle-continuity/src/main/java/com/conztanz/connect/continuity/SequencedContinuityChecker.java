@@ -40,8 +40,6 @@ public abstract class SequencedContinuityChecker<OBJECT_ID,
 
 
 
-
-
     /*
        #####################################################################################################
        # Methods to do comparison between Incoming Message and Working Message respective sequence numbers #

@@ -10,6 +10,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import com.conztanz.connect.transform.exception.ConnectTransformationException;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +30,8 @@ public class SimpleMessageConnectSmooksTransformerTest {
 	SimpleMessageConnectSmooksTransformer simpleMessageConnectSmooksTransformer;
 
 	@Test
-	public void transform2XMLTest() throws IOException, ParserConfigurationException {
+	public void transform2XMLTest() throws IOException, ParserConfigurationException, ConnectTransformationException
+  {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./messages/SimpleIncomingMessage.txt");
 		String xml = simpleMessageConnectSmooksTransformer.transform2XML(IOUtils.toByteArray(is));
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -46,16 +48,20 @@ public class SimpleMessageConnectSmooksTransformerTest {
 		}
 	}
 
-	private class SimpleErrorHandler implements ErrorHandler {
-		public void warning(SAXParseException e) throws SAXException {
+	private class SimpleErrorHandler implements ErrorHandler
+  {
+		public void warning(SAXParseException e) throws SAXException
+    {
 			e.printStackTrace();
 		}
 
-		public void error(SAXParseException e) throws SAXException {
+		public void error(SAXParseException e) throws SAXException
+    {
 			e.printStackTrace();
 		}
 
-		public void fatalError(SAXParseException e) throws SAXException {
+		public void fatalError(SAXParseException e) throws SAXException
+    {
 			e.printStackTrace();
 		}
 	}

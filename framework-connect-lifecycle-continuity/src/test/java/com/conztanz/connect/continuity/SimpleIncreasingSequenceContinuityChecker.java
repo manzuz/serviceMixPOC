@@ -17,7 +17,7 @@ public class SimpleIncreasingSequenceContinuityChecker extends SequencedContinui
     @Override
     protected void react2KOState(SimpleSequencedIncomingMessage simpleSequencedIncomingMessage,SimpleSequencedWorkingMessage workingMessage) throws KOContinuityException
     {
-        throw new KOContinuityException(workingMessage.getObjectId());
+        throw new KOContinuityException(simpleSequencedIncomingMessage.getObjectId());
     }
 
     /**
@@ -27,7 +27,7 @@ public class SimpleIncreasingSequenceContinuityChecker extends SequencedContinui
     @Override
     protected void react2WORKINGState(SimpleSequencedIncomingMessage simpleSequencedIncomingMessage,SimpleSequencedWorkingMessage workingMessage) throws WORKINGContinuityException
     {
-        throw new   WORKINGContinuityException(workingMessage.getObjectId());
+        throw new WORKINGContinuityException(simpleSequencedIncomingMessage.getObjectId());
     }
 
     /**

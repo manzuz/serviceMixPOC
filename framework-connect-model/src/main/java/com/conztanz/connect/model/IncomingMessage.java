@@ -21,6 +21,11 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
     {
         this.rawPayload = rawPayload;
     }
+    public IncomingMessage(OBJECT_ID objectId , byte[] rawPayload)
+    {
+        this.rawPayload = rawPayload;
+        this.objectId  =objectId;
+    }
 
     @Access(AccessType.PROPERTY)
     @Column(name = "TRANSFORMED_PAYLOAD", nullable = false)

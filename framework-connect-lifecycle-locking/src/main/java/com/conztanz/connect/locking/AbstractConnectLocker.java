@@ -65,6 +65,8 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
         }
         return workingMessage;
     }
+    //TODO
+    //public abstract ENTITY lock(OBJECT_ID objectId);
 
     /**
      *

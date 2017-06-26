@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+import com.conztanz.connect.identification.exception.ConnectIdentificationException;
 import org.xml.sax.SAXException;
 
 import com.conztanz.connect.model.IncomingMessage;
@@ -20,6 +21,6 @@ public interface IAbstractConnectIdentifier<INCOMING_MESSAGE extends IncomingMes
 	 * @throws IOException
 	 * @throws XPathExpressionException
 	 */
-	void identify(INCOMING_MESSAGE incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException;
+	void identify(INCOMING_MESSAGE incomingMessage) throws  ConnectIdentificationException;
 
 }
