@@ -25,20 +25,49 @@
         <dependency>
             <groupId>com.conztanz</groupId>
             <artifactId>framework-connect-lifecycle-locking</artifactId>
-            <!--<version>0.4-SNAPSHOT</version>-->
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
             <artifactId>framework-connect-lifecycle-continuity</artifactId>
-            <!--<version>0.4-SNAPSHOT</version>-->
         </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-lifecycle-initialization</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-lifecycle-identification</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-lifecycle-continuity</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-lifecycle-locking</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-model</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- Camel dependencies -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
         </dependency>
-
 
 
     </dependencies>

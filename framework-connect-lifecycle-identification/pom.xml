@@ -19,18 +19,23 @@
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-connect-model</artifactId>
 		</dependency>
-
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-model</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>com.conztanz</groupId>
 			<artifactId>framework-testing</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.conztanz</groupId>
-			<artifactId>framework-connect-lifecycle-initialization</artifactId>
-			<type>test-jar</type>
-			<scope>test</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.conztanz</groupId>-->
+			<!--<artifactId>framework-connect-lifecycle-initialization</artifactId>-->
+			<!--<type>test-jar</type>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
 		<!-- JIBX -->
 		<dependency>
 			<groupId>org.jibx</groupId>

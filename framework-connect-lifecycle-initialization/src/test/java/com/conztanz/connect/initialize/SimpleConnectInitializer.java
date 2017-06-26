@@ -1,14 +1,13 @@
 package com.conztanz.connect.initialize;
 
+import com.conztanz.connect.factory.SimpleIncomingMessageFactory;
+import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
-import com.conztanz.connect.factory.SimpleIncomingMessageFactory;
-import com.conztanz.connect.factory.SimpleIncomingMessage;
 import com.conztanz.connect.transform.SimpleMessageConnectSmooksTransformer;
 
-public class SimpleIncomingMessageConnectInitializer
-		extends AbstractConnectInitializer<SimpleMessageConnectSmooksTransformer, SimpleIncomingMessage> {
+public class SimpleConnectInitializer
+		extends AbstractConnectInitializer<SimpleMessageConnectSmooksTransformer, SimpleSequencedIncomingMessage> {
 
 	@Autowired
 	private SimpleMessageConnectSmooksTransformer pFSConnectSmooksTransformer;
@@ -17,7 +16,7 @@ public class SimpleIncomingMessageConnectInitializer
 	private SimpleIncomingMessageFactory simpleIncomingMessageFactory;
 
 	@Override
-	public AbstractIncomingMessageFactory<SimpleIncomingMessage> getMessageFactory() {
+	public SimpleIncomingMessageFactory getMessageFactory() {
 		return simpleIncomingMessageFactory;
 	}
 

@@ -6,6 +6,6 @@
 
 	<bean id="SimpleMessageIncomingMessageFactory" class="com.conztanz.connect.factory.SimpleIncomingMessageFactory" scope="singleton" />
     <bean id="SimpleMessageSmooksTransformer" class="com.conztanz.connect.transform.SimpleMessageConnectSmooksTransformer" scope="singleton" />
-    <bean id="SimpleMessageConnectInitialzer" class="com.conztanz.connect.initialize.SimpleIncomingMessageConnectInitializer" scope="singleton" />
+    <bean id="SimpleMessageConnectInitialzer" class="com.conztanz.connect.initialize.SimpleConnectInitializer" scope="singleton" />
    
 </beans>

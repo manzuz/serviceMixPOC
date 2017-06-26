@@ -6,19 +6,20 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
 import com.conztanz.connect.identification.exception.ConnectIdentificationException;
+import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.xml.sax.SAXException;
 
 import com.conztanz.connect.identification.xpath.XpathClient;
 import com.conztanz.connect.model.IncomingMessage;
 
-public class SimpleConnectIdentifier extends AbstractConnectIdentifier
+public class SimpleConnectIdentifier extends AbstractConnectIdentifier<SimpleSequencedIncomingMessage> implements IAbstractConnectIdentifier<SimpleSequencedIncomingMessage >
 {
   @Autowired
   private XpathClient xpathClient;
 
   @Override
-  public void identify(IncomingMessage incomingMessage) throws ConnectIdentificationException
+  public void identify(SimpleSequencedIncomingMessage incomingMessage) throws ConnectIdentificationException
   {
     try
     {
