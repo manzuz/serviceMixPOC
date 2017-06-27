@@ -15,12 +15,12 @@ import org.xml.sax.SAXException;
 /**
  *
  */
-public abstract class AbstractConnectSmooksTransformer
+public abstract class AbstractConnectSmooksTransformer implements IConnectTransformer
 {
   /**
    * @param payLoad
-   * @return TODO : don't catch exceptions
    */
+  @Override
   public String transform2XML(byte[] payLoad) throws ConnectTransformationException
   {
     StringResult serializedEvents = new StringResult();

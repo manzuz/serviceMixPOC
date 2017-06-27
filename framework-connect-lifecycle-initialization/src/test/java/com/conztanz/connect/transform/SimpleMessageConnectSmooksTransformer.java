@@ -1,6 +1,7 @@
 package com.conztanz.connect.transform;
 
-public class SimpleMessageConnectSmooksTransformer extends AbstractConnectSmooksTransformer{
+public class SimpleMessageConnectSmooksTransformer extends AbstractConnectSmooksTransformer
+{
 
 	@Override
 	public String getPathToConfigFile() {

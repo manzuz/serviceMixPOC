@@ -1,15 +1,8 @@
 package com.conztanz.connect.camel;
 
-import com.conztanz.connect.continuity.ContinuityChecker;
 import com.conztanz.connect.exception.BlockedContinuityException;
 import com.conztanz.connect.exception.SequenceContinuityException;
-import com.conztanz.connect.identification.SimpleConnectIdentifier;
 import com.conztanz.connect.identification.exception.ConnectIdentificationException;
-import com.conztanz.connect.initialize.SimpleConnectInitializer;
-import com.conztanz.connect.locking.AbstractConnectLocker;
-import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
-import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
-import com.conztanz.connect.persistence.IWaitingMessageDao;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
 import com.conztanz.exception.PersistenceException;
 import org.junit.Test;

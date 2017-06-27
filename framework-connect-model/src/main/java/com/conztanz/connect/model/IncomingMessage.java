@@ -1,5 +1,6 @@
 package com.conztanz.connect.model;
 
+import com.conztanz.exception.ConztanzException;
 import com.conztanz.model.AbstractEntity;
 
 import javax.persistence.*;
@@ -55,7 +56,7 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
     return status;
   }
 
-  public void setStatus(MessageStatus status)
+  protected void setStatus(MessageStatus status)
   {
     this.status = status;
   }
@@ -71,7 +72,7 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
     return false;
   }
   //TODO exception type
-  public void reject(Exception e)
+  public void reject(ConztanzException e)
   {
     this.setStatus(MessageStatus.REJECTED);
   }

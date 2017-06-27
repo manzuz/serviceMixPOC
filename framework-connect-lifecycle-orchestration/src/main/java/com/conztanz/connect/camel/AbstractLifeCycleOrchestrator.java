@@ -2,19 +2,19 @@ package com.conztanz.connect.camel;
 
 
 import com.conztanz.connect.continuity.ContinuityChecker;
-import com.conztanz.connect.exception.*;
+import com.conztanz.connect.exception.BlockedContinuityException;
+import com.conztanz.connect.exception.ContinuityException;
+import com.conztanz.connect.exception.SequenceContinuityException;
 import com.conztanz.connect.identification.IAbstractConnectIdentifier;
 import com.conztanz.connect.identification.exception.ConnectIdentificationException;
-import com.conztanz.connect.initialize.IAbstractConnectInitializer;
+import com.conztanz.connect.initialize.IConnectInitializer;
 import com.conztanz.connect.locking.AbstractConnectLocker;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.connect.persistence.IIncomingMessageDao;
 import com.conztanz.connect.persistence.IWaitingMessageDao;
-import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
 import com.conztanz.exception.PersistenceException;
-import javassist.bytecode.analysis.ControlFlow.Block;
 
 /**
  *
@@ -27,7 +27,7 @@ import javassist.bytecode.analysis.ControlFlow.Block;
 public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
                                                     INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>,
                                                     WORKING_MESSAGE extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>,
-                                                    INITIALIZER extends IAbstractConnectInitializer<? extends AbstractConnectSmooksTransformer,INCOMING_MESSAGE >,
+                                                    INITIALIZER extends IConnectInitializer<INCOMING_MESSAGE >,
 													                          IDENTIFIER extends IAbstractConnectIdentifier<INCOMING_MESSAGE>>
 {
 

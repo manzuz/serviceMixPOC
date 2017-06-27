@@ -61,6 +61,7 @@ public abstract class WorkingMessage<OBJECT_ID,
   public void workOn(INCOMING_MESSAGE incomingMessage)
   {
     this.setStatus(MessageStatus.WORKING);
+    incomingMessage.setStatus(MessageStatus.WORKING);
     this.incomingMessageId = incomingMessage.getId();
   }
 
@@ -80,7 +81,7 @@ public abstract class WorkingMessage<OBJECT_ID,
     this.incomingMessageId = incomingMessageId;
   }
 
-  public void setStatus(MessageStatus status)
+  protected void setStatus(MessageStatus status)
   {
     this.status = status;
   }

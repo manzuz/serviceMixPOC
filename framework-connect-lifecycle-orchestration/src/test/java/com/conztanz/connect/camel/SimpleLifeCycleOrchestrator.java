@@ -3,7 +3,7 @@ package com.conztanz.connect.camel;
 import com.conztanz.connect.continuity.ContinuityChecker;
 import com.conztanz.connect.continuity.SimpleIncreasingSequenceContinuityChecker;
 import com.conztanz.connect.identification.SimpleConnectIdentifier;
-import com.conztanz.connect.initialize.SimpleConnectInitializer;
+import com.conztanz.connect.initialize.SimpleConnectSmooksInitializer;
 import com.conztanz.connect.locking.AbstractConnectLocker;
 import com.conztanz.connect.locking.SimpleConnectLocker;
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
@@ -19,11 +19,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< String,
                                                                                 SimpleSequencedIncomingMessage,
                                                                                 SimpleSequencedWorkingMessage,
-                                                                                SimpleConnectInitializer,
+        SimpleConnectSmooksInitializer,
                                                                                 SimpleConnectIdentifier>
 {
   @Autowired
-  private SimpleConnectInitializer simpleConnectInitializer;
+  private SimpleConnectSmooksInitializer simpleConnectSmooksInitializer;
 
   @Autowired
   private SimpleConnectIdentifier simpleConnectIdentifier;
@@ -43,9 +43,9 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
    * @return
    */
   @Override
-  public SimpleConnectInitializer getInitializer()
+  public SimpleConnectSmooksInitializer getInitializer()
   {
-    return simpleConnectInitializer;
+    return simpleConnectSmooksInitializer;
   }
 
   /**

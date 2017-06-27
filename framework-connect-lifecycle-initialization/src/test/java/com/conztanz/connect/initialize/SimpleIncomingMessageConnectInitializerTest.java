@@ -19,7 +19,7 @@ public class SimpleIncomingMessageConnectInitializerTest {
 	
 	
 	@Autowired
-	private SimpleConnectInitializer simpleConnectInitializer;
+	private SimpleConnectSmooksInitializer simpleConnectSmooksInitializer;
 	
 	
 	
@@ -32,14 +32,14 @@ public class SimpleIncomingMessageConnectInitializerTest {
 	public void loadingReaderClassTest() throws IOException, ConnectTransformationException
   {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./messages/SimpleIncomingMessage.txt");
-    simpleConnectInitializer.init(IOUtils.toByteArray(is));
+    simpleConnectSmooksInitializer.init(IOUtils.toByteArray(is));
 	}
 	
 	public void payLoadInitializationTest() throws IOException, ConnectTransformationException
   {
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./messages/SimpleIncomingMessage.txt");
 		byte[] rawPayload = IOUtils.toByteArray(is);
-		SimpleSequencedIncomingMessage message = simpleConnectInitializer.init(IOUtils.toByteArray(is));
+		SimpleSequencedIncomingMessage message = simpleConnectSmooksInitializer.init(IOUtils.toByteArray(is));
 		assert(message.getTransformedPayload().equals("<test />"));
 		assertEquals(rawPayload, message.getRawPayload()); 
 	}

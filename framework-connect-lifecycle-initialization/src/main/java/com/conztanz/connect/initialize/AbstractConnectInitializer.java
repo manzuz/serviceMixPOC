@@ -1,9 +1,7 @@
 package com.conztanz.connect.initialize;
-
-
 import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.model.IncomingMessage;
-import com.conztanz.connect.transform.AbstractConnectSmooksTransformer;
+import com.conztanz.connect.transform.IConnectTransformer;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
 
 /**
@@ -11,18 +9,16 @@ import com.conztanz.connect.transform.exception.ConnectTransformationException;
  * @param <MESSAGE>
  * @author User
  */
-public abstract class AbstractConnectInitializer< TRANSFORMER extends AbstractConnectSmooksTransformer,
-                                                  MESSAGE extends IncomingMessage>
-        implements IAbstractConnectInitializer<TRANSFORMER, MESSAGE>
+public abstract class AbstractConnectInitializer<TRANSFORMER extends IConnectTransformer,
+                                                 MESSAGE extends IncomingMessage>
+        implements IConnectInitializer<MESSAGE>
 {
 
 
-  //	@TransactionIdentifiable
-//	@Transactional(value = TxType.REQUIRED, rollbackOn = { ConztanzException.class })
   public MESSAGE init(byte[] payload) throws ConnectTransformationException
   {
     MESSAGE m = this.getMessageFactory().createMessage(payload);
-    String transformedPayload = this.getSmooksTransformer().transform2XML(payload);
+    String transformedPayload = this.getTransformer().transform2XML(payload);
     m.setTransformedPayload(transformedPayload);
     return m;
   }
@@ -35,6 +31,6 @@ public abstract class AbstractConnectInitializer< TRANSFORMER extends AbstractCo
   /**
    *
    */
-  protected abstract TRANSFORMER getSmooksTransformer();
+  protected abstract TRANSFORMER getTransformer();
 
 }

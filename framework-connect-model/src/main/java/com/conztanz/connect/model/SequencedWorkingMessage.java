@@ -8,7 +8,7 @@ import javax.persistence.*;
 @MappedSuperclass
 @Access(AccessType.FIELD)
 public abstract class SequencedWorkingMessage<OBJECT_ID,
-                                              INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>>
+                                              INCOMING_MESSAGE extends SequencedIncomingMessage<OBJECT_ID>>
         extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>
 {
     @Transient
