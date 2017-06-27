@@ -9,6 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class WorkingMessage_ extends com.conztanz.model.AbstractEntity_ {
 
 	public static volatile SingularAttribute<WorkingMessage, MessageStatus> status;
+	public static volatile SingularAttribute<WorkingMessage, Long> incomingMessageId;
 
 }
 
