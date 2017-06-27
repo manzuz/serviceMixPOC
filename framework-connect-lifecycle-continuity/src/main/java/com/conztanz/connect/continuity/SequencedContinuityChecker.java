@@ -13,7 +13,7 @@ import com.conztanz.connect.model.SequencedWorkingMessage;
  */
 public abstract class SequencedContinuityChecker<OBJECT_ID,
                                                  SEQUENCED_INCOMING_MESSAGE extends SequencedIncomingMessage<OBJECT_ID>,
-                                                 SEQUENCED_WORKING_MESSAGE  extends SequencedWorkingMessage<OBJECT_ID>>
+                                                 SEQUENCED_WORKING_MESSAGE  extends SequencedWorkingMessage<OBJECT_ID,SEQUENCED_INCOMING_MESSAGE>>
         extends ContinuityChecker<OBJECT_ID,SEQUENCED_INCOMING_MESSAGE,SEQUENCED_WORKING_MESSAGE>
 {
 

@@ -1,13 +1,15 @@
 package com.conztanz.connect.locking;
 
+import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
 import com.conztanz.connect.persistence.SimpleSequencedWorkingMessageDao;
+import com.conztanz.exception.PersistenceException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  */
-public class SimpleConnectLocker extends AbstractConnectLocker<String,
+public class SimpleConnectLocker extends AbstractConnectLocker<String,SimpleSequencedIncomingMessage,
                                                                SimpleSequencedWorkingMessage,
                                                                SimpleSequencedWorkingMessageDao,
                                                                SimpleSequencedWorkingMessageFactory>
@@ -21,7 +23,13 @@ public class SimpleConnectLocker extends AbstractConnectLocker<String,
     @Autowired
     private SimpleSequencedWorkingMessageFactory simpleSequencedWorkingMessageFactory;
 
-    @Override
+  @Override
+  public SimpleSequencedWorkingMessage lock(String objectId) throws PersistenceException
+  {
+    return super.lockByInsertFirst(objectId);
+  }
+
+  @Override
     public SimpleSequencedWorkingMessageDao getDAO()
     {
         return simpleSequencedWorkingMessageDao;

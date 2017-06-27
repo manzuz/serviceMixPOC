@@ -5,10 +5,10 @@ package com.conztanz.connect.model;
  */
 
 
-
 public enum MessageStatus
 {
-    WORKING,
-    OK,
-    KO
+  WORKING,
+  OK,
+  KO,
+  REJECTED
 }

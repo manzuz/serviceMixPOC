@@ -26,14 +26,14 @@ public interface IAbstractConnectInitializer<TRANSFORMER extends AbstractConnect
 	public MESSAGE init(byte[] payload) throws ConnectTransformationException;
 
 	/**
-	 * 
+	 * /*
 	 * @return
-	 */
-	public   AbstractIncomingMessageFactory<MESSAGE> getMessageFactory();
+	 *//*
+	//public   AbstractIncomingMessageFactory<MESSAGE> getMessageFactory();
 
 	/**
 	 * 
 	 */
-	public   TRANSFORMER getSmooksTransformer();
+	//public   TRANSFORMER getSmooksTransformer();
 
 }

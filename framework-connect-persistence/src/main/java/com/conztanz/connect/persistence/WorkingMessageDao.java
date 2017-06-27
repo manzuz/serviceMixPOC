@@ -8,7 +8,6 @@ import com.conztanz.exception.UniqueViolationException;
 import com.conztanz.model.jpa.ConztanzField.ConztanzFieldSimple;
 import com.conztanz.persistence.AbstractEntityDaoImpl;
 import com.conztanz.persistence.jpa.data.ConztanzData;
-import com.conztanz.transport.ConztanzResultList;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @param <ENTITY>
  */
 public abstract class WorkingMessageDao<OBJECT_ID,
-                                        ENTITY extends WorkingMessage<OBJECT_ID>>
+                                        ENTITY extends WorkingMessage<OBJECT_ID,?>>
         extends     AbstractEntityDaoImpl<ENTITY>
         implements  IWorkingMessageDao<OBJECT_ID, ENTITY>
 {

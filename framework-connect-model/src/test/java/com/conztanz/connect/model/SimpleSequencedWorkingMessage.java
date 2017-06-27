@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity(name = "SIMPLE_SEQUENCED_WORKING_MESSAGE")
 @SequenceGenerator(name = "SEQ_ID", sequenceName = "SIMPLE_SEQUENCED_WORKING_MESSAGE_ID_SEQ")
 @Access(AccessType.FIELD)
-public class SimpleSequencedWorkingMessage extends SequencedWorkingMessage<String>
+public class SimpleSequencedWorkingMessage extends SequencedWorkingMessage<String,SimpleSequencedIncomingMessage>
 {
 
     public SimpleSequencedWorkingMessage(String objectID)

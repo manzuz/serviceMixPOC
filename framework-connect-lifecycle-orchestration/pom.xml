@@ -20,6 +20,10 @@
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
             <artifactId>${framework.connect.artifact.base}-lifecycle-identification</artifactId>
         </dependency>
         <dependency>
@@ -33,6 +37,12 @@
         <dependency>
             <groupId>com.conztanz</groupId>
             <artifactId>${framework.connect.artifact.base}-lifecycle-initialization</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence</artifactId>
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>

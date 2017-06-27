@@ -10,67 +10,92 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
 {
 
 
-    @Transient private byte[] rawPayload;
+  @Transient
+  private byte[] rawPayload;
 
-    @Transient private OBJECT_ID objectId;
+  @Transient
+  private OBJECT_ID objectId;
 
-    @Transient private String transformedPayload;
+  @Transient
+  private String transformedPayload;
+
+  @Transient
+  private MessageStatus status;
 
 
-    public IncomingMessage(byte[] rawPayload)
-    {
-        this.rawPayload = rawPayload;
-    }
-    public IncomingMessage(OBJECT_ID objectId , byte[] rawPayload)
-    {
-        this.rawPayload = rawPayload;
-        this.objectId  =objectId;
-    }
+  public IncomingMessage(byte[] rawPayload)
+  {
+    this.rawPayload = rawPayload;
+  }
 
-    @Access(AccessType.PROPERTY)
-    @Column(name = "TRANSFORMED_PAYLOAD", nullable = false)
-    public String getTransformedPayload()
-    {
-        return transformedPayload;
-    }
+  public IncomingMessage(OBJECT_ID objectId, byte[] rawPayload)
+  {
+    this.rawPayload = rawPayload;
+    this.objectId = objectId;
+  }
+  @Access(AccessType.PROPERTY)
+  @Column(name = "RAW_PAYLOAD", nullable = false)
+  public byte[] getRawPayload()
+  {
+    return rawPayload;
+  }
 
-    @Access(AccessType.PROPERTY)
-    @Column(name = "RAW_PAYLOAD", nullable = false)
-    public byte[] getRawPayload()
-    {
-        return rawPayload;
-    }
+  @Access(AccessType.PROPERTY)
+  @Column(name = "TRANSFORMED_PAYLOAD", nullable = false)
+  public String getTransformedPayload()
+  {
+    return transformedPayload;
+  }
 
-    public void setTransformedPayload(String transformedPayload)
-    {
-        this.transformedPayload = transformedPayload;
-    }
-    @Override
-    protected boolean sameContentInternal(Object toBeCompared)
-    {
-        return false;
-    }
+  @Access(AccessType.PROPERTY)
+  @Enumerated(EnumType.STRING)
+  @Column(name = "STATUS", nullable = false)
+  public MessageStatus getStatus()
+  {
+    return status;
+  }
 
-    @Override
-    protected boolean sameLinksInternal(Object toBeCompared)
-    {
-        return false;
-    }
+  public void setStatus(MessageStatus status)
+  {
+    this.status = status;
+  }
 
-    public OBJECT_ID getObjectId()
-    {
-        return objectId;
-    }
+  public void setTransformedPayload(String transformedPayload)
+  {
+    this.transformedPayload = transformedPayload;
+  }
 
-    public void setObjectId(OBJECT_ID objectId)
-    {
-        this.objectId = objectId;
-    }
+  @Override
+  protected boolean sameContentInternal(Object toBeCompared)
+  {
+    return false;
+  }
+  //TODO exception type
+  public void reject(Exception e)
+  {
+    this.setStatus(MessageStatus.REJECTED);
+  }
 
-    public void setRawPayload(byte[] rawPayload)
-    {
-        this.rawPayload = rawPayload;
-    }
+  @Override
+  protected boolean sameLinksInternal(Object toBeCompared)
+  {
+    return false;
+  }
+
+  public OBJECT_ID getObjectId()
+  {
+    return objectId;
+  }
+
+  public void setObjectId(OBJECT_ID objectId)
+  {
+    this.objectId = objectId;
+  }
+
+  public void setRawPayload(byte[] rawPayload)
+  {
+    this.rawPayload = rawPayload;
+  }
 
 
 }

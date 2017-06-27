@@ -6,6 +6,7 @@ import com.conztanz.exception.PersistenceException;
 import com.conztanz.factory.AbstractEntityTestFactory;
 import com.conztanz.persistence.AbstractDaoTester;
 import com.conztanz.persistence.IAbstractEntityDao;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +60,11 @@ public class SimpleConnectLockerTest extends AbstractDaoTester<SimpleSequencedWo
      */
     @Test
     @Transactional
+    @Ignore
     public void testLockByInsertFirst() throws PersistenceException
     {
         String objectID = "123456789";
         SimpleSequencedWorkingMessage entity1 = getSimpleConnectLocker().lockByInsertFirst(objectID);
-        System.out.println("########################################################");
         SimpleSequencedWorkingMessage entity2 = getSimpleConnectLocker().lockByInsertFirst(objectID);
     }
 

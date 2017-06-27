@@ -10,6 +10,9 @@ CREATE TABLE ${persistence.schema.name}.SIMPLE_SEQUENCED_WORKING_MESSAGE
    SEQUENCE_NUMBER smallint,
    OBJECT_ID VARCHAR(15),
 
+   -- incoming message link
+   INCOMING_MESSAGE_ID INTEGER,
+
    STATUS VARCHAR(10),
 
 

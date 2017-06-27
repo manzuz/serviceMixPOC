@@ -14,7 +14,7 @@ import com.conztanz.connect.model.WorkingMessage;
  */
 public abstract class ContinuityChecker<OBJECT_ID,
                                         INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>,
-                                        WORKING_MESSAGE  extends WorkingMessage<OBJECT_ID>>
+                                        WORKING_MESSAGE  extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>>
 {
     /**
      * @param incomingMessage

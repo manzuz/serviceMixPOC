@@ -40,10 +40,12 @@ public class SimpleMessageConnectSmooksTransformerTest {
 
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		builder.setErrorHandler(new SimpleErrorHandler());
-		try {
+		try
+    {
 			Document document = builder.parse((new ByteArrayInputStream(xml.getBytes())));
 			assertEquals("test", document.getDocumentElement().getNodeName());
-		} catch (SAXException e) {
+		}
+		catch (SAXException e) {
 			fail("document should be well formed");
 		}
 	}

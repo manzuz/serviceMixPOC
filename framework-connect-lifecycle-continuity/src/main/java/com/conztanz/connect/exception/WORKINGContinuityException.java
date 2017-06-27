@@ -3,7 +3,7 @@ package com.conztanz.connect.exception;
 /**
  * Created by User on 6/21/2017.
  */
-public class WORKINGContinuityException extends ContinuityException
+public class WORKINGContinuityException extends BlockedContinuityException
 {
 
     /**

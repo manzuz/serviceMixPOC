@@ -1,5 +1,6 @@
 package com.conztanz.connect.locking;
 
+import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.factory.AbstractEntityFactory;
 
@@ -7,8 +8,9 @@ import com.conztanz.factory.AbstractEntityFactory;
  * Created by User on 6/15/2017.
  */
 public abstract class AbstractWorkingMessageFactory<OBJECT_ID,
-                                                    ENTITY extends WorkingMessage<OBJECT_ID>>
-        extends AbstractEntityFactory <ENTITY>
+                                                    INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>,
+                                                    WORKING_MESSAGE extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>>
+        extends AbstractEntityFactory <WORKING_MESSAGE>
 {
 
     /**
@@ -16,5 +18,5 @@ public abstract class AbstractWorkingMessageFactory<OBJECT_ID,
      * @param objectId
      * @return
      */
-    public  abstract ENTITY create(OBJECT_ID objectId);
+    public  abstract WORKING_MESSAGE create(OBJECT_ID objectId);
 }

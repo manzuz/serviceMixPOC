@@ -30,11 +30,11 @@ public abstract class AbstractConnectInitializer< TRANSFORMER extends AbstractCo
   /**
    * @return
    */
-  public abstract AbstractIncomingMessageFactory<MESSAGE> getMessageFactory();
+  protected abstract AbstractIncomingMessageFactory<MESSAGE> getMessageFactory();
 
   /**
    *
    */
-  public abstract TRANSFORMER getSmooksTransformer();
+  protected abstract TRANSFORMER getSmooksTransformer();
 
 }
