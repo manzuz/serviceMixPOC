@@ -71,7 +71,11 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Camel dependencies -->
         <dependency>

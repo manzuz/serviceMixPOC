@@ -7,10 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.conztanz.connect.transform.SimpleMessageConnectSmooksTransformer;
 
 public class SimpleConnectInitializer
-		extends AbstractConnectInitializer<SimpleMessageConnectSmooksTransformer, SimpleSequencedIncomingMessage> {
+		extends AbstractConnectInitializer<SimpleMessageConnectSmooksTransformer, SimpleSequencedIncomingMessage>
+{
 
 	@Autowired
-	private SimpleMessageConnectSmooksTransformer pFSConnectSmooksTransformer;
+	private SimpleMessageConnectSmooksTransformer smooksTransformer;
 
 	@Autowired
 	private SimpleIncomingMessageFactory simpleIncomingMessageFactory;
@@ -22,7 +23,7 @@ public class SimpleConnectInitializer
 
 	@Override
 	public SimpleMessageConnectSmooksTransformer getSmooksTransformer() {
-		return pFSConnectSmooksTransformer;
+		return smooksTransformer;
 	}
 
 }

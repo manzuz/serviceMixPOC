@@ -10,11 +10,9 @@ public class SimpleSequencedWaitingMessageDao extends WaitingMessageDao<String,S
 
 {
   /**
-   * Constructor
    *
-   * @param simpleSequencedIncomingMessageDaoClass Entity class handled by the DAO
    */
-  protected SimpleSequencedWaitingMessageDao(Class<SimpleSequencedIncomingMessageDao> simpleSequencedIncomingMessageDaoClass)
+  protected SimpleSequencedWaitingMessageDao()
   {
     super(SimpleSequencedIncomingMessage.class);
   }

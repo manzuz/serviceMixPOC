@@ -26,8 +26,7 @@
     <!-- TODO normalize files names -->
     <!-- Connect persistence beans  -->
     <import resource="classpath:config/persistence/applicationContext-persistence-connect-lifecycle-beans.xml" />
-    <import resource="classpath:config/persistence/applicationContext-persistence.xml" />
-
+    <import resource="classpath:config/applicationContext-persistence-test.xml" />
     <!-- Connect initialization beans  -->
 	<import resource="classpath:config/applicationContext-connect-initialization-beans.xml" />
     <!-- Connect identification beans  -->
@@ -36,5 +35,8 @@
     <import resource="classpath:config/persistence/applicationContext-connect-locking-beans.xml" />
     <!-- Connect continuity beans  -->
     <import resource="classpath:config/continuity/applicationContext-connect-continuity-beans.xml" />
-	
+    <!-- Connect orchestration beans  -->
+    <import resource="classpath:config/applicationContext-connect-orchestration-beans.xml" />
+
+
 </beans>

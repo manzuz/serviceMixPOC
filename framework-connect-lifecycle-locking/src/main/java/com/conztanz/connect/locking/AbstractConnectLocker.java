@@ -38,7 +38,8 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
     try
     {
       workingMessage = this.getDAO().lock(objectId);
-    } catch (NotFoundException nfe)
+    }
+    catch (NotFoundException nfe)
     {
       workingMessage = this.getWorkingMessageFactory().create(objectId);
       workingMessage = this.getDAO().addToto(workingMessage);
@@ -58,7 +59,8 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
     {
       workingMessage = this.getWorkingMessageFactory().create(objectId);
       workingMessage = this.getDAO().addToto(workingMessage);
-    } catch (UniqueViolationException nfe)
+    }
+    catch (UniqueViolationException nfe)
     {
       workingMessage = this.getDAO().lock(objectId);
     }

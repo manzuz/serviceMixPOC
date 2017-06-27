@@ -1,6 +1,5 @@
 package com.conztanz.connect.camel;
 
-import com.conztanz.connect.camel.AbstractLifeCycleOrchestrator;
 import com.conztanz.connect.continuity.ContinuityChecker;
 import com.conztanz.connect.continuity.SimpleIncreasingSequenceContinuityChecker;
 import com.conztanz.connect.identification.SimpleConnectIdentifier;
@@ -9,6 +8,7 @@ import com.conztanz.connect.locking.AbstractConnectLocker;
 import com.conztanz.connect.locking.SimpleConnectLocker;
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
+import com.conztanz.connect.persistence.IIncomingMessageDao;
 import com.conztanz.connect.persistence.IWaitingMessageDao;
 import com.conztanz.connect.persistence.SimpleSequencedWaitingMessageDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,9 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
 
   @Autowired
   private SimpleSequencedWaitingMessageDao simpleSequencedWaitingMessageDao ;
+
+  @Autowired
+  private IIncomingMessageDao incomingMessageDao;
   /**
    * @return
    */
@@ -58,10 +61,11 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
    * @return
    */
   @Override
-  public AbstractConnectLocker<String, SimpleSequencedWorkingMessage, ?, ?> getLocker()
+  public AbstractConnectLocker<String, SimpleSequencedIncomingMessage, SimpleSequencedWorkingMessage, ?, ?> getLocker()
   {
     return simpleConnectLocker;
   }
+
 
   /**
    * @return
@@ -79,5 +83,14 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
   public IWaitingMessageDao<String, SimpleSequencedIncomingMessage> getWaitingMessageDao()
   {
     return simpleSequencedWaitingMessageDao;
+  }
+
+  /**
+   * @return
+   */
+  @Override
+  public IIncomingMessageDao<String, SimpleSequencedIncomingMessage> getIncomingMessageDao()
+  {
+    return incomingMessageDao;
   }
 }

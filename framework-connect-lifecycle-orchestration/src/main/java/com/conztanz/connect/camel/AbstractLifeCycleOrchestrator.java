@@ -42,13 +42,13 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
     WORKING_MESSAGE workingMessage = null;
     INCOMING_MESSAGE incomingMessage;
 
-    // INITIALISATION
+    //  INITIALISATION
     incomingMessage = this.getInitializer().init(payload);
 
-    // IDENTIFICATION
+    //  IDENTIFICATION
     this.getIdentifier().identify(incomingMessage);
 
-    //LOCKING
+    //  LOCKING
     try
     {
       workingMessage = this.getLocker().lock(incomingMessage.getObjectId());
@@ -59,16 +59,14 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
       e.printStackTrace();
     }
 
-    //CONTINUITY
+    //  CONTINUITY
     try
     {
       this.getContinuityChecker().checkContinuity(incomingMessage, workingMessage);
     }
     catch (BlockedContinuityException e)
     {
-      //TODO add to waiting
       this.getWaitingMessageDao().add(incomingMessage);
-      e.printStackTrace();
       throw e;
     }
     catch (ContinuityException e)
@@ -77,6 +75,8 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
       this.getIncomingMessageDao().add(incomingMessage);
       throw e;
     }
+
+
     this.getIncomingMessageDao().add(incomingMessage);
     workingMessage.workOn(incomingMessage);
   }
@@ -87,8 +87,6 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
    */
   public abstract INITIALIZER getInitializer();
 
-
-
   /**
    * @return
    */
@@ -97,24 +95,21 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
   /**
    * @return
    */
-  public abstract AbstractConnectLocker<OBJECT_ID,INCOMING_MESSAGE, WORKING_MESSAGE, ?, ?> getLocker();
+  public abstract AbstractConnectLocker<OBJECT_ID, INCOMING_MESSAGE, WORKING_MESSAGE, ?, ?> getLocker();
 
   /**
-   *
    * @return
    */
   public abstract ContinuityChecker<OBJECT_ID, INCOMING_MESSAGE, WORKING_MESSAGE> getContinuityChecker();
 
   /**
-   *
    * @return
    */
-  public abstract IWaitingMessageDao<OBJECT_ID,INCOMING_MESSAGE> getWaitingMessageDao();
+  public abstract IWaitingMessageDao<OBJECT_ID, INCOMING_MESSAGE> getWaitingMessageDao();
 
   /**
-   *
    * @return
    */
-  public abstract IIncomingMessageDao<OBJECT_ID,INCOMING_MESSAGE> getIncomingMessageDao();
+  public abstract IIncomingMessageDao<OBJECT_ID, INCOMING_MESSAGE> getIncomingMessageDao();
 
 }
