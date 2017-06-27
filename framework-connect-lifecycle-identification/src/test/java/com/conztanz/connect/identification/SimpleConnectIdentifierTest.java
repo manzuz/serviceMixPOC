@@ -20,7 +20,7 @@ import static junit.framework.TestCase.assertEquals;
 public class SimpleConnectIdentifierTest {
 	
 	@Autowired
-	private   SimpleConnectIdentifier simpleConnectIdentifier;
+	private SimpleConnectIdentifier simpleConnectIdentifier;
 	@Test
 	public void identificationTest() throws IOException, ConnectIdentificationException
   {
