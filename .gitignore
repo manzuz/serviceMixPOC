@@ -1,9 +1,6 @@
-.classpath
-.project
-.settings/
-target/
-bin/
+/*/src/main/generated
+/*/src/test/generated
 
-**/.idea/
-**/*.iml
-node_modules
+/*/*ObjectStore*
+/*/*.epoch
+/*/tmlog*.log
