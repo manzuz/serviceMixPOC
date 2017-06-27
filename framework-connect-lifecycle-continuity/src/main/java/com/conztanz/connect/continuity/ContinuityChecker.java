@@ -17,32 +17,29 @@ public abstract class ContinuityChecker<OBJECT_ID,
                                         INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>,
                                         WORKING_MESSAGE  extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>>
 {
-    /**
-     * @param incomingMessage
-     * @param workingMessage
-     * @throws ContinuityException
-     */
-    public void checkContinuity(INCOMING_MESSAGE incomingMessage, WORKING_MESSAGE workingMessage) throws KOContinuityException, WORKINGContinuityException, SequenceContinuityException
+  /**
+   * @param incomingMessage
+   * @param workingMessage
+   * @throws ContinuityException
+   */
+  public void checkContinuity(INCOMING_MESSAGE incomingMessage, WORKING_MESSAGE workingMessage) throws KOContinuityException, WORKINGContinuityException, SequenceContinuityException
+  {
+    switch (workingMessage.getStatus())
     {
-        if(workingMessage.getStatus() == null)
-        {
-          workingMessage.setStatus(MessageStatus.WORKING);
-          return;
-        }
-
-        switch (workingMessage.getStatus())
-        {
-            case KO:
-                this.react2KOState(incomingMessage,workingMessage);
-                break;
-            case WORKING:
-                this.react2WORKINGState(incomingMessage,workingMessage);
-                break;
-            case OK:
-                this.react2OKState(incomingMessage, workingMessage);
-                break;
-        }
+      case NEW:
+        // 
+        break;
+      case KO:
+        this.react2KOState(incomingMessage, workingMessage);
+        break;
+      case WORKING:
+        this.react2WORKINGState(incomingMessage, workingMessage);
+        break;
+      case OK:
+        this.react2OKState(incomingMessage, workingMessage);
+        break;
     }
+  }
 
     /**
      * @param workingMessage
