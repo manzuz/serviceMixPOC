@@ -1,6 +1,9 @@
-/*/src/main/generated
-/*/src/test/generated
+.classpath
+.project
+.settings/
+target/
+bin/
 
-/*/*ObjectStore*
-/*/*.epoch
-/*/tmlog*.log
+**/.idea/
+**/*.iml
+node_modules
