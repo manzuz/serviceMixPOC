@@ -5,6 +5,7 @@ import com.conztanz.connect.exception.KOContinuityException;
 import com.conztanz.connect.exception.SequenceContinuityException;
 import com.conztanz.connect.exception.WORKINGContinuityException;
 import com.conztanz.connect.model.IncomingMessage;
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.WorkingMessage;
 
 /**
@@ -23,6 +24,12 @@ public abstract class ContinuityChecker<OBJECT_ID,
      */
     public void checkContinuity(INCOMING_MESSAGE incomingMessage, WORKING_MESSAGE workingMessage) throws KOContinuityException, WORKINGContinuityException, SequenceContinuityException
     {
+        if(workingMessage.getStatus() == null)
+        {
+          workingMessage.setStatus(MessageStatus.WORKING);
+          return;
+        }
+
         switch (workingMessage.getStatus())
         {
             case KO:
