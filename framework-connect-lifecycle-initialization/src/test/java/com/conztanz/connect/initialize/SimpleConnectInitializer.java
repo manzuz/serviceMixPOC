@@ -1,7 +1,7 @@
 package com.conztanz.connect.initialize;
 
-import com.conztanz.connect.factory.SimpleIncomingMessageFactory;
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
+import com.conztanz.connect.model.factory.SimpleIncomingMessageFactory;
 import com.conztanz.connect.transform.SimpleConnectTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 

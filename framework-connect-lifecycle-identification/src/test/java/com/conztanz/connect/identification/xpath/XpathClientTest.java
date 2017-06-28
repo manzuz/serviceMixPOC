@@ -41,7 +41,7 @@ public class XpathClientTest
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		InputStream is = this.getClass().getClassLoader().getResourceAsStream("./Xml_sample.xml");
 		Document doc = builder.parse(is);
-		String ObjectId = xpathClient.request("//root//objectID", doc);
+		String ObjectId = xpathClient.request("//message//objectID", doc);
 		assertEquals("123456789",ObjectId);
 		
 

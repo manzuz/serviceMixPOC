@@ -5,7 +5,6 @@ import com.conztanz.connect.exception.KOContinuityException;
 import com.conztanz.connect.exception.SequenceContinuityException;
 import com.conztanz.connect.exception.WORKINGContinuityException;
 import com.conztanz.connect.model.IncomingMessage;
-import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.WorkingMessage;
 
 /**
@@ -27,7 +26,7 @@ public abstract class ContinuityChecker<OBJECT_ID,
     switch (workingMessage.getStatus())
     {
       case NEW:
-        // 
+        //
         break;
       case KO:
         this.react2KOState(incomingMessage, workingMessage);

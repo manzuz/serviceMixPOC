@@ -34,7 +34,10 @@ public abstract class WorkingMessage<OBJECT_ID,
     this.objectId = objectId;
     this.status = status;
   }
-
+  public WorkingMessage(MessageStatus status)
+  {
+    this.status = status;
+  }
   public WorkingMessage()
   {
     super();

@@ -24,7 +24,7 @@ public class SimpleConnectIdentifier extends AbstractConnectIdentifier<SimpleSeq
   {
     try
     {
-      String objectID = xpathClient.request("//root//objectID", getDocument(incomingMessage));
+      String objectID = xpathClient.request("//message//objectID", getDocument(incomingMessage));
       if("".equals(objectID))
         throw new ObjectIdNotFoundException(null);
       incomingMessage.setObjectId(objectID);

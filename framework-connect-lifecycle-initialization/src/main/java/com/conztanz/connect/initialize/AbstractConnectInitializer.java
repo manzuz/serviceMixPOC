@@ -1,6 +1,6 @@
 package com.conztanz.connect.initialize;
-import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.model.IncomingMessage;
+import com.conztanz.connect.model.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.transform.IConnectTransformer;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
 

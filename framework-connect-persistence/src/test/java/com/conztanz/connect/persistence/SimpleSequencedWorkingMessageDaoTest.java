@@ -57,12 +57,14 @@ public class SimpleSequencedWorkingMessageDaoTest extends AbstractDaoTester<Simp
         SimpleSequencedWorkingMessage toStore = new SimpleSequencedWorkingMessage("123AZE",
                                                                                         42,
                                                                                         MessageStatus.WORKING);
-        this.getDao().addToto(toStore );
+        this.getDao().addToto(toStore);
         this.getDao().flush();
         SimpleSequencedWorkingMessage retrieved = this.getDao().findById(toStore .getId());
         assertEquals(toStore.getObjectId(),retrieved.getObjectId());
         assertEquals(toStore.getSequenceNumber(),retrieved.getSequenceNumber());
         assertEquals(toStore.getStatus(), MessageStatus.WORKING);
     }
+
+
 
 }

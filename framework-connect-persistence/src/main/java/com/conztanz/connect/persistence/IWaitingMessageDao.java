@@ -10,7 +10,7 @@ import com.conztanz.persistence.IAbstractEntityDao;
 //TODO : incoming message ????
 public interface IWaitingMessageDao<OBJECT_ID,
                                     ENTITY extends IncomingMessage<OBJECT_ID>>
-        extends IAbstractEntityDao<ENTITY>
+        extends IIncomingMessageDao<OBJECT_ID,ENTITY>
 {
     /**
      *
@@ -24,5 +24,4 @@ public interface IWaitingMessageDao<OBJECT_ID,
    * @param entity
    * @return
    */
-    ENTITY add(ENTITY entity) throws PersistenceException;
 }

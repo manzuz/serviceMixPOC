@@ -4,6 +4,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
 	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
-	<bean id="SimpleSequencedWorkingMessageFactory" class="com.conztanz.connect.locking.SimpleSequencedWorkingMessageFactory" scope="singleton" />
+	<bean id="SimpleSequencedWorkingMessageFactory" class="com.conztanz.connect.model.factory.SimpleSequencedWorkingMessageFactory" scope="singleton" />
     <bean id="SimpleConnectLocker" class="com.conztanz.connect.locking.SimpleConnectLocker" scope="singleton" />
 </beans>

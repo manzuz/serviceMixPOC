@@ -1,4 +1,4 @@
-package com.conztanz.connect.locking;
+package com.conztanz.connect.model.factory;
 
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
@@ -18,5 +18,5 @@ public abstract class AbstractWorkingMessageFactory<OBJECT_ID,
      * @param objectId
      * @return
      */
-    public  abstract WORKING_MESSAGE create(OBJECT_ID objectId);
+    public abstract WORKING_MESSAGE create(OBJECT_ID objectId);
 }

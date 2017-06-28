@@ -28,7 +28,11 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
   {
     this.rawPayload = rawPayload;
   }
-
+  public IncomingMessage(byte[] rawPayload , MessageStatus status)
+  {
+    this.rawPayload = rawPayload;
+    this.status=status;
+  }
   public IncomingMessage(OBJECT_ID objectId, byte[] rawPayload)
   {
     this.rawPayload = rawPayload;

@@ -1,6 +1,7 @@
 package com.conztanz.connect.locking;
 
 
+import com.conztanz.connect.model.factory.AbstractWorkingMessageFactory;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.connect.persistence.WorkingMessageDao;
@@ -25,7 +26,7 @@ public abstract class AbstractConnectLocker<OBJECT_ID,
                                             INCOMING_MESSAGE  extends IncomingMessage<OBJECT_ID>,
                                             WORKING_MESSAGE  extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>,
                                             DAO     extends WorkingMessageDao<OBJECT_ID,WORKING_MESSAGE>,
-                                            FACTORY extends  AbstractWorkingMessageFactory<OBJECT_ID,INCOMING_MESSAGE,WORKING_MESSAGE>>
+                                            FACTORY extends AbstractWorkingMessageFactory<OBJECT_ID,INCOMING_MESSAGE,WORKING_MESSAGE>>
 {
   /**
    * @param objectId

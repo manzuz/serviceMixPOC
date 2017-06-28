@@ -1,8 +1,7 @@
-package com.conztanz.connect.factory;
+package com.conztanz.connect.model.factory;
 
-import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
-import com.conztanz.factory.AbstractEntityFactory;
 
 /**
  * Created by User on 6/26/2017.
@@ -17,6 +16,6 @@ public class SimpleIncomingMessageFactory extends AbstractIncomingMessageFactory
   public SimpleSequencedIncomingMessage createMessage(byte[] payload)
   {
     //TODO revoir
-    return new SimpleSequencedIncomingMessage(payload,-1);
+    return new SimpleSequencedIncomingMessage(payload, MessageStatus.NEW);
   }
 }

@@ -1,4 +1,4 @@
-package com.conztanz.connect.factory;
+package com.conztanz.connect.model.factory;
 
 import com.conztanz.connect.model.IncomingMessage;
 

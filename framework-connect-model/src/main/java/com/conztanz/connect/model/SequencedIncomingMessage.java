@@ -19,6 +19,11 @@ public class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessage<OBJECT_
     {
         super(rawPayload);
     }
+
+  public SequencedIncomingMessage(byte[] rawPayload,MessageStatus status)
+  {
+    super(rawPayload,status);
+  }
     public SequencedIncomingMessage(OBJECT_ID objectId , byte[] rawPayload)
     {
         super(objectId,rawPayload);

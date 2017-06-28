@@ -11,10 +11,15 @@ import com.conztanz.connect.initialize.IConnectInitializer;
 import com.conztanz.connect.locking.AbstractConnectLocker;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
+import com.conztanz.connect.model.factory.AbstractIncomingMessageFactory;
+import com.conztanz.connect.model.factory.AbstractWaitingMessageFactory;
 import com.conztanz.connect.persistence.IIncomingMessageDao;
 import com.conztanz.connect.persistence.IWaitingMessageDao;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
+import com.conztanz.exception.ConztanzException;
 import com.conztanz.exception.PersistenceException;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -25,6 +30,7 @@ import com.conztanz.exception.PersistenceException;
  *   TODO : move generics
  */
 public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
+                                                    WAITING_MESSAGE extends IncomingMessage<OBJECT_ID>,
                                                     INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>,
                                                     WORKING_MESSAGE extends WorkingMessage<OBJECT_ID,INCOMING_MESSAGE>,
                                                     INITIALIZER extends IConnectInitializer<INCOMING_MESSAGE >,
@@ -37,6 +43,11 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
    * @throws ConnectTransformationException
    * @throws ConnectIdentificationException
    */
+  @Transactional(value = "ConztanzTransactionManager",
+          propagation = Propagation.REQUIRED,
+          readOnly = false,
+          rollbackFor = {ConztanzException.class},
+          noRollbackFor = {ContinuityException.class})
   public void startLifeCycle(byte[] payload) throws ConnectTransformationException, ConnectIdentificationException, PersistenceException, BlockedContinuityException, SequenceContinuityException
   {
     WORKING_MESSAGE workingMessage = null;
@@ -62,11 +73,13 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
     //  CONTINUITY
     try
     {
+
       this.getContinuityChecker().checkContinuity(incomingMessage, workingMessage);
     }
     catch (BlockedContinuityException e)
     {
-      this.getWaitingMessageDao().add(incomingMessage);
+      WAITING_MESSAGE waitingMessage = this.getWaitingMessageFactory().createMessage(incomingMessage);
+      this.getWaitingMessageDao().add(waitingMessage);
       throw e;
     }
     catch (ContinuityException e)
@@ -75,8 +88,6 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
       this.getIncomingMessageDao().add(incomingMessage);
       throw e;
     }
-
-
     this.getIncomingMessageDao().add(incomingMessage);
     workingMessage.workOn(incomingMessage);
   }
@@ -85,31 +96,37 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
   /**
    * @return
    */
-  public abstract INITIALIZER getInitializer();
+  protected abstract INITIALIZER getInitializer();
 
   /**
    * @return
    */
-  public abstract IDENTIFIER getIdentifier();
+  protected abstract IDENTIFIER getIdentifier();
 
   /**
    * @return
    */
-  public abstract AbstractConnectLocker<OBJECT_ID, INCOMING_MESSAGE, WORKING_MESSAGE, ?, ?> getLocker();
+  protected abstract AbstractConnectLocker<OBJECT_ID, INCOMING_MESSAGE, WORKING_MESSAGE, ?, ?> getLocker();
 
   /**
    * @return
    */
-  public abstract ContinuityChecker<OBJECT_ID, INCOMING_MESSAGE, WORKING_MESSAGE> getContinuityChecker();
+  protected abstract ContinuityChecker<OBJECT_ID, INCOMING_MESSAGE, WORKING_MESSAGE> getContinuityChecker();
 
   /**
    * @return
    */
-  public abstract IWaitingMessageDao<OBJECT_ID, INCOMING_MESSAGE> getWaitingMessageDao();
+  protected abstract IWaitingMessageDao<OBJECT_ID, WAITING_MESSAGE> getWaitingMessageDao();
 
   /**
    * @return
    */
-  public abstract IIncomingMessageDao<OBJECT_ID, INCOMING_MESSAGE> getIncomingMessageDao();
+  protected abstract IIncomingMessageDao<OBJECT_ID, INCOMING_MESSAGE> getIncomingMessageDao();
+
+  /**
+   *
+   * @return
+   */
+  protected abstract AbstractWaitingMessageFactory<INCOMING_MESSAGE,WAITING_MESSAGE> getWaitingMessageFactory();
 
 }

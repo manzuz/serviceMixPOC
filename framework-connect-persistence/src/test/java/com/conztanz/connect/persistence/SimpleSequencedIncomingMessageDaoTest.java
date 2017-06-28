@@ -1,5 +1,6 @@
 package com.conztanz.connect.persistence;
 
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
 import com.conztanz.connect.persistence.IIncomingMessageDao;
 import com.conztanz.connect.persistence.IncomingMessageDao;
@@ -7,6 +8,7 @@ import com.conztanz.exception.PersistenceException;
 import com.conztanz.factory.AbstractEntityTestFactory;
 import com.conztanz.persistence.AbstractDaoTester;
 import com.conztanz.persistence.IAbstractEntityDao;
+import com.conztanz.persistence.datasource.PGConztanzConnection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,11 +56,23 @@ public class SimpleSequencedIncomingMessageDaoTest extends AbstractDaoTester<Sim
     @Test
     public void testRawPayLoadStorage() throws PersistenceException
     {
-        SimpleSequencedIncomingMessage message1 = new SimpleSequencedIncomingMessage(new byte[10],1);
+      try
+      {
+        SimpleSequencedIncomingMessage message1 = new SimpleSequencedIncomingMessage(new byte[100], MessageStatus.OK);
+        message1.setObjectId("134");
         this.getDao().add(message1);
+        this.getDao().flush();
+      //PGConztanzConnection.startSQLExtraction();
+message1.setRawPayload(new byte[100]);
+      this.getDao().flush();
         //TODO null ??????
-        SimpleSequencedIncomingMessage message2 = new SimpleSequencedIncomingMessage(null,1);
-        this.getDao().add(message2);
-
+//        SimpleSequencedIncomingMessage message2 = new SimpleSequencedIncomingMessage(null,1);
+//        this.getDao().add(message2);
+      }
+  catch(Exception ex)
+  {
+    int i = 0;
+    ex.printStackTrace();
+  }
     }
 }

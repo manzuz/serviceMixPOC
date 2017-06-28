@@ -14,6 +14,11 @@ public class SimpleSequencedIncomingMessage extends SequencedIncomingMessage<Str
     {
         super(rawPayload, sequenceNumber);
     }
+
+  public SimpleSequencedIncomingMessage(byte[] rawPayload, MessageStatus status)
+  {
+    super(rawPayload, status);
+  }
     public SimpleSequencedIncomingMessage(String objectId ,byte[] rawPayload,int sequenceNumber)
     {
         super(objectId,rawPayload, sequenceNumber);

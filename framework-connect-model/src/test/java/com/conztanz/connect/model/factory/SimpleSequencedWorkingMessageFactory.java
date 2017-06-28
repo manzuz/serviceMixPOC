@@ -1,5 +1,6 @@
-package com.conztanz.connect.locking;
+package com.conztanz.connect.model.factory;
 
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
 
@@ -11,6 +12,6 @@ public class SimpleSequencedWorkingMessageFactory extends AbstractWorkingMessage
     @Override
     public SimpleSequencedWorkingMessage create(String objectID)
     {
-        return new SimpleSequencedWorkingMessage(objectID);
+        return new SimpleSequencedWorkingMessage(objectID, MessageStatus.NEW);
     }
 }

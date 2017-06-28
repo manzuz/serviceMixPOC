@@ -10,5 +10,6 @@ public enum MessageStatus
   WORKING,
   OK,
   KO,
-  REJECTED
+  REJECTED,
+  NEW
 }
