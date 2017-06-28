@@ -17,6 +17,29 @@
             <groupId>com.conztanz</groupId>
             <artifactId>${framework.connect.artifact.base}-persistence</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-model</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-testing</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
