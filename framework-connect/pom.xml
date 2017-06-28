@@ -41,6 +41,7 @@
         <module>../framework-connect-lifecycle-initialization</module>
         <module>../framework-connect-lifecycle-identification</module>
         <module>../framework-connect-lifecycle-continuity</module>
+        <module>../framework-connect-lifecycle-services</module>
         <!--TODO  : reorder-->
         <module>../framework-connect-lifecycle-orchestration</module>
         <module>../framework-connect-lifecycle-locking</module>
