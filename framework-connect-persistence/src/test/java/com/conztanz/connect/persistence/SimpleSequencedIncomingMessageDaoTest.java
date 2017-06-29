@@ -27,52 +27,40 @@ import org.springframework.transaction.annotation.Transactional;
 public class SimpleSequencedIncomingMessageDaoTest extends AbstractDaoTester<SimpleSequencedIncomingMessage>
 {
 
-    @Autowired
-    private ISimpleSequencedIncomingMessageDao dao;
-    /**
-     * Getter of the DAO to be tested
-     *
-     * @return The DAO to be tested
-     */
-    @Override
-    protected ISimpleSequencedIncomingMessageDao getDao()
-    {
-        return dao;
-    }
+  @Autowired
+  private ISimpleSequencedIncomingMessageDao dao;
 
-    /**
-     * Getter of the DAO to be tested
-     *
-     * @return The DAO to be tested
-     */
-    @Override
-    protected AbstractEntityTestFactory<SimpleSequencedIncomingMessage> getTestFactory()
-    {
-        return null;
-    }
-
-
-    @Transactional
-    @Test
-    public void testRawPayLoadStorage() throws PersistenceException
-    {
-      try
-      {
-        SimpleSequencedIncomingMessage message1 = new SimpleSequencedIncomingMessage(new byte[100], MessageStatus.OK);
-        message1.setObjectId("134");
-        this.getDao().add(message1);
-        this.getDao().flush();
-      //PGConztanzConnection.startSQLExtraction();
-message1.setRawPayload(new byte[100]);
-      this.getDao().flush();
-        //TODO null ??????
-//        SimpleSequencedIncomingMessage message2 = new SimpleSequencedIncomingMessage(null,1);
-//        this.getDao().add(message2);
-      }
-  catch(Exception ex)
+  /**
+   * Getter of the DAO to be tested
+   *
+   * @return The DAO to be tested
+   */
+  @Override
+  protected ISimpleSequencedIncomingMessageDao getDao()
   {
-    int i = 0;
-    ex.printStackTrace();
+    return dao;
   }
-    }
+
+  /**
+   * Getter of the DAO to be tested
+   *
+   * @return The DAO to be tested
+   */
+  @Override
+  protected AbstractEntityTestFactory<SimpleSequencedIncomingMessage> getTestFactory()
+  {
+    return null;
+  }
+
+
+  @Transactional
+  @Test
+  public void testRawPayLoadStorage() throws PersistenceException
+  {
+
+    SimpleSequencedIncomingMessage message1 = new SimpleSequencedIncomingMessage(new byte[100], MessageStatus.OK);
+    message1.setObjectId("134");
+    this.getDao().add(message1);
+    this.getDao().flush();
+  }
 }

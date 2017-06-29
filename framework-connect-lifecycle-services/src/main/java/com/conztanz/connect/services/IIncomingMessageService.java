@@ -2,7 +2,7 @@ package com.conztanz.connect.services;
 
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.exception.PersistenceException;
-import com.conztanz.transport.ConztanzResultSet;
+import com.conztanz.transport.ConztanzResultList;
 
 /**
  *
@@ -18,5 +18,5 @@ public interface IIncomingMessageService<OBJECT_ID,
    * @param objectId
    * @return
    */
-  ConztanzResultSet<INCOMING_MESSAGE> getIncomingMessage(OBJECT_ID objectId) throws PersistenceException;
+  ConztanzResultList<INCOMING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException;
 }

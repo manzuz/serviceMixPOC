@@ -6,5 +6,6 @@
 
 	<bean id="SimpleWorkingMessageService" class="com.conztanz.connect.services.SimpleWorkingMessageService" scope="singleton" />
     <bean id="SimpleWaitingMessageService" class="com.conztanz.connect.services.SimpleWaitingMessageService" scope="singleton" />
+    <bean id="SimpleIncomingMessageService" class="com.conztanz.connect.services.SimpleIncomingMessageService" scope="singleton" />
 
 </beans>

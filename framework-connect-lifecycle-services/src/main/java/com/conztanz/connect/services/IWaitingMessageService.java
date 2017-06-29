@@ -2,6 +2,7 @@ package com.conztanz.connect.services;
 
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
+import com.conztanz.exception.PersistenceException;
 import com.conztanz.transport.ConztanzResultList;
 
 /**
@@ -16,7 +17,7 @@ public interface IWaitingMessageService<OBJECT_ID,
    * @param objectId
    * @return
    */
-  ConztanzResultList<WAITING_MESSAGE> getWaitingMessage(OBJECT_ID objectId);
+  ConztanzResultList<WAITING_MESSAGE> getWaitingMessage(OBJECT_ID objectId) throws PersistenceException;
 
 
 }

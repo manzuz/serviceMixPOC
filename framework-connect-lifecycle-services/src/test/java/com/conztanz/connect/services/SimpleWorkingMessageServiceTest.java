@@ -2,6 +2,8 @@ package com.conztanz.connect.services;
 
 import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
+import com.conztanz.exception.PersistenceException;
+import com.conztanz.transport.ConztanzResult;
 import com.conztanz.transport.ConztanzResultList;
 import static org.junit.Assert.*;
 
@@ -32,15 +34,13 @@ public class SimpleWorkingMessageServiceTest
 
 
   @Test
-  public void test()
+  public void test() throws PersistenceException
   {
     String objectId = StringUtils.randomAlphaNumeric(10);
     SimpleSequencedWorkingMessage msg = new SimpleSequencedWorkingMessage(objectId,42, MessageStatus.WORKING);
-    simpleWorkingMessageService.AddWorkingMessage(msg);
-    ConztanzResultList<SimpleSequencedWorkingMessage> result  = simpleWorkingMessageService.getWorkingMessage(objectId);
-    List<SimpleSequencedWorkingMessage> resultSet = result.getResult();
-    assert (resultSet .size() >=  1);
-    SimpleSequencedWorkingMessage retrieved  = resultSet.get(0);
+    simpleWorkingMessageService.add(msg);
+    ConztanzResult<SimpleSequencedWorkingMessage> result  = simpleWorkingMessageService.find(objectId);
+    SimpleSequencedWorkingMessage retrieved = result.getResult();
     assertEquals(retrieved.getStatus(),MessageStatus.WORKING);
     assertEquals(retrieved.getObjectId(),objectId);
 

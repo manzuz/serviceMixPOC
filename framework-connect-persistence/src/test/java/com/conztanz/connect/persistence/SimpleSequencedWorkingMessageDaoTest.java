@@ -41,14 +41,7 @@ public class SimpleSequencedWorkingMessageDaoTest extends AbstractDaoTester<Simp
     }
 
 
-//    @Test
-//    @Transactional
-//    public void testLock() throws PersistenceException
-//    {
-//
-//        SimpleSequencedWorkingMessage workingMessage = this.getDao().addToto(new SimpleSequencedWorkingMessage("123456789"));
-//
-//    }
+
 
     @Test
     @Transactional

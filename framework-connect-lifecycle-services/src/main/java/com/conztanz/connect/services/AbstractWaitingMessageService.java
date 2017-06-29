@@ -18,17 +18,9 @@ public abstract class AbstractWaitingMessageService<OBJECT_ID,
 
 {
   @Override
-  public ConztanzResultList<WAITING_MESSAGE> getWaitingMessage(OBJECT_ID objectId)
+  public ConztanzResultList<WAITING_MESSAGE> getWaitingMessage(OBJECT_ID objectId) throws PersistenceException
   {
-    ConztanzResultList<WAITING_MESSAGE> resultList = null;
-    try
-    {
-      resultList = getDao().findList(objectId);
-    } catch (PersistenceException e)
-    {
-      e.printStackTrace();
-    }
-    return resultList;
+    return  getDao().findList(objectId);
   }
 
   protected abstract WaitingMessageDao<OBJECT_ID, WAITING_MESSAGE> getDao();

@@ -11,7 +11,6 @@ import com.conztanz.connect.initialize.IConnectInitializer;
 import com.conztanz.connect.locking.AbstractConnectLocker;
 import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
-import com.conztanz.connect.model.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.model.factory.AbstractWaitingMessageFactory;
 import com.conztanz.connect.persistence.IIncomingMessageDao;
 import com.conztanz.connect.persistence.IWaitingMessageDao;
@@ -82,7 +81,7 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
       this.getWaitingMessageDao().add(waitingMessage);
       throw e;
     }
-    catch (ContinuityException e)
+    catch (SequenceContinuityException e)
     {
       incomingMessage.reject(e);
       this.getIncomingMessageDao().add(incomingMessage);
@@ -90,6 +89,8 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
     }
     this.getIncomingMessageDao().add(incomingMessage);
     workingMessage.workOn(incomingMessage);
+
+
   }
 
 

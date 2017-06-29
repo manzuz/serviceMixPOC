@@ -24,6 +24,6 @@ public interface IWorkingMessageService<OBJECT_ID,
    *
    * @param workingMessage
    */
-  void Add(WORKING_MESSAGE workingMessage) throws PersistenceException;
+  void add(WORKING_MESSAGE workingMessage) throws PersistenceException;
 
 }

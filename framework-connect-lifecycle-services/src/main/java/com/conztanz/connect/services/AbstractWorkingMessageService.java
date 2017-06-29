@@ -28,8 +28,7 @@ public abstract class AbstractWorkingMessageService<  OBJECT_ID,
   @Override
   public ConztanzResult<WORKING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException
   {
-    WORKING_MESSAGE workingMessage = null;
-    workingMessage = this.getDao().getOne(objectId);
+    WORKING_MESSAGE workingMessage = this.getDao().getOne(objectId);
     return new ConztanzResult<>(workingMessage);
   }
 
@@ -37,7 +36,7 @@ public abstract class AbstractWorkingMessageService<  OBJECT_ID,
    * @param workingMessage
    */
   @Override
-  public void Add(WORKING_MESSAGE workingMessage) throws PersistenceException
+  public void add(WORKING_MESSAGE workingMessage) throws PersistenceException
   {
     this.getDao().addToto(workingMessage);
   }
