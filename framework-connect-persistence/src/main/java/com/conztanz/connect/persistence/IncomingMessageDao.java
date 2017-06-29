@@ -13,7 +13,7 @@ import com.conztanz.persistence.IAbstractEntityDao;
  */
 public abstract class IncomingMessageDao<OBJECT_ID,
                                          ENTITY extends IncomingMessage<OBJECT_ID>>
-        extends    AbstractEntityDaoImpl<ENTITY>
+        extends    AbstractMessageDao<OBJECT_ID,ENTITY>
         implements IIncomingMessageDao<OBJECT_ID,ENTITY>
 {
     /**

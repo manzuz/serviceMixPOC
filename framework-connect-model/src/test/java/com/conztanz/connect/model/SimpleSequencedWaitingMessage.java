@@ -10,19 +10,29 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 public class SimpleSequencedWaitingMessage extends SequencedIncomingMessage<String>
 {
-    public SimpleSequencedWaitingMessage(byte[] rawPayload, int sequenceNumber)
-    {
-        super(rawPayload, sequenceNumber);
-    }
-    public SimpleSequencedWaitingMessage(String objectId , byte[] rawPayload, int sequenceNumber)
-    {
-        super(objectId,rawPayload, sequenceNumber);
-    }
-    @Override
-    @Column(name = "OBJECT_ID", nullable = false, unique = false)
-    @Access(AccessType.PROPERTY)
-    public String getObjectId()
-    {
-        return super.getObjectId();
-    }
+  public SimpleSequencedWaitingMessage(byte[] rawPayload, int sequenceNumber)
+  {
+    super(rawPayload, sequenceNumber);
+  }
+  public SimpleSequencedWaitingMessage()
+  {
+    super( );
+  }
+  public SimpleSequencedWaitingMessage(SimpleSequencedIncomingMessage simpleSequencedIncomingMessage)
+  {
+    super(simpleSequencedIncomingMessage);
+  }
+
+  public SimpleSequencedWaitingMessage(String objectId, byte[] rawPayload, int sequenceNumber)
+  {
+    super(objectId, rawPayload, sequenceNumber);
+  }
+
+  @Override
+  @Column(name = "OBJECT_ID", nullable = false, unique = false)
+  @Access(AccessType.PROPERTY)
+  public String getObjectId()
+  {
+    return super.getObjectId();
+  }
 }

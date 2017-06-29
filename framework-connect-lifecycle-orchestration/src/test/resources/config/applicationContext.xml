@@ -23,7 +23,7 @@
 	<import resource="classpath:config/applicationContext-model.xml" />
 	<!-- JSon parsing definition -->
 	<import resource="classpath:config/applicationContext-json.xml" />
-    <!-- TODO normalize files names -->
+    <!-- TODO normalize files names (wildcards ??)-->
     <!-- Connect persistence beans  -->
     <import resource="classpath:config/persistence/applicationContext-persistence-connect-lifecycle-beans.xml" />
     <import resource="classpath:config/applicationContext-persistence-test.xml" />
@@ -37,6 +37,8 @@
     <import resource="classpath:config/continuity/applicationContext-connect-continuity-beans.xml" />
     <!-- Connect orchestration beans  -->
     <import resource="classpath:config/applicationContext-connect-orchestration-beans.xml" />
+    <!-- Connect services beans  -->
+    <import resource="classpath:config/applicationContext-connect-services-beans.xml" />
 
 
 </beans>

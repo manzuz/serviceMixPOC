@@ -7,48 +7,58 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessage<OBJECT_ID>
+public abstract class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessage<OBJECT_ID>
 {
 
-    @Transient
-    private int sequenceNumber;
+  @Transient
+  private int sequenceNumber;
 
 
-
-    public SequencedIncomingMessage(byte[] rawPayload)
-    {
-        super(rawPayload);
-    }
-
-  public SequencedIncomingMessage(byte[] rawPayload,MessageStatus status)
+  public SequencedIncomingMessage(byte[] rawPayload)
   {
-    super(rawPayload,status);
+    super(rawPayload);
   }
-    public SequencedIncomingMessage(OBJECT_ID objectId , byte[] rawPayload)
-    {
-        super(objectId,rawPayload);
-    }
-    public SequencedIncomingMessage(byte[] rawPayload,int sequenceNumber)
-    {
-        super(rawPayload);
-        this.sequenceNumber=sequenceNumber;
-    }
+  public SequencedIncomingMessage()
+  {
+    super();
+  }
+  public SequencedIncomingMessage(SequencedIncomingMessage<OBJECT_ID> sequencedIncomingMessage)
+  {
+    super(sequencedIncomingMessage);
+    this.setSequenceNumber(sequencedIncomingMessage.getSequenceNumber());
+  }
+  public SequencedIncomingMessage(byte[] rawPayload, MessageStatus status)
+  {
+    super(rawPayload, status);
+  }
 
-    public SequencedIncomingMessage(OBJECT_ID objectId , byte[] rawPayload,int sequenceNumber)
-    {
-        super(objectId,rawPayload);
-        this.sequenceNumber=sequenceNumber;
-    }
-    @Access(AccessType.PROPERTY)
-    @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
-    public int getSequenceNumber()
-    {
-        return sequenceNumber;
-    }
+  public SequencedIncomingMessage(OBJECT_ID objectId, byte[] rawPayload)
+  {
+    super(objectId, rawPayload);
+  }
+
+  public SequencedIncomingMessage(byte[] rawPayload, int sequenceNumber)
+  {
+    super(rawPayload);
+    this.sequenceNumber = sequenceNumber;
+  }
+
+  public SequencedIncomingMessage(OBJECT_ID objectId, byte[] rawPayload, int sequenceNumber)
+  {
+    super(objectId, rawPayload);
+    this.sequenceNumber = sequenceNumber;
+  }
+
+  @Access(AccessType.PROPERTY)
+  @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
+  public int getSequenceNumber()
+  {
+    return sequenceNumber;
+  }
 
 
-    public void setSequenceNumber(int sequenceNumber)
-    {
-        this.sequenceNumber = sequenceNumber;
-    }
+  public void setSequenceNumber(int sequenceNumber)
+  {
+    this.sequenceNumber = sequenceNumber;
+  }
 }

@@ -67,6 +67,17 @@
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-lifecycle-services</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-connect-lifecycle-services</artifactId>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
             <artifactId>framework-connect-model</artifactId>
             <type>test-jar</type>
             <scope>test</scope>

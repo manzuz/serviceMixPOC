@@ -1,23 +1,23 @@
 package com.conztanz.connect.model.factory;
 
-import com.conztanz.connect.model.MessageStatus;
-import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
-import com.conztanz.connect.model.SimpleSequencedWaitingMessage;
-import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
+import com.conztanz.connect.model.*;
 
 /**
  * Created by User on 6/19/2017.
  */
-public class SimpleSequencedWaitingMessageFactory extends AbstractIncomingMessageFactory<SimpleSequencedWaitingMessage>
+public class SimpleSequencedWaitingMessageFactory extends AbstractWaitingMessageFactory<SimpleSequencedIncomingMessage,SimpleSequencedWaitingMessage>
 {
 
+
+
+
   /**
-   * @param payload
+   * @param message
    * @return
    */
   @Override
-  public SimpleSequencedWaitingMessage createMessage(byte[] payload)
+  public SimpleSequencedWaitingMessage createMessage(SimpleSequencedIncomingMessage message)
   {
-    return null;
+    return new SimpleSequencedWaitingMessage(message);
   }
 }

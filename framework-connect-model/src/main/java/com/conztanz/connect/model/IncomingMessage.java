@@ -7,37 +7,38 @@ import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
+public abstract class IncomingMessage<OBJECT_ID> extends AbstractMessage<OBJECT_ID>
 {
-
-
   @Transient
   private byte[] rawPayload;
 
   @Transient
-  private OBJECT_ID objectId;
-
-  @Transient
   private String transformedPayload;
-
-  @Transient
-  private MessageStatus status;
-
 
   public IncomingMessage(byte[] rawPayload)
   {
+    super();
     this.rawPayload = rawPayload;
   }
-  public IncomingMessage(byte[] rawPayload , MessageStatus status)
+  public IncomingMessage( )
+  {
+    super();
+  }
+  public IncomingMessage(IncomingMessage<OBJECT_ID> incomingMessage)
+  {
+    super(incomingMessage);
+    this.setRawPayload(incomingMessage.getRawPayload());
+    this.setTransformedPayload(incomingMessage.getTransformedPayload());
+  }
+
+  public IncomingMessage(byte[] rawPayload, MessageStatus status)
   {
     this.rawPayload = rawPayload;
-    this.status=status;
+    super.setStatus(status);
   }
-  public IncomingMessage(OBJECT_ID objectId, byte[] rawPayload)
-  {
-    this.rawPayload = rawPayload;
-    this.objectId = objectId;
-  }
+
+
+
   @Access(AccessType.PROPERTY)
   @Column(name = "RAW_PAYLOAD", nullable = false)
   public byte[] getRawPayload()
@@ -52,19 +53,11 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
     return transformedPayload;
   }
 
-  @Access(AccessType.PROPERTY)
-  @Enumerated(EnumType.STRING)
-  @Column(name = "STATUS", nullable = false)
-  public MessageStatus getStatus()
-  {
-    return status;
-  }
 
-  protected void setStatus(MessageStatus status)
+  public void setRawPayload(byte[] rawPayload)
   {
-    this.status = status;
+    this.rawPayload = rawPayload;
   }
-
   public void setTransformedPayload(String transformedPayload)
   {
     this.transformedPayload = transformedPayload;
@@ -75,31 +68,11 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractEntity
   {
     return false;
   }
-  //TODO exception type
-  public void reject(ConztanzException e)
-  {
-    this.setStatus(MessageStatus.REJECTED);
-  }
 
   @Override
   protected boolean sameLinksInternal(Object toBeCompared)
   {
     return false;
-  }
-
-  public OBJECT_ID getObjectId()
-  {
-    return objectId;
-  }
-
-  public void setObjectId(OBJECT_ID objectId)
-  {
-    this.objectId = objectId;
-  }
-
-  public void setRawPayload(byte[] rawPayload)
-  {
-    this.rawPayload = rawPayload;
   }
 
 

@@ -12,6 +12,7 @@ import com.conztanz.connect.model.SimpleSequencedWaitingMessage;
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
 import com.conztanz.connect.model.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.model.factory.AbstractWaitingMessageFactory;
+import com.conztanz.connect.model.factory.SimpleSequencedWaitingMessageFactory;
 import com.conztanz.connect.persistence.IIncomingMessageDao;
 import com.conztanz.connect.persistence.IWaitingMessageDao;
 import com.conztanz.connect.persistence.SimpleSequencedIncomingMessageDao;
@@ -21,12 +22,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Created by User on 6/26/2017.
  */
-public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< String,
-                                                                                SimpleSequencedWaitingMessage,
-                                                                                SimpleSequencedIncomingMessage,
-                                                                                SimpleSequencedWorkingMessage,
-                                                                                SimpleConnectInitializer,
-                                                                                SimpleConnectIdentifier>
+public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator<String,
+        SimpleSequencedWaitingMessage,
+        SimpleSequencedIncomingMessage,
+        SimpleSequencedWorkingMessage,
+        SimpleConnectInitializer,
+        SimpleConnectIdentifier>
 {
   @Autowired
   private SimpleConnectInitializer simpleConnectInitializer;
@@ -35,18 +36,22 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
   private SimpleConnectIdentifier simpleConnectIdentifier;
 
   @Autowired
-  private  SimpleConnectLocker simpleConnectLocker;
+  private SimpleConnectLocker simpleConnectLocker;
 
   @Autowired
-  private SimpleIncreasingSequenceContinuityChecker simpleIncreasingSequenceContinuityChecker ;
+  private SimpleIncreasingSequenceContinuityChecker simpleIncreasingSequenceContinuityChecker;
 
   @Autowired
-  private SimpleSequencedWaitingMessageDao simpleSequencedWaitingMessageDao ;
+  private SimpleSequencedWaitingMessageDao simpleSequencedWaitingMessageDao;
 
   @Autowired
   private SimpleSequencedIncomingMessageDao incomingMessageDao;
-//  @Autowired/*
-//  private Simp*/le
+
+  @Autowired
+  private SimpleSequencedWaitingMessageFactory simpleSequencedWaitingMessageFactory;
+
+
+
   /**
    * @return
    */
@@ -81,7 +86,7 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
   @Override
   public ContinuityChecker<String, SimpleSequencedIncomingMessage, SimpleSequencedWorkingMessage> getContinuityChecker()
   {
-    return  simpleIncreasingSequenceContinuityChecker;
+    return simpleIncreasingSequenceContinuityChecker;
   }
 
   /**
@@ -108,7 +113,7 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator< 
   @Override
   protected AbstractWaitingMessageFactory<SimpleSequencedIncomingMessage, SimpleSequencedWaitingMessage> getWaitingMessageFactory()
   {
-    return null;
+    return simpleSequencedWaitingMessageFactory;
   }
 
 

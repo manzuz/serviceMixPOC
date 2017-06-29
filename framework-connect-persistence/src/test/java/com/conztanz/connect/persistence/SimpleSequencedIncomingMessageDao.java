@@ -1,6 +1,8 @@
 package com.conztanz.connect.persistence;
 
 import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
+import com.conztanz.connect.model.SimpleSequencedWorkingMessage_;
+import com.conztanz.model.jpa.ConztanzField.ConztanzFieldSimple;
 
 /**
  * Created by User on 6/22/2017.
@@ -19,7 +21,16 @@ public class SimpleSequencedIncomingMessageDao extends SequencedIncomingMessageD
         super(simpleSequencedIncomingMessageClass);
     }
 
-    /**
+  /**
+   * @return
+   */
+  @Override
+  public ConztanzFieldSimple buildObjectIdField()
+  {
+    return new ConztanzFieldSimple<>(SimpleSequencedWorkingMessage_.objectId);
+  }
+
+  /**
      *
      */
     public SimpleSequencedIncomingMessageDao()

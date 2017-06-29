@@ -5,10 +5,10 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(WorkingMessage.class)
-public abstract class WorkingMessage_ extends com.conztanz.connect.model.AbstractMessage_ {
+@StaticMetamodel(AbstractMessage.class)
+public abstract class AbstractMessage_ extends com.conztanz.model.AbstractEntity_ {
 
-	public static volatile SingularAttribute<WorkingMessage, Long> incomingMessageId;
+	public static volatile SingularAttribute<AbstractMessage, MessageStatus> status;
 
 }
 

@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 public abstract class WorkingMessageDao<OBJECT_ID,
                                         ENTITY extends WorkingMessage<OBJECT_ID,?>>
-        extends     AbstractEntityDaoImpl<ENTITY>
+        extends     AbstractMessageDao<OBJECT_ID,ENTITY>
         implements  IWorkingMessageDao<OBJECT_ID, ENTITY>
 {
 
@@ -31,21 +31,7 @@ public abstract class WorkingMessageDao<OBJECT_ID,
         super(entityClass);
     }
 
-    /**
-     * @return
-     */
-    @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, propagation = Propagation.SUPPORTS)
-    public abstract ConztanzFieldSimple<ENTITY, OBJECT_ID> buildObjectIdField();
 
-    /**
-     * @param objectIds
-     * @return
-     */
-    @Transactional(readOnly = true, rollbackFor = {ConztanzException.class}, propagation = Propagation.SUPPORTS)
-    public ConztanzData<ENTITY, OBJECT_ID> buildObjectIdCriteria(OBJECT_ID... objectIds)
-    {
-        return this.buildData(this.buildObjectIdField(), objectIds);
-    }
 
 
     /**
@@ -62,17 +48,6 @@ public abstract class WorkingMessageDao<OBJECT_ID,
         return entity;
     }
 
-    /**
-     *
-     * @param objectId
-     * @return
-     * @throws PersistenceException
-     * @throws NotFoundException
-     */
-    public ENTITY getOne(OBJECT_ID objectId) throws PersistenceException ,NotFoundException
-    {
-        return this.getOne(this.buildObjectIdCriteria(objectId));
-    }
 
     /**
      *

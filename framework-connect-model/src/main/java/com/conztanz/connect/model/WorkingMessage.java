@@ -11,45 +11,35 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 //TODO IS object ID automatically passed on to IncomingMessage ???
 public abstract class WorkingMessage<OBJECT_ID,
-                                     INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>>
-        extends AbstractEntity
+        INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>>
+        extends AbstractMessage<OBJECT_ID>
 {
 
-  @Transient
-  private OBJECT_ID objectId;
-
-  @Transient
-  private MessageStatus status;
 
   @Transient
   private Long incomingMessageId;
 
   public WorkingMessage(OBJECT_ID objectId)
   {
-    this.objectId = objectId;
+    super.setObjectId(objectId);
   }
 
   public WorkingMessage(OBJECT_ID objectId, MessageStatus status)
   {
-    this.objectId = objectId;
-    this.status = status;
+    super.setObjectId(objectId);
+    super.setStatus(status);
   }
+
   public WorkingMessage(MessageStatus status)
   {
-    this.status = status;
+    super.setStatus(status);
   }
+
   public WorkingMessage()
   {
     super();
   }
 
-  @Access(AccessType.PROPERTY)
-  @Enumerated(EnumType.STRING)
-  @Column(name = "STATUS", nullable = false)
-  public MessageStatus getStatus()
-  {
-    return status;
-  }
 
   /**
    * Getter of the identification of the incoming message on which this message is working.
@@ -68,25 +58,10 @@ public abstract class WorkingMessage<OBJECT_ID,
     this.incomingMessageId = incomingMessage.getId();
   }
 
-  public OBJECT_ID getObjectId()
-  {
-    return objectId;
-  }
-
-  public void setObjectId(OBJECT_ID objectId)
-  {
-    this.objectId = objectId;
-  }
-
 
   public void setIncomingMessageId(Long incomingMessageId)
   {
     this.incomingMessageId = incomingMessageId;
-  }
-
-  protected void setStatus(MessageStatus status)
-  {
-    this.status = status;
   }
 
   @Override

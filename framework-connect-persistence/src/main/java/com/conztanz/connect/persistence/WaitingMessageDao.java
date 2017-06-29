@@ -12,7 +12,7 @@ import com.conztanz.persistence.IAbstractEntityDao;
 //TODO : incoming message ????
 public abstract class WaitingMessageDao<OBJECT_ID,
                                         ENTITY extends IncomingMessage<OBJECT_ID>>
-         extends AbstractEntityDaoImpl<ENTITY>
+         extends AbstractMessageDao<OBJECT_ID,ENTITY>
          implements IWaitingMessageDao<OBJECT_ID,ENTITY>
 {
 

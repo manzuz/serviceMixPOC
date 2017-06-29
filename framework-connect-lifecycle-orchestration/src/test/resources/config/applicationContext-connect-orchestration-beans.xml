@@ -5,5 +5,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
 
 	<bean id="SimpleLifeCycleOrchestrator" class="com.conztanz.connect.camel.SimpleLifeCycleOrchestrator" scope="singleton" />
+    <bean id="SimpleSequencedWaitingMessageFactory" class="com.conztanz.connect.model.factory.SimpleSequencedWaitingMessageFactory" scope="singleton" />
+
 
 </beans>
