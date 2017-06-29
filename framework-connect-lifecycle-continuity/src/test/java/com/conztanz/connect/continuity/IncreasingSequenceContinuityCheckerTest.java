@@ -35,7 +35,8 @@ public class IncreasingSequenceContinuityCheckerTest
     public void testCheckContinuityKO() throws ContinuityException
     {
         String objectID = "1234";
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(objectID,new byte[10],1);
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10]);
+        im.setObjectId(objectID);
         SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(objectID,2, MessageStatus.KO);
         try
         {
@@ -52,7 +53,8 @@ public class IncreasingSequenceContinuityCheckerTest
     public void testCheckContinuityWORKING() throws ContinuityException
     {
         String objectID = "1234";
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(objectID,new byte[10],1);
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10]);
+        im.setObjectId(objectID);
         SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(objectID,2, MessageStatus.WORKING);
         try
         {
@@ -68,7 +70,8 @@ public class IncreasingSequenceContinuityCheckerTest
     public void testCheckContinuityOKWithOldSequence() throws ContinuityException
     {
         String objectID = "1234";
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(objectID,new byte[10],1);
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10]);
+        im.setObjectId(objectID);
         SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage(objectID,2, MessageStatus.OK);
         try
         {
@@ -85,7 +88,8 @@ public class IncreasingSequenceContinuityCheckerTest
     @Test
     public void testCheckContinuityOKWithNewSequence() throws ContinuityException
     {
-        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10],2);
+        SimpleSequencedIncomingMessage im = new SimpleSequencedIncomingMessage(new byte[10]);
+        im.setSequenceNumber(2);
         SimpleSequencedWorkingMessage  wm = new SimpleSequencedWorkingMessage("",1, MessageStatus.OK);
         this.getChecker().checkContinuity(im,wm);
 

@@ -41,8 +41,6 @@ public abstract class SequencedWorkingMessage<OBJECT_ID,
     super(objectId, status);
   }
 
-
-
   @Access(AccessType.PROPERTY)
   @Column(name = "SEQUENCE_NUMBER", nullable = false, unique = false)
   public int getSequenceNumber()

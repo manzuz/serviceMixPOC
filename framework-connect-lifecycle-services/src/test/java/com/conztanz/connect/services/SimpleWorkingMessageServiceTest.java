@@ -4,6 +4,8 @@ import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
 import com.conztanz.transport.ConztanzResultList;
 import static org.junit.Assert.*;
+
+import com.conztanz.utils.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,14 +34,14 @@ public class SimpleWorkingMessageServiceTest
   @Test
   public void test()
   {
-    String objectId = "12345";
+    String objectId = StringUtils.randomAlphaNumeric(10);
     SimpleSequencedWorkingMessage msg = new SimpleSequencedWorkingMessage(objectId,42, MessageStatus.WORKING);
     simpleWorkingMessageService.AddWorkingMessage(msg);
     ConztanzResultList<SimpleSequencedWorkingMessage> result  = simpleWorkingMessageService.getWorkingMessage(objectId);
     List<SimpleSequencedWorkingMessage> resultSet = result.getResult();
-    assert (resultSet .size() >  1);
+    assert (resultSet .size() >=  1);
     SimpleSequencedWorkingMessage retrieved  = resultSet.get(0);
-    assertEquals(retrieved.getStatus(),MessageStatus.KO);
+    assertEquals(retrieved.getStatus(),MessageStatus.WORKING);
     assertEquals(retrieved.getObjectId(),objectId);
 
 

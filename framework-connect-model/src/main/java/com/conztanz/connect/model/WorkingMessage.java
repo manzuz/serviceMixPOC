@@ -1,7 +1,5 @@
 package com.conztanz.connect.model;
 
-import com.conztanz.model.AbstractEntity;
-
 import javax.persistence.*;
 
 /**
@@ -11,13 +9,17 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 //TODO IS object ID automatically passed on to IncomingMessage ???
 public abstract class WorkingMessage<OBJECT_ID,
-        INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>>
+                                      INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>>
         extends AbstractMessage<OBJECT_ID>
 {
 
-
   @Transient
   private Long incomingMessageId;
+
+  public WorkingMessage()
+  {
+    super();
+  }
 
   public WorkingMessage(OBJECT_ID objectId)
   {
@@ -35,12 +37,6 @@ public abstract class WorkingMessage<OBJECT_ID,
     super.setStatus(status);
   }
 
-  public WorkingMessage()
-  {
-    super();
-  }
-
-
   /**
    * Getter of the identification of the incoming message on which this message is working.
    */
@@ -55,9 +51,8 @@ public abstract class WorkingMessage<OBJECT_ID,
   {
     this.setStatus(MessageStatus.WORKING);
     incomingMessage.setStatus(MessageStatus.WORKING);
-    this.incomingMessageId = incomingMessage.getId();
+    this.setIncomingMessageId(incomingMessage.getId());
   }
-
 
   public void setIncomingMessageId(Long incomingMessageId)
   {

@@ -1,8 +1,5 @@
 package com.conztanz.connect.model;
 
-import com.conztanz.exception.ConztanzException;
-import com.conztanz.model.AbstractEntity;
-
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -15,15 +12,17 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractMessage<OBJECT_
   @Transient
   private String transformedPayload;
 
+  public IncomingMessage()
+  {
+    super();
+  }
+
   public IncomingMessage(byte[] rawPayload)
   {
     super();
-    this.rawPayload = rawPayload;
+    this.setRawPayload(rawPayload);
   }
-  public IncomingMessage( )
-  {
-    super();
-  }
+
   public IncomingMessage(IncomingMessage<OBJECT_ID> incomingMessage)
   {
     super(incomingMessage);
@@ -33,11 +32,9 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractMessage<OBJECT_
 
   public IncomingMessage(byte[] rawPayload, MessageStatus status)
   {
-    this.rawPayload = rawPayload;
+    this.setRawPayload(rawPayload);
     super.setStatus(status);
   }
-
-
 
   @Access(AccessType.PROPERTY)
   @Column(name = "RAW_PAYLOAD", nullable = false)
@@ -53,11 +50,11 @@ public abstract class IncomingMessage<OBJECT_ID> extends AbstractMessage<OBJECT_
     return transformedPayload;
   }
 
-
   public void setRawPayload(byte[] rawPayload)
   {
     this.rawPayload = rawPayload;
   }
+
   public void setTransformedPayload(String transformedPayload)
   {
     this.transformedPayload = transformedPayload;

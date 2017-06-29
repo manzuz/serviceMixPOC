@@ -6,7 +6,6 @@ import com.conztanz.model.AbstractEntity;
 import javax.persistence.*;
 
 /**
- *
  * @param <OBJECT_ID>
  */
 @MappedSuperclass
@@ -19,7 +18,9 @@ public abstract class AbstractMessage<OBJECT_ID> extends AbstractEntity
   @Transient
   private MessageStatus status;
 
-  public AbstractMessage() {}
+  public AbstractMessage()
+  {
+  }
 
   public AbstractMessage(AbstractMessage<OBJECT_ID> message)
   {
@@ -39,6 +40,7 @@ public abstract class AbstractMessage<OBJECT_ID> extends AbstractEntity
   {
     return objectId;
   }
+
   protected void setStatus(MessageStatus status)
   {
     this.status = status;

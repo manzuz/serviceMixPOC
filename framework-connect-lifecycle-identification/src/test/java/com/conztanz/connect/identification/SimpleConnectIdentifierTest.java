@@ -28,7 +28,7 @@ public class SimpleConnectIdentifierTest {
 		StringWriter writer = new StringWriter();
 		IOUtils.copy(is, writer);
 		String xml = writer.toString();
-		SimpleSequencedIncomingMessage incomingMessage = new SimpleSequencedIncomingMessage(null,-1);
+		SimpleSequencedIncomingMessage incomingMessage = new SimpleSequencedIncomingMessage();
 		incomingMessage.setTransformedPayload(xml);
 		simpleConnectIdentifier.identify(incomingMessage);
 		assertEquals("123456789", incomingMessage.getObjectId());

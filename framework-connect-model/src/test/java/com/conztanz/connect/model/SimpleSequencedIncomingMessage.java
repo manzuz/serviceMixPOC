@@ -10,22 +10,19 @@ import javax.persistence.*;
 @Access(AccessType.FIELD)
 public class SimpleSequencedIncomingMessage extends SequencedIncomingMessage<String>
 {
-  public SimpleSequencedIncomingMessage(byte[] rawPayload, int sequenceNumber)
+  public SimpleSequencedIncomingMessage(byte[] rawPayload)
   {
-    super(rawPayload, sequenceNumber);
+    super(rawPayload);
   }
+
   public SimpleSequencedIncomingMessage()
   {
     super();
   }
+
   public SimpleSequencedIncomingMessage(byte[] rawPayload, MessageStatus status)
   {
     super(rawPayload, status);
-  }
-
-  public SimpleSequencedIncomingMessage(String objectId, byte[] rawPayload, int sequenceNumber)
-  {
-    super(objectId, rawPayload, sequenceNumber);
   }
 
   @Override
@@ -35,4 +32,6 @@ public class SimpleSequencedIncomingMessage extends SequencedIncomingMessage<Str
   {
     return super.getObjectId();
   }
+
+
 }

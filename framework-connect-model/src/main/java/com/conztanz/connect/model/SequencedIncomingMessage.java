@@ -14,39 +14,25 @@ public abstract class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessag
   private int sequenceNumber;
 
 
-  public SequencedIncomingMessage(byte[] rawPayload)
-  {
-    super(rawPayload);
-  }
   public SequencedIncomingMessage()
   {
     super();
   }
+
+  public SequencedIncomingMessage(byte[] rawPayload)
+  {
+    super(rawPayload);
+  }
+
   public SequencedIncomingMessage(SequencedIncomingMessage<OBJECT_ID> sequencedIncomingMessage)
   {
     super(sequencedIncomingMessage);
     this.setSequenceNumber(sequencedIncomingMessage.getSequenceNumber());
   }
+
   public SequencedIncomingMessage(byte[] rawPayload, MessageStatus status)
   {
     super(rawPayload, status);
-  }
-
-  public SequencedIncomingMessage(OBJECT_ID objectId, byte[] rawPayload)
-  {
-    super(objectId, rawPayload);
-  }
-
-  public SequencedIncomingMessage(byte[] rawPayload, int sequenceNumber)
-  {
-    super(rawPayload);
-    this.sequenceNumber = sequenceNumber;
-  }
-
-  public SequencedIncomingMessage(OBJECT_ID objectId, byte[] rawPayload, int sequenceNumber)
-  {
-    super(objectId, rawPayload);
-    this.sequenceNumber = sequenceNumber;
   }
 
   @Access(AccessType.PROPERTY)
@@ -55,7 +41,6 @@ public abstract class SequencedIncomingMessage<OBJECT_ID> extends IncomingMessag
   {
     return sequenceNumber;
   }
-
 
   public void setSequenceNumber(int sequenceNumber)
   {
