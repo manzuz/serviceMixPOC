@@ -41,7 +41,7 @@ public abstract class AbstractMessage<OBJECT_ID> extends AbstractEntity
     return objectId;
   }
 
-  protected void setStatus(MessageStatus status)
+  public void setStatus(MessageStatus status)
   {
     this.status = status;
   }
@@ -56,5 +56,7 @@ public abstract class AbstractMessage<OBJECT_ID> extends AbstractEntity
   {
     this.setStatus(MessageStatus.REJECTED);
   }
+
+
 
 }

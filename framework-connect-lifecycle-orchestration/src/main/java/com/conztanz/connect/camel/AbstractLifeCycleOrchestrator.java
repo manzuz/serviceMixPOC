@@ -47,7 +47,7 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
           readOnly = false,
           rollbackFor = {ConztanzException.class},
           noRollbackFor = {ContinuityException.class})
-  public void startLifeCycle(byte[] payload) throws ConnectTransformationException, ConnectIdentificationException, PersistenceException, BlockedContinuityException, SequenceContinuityException
+  public INCOMING_MESSAGE startLifeCycle(byte[] payload) throws ConnectTransformationException, ConnectIdentificationException, PersistenceException, BlockedContinuityException, SequenceContinuityException
   {
     WORKING_MESSAGE workingMessage = null;
     INCOMING_MESSAGE incomingMessage;
@@ -72,7 +72,6 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
     //  CONTINUITY
     try
     {
-
       this.getContinuityChecker().checkContinuity(incomingMessage, workingMessage);
     }
     catch (BlockedContinuityException e)
@@ -89,8 +88,7 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
     }
     this.getIncomingMessageDao().add(incomingMessage);
     workingMessage.workOn(incomingMessage);
-
-
+    return incomingMessage;
   }
 
 

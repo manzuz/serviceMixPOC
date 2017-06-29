@@ -28,24 +28,26 @@ import java.util.Set;
 public class SimpleWorkingMessageServiceTest
 {
   @Autowired
-  private SimpleWorkingMessageService simpleWorkingMessageService;
+  private SimpleWorkingMessageService service;
 
-
-
-
-  @Test
-  public void test() throws PersistenceException
+  public SimpleWorkingMessageService getService()
   {
-    String objectId = StringUtils.randomAlphaNumeric(10);
-    SimpleSequencedWorkingMessage msg = new SimpleSequencedWorkingMessage(objectId,42, MessageStatus.WORKING);
-    simpleWorkingMessageService.add(msg);
-    ConztanzResult<SimpleSequencedWorkingMessage> result  = simpleWorkingMessageService.find(objectId);
-    SimpleSequencedWorkingMessage retrieved = result.getResult();
-    assertEquals(retrieved.getStatus(),MessageStatus.WORKING);
-    assertEquals(retrieved.getObjectId(),objectId);
-
-
+    return service;
   }
+
+
+//  @Test
+//  public void test() throws PersistenceException
+//  {
+//    String objectId = StringUtils.randomAlphaNumeric(10);
+//    SimpleSequencedWorkingMessage msg = new SimpleSequencedWorkingMessage(objectId,42, MessageStatus.WORKING);
+//    simpleWorkingMessageService.add(msg);
+//    ConztanzResult<SimpleSequencedWorkingMessage> result  = simpleWorkingMessageService.find(objectId);
+//    SimpleSequencedWorkingMessage retrieved = result.getResult();
+//    assertEquals(retrieved.getStatus(),MessageStatus.WORKING);
+//    assertEquals(retrieved.getObjectId(),objectId);
+//  }
+
 }
 
 

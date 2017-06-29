@@ -1,5 +1,6 @@
 package com.conztanz.connect.services;
 
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.exception.PersistenceException;
 import com.conztanz.transport.ConztanzResult;
@@ -20,10 +21,16 @@ public interface IWorkingMessageService<OBJECT_ID,
    */
   ConztanzResult<WORKING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException;
 
+
   /**
-   *
-   * @param workingMessage
+   * Used to simulate AS response to lifecycle thus updating working message status
+   * Here only for testing purposes, to be removed once life cycle is 100% implemented
+   * TODO DELETE !!!!!!!!!!!!!!!!!
+   * @param id
+   * @param status
+   * @throws PersistenceException
    */
-  void add(WORKING_MESSAGE workingMessage) throws PersistenceException;
+  void updateStatus(Long id, MessageStatus status) throws PersistenceException;
+
 
 }

@@ -1,6 +1,7 @@
 package com.conztanz.connect.camel;
 
 import com.conztanz.connect.exception.BlockedContinuityException;
+import com.conztanz.connect.exception.ContinuityException;
 import com.conztanz.connect.exception.SequenceContinuityException;
 import com.conztanz.connect.exception.WORKINGContinuityException;
 import com.conztanz.connect.identification.exception.ConnectIdentificationException;
@@ -13,27 +14,25 @@ import com.conztanz.connect.services.SimpleWaitingMessageService;
 import com.conztanz.connect.services.SimpleWorkingMessageService;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
 import com.conztanz.exception.PersistenceException;
-import com.conztanz.transport.ConztanzResult;
 import com.conztanz.transport.ConztanzResultList;
 import com.conztanz.utils.StringUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-
+import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 
-/**
- * Created by User on 6/26/2017.
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/applicationContext.xml")
 @TransactionConfiguration(transactionManager = "ConztanzTransactionManager")
@@ -41,10 +40,11 @@ public class SimpleLifeCycleOrchestratorTest
 {
 
   @Autowired
-  private SimpleLifeCycleOrchestrator orchestrator;
+
+  private SimpleWorkingMessageService workingService;
 
   @Autowired
-  private SimpleWorkingMessageService workingService;
+  private SimpleLifeCycleOrchestrator orchestrator;
 
   @Autowired
   private SimpleWaitingMessageService waitingService;
@@ -77,12 +77,21 @@ public class SimpleLifeCycleOrchestratorTest
   @Test
   public void test() throws BlockedContinuityException, ConnectIdentificationException, SequenceContinuityException, ConnectTransformationException, IOException, PersistenceException
   {
-
-    // Sending a new message
-    String objectID1 = this.generateObjectId();
-    byte[] message1 = this.getMessage(objectID1, "1");
-    this.getOrchestrator().startLifeCycle(message1);
-
+    String objectID1 = null;
+    byte[] message1  = null;
+    String sequenceNumber1 = "1";
+    String sequenceNumber2 = "2";
+    try
+    {
+      // Sending a new message
+      objectID1 = this.generateObjectId();
+       message1 = this.getMessage(objectID1, sequenceNumber1 );
+      this.getOrchestrator().startLifeCycle(message1);
+    }
+    catch (ContinuityException |PersistenceException e)
+    {
+      fail(e.getMessage());
+    }
     //Message should be in working
     SimpleSequencedWorkingMessage retrievedWorking   = this.getWorkingService().find(objectID1).getResult();
     assertEquals(objectID1, retrievedWorking.getObjectId());
@@ -112,8 +121,38 @@ public class SimpleLifeCycleOrchestratorTest
     assertEquals(objectID1, retrievedWaiting.getObjectId());
     assertEquals(MessageStatus.WORKING, retrievedWorking.getStatus());
 
+    // We simulate AS response by updating Status in working table
+    //TODO REMOVE ! !
+    this.getWorkingService().updateStatus(retrievedWorking.getId(),MessageStatus.OK);
+
+    // We re-send the same message, but with a bigger sequence number
+     byte[] message2 = this.getMessage(objectID1,sequenceNumber2);
+     try
+     {
+     this.getOrchestrator().startLifeCycle(message2);
+     }
+     catch (ContinuityException | PersistenceException e)
+     {
+       fail();
+     }
+
   }
 
+
+
+
+
+  // ******************************
+  // HELPERS
+  //*******************************
+
+  /**
+   *
+   * @param objectID
+   * @param sequenceNum
+   * @return
+   * @throws IOException
+   */
   private byte[] getMessage(String objectID, String sequenceNum) throws IOException
   {
     InputStream is = this.getClass().getClassLoader().getResourceAsStream("./messages/Message_Template.xml");
@@ -125,8 +164,15 @@ public class SimpleLifeCycleOrchestratorTest
     return isAsString.getBytes();
   }
 
+
+  /**
+   *
+   * @return
+   */
   private String generateObjectId()
   {
     return StringUtils.randomAlphaNumeric(10);
   }
+
+
 }

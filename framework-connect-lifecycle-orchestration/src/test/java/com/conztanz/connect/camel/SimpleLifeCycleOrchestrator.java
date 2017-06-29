@@ -18,6 +18,7 @@ import com.conztanz.connect.persistence.IWaitingMessageDao;
 import com.conztanz.connect.persistence.SimpleSequencedIncomingMessageDao;
 import com.conztanz.connect.persistence.SimpleSequencedWaitingMessageDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Created by User on 6/26/2017.
@@ -115,6 +116,5 @@ public class SimpleLifeCycleOrchestrator extends AbstractLifeCycleOrchestrator<S
   {
     return simpleSequencedWaitingMessageFactory;
   }
-
 
 }

@@ -1,5 +1,6 @@
 package com.conztanz.connect.services;
 
+import com.conztanz.connect.model.MessageStatus;
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.connect.persistence.WorkingMessageDao;
 import com.conztanz.exception.PersistenceException;
@@ -32,15 +33,16 @@ public abstract class AbstractWorkingMessageService<  OBJECT_ID,
     return new ConztanzResult<>(workingMessage);
   }
 
-  /**
-   * @param workingMessage
-   */
   @Override
-  public void add(WORKING_MESSAGE workingMessage) throws PersistenceException
+  public void updateStatus(Long id , MessageStatus status) throws PersistenceException
   {
-    this.getDao().addToto(workingMessage);
+    WORKING_MESSAGE working_message = this.getDao().getById(id);
+    working_message.setStatus(status);
   }
-
+  /**
+   *
+   * @return
+   */
   protected abstract WorkingMessageDao<OBJECT_ID, WORKING_MESSAGE> getDao();
 
 
