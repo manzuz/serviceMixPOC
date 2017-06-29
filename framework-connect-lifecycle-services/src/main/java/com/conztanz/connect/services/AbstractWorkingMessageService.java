@@ -3,13 +3,11 @@ package com.conztanz.connect.services;
 import com.conztanz.connect.model.WorkingMessage;
 import com.conztanz.connect.persistence.WorkingMessageDao;
 import com.conztanz.exception.PersistenceException;
+import com.conztanz.transport.ConztanzResult;
 import com.conztanz.transport.ConztanzResultList;
-import com.conztanz.transport.ConztanzResultSet;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -23,34 +21,28 @@ public abstract class AbstractWorkingMessageService<  OBJECT_ID,
 
 {
 
+  /**
+   * @param objectId
+   * @return
+   */
   @Override
-  public ConztanzResultList<WORKING_MESSAGE> getWorkingMessage(OBJECT_ID objectId)
+  public ConztanzResult<WORKING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException
   {
-    List<WORKING_MESSAGE> result =  new ArrayList<>();
-    try
-    {
-      WORKING_MESSAGE workingMessage  = this.getDao().getOne(objectId);
-      result.add(workingMessage);
-    } catch (PersistenceException e)
-    {
-      e.printStackTrace();
-    }
-    return new ConztanzResultList<>(result);
+    WORKING_MESSAGE workingMessage = null;
+    workingMessage = this.getDao().getOne(objectId);
+    return new ConztanzResult<>(workingMessage);
   }
 
+  /**
+   * @param workingMessage
+   */
   @Override
-  public void AddWorkingMessage(WORKING_MESSAGE workingMessage)
+  public void Add(WORKING_MESSAGE workingMessage) throws PersistenceException
   {
-    try
-    {
-      this.getDao().addToto(workingMessage);
-    } catch (PersistenceException e)
-    {
-      e.printStackTrace();
-    }
+    this.getDao().addToto(workingMessage);
   }
 
-  protected abstract WorkingMessageDao<OBJECT_ID,WORKING_MESSAGE> getDao();
+  protected abstract WorkingMessageDao<OBJECT_ID, WORKING_MESSAGE> getDao();
 
 
 }

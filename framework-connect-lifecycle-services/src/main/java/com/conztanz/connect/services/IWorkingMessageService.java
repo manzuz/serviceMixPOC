@@ -1,9 +1,8 @@
 package com.conztanz.connect.services;
 
-import com.conztanz.connect.model.IncomingMessage;
 import com.conztanz.connect.model.WorkingMessage;
-import com.conztanz.transport.ConztanzResultList;
-import com.conztanz.transport.ConztanzResultSet;
+import com.conztanz.exception.PersistenceException;
+import com.conztanz.transport.ConztanzResult;
 
 /**
  *
@@ -19,8 +18,12 @@ public interface IWorkingMessageService<OBJECT_ID,
    * @param objectId
    * @return
    */
-  ConztanzResultList<WORKING_MESSAGE> getWorkingMessage(OBJECT_ID objectId);
+  ConztanzResult<WORKING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException;
 
-  void AddWorkingMessage(WORKING_MESSAGE workingMessage);
+  /**
+   *
+   * @param workingMessage
+   */
+  void Add(WORKING_MESSAGE workingMessage) throws PersistenceException;
 
 }
