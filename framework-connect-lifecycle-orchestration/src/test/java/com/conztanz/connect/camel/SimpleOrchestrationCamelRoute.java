@@ -22,7 +22,7 @@ public  class SimpleOrchestrationCamelRoute
    */
   protected  String getRouteEndpoint()
   {
-    return "activemq://lifeCycle";
+    return "activemq://TEST.connect.Lifecycle";
   }
 
   /**

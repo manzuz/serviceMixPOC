@@ -1,47 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:camel="http://camel.apache.org/schema/spring"
+       xmlns:camel="http://camel.apache.org/schema/spring" xmlns:amq="http://activemq.apache.org/schema/core"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	    http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd
         http://camel.apache.org/schema/spring
-        http://camel.apache.org/schema/spring/camel-spring.xsd">
+        http://camel.apache.org/schema/spring/camel-spring.xsd
+                           http://activemq.apache.org/schema/core
+                           http://activemq.apache.org/schema/core/activemq-core.xsd">
 
-    <!--<bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">-->
-        <!--<property name="connectionFactory" ref="jmsConnectionFactory" />-->
-    <!--</bean>-->
 
-    <!--<bean id="jmsConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">-->
-        <!--<property name="brokerURL" value="tcp://activemq-cz-test.conztanz.com:61616" />-->
-    <!--</bean>-->
-    <bean id="redeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
-        <property name="maximumRedeliveries" value="2"/>
-    </bean>
     <!-- define our activemq component -->
     <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
-        <property name="connectionFactory" ref="activemqConnectionFactory"/>
+        <property name="connectionFactory" ref="ConztanzConnectionFactoryPrimary"/>
         <!-- define the jms consumer/producer as transacted -->
         <property name="transacted" value="true"/>
         <property name="transactionManager" ref="ConztanzTransactionManager"/>
     </bean>
 
 
-    <bean id="activemqConnectionFactory" class="org.apache.activemq.ActiveMQXAConnectionFactory">
-        <property name="brokerURL" value="tcp://activemq-cz-test.conztanz.com:61616" />
-        <property name="userName" value="admin" />
-        <property name="password" value="admin" />
-        <property name="redeliveryPolicy" ref="redeliveryPolicy"/>
-    </bean>
-    <!--<bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">-->
-        <!--<property name="transactionManager" ref="jmsTransactionManager"/>-->
-    <!--</bean>-->
-
-    <!--<bean id="PROPAGATION_REQUIRES_NEW" class="org.apache.camel.spring.spi.SpringTransactionPolicy">-->
-        <!--<property name="transactionManager" ref="jmsTransactionManager"/>-->
-        <!--<property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>-->
-    <!--</bean>-->
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <package>com.conztanz.connect.camel</package>
     </camelContext>
+
 
 </beans>

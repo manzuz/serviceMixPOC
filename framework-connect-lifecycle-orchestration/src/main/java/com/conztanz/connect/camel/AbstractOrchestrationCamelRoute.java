@@ -1,10 +1,14 @@
 package com.conztanz.connect.camel;
 
 
+import com.conztanz.exception.ConztanzTechnicalException;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.spring.SpringRouteBuilder;
+import org.apache.camel.spring.spi.SpringTransactionPolicy;
+
+import java.security.Policy;
 
 /**
  * @param <ORCHESTRATOR>
@@ -30,7 +34,7 @@ public abstract class AbstractOrchestrationCamelRoute<ORCHESTRATOR extends Abstr
               @Override
               public void process(Exchange exchange) throws Exception
               {
-                throw new RuntimeException("");
+//                throw new ConztanzTechnicalException("ERROR MESSAGE");
               }
             });
 

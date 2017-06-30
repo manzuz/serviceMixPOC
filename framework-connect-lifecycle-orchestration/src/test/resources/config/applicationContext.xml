@@ -18,15 +18,19 @@
 	<!-- Commons initialization -->
 	<import resource="classpath:config/applicationContext-commons.xml" />
 	<!-- Logger initialization -->
-	<!--<import resource="classpath:config/applicationContext-logger.xml" />-->
+	<import resource="classpath:config/applicationContext-logger.xml" />
 	<!-- Model initialization -->
 	<import resource="classpath:config/applicationContext-model.xml" />
 	<!-- JSon parsing definition -->
 	<import resource="classpath:config/applicationContext-json.xml" />
-    <!-- TODO normalize files names (wildcards ??)-->
+	<!-- Transaction management definition -->
+	<import resource="classpath:config/applicationContext-transaction.xml" />
+	<!-- Persistence initialization -->
+	<import resource="classpath:config/applicationContext-persistence.xml" />
+
+
     <!-- Connect persistence beans  -->
     <import resource="classpath:config/persistence/applicationContext-persistence-connect-lifecycle-beans.xml" />
-    <import resource="classpath:config/applicationContext-persistence-test.xml" />
     <!-- Connect initialization beans  -->
 	<import resource="classpath:config/applicationContext-connect-initialization-beans.xml" />
     <!-- Connect identification beans  -->
@@ -38,9 +42,14 @@
     <!-- Connect orchestration beans  -->
     <import resource="classpath:config/applicationContext-connect-orchestration-beans.xml" />
     <import resource="classpath:config/applicationContext-connect-orchestration-camel.xml" />
+	<import resource="classpath:config/applicationContext-connect-orchestration-jms.xml" />
 
     <!-- Connect services beans  -->
     <import resource="classpath:config/applicationContext-connect-services-beans.xml" />
 
+	<import resource="classpath:config/applicationContext-jms.xml" />
+
+
+	<import resource="classpath:config/applicationContext-clients.xml" />
 
 </beans>

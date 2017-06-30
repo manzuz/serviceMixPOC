@@ -12,7 +12,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.context.ApplicationContext;
 
-import javax.print.attribute.standard.Destination;
+import javax.jms.Destination;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:config/applicationContext.xml")
@@ -32,7 +33,6 @@ public class SimpleOrchestrationCamelRouteTest
   }
 
   @Test
-  @Transactional
   public void testCamel() throws Exception
   {
     ProducerTemplate template=camelCtx.createProducerTemplate();
@@ -40,11 +40,9 @@ public class SimpleOrchestrationCamelRouteTest
     String objectID = Utils.generateObjectId();
     System.out.println(objectID);
     byte [] message  = Utils.getMessage(objectID,"1");
-    Destination destination = (Destination) this.context.getBean("");
+    Destination destination = (Destination) this.context.getBean("LifecycleDestinationJNDI");
 
-    template.sendBody("activemq://lifeCycle", message);
-//    this.jmsWaitClient.waitForIt(destination);
+    template.sendBody("activemq://TEST.connect.Lifecycle", message);
     this.jmsWaitClient.waitForIt(destination);
-    Thread.sleep(20000);
   }
 }

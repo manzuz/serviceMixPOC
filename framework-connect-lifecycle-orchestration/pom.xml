@@ -13,10 +13,19 @@
 
 
     <dependencies>
+        <!--TODO clean -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
         <!-- Framework Dependencies -->
         <dependency>
             <groupId>com.conztanz</groupId>
             <artifactId>framework-jms</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-client</artifactId>
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
