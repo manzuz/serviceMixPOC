@@ -37,6 +37,8 @@
     <import resource="classpath:config/continuity/applicationContext-connect-continuity-beans.xml" />
     <!-- Connect orchestration beans  -->
     <import resource="classpath:config/applicationContext-connect-orchestration-beans.xml" />
+    <import resource="classpath:config/applicationContext-connect-orchestration-camel.xml" />
+
     <!-- Connect services beans  -->
     <import resource="classpath:config/applicationContext-connect-services-beans.xml" />
 

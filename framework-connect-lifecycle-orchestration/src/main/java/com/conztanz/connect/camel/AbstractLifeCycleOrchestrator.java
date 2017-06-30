@@ -70,6 +70,7 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
     }
 
     //  CONTINUITY
+
     try
     {
       this.getContinuityChecker().checkContinuity(incomingMessage, workingMessage);

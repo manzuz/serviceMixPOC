@@ -13,18 +13,7 @@ public  class SimpleOrchestrationCamelRoute
   @Autowired
   private SimpleLifeCycleOrchestrator orchestrator;
 
-  @Override
-  public void configure() throws Exception
-  {
 
-    /**
-     * TODO : two steps (from init to continuity, transacted, then the rest not transacted)
-     */
-    from(this.getRouteEndpoint())
-            .transacted()
-            .bean(this.getOrchestrator(),"startLifeCycle(${body})");
-
-  }
 
 
   /**
@@ -33,14 +22,14 @@ public  class SimpleOrchestrationCamelRoute
    */
   protected  String getRouteEndpoint()
   {
-    return "file:hi";
+    return "activemq://lifeCycle";
   }
 
   /**
    *
    * @return
    */
-  protected    SimpleLifeCycleOrchestrator getOrchestrator()
+  protected SimpleLifeCycleOrchestrator getOrchestrator()
   {
     return this.orchestrator;
   }
