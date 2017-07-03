@@ -1,6 +1,8 @@
 package com.conztanz.connect.camel;
 
 
+import com.conztanz.connect.exception.ContinuityException;
+import com.conztanz.connect.exception.KOContinuityException;
 import com.conztanz.exception.ConztanzTechnicalException;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
@@ -24,17 +26,14 @@ public abstract class AbstractOrchestrationCamelRoute<ORCHESTRATOR extends Abstr
     /**
      * TODO : two steps (from init to continuity, transacted, then the rest not transacted)
      */
-
+    onException(ContinuityException.class).handled(true);
     from(this.getRouteEndpoint())
             .transacted()
-            .log("here")
             .bean(this.getOrchestrator(),"startLifeCycle(${body})")
-            .process(new Processor()
-            {
+            .process(new Processor() {
               @Override
-              public void process(Exchange exchange) throws Exception
-              {
-//                throw new ConztanzTechnicalException("ERROR MESSAGE");
+              public void process(Exchange exchange) throws Exception {
+                throw  new KOContinuityException("");
               }
             });
 

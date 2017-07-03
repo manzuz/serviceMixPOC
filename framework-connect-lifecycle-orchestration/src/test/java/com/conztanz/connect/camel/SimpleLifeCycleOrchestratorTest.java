@@ -146,8 +146,7 @@ public class SimpleLifeCycleOrchestratorTest
     }
     catch (KOContinuityException e)
     {
-      System.out.println(e.getMessage());
-      System.out.println(e.getMessage() +"\n"+"A message with the same object ID: " + objectID1 + " is in KO state");
+      assertTrue(e.getMessage().contains("A message with the same object ID: " + objectID1 + " is in KO state"));
     }
 
   }

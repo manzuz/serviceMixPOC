@@ -29,7 +29,20 @@ public class Utils
    */
   public static byte[] getMessage(String objectID, String sequenceNum) throws IOException
   {
-    InputStream is = Utils.class.getClassLoader().getResourceAsStream("./messages/Message_Template.xml");
+    return Utils.getMessage("Message_Template",objectID,sequenceNum);
+  }
+
+  /**
+   *
+   * @param templateName
+   * @param objectID
+   * @param sequenceNum
+   * @return
+   * @throws IOException
+   */
+  public static byte[] getMessage(String templateName,String objectID, String sequenceNum) throws IOException
+  {
+    InputStream is = Utils.class.getClassLoader().getResourceAsStream("./messages/"+templateName+".xml");
     StringWriter writer = new StringWriter();
     IOUtils.copy(is, writer);
     String isAsString = writer.toString();
@@ -37,8 +50,6 @@ public class Utils
     isAsString = isAsString.replace("[SEQUENCE_NUMBER]", sequenceNum);
     return isAsString.getBytes();
   }
-
-
   /**
    *
    * @return
