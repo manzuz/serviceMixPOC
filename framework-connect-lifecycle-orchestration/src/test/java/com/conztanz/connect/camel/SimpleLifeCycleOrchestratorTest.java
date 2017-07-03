@@ -36,7 +36,6 @@ public class SimpleLifeCycleOrchestratorTest
 {
 
   @Autowired
-
   private SimpleWorkingMessageService workingService;
 
   @Autowired
@@ -112,7 +111,7 @@ public class SimpleLifeCycleOrchestratorTest
     }
 
     // Message should be added to waiting
-    ConztanzResultList<SimpleSequencedWaitingMessage> waitingMessageList = this.getWaitingService().getWaitingMessage(objectID1);
+    ConztanzResultList<SimpleSequencedWaitingMessage> waitingMessageList = this.getWaitingService().find(objectID1);
     SimpleSequencedWaitingMessage retrievedWaiting = waitingMessageList.getResult().get(0);
     assertEquals(objectID1, retrievedWaiting.getObjectId());
     assertEquals(MessageStatus.WORKING, retrievedWorking1.getStatus());

@@ -36,9 +36,9 @@ public class SimpleWorkingMessageServiceTest
   }
 
 
-//  @Test
-//  public void test() throws PersistenceException
-//  {
+  @Test
+  public void test() throws PersistenceException
+  {
 //    String objectId = StringUtils.randomAlphaNumeric(10);
 //    SimpleSequencedWorkingMessage msg = new SimpleSequencedWorkingMessage(objectId,42, MessageStatus.WORKING);
 //    simpleWorkingMessageService.add(msg);
@@ -46,7 +46,7 @@ public class SimpleWorkingMessageServiceTest
 //    SimpleSequencedWorkingMessage retrieved = result.getResult();
 //    assertEquals(retrieved.getStatus(),MessageStatus.WORKING);
 //    assertEquals(retrieved.getObjectId(),objectId);
-//  }
+  }
 
 }
 

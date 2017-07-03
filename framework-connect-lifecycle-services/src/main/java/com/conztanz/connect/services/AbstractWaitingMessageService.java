@@ -18,7 +18,7 @@ public abstract class AbstractWaitingMessageService<OBJECT_ID,
 
 {
   @Override
-  public ConztanzResultList<WAITING_MESSAGE> getWaitingMessage(OBJECT_ID objectId) throws PersistenceException
+  public ConztanzResultList<WAITING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException
   {
     return  getDao().findList(objectId);
   }

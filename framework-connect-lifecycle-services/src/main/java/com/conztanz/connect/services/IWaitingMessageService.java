@@ -17,7 +17,7 @@ public interface IWaitingMessageService<OBJECT_ID,
    * @param objectId
    * @return
    */
-  ConztanzResultList<WAITING_MESSAGE> getWaitingMessage(OBJECT_ID objectId) throws PersistenceException;
+  ConztanzResultList<WAITING_MESSAGE> find(OBJECT_ID objectId) throws PersistenceException;
 
 
 }
