@@ -1,25 +1,17 @@
 package com.conztanz.connect.camel;
 
-import com.conztanz.client.exception.ConztanzResourceClientException;
 import com.conztanz.connect.test.utils.Utils;
 import com.conztanz.jms.ConztanzJMSWaitREST;
-import com.conztanz.jms.ConztanzJMSWaitRESTResponse;
-import com.conztanz.json.ConztanzJSonUtils;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.client.RestClientException;
 
 import javax.jms.Destination;
-
-import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
@@ -81,5 +73,5 @@ public class SimpleOrchestrationCamelRouteTest
   }
 
 
- 
+
 }
