@@ -17,7 +17,7 @@ import java.util.List;
  */
 public abstract class AbstractWorkingMessageService<  OBJECT_ID,
                                                       WORKING_MESSAGE extends WorkingMessage<OBJECT_ID,?>>
-  extends AbstractConnectService<WORKING_MESSAGE>
+  extends AbstractConnectService<OBJECT_ID,WORKING_MESSAGE>
   implements IWorkingMessageService<OBJECT_ID,WORKING_MESSAGE>
 
 {

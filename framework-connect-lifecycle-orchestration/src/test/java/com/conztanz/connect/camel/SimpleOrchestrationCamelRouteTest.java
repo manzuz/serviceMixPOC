@@ -1,18 +1,26 @@
 package com.conztanz.connect.camel;
 
+import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
+import com.conztanz.connect.services.SimpleIncomingMessageService;
+import com.conztanz.connect.services.SimpleWaitingMessageService;
+import com.conztanz.connect.services.SimpleWorkingMessageService;
 import com.conztanz.connect.test.utils.Utils;
+import com.conztanz.exception.PersistenceException;
 import com.conztanz.jms.ConztanzJMSWaitREST;
+import com.conztanz.transport.ConztanzResultList;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.jms.Destination;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -21,12 +29,108 @@ import static org.junit.Assert.assertTrue;
 public class SimpleOrchestrationCamelRouteTest
 
 {
+
   @Autowired
   private CamelContext camelCtx;
   @Autowired
   private ApplicationContext context;
   @Autowired
+  @Qualifier("ConztanzJMSWaitREST")
   private ConztanzJMSWaitREST jmsWaitClient;
+
+  @Autowired
+  @Qualifier("ConztanzJMSStatsREST")
+  private ConztanzJMSStatsREST  jMSStatsClient;
+
+  @Autowired
+  private SimpleWorkingMessageService workingService;
+
+
+  @Autowired
+  private SimpleWaitingMessageService waitingService;
+
+  @Autowired
+  private SimpleIncomingMessageService incomingService;
+
+
+  @Test
+  public void testRollBack() throws Exception
+  {
+    Destination dql= (Destination) this.context.getBean("LifecycleDLQDestinationJNDI");
+    long dLQSizeBeforeRollback = this.getjMSStatsClient().getQueueSize(dql);
+    int dBSizeBeforeRollback =  this.getAllDBsSize();
+
+    //send msg to log
+    ProducerTemplate template=camelCtx.createProducerTemplate();
+    byte [] message  = Utils.getMessage("","1");
+    template.sendBody(this.getQEndPoint(), message);
+
+    Destination destination= (Destination) this.context.getBean("LifecycleDestinationJNDI");
+    this.jmsWaitClient.waitForIt(destination);
+
+
+    assertTrue(this.getjMSStatsClient().getQueueSize(dql) == dLQSizeBeforeRollback + 1);
+    int dBSizeAfterRollback =  this.getAllDBsSize();
+    assertEquals(dBSizeAfterRollback,dBSizeBeforeRollback);
+
+  }
+
+
+  @Test
+  public void testNoRollBack() throws Exception
+  {
+    Destination dql= (Destination) this.context.getBean("LifecycleDLQDestinationJNDI");
+    long dLQSizeBeforeRollback = this.getjMSStatsClient().getQueueSize(dql);
+    int dBSizeBeforeRollback =  this.getAllDBsSize();
+
+    //send msg to log
+    ProducerTemplate template=camelCtx.createProducerTemplate();
+    String objectID = Utils.generateObjectId();
+    byte [] message  = Utils.getMessage(objectID,"3");
+    byte [] messageOld  = Utils.getMessage(objectID,"1");
+    template.sendBody(this.getQEndPoint(), message);
+    template.sendBody(this.getQEndPoint(), messageOld);
+
+    Destination destination = (Destination) this.context.getBean("LifecycleDestinationJNDI");
+
+    this.jmsWaitClient.waitForIt(destination);
+    assertEquals(dLQSizeBeforeRollback,this.getjMSStatsClient().getQueueSize(dql));
+
+    int dBSizeAfterRollback =  this.getAllDBsSize();
+    assertEquals(dBSizeAfterRollback,dBSizeBeforeRollback+3);
+  }
+
+
+
+  public SimpleWorkingMessageService getWorkingService()
+  {
+    return workingService;
+  }
+
+  public void setWorkingService(SimpleWorkingMessageService workingService)
+  {
+    this.workingService = workingService;
+  }
+
+  public SimpleWaitingMessageService getWaitingService()
+  {
+    return waitingService;
+  }
+
+  public void setWaitingService(SimpleWaitingMessageService waitingService)
+  {
+    this.waitingService = waitingService;
+  }
+
+  public SimpleIncomingMessageService getIncomingService()
+  {
+    return incomingService;
+  }
+
+  public void setIncomingService(SimpleIncomingMessageService incomingService)
+  {
+    this.incomingService = incomingService;
+  }
 
   public CamelContext getCamelCtx()
   {
@@ -41,37 +145,26 @@ public class SimpleOrchestrationCamelRouteTest
     return jmsWaitClient;
   }
 
-  @Test
-  public void testRollBack() throws Exception
+  public ConztanzJMSStatsREST getjMSStatsClient()
   {
-    long sizeBeforeRollback = this.getJmsWaitClient().getQueueSize();
-    ProducerTemplate template=camelCtx.createProducerTemplate();
-    //send msg to log
-    byte [] message  = Utils.getMessage("","1");
-    template.sendBody("activemq://TEST.connect.Lifecycle", message);
-
-    Destination destination = (Destination) this.context.getBean("LifecycleDestinationJNDI");
-    this.jmsWaitClient.waitForIt(destination);
-    assertTrue(sizeBeforeRollback == jmsWaitClient.getQueueSize() + 1);
+    return jMSStatsClient;
   }
 
-
-  @Test
-  public void testNoRollBack() throws Exception
+  public void setJMSStatsClient(ConztanzJMSStatsREST jMSStatsClient)
   {
-    ProducerTemplate template=camelCtx.createProducerTemplate();
-    //send msg to log
-    String objectID = Utils.generateObjectId();
-    byte [] message  = Utils.getMessage(objectID,"3");
-    byte [] messageOld  = Utils.getMessage(objectID,"1");
-    template.sendBody("activemq://TEST.connect.Lifecycle", message);
-
-
-    Destination destination = (Destination) this.context.getBean("LifecycleDestinationJNDI");
-    template.sendBody("activemq://TEST.connect.Lifecycle", messageOld);
-    this.jmsWaitClient.waitForIt(destination);
+    this.jMSStatsClient = jMSStatsClient;
   }
 
+  private String getQEndPoint()
+  {
+    return  "activemq://TEST.connect.Lifecycle";
+  }
 
+  private int getAllDBsSize() throws PersistenceException
+  {
+    return  this.getIncomingService().findAll().size()+
+            this.getWaitingService().findAll().size()+
+            this.getWorkingService().findAll().size();
+  }
 
 }

@@ -72,15 +72,13 @@ public class SimpleLifeCycleOrchestratorTest
   @Test
   public void test() throws BlockedContinuityException, ConnectIdentificationException, SequenceContinuityException, ConnectTransformationException, IOException, PersistenceException
   {
-    String objectID1 = null;
-    byte[] message1  = null;
+    String objectID1 = Utils.generateObjectId();
     String sequenceNumber1 = "1";
     String sequenceNumber2 = "2";
+    byte[] message1  = Utils.getMessage(objectID1, sequenceNumber1 );
     try
     {
       // Sending a new message
-      objectID1 = Utils.generateObjectId();
-      message1 = Utils.getMessage(objectID1, sequenceNumber1 );
       this.getOrchestrator().startLifeCycle(message1);
     }
     catch (ContinuityException |PersistenceException e)
@@ -147,10 +145,17 @@ public class SimpleLifeCycleOrchestratorTest
     {
       assertTrue(e.getMessage().contains("A message with the same object ID: " + objectID1 + " is in KO state"));
     }
-
   }
 
+  @Test
+  public void  ComplexTest()
+  {
+    String objectID1 = null;
+    byte[] message1  = null;
+    String sequenceNumber1 = "1";
 
+
+  }
 
 
 

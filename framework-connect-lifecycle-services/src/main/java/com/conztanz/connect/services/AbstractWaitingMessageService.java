@@ -13,7 +13,7 @@ import javax.validation.constraints.Null.List;
  */
 public abstract class AbstractWaitingMessageService<OBJECT_ID,
                                                     WAITING_MESSAGE extends IncomingMessage<OBJECT_ID>>
-        extends AbstractConnectService<WAITING_MESSAGE>
+        extends AbstractConnectService<OBJECT_ID,WAITING_MESSAGE>
         implements IWaitingMessageService<OBJECT_ID, WAITING_MESSAGE>
 
 {

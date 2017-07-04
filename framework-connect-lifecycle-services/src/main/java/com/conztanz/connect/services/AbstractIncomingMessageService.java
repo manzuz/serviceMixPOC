@@ -10,7 +10,7 @@ import com.conztanz.transport.ConztanzResultList;
  */
 public abstract class AbstractIncomingMessageService<OBJECT_ID,
                                                      INCOMING_MESSAGE extends IncomingMessage<OBJECT_ID>>
-  extends AbstractConnectService<INCOMING_MESSAGE>
+  extends AbstractConnectService<OBJECT_ID,INCOMING_MESSAGE>
   implements IIncomingMessageService<OBJECT_ID,INCOMING_MESSAGE>
 
 {

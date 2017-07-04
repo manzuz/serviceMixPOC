@@ -30,9 +30,17 @@
     <amq:xaConnectionFactory id="ConztanzConnectionFactoryPrimaryJNDI"
                              brokerURL="tcp://activemq-cz-test.conztanz.com:61616?jms.prefetchPolicy.all=10"/>
     <amq:queue id="LifecycleDestinationJNDI" physicalName="TEST.connect.Lifecycle"/>
+    <amq:queue id="LifecycleDLQDestinationJNDI" physicalName="TEST.connect.Lifecycle.DLQ"/>
 
     <!-- JMS destination waiter -->
     <bean class="com.conztanz.jms.ConztanzJMSWaitREST" id="ConztanzJMSWaitREST">
+        <property name="server"        value="${communication.jms.server.name.test}"/>
+        <property name="port"          value="${communication.jms.server.port.jolokia.test}"/>
+        <property name="authorization" value="${communication.jms.server.authorization.test}"/>
+        <property name="waitTimeout"   value="${communication.jms.server.waitTimeout.test}"/>
+    </bean>
+
+    <bean class="com.conztanz.connect.camel.ConztanzJMSStatsREST" id="ConztanzJMSStatsREST">
         <property name="server"        value="${communication.jms.server.name.test}"/>
         <property name="port"          value="${communication.jms.server.port.jolokia.test}"/>
         <property name="authorization" value="${communication.jms.server.authorization.test}"/>
