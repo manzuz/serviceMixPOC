@@ -26,8 +26,7 @@ public class SBRConnectIdentifierWrapper implements IAbstractConnectIdentifier<S
 	 * 
 	 */
 	@Override
-	public void identify(SBRIncomingMessage incomingMessage)
-			throws SAXException, IOException, ParserConfigurationException, XPathExpressionException {
+	public void identify(SBRIncomingMessage incomingMessage) {
 		ConztanzSpringApplicationContext.getBean(SBRConnectIdentifier.class).identify(incomingMessage);
 
 	}

@@ -65,6 +65,11 @@
             <type>test-jar</type>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-lifecycle-commons</artifactId>
+            <version>0.4-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>com.conztanz</groupId>

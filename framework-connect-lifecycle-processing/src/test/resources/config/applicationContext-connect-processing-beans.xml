@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans                            
+	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+
+    <bean id="SimpleConnectProcessor" class="com.conztanz.connect.processing.SimpleConnectProcessor" scope="singleton" />
+	<bean id="SimpleUnmarshaller" class="com.conztanz.connect.processing.marshalling.SimpleUnmarshaller" scope="singleton" />
+</beans>

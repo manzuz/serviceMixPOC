@@ -23,13 +23,22 @@ public class SBRConnectIdentifier extends AbstractConnectIdentifier<SBRIncomingM
 	
 
 	@Override
-	public void identify(SBRIncomingMessage incomingMessage) throws SAXException, IOException, ParserConfigurationException, XPathExpressionException  {
-		Document doc = super.getDocument(incomingMessage);
-		String controlNumber = this.getXpathClient().request(CONTROL_NUMBER, doc);
-		String creationDate = this.getXpathClient().request(CREATION_DATE, doc);
+	public void identify(SBRIncomingMessage incomingMessage)
+	{
+//		TODO : this is shit
+		try
+		{
+
+			Document doc = super.getDocument(incomingMessage);
+			String controlNumber = this.getXpathClient().request(CONTROL_NUMBER, doc);
+			String creationDate = this.getXpathClient().request(CREATION_DATE, doc);
 //		String objectID = controlNumber + "//" + creationDate;
-		SBRObjectID sbrObjectID = new SBRObjectID(controlNumber, creationDate);
-		incomingMessage.setObjectId(sbrObjectID);
+			SBRObjectID sbrObjectID = new SBRObjectID(controlNumber, creationDate);
+			incomingMessage.setObjectId(sbrObjectID);
+		}catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 

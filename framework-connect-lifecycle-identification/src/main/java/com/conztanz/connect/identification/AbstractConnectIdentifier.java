@@ -36,6 +36,7 @@ public abstract class AbstractConnectIdentifier<INCOMING_MESSAGE extends Incomin
 	public abstract void identify(INCOMING_MESSAGE incomingMessage) throws ConnectIdentificationException;
 
 	/**
+	 * TODO : should this be here ???
 	 * @param incomingMessage
 	 * @return
 	 * @throws SAXException

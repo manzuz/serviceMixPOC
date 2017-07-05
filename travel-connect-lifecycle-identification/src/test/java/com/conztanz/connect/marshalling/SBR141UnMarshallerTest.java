@@ -10,7 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.conztanz.transform.sbr.v14_1.ForPnrHandling;
 
-public class SBR141UnMarshallerTest {
+public class SBR141UnMarshallerTest
+{
 	@Autowired
 	SBR141UnMarshaller sbr141UnMarshaller;
 
@@ -24,7 +25,8 @@ public class SBR141UnMarshallerTest {
 		System.out.println(forPnrHandling.getSequenceNum());
 	}
 
-	private String readFile(String path) throws IOException {
+	private String readFile(String path) throws IOException
+	{
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		return new String(encoded);
 	}

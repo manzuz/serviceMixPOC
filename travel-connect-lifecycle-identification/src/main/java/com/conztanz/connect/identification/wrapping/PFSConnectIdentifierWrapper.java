@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPathExpressionException;
 
+import com.conztanz.connect.identification.exception.ConnectIdentificationException;
 import com.conztanz.connect.travel.model.PFSIncomingMessage;
 import org.xml.sax.SAXException;
 
@@ -25,7 +26,8 @@ public class PFSConnectIdentifierWrapper implements IAbstractConnectIdentifier<P
 	 * 
 	 */
 	@Override
-	public void identify(PFSIncomingMessage incomingMessage) throws ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+	public void identify(PFSIncomingMessage incomingMessage) throws ConnectIdentificationException
+	{
 		ConztanzSpringApplicationContext.getBean(PFSConnectIdentifier.class).identify(incomingMessage);
 
 	}

@@ -1,5 +1,7 @@
 <message>
 	<anotherRoot>
 		<objectID>123456789</objectID>
+		<sequenceNum>42</sequenceNum>
+
 	</anotherRoot>
 </message>

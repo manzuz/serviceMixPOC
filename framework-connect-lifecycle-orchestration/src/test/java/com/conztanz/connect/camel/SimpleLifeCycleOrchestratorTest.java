@@ -2,16 +2,14 @@ package com.conztanz.connect.camel;
 
 import com.conztanz.connect.exception.*;
 import com.conztanz.connect.identification.exception.ConnectIdentificationException;
-import com.conztanz.connect.model.MessageStatus;
-import com.conztanz.connect.model.SimpleSequencedIncomingMessage;
-import com.conztanz.connect.model.SimpleSequencedWaitingMessage;
-import com.conztanz.connect.model.SimpleSequencedWorkingMessage;
+import com.conztanz.connect.model.*;
 import com.conztanz.connect.services.SimpleIncomingMessageService;
 import com.conztanz.connect.services.SimpleWaitingMessageService;
 import com.conztanz.connect.services.SimpleWorkingMessageService;
 import com.conztanz.connect.test.utils.Utils;
 import com.conztanz.connect.transform.exception.ConnectTransformationException;
 import com.conztanz.exception.PersistenceException;
+import com.conztanz.transport.ConztanzResult;
 import com.conztanz.transport.ConztanzResultList;
 import com.conztanz.utils.StringUtils;
 import org.apache.commons.io.IOUtils;
@@ -25,6 +23,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -148,12 +147,33 @@ public class SimpleLifeCycleOrchestratorTest
   }
 
   @Test
-  public void  ComplexTest()
+  public void  ComplexTest() throws PersistenceException, IOException
   {
-    String objectID1 = null;
-    byte[] message1  = null;
+    String objectID1 = Utils.generateObjectId();
     String sequenceNumber1 = "1";
+    byte[] message1  = Utils.getMessage(objectID1, sequenceNumber1 );
 
+    //Sending a message
+    try
+    {
+      this.getOrchestrator().startLifeCycle(message1);
+    }
+    catch (Exception e)
+    {
+      fail(e.getMessage());
+    }
+
+    // Message should be in working table
+    SimpleSequencedWorkingMessage wm1 = this.getWorkingService().find(objectID1).getResult();
+    assertNotNull(wm1);
+    assertEquals(MessageStatus.WORKING,wm1.getStatus());
+
+    // Message should be in incoming table
+    List<SimpleSequencedIncomingMessage> incomingMessages  = this.getIncomingService().find(objectID1).getResult();
+    assertEquals(incomingMessages.size(),1);
+    SimpleSequencedIncomingMessage im1 = incomingMessages.get(0);
+    assertNotNull(im1);
+    assertEquals(MessageStatus.WORKING,im1.getStatus());
 
   }
 

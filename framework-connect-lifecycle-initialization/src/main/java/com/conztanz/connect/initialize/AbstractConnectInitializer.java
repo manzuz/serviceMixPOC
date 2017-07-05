@@ -9,7 +9,7 @@ import com.conztanz.connect.transform.exception.ConnectTransformationException;
  * @param <MESSAGE>
  * @author User
  */
-public abstract class AbstractConnectInitializer<TRANSFORMER extends IConnectTransformer,
+public abstract class  AbstractConnectInitializer<TRANSFORMER extends IConnectTransformer,
                                                  MESSAGE extends IncomingMessage>
         implements IConnectInitializer<MESSAGE>
 {

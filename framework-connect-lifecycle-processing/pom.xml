@@ -12,6 +12,58 @@
 	<packaging>jar</packaging>
 
 
+	<dependencies>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-model</artifactId>
+		</dependency>
+
+
+		<!--TEST dependencies-->
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-lifecycle-commons</artifactId>
+			<version>0.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz.third-party.sbr-stub</groupId>
+			<artifactId>sbr-stub-v14_1</artifactId>
+			<version>1.0.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-lifecycle-initialization</artifactId>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-lifecycle-initialization</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-testing</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-logger</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.conztanz</groupId>
+			<artifactId>framework-connect-model</artifactId>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jibx</groupId>
+			<artifactId>jibx-extras</artifactId>
+		</dependency>
+	</dependencies>
+
+
 
 
 
