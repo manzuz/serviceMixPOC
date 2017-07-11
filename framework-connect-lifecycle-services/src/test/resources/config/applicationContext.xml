@@ -25,7 +25,7 @@
 	<import resource="classpath:config/applicationContext-json.xml" />
     <!-- TODO normalize files names -->
     <!-- Connect persistence beans  -->
-    <import resource="classpath:config/persistence/applicationContext-persistence-connect-lifecycle-beans.xml" />
+    <import resource="classpath:config/persistence/applicationContext-connect-persistence-beans.xml" />
     <import resource="classpath:config/applicationContext-persistence-test.xml" />
     <!-- Connect initialization beans  -->
 	<import resource="classpath:config/applicationContext-connect-services-beans.xml" />

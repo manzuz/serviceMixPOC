@@ -21,7 +21,6 @@
 			<groupId>${framework.groupId}</groupId>
 			<artifactId>${framework.parent.artifact.base}-testing</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>${framework.groupId}</groupId>
 			<artifactId>${framework.parent.artifact.base}-model</artifactId>

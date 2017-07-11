@@ -14,7 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by User on 6/28/2017.
  */
-public abstract class AbstractMessageDao<OBJECT_ID, MESSAGE extends AbstractMessage<OBJECT_ID>>
+public abstract class AbstractMessageDao<OBJECT_ID,
+                                         MESSAGE extends AbstractMessage<OBJECT_ID>>
         extends AbstractEntityDaoImpl<MESSAGE>
 {
   /**
@@ -38,6 +39,12 @@ public abstract class AbstractMessageDao<OBJECT_ID, MESSAGE extends AbstractMess
     return this.getOne(this.buildObjectIdCriteria(objectId));
   }
 
+  /**
+   *
+   * @param objectId
+   * @return
+   * @throws PersistenceException
+   */
   public ConztanzResultList<MESSAGE> findList(OBJECT_ID objectId) throws PersistenceException
   {
     return super.findList(this.buildObjectIdCriteria(objectId));

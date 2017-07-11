@@ -10,8 +10,10 @@ import com.conztanz.persistence.AbstractEntityDaoImpl;
  * @param <OBJECT_ID>
  * @param <ENTITY>
  */
-public abstract class SequencedIncomingMessageDao<OBJECT_ID, ENTITY extends SequencedIncomingMessage<OBJECT_ID>>
-        extends IncomingMessageDao<OBJECT_ID,ENTITY> implements ISequencedIncomingMessageDao<OBJECT_ID,ENTITY>
+public abstract class SequencedIncomingMessageDao<OBJECT_ID,
+                                                  ENTITY extends SequencedIncomingMessage<OBJECT_ID>>
+        extends IncomingMessageDao<OBJECT_ID,ENTITY>
+        implements ISequencedIncomingMessageDao<OBJECT_ID,ENTITY>
 {
     /**
      * Constructor

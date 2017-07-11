@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+
+
+
+	<bean id="product.config.properties.location" class="java.lang.String">
+		<!-- Embedded configuration for test running scope -->
+		<constructor-arg value="${product.embedded.config.properties.location}" />
+	</bean>
+	<bean id="product.config.logs.location" class="java.lang.String">
+		<!-- Embedded configuration for test running scope -->
+		<constructor-arg value="${product.embedded.config.logs.location}" />
+	</bean>
+
+	<!-- Commons initialization -->
+	<import resource="classpath:config/applicationContext-commons.xml" />
+	<!-- Logger initialization -->
+	<import resource="classpath:config/applicationContext-logger.xml" />
+	<!-- Model initialization -->
+	<import resource="classpath:config/applicationContext-model.xml" />
+	<!-- JSon parsing definition -->
+	<import resource="classpath:config/applicationContext-json.xml" />
+	<!-- Transaction management definition -->
+	<import resource="classpath:config/applicationContext-transaction.xml" />
+	<!-- Persistence initialization -->
+	<import resource="classpath:config/applicationContext-persistence.xml" />
+
+
+    <!-- Connect persistence beans  -->
+    <import resource="classpath:config/persistence/applicationContext-persistence-connect-lifecycle-beans.xml" />
+    <!-- Connect initialization beans  -->
+	<import resource="classpath:config/applicationContext-connect-initialization-beans.xml" />
+    <!-- Connect identification beans  -->
+    <import resource="classpath:config/applicationContext-connect-identification-beans.xml" />
+    <!-- Connect locking beans  -->
+    <import resource="classpath:config/persistence/applicationContext-connect-locking-beans.xml" />
+    <!-- Connect continuity beans  -->
+    <import resource="classpath:config/continuity/applicationContext-connect-continuity-beans.xml" />
+    <!-- Connect orchestration beans  -->
+    <import resource="classpath:config/applicationContext-connect-orchestration-beans.xml" />
+    <import resource="classpath:config/applicationContext-connect-orchestration-camel-tomcat.xml" />
+	<import resource="classpath:config/applicationContext-connect-orchestration-jms.xml" />
+
+    <!-- Connect services beans  -->
+    <import resource="classpath:config/applicationContext-connect-services-beans.xml" />
+
+	<import resource="classpath:config/applicationContext-jms.xml" />
+
+
+	<import resource="classpath:config/applicationContext-clients.xml" />
+
+</beans>

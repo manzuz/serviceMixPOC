@@ -29,7 +29,7 @@ import static org.junit.Assert.*;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:config/applicationContext.xml")
+@ContextConfiguration(locations = "classpath:config/applicationContext-lifeCycle.xml")
 @TransactionConfiguration(transactionManager = "ConztanzTransactionManager")
 public class SimpleLifeCycleOrchestratorTest
 {

@@ -19,8 +19,7 @@
     <bean class="com.conztanz.j2ee.utils.JndiExporter" id="initJmsResourcesJNDI">
         <property name="jndiMapping">
             <map>
-                <entry key="#{ConztanzConnectionFactoryPrimaryJNDIName}"
-                       value-ref="ConztanzConnectionFactoryPrimaryJNDI"/>
+                <entry key="#{ConztanzConnectionFactoryPrimaryJNDIName}"  value-ref="ConztanzConnectionFactoryPrimaryJNDI"/>
                 <entry key="#{ConztanzDefaultDestinationPrimaryJNDIName}" value-ref="LifecycleDestinationJNDI"/>
             </map>
         </property>
@@ -29,6 +28,7 @@
 
     <amq:xaConnectionFactory id="ConztanzConnectionFactoryPrimaryJNDI"
                              brokerURL="tcp://activemq-cz-test.conztanz.com:61616?jms.prefetchPolicy.all=10"/>
+
     <amq:queue id="LifecycleDestinationJNDI" physicalName="TEST.connect.Lifecycle"/>
     <amq:queue id="LifecycleDLQDestinationJNDI" physicalName="TEST.connect.Lifecycle.DLQ"/>
 

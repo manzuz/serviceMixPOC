@@ -20,12 +20,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.jms.Destination;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:config/applicationContext.xml")
+@ContextConfiguration(locations = "classpath:config/applicationContext-lifeCycle.xml")
 public class SimpleOrchestrationCamelRouteTest
 
 {

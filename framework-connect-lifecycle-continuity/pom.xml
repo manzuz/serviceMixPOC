@@ -27,6 +27,7 @@
         <dependency>
             <groupId>com.conztanz</groupId>
             <artifactId>framework-testing</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
