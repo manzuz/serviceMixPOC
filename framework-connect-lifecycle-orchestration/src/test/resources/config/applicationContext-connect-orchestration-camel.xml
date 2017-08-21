@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:camel="http://camel.apache.org/schema/spring" xmlns:amq="http://activemq.apache.org/schema/core"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-	    http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd
-        http://camel.apache.org/schema/spring
-        http://camel.apache.org/schema/spring/camel-spring.xsd
-                           http://activemq.apache.org/schema/core
-                           http://activemq.apache.org/schema/core/activemq-core.xsd">
+                            http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd
+                            http://camel.apache.org/schema/spring
+                            http://camel.apache.org/schema/spring/camel-spring.xsd
+                            http://activemq.apache.org/schema/core
+                            http://activemq.apache.org/schema/core/activemq-core.xsd
+                            http://www.springframework.org/schema/jee
+                            http://www.springframework.org/schema/jee/spring-jee-${org.springframework.base.version}.xsd">
 
 
-    <!-- define our activemq component -->
+
+<!-- define our activemq component -->
     <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
         <property name="connectionFactory" ref="ConztanzConnectionFactoryPrimary"/>
+
+        <property name="destinationResolver" ref="ConztanzJNDIDestinationResolver"/>
         <!-- define the jms consumer/producer as transacted -->
         <property name="transacted" value="true"/>
         <property name="transactionManager" ref="ConztanzTransactionManager"/>

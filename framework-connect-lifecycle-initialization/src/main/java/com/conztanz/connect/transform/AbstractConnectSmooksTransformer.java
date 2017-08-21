@@ -39,7 +39,7 @@ public abstract class AbstractConnectSmooksTransformer implements IConnectTransf
   /**
    * @return
    */
-  public Smooks getSmooksReader() throws IOException, SAXException
+  private Smooks getSmooksReader() throws IOException, SAXException
   {
     ClassLoader classLoader = this.getClass().getClassLoader();
     Thread.currentThread().setContextClassLoader(classLoader);
@@ -58,11 +58,11 @@ public abstract class AbstractConnectSmooksTransformer implements IConnectTransf
   /**
    * @return
    */
-  public abstract String getPathToConfigFile();
+  protected abstract String getPathToConfigFile();
 
   /**
    * @return
    */
-  public abstract IMessageCleaner getCleaner();
+  protected abstract IMessageCleaner getCleaner();
 
 }

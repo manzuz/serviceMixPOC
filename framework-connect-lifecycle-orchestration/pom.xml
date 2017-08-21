@@ -52,7 +52,7 @@
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
-            <artifactId>framework-client</artifactId>
+            <artifactId>framework-commons</artifactId>
         </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
@@ -76,6 +76,11 @@
         </dependency>
 
         <!--Test dependencies-->
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>framework-client</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.conztanz</groupId>
             <artifactId>${framework.connect.artifact.base}-lifecycle-initialization</artifactId>
@@ -128,7 +133,12 @@
             <artifactId>${framework.connect.artifact.base}-persistence-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.conztanz</groupId>
+            <artifactId>${framework.connect.artifact.base}-jms-test</artifactId>
+            <version>0.4-SNAPSHOT</version>
+            <scope>test</scope>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>org.apache.camel</groupId>-->

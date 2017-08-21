@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-${org.springframework.base.version}.xsd">
+
+	<bean id="product.config.properties.location" class="java.lang.String">
+		<!-- Embedded configuration for test running scope -->
+		<constructor-arg value="${product.embedded.config.properties.location}" />
+	</bean>
+	<bean id="product.config.logs.location" class="java.lang.String">
+		<!-- Embedded configuration for test running scope -->
+		<constructor-arg value="${product.embedded.config.logs.location}" />
+	</bean>
+</beans>

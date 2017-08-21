@@ -55,6 +55,11 @@ public class SimpleOrchestrationCamelRouteTest
   private SimpleIncomingMessageService incomingService;
 
 
+//  @Test
+//  public void a()
+//  {
+//    System.out.println(context.getBean("ConztanzXADataSourcePrimaryJNDIName"));
+//  }
   @Test
   public void testRollBack() throws Exception
   {
@@ -74,7 +79,6 @@ public class SimpleOrchestrationCamelRouteTest
     assertTrue(this.getjMSStatsClient().getQueueSize(dql) == dLQSizeBeforeRollback + 1);
     int dBSizeAfterRollback =  this.getAllDBsSize();
     assertEquals(dBSizeAfterRollback,dBSizeBeforeRollback);
-
   }
 
 
@@ -159,7 +163,10 @@ public class SimpleOrchestrationCamelRouteTest
 
   private String getQEndPoint()
   {
-    return  "activemq://TEST.connect.Lifecycle";
+    System.out.println(context.getBean("ConztanzConnectionFactoryPrimaryJNDIName"));
+//    return  "activemq://TEST.connect.Lifecycle";
+    return  "activemq://java:comp/env/jms/test.ConnectLifecycle";
+
   }
 
   private int getAllDBsSize() throws PersistenceException

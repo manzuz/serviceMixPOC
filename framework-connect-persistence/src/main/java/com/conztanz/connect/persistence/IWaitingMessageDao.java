@@ -17,11 +17,6 @@ public interface IWaitingMessageDao<OBJECT_ID,
      * @param entity
      * @return
      */
-    ENTITY remove (ENTITY entity) throws PersistenceException;
+    ENTITY remove(ENTITY entity) throws PersistenceException;
 
-  /**
-   *
-   * @param entity
-   * @return
-   */
 }

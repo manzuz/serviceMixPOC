@@ -25,7 +25,7 @@
 	<import resource="classpath:config/applicationContext-json.xml" />
 
     <!-- Connect initialization beans  -->
-    <import resource="classpath:config/persistence/applicationContext-persistence-connect-lifecycle-beans.xml" />
+    <import resource="classpath:config/persistence/applicationContext-connect-persistence-beans.xml" />
     <!-- Connect initialization beans  -->
 	<import resource="classpath:config/persistence/applicationContext-connect-locking-beans.xml" />
 

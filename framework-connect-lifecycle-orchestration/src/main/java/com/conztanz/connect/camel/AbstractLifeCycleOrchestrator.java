@@ -22,11 +22,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author User
- *
+ * @param <OBJECT_ID>
+ * @param <WAITING_MESSAGE>
+ * @param <INCOMING_MESSAGE>
+ * @param <WORKING_MESSAGE>
  * @param <INITIALIZER>
  * @param <IDENTIFIER>
- *   TODO : move generics
  */
 public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
                                                     WAITING_MESSAGE extends IncomingMessage<OBJECT_ID>,
@@ -86,6 +87,8 @@ public abstract class AbstractLifeCycleOrchestrator<OBJECT_ID,
       this.getIncomingMessageDao().add(incomingMessage);
       throw e;
     }
+
+
     this.getIncomingMessageDao().add(incomingMessage);
     workingMessage.workOn(incomingMessage);
     return incomingMessage;

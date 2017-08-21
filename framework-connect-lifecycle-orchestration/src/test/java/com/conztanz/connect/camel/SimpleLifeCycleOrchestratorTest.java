@@ -121,7 +121,7 @@ public class SimpleLifeCycleOrchestratorTest
      byte[] message2 = Utils.getMessage(objectID1,sequenceNumber2);
      try
      {
-     this.getOrchestrator().startLifeCycle(message2);
+        this.getOrchestrator().startLifeCycle(message2);
      }
      catch (ContinuityException | PersistenceException e)
      {
