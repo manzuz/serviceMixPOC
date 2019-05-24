@@ -1,5 +1,6 @@
 package com.conztanz.connect.factory;
 
+import com.conztanz.connect.model.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.travel.model.PFSIncomingMessage;
 
 
@@ -9,7 +10,8 @@ import com.conztanz.connect.travel.model.PFSIncomingMessage;
  *
  */
 //@Singleton
-public class PFSIncomingMessageFactory extends AbstractIncomingMessageFactory<PFSIncomingMessage> {
+public class PFSIncomingMessageFactory extends AbstractIncomingMessageFactory<PFSIncomingMessage>
+{
 	
 	
 	/**
