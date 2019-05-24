@@ -1,8 +1,8 @@
 package com.conztanz.connect;
 
+import com.conztanz.connect.model.factory.AbstractIncomingMessageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.conztanz.connect.factory.AbstractIncomingMessageFactory;
 import com.conztanz.connect.factory.SBR14IncomingMessageFactory;
 import com.conztanz.connect.initialize.AbstractConnectInitializer;
 import com.conztanz.connect.transform.travel.sbr.SBR141EDI2XMLSmooksTransformer;
@@ -21,13 +21,14 @@ public class SBR141ConnectInitializer
 	private SBR141EDI2XMLSmooksTransformer sBR141EDI2XMLSmooksTransformer;
 
 	@Override
-	public AbstractIncomingMessageFactory<SBRIncomingMessage> getMessageFactory() {
-		return sBR14IncomingMessageFactory;
+	public AbstractIncomingMessageFactory<SBRIncomingMessage> getMessageFactory()
+	{
+		return this.sBR14IncomingMessageFactory;
 	}
 
 	@Override
-	public SBR141EDI2XMLSmooksTransformer getSmooksTransformer() {
-		return sBR141EDI2XMLSmooksTransformer;
+	protected SBR141EDI2XMLSmooksTransformer getTransformer()
+	{
+		return this.sBR141EDI2XMLSmooksTransformer;
 	}
-
 }
