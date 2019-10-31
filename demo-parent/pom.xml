@@ -34,7 +34,7 @@
 
 		<commonslogging.version>1.2</commonslogging.version>
 		<xerces.version>2.11.0</xerces.version>
-		<camel.version>2.16.1</camel.version>
+		<camel.version>2.24.2</camel.version>
 		<activemq-camel.version>5.6.0</activemq-camel.version>
 		<xbean-spring.version>3.18</xbean-spring.version>
 		<!-- <features-maven-plugin.version>2.2.8</features-maven-plugin.version> -->
